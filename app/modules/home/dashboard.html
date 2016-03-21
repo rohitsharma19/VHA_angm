@@ -1,0 +1,91 @@
+<div class="md-padding" flex layout-sm="column" layout-margin>
+    <!-- <md-card class="text-center">
+        <md-card-content>
+            <h1>{{ vm.title }}</h1>
+            <h3>{{ vm.version }}</h3>
+            <p>This is a template for a simple home screen website. Use it as a starting point to create something more unique.</p>
+            <code>app/modules/home/home.html</code>
+            <br>
+            <p><a href="http://www.github.com/newaeonweb/generator-angm" class="btn btn-primary" role="button">Learn more »</a></p>
+            <md-divider class="margin-top-20"></md-divider>
+            <h1 class="margin-top-50">Features</h1>
+            <ul>
+                <li class=" text-center" ng-repeat="item in vm.listFeatures">
+                    <p><ng-md-icon icon="check"></ng-md-icon> {{item.feature}}</p>
+                </li>
+            </ul>
+        </md-card-content>
+    </md-card> -->
+
+    <div layout="row" layout-margin>
+        <div flex=50 >
+            <div class="dashboard-stat blue-madison" md-whiteframe="5">
+                <div class="visual">
+                    <i class="fa fa-tasks"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        553
+                    </div>
+                    <div class="desc">
+                        Open Opportunities
+                    </div>
+                </div>
+                <a class="more" href="#">
+                View more <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+
+        <div flex=50>
+            <div class="dashboard-stat green-haze" md-whiteframe="5">
+                <div class="visual">
+                    <i class="fa fa-check-square-o"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        $ 22678 K
+                    </div>
+                    <div class="desc">
+                        Closed Opportunities
+                    </div>
+                </div>
+                <a class="more" href="#">
+                View more <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div layout="row">
+        <div flex=50>
+            <md-card md-whiteframe="5">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Pipeline</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <canvas id="line" class="chart chart-line chart-xl" data="vm.line.data" labels="vm.line.labels" legend="true" click="line.onClick" series="vm.line.series">
+                </canvas>
+              </md-card-content>
+            </md-card>
+        </div>
+
+        <div flex=50>
+            <md-card md-whiteframe="5">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">Current Month Activity</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <canvas id="bar" class="chart chart-bar" data="vm.bar.data" labels="vm.bar.labels" series="vm.bar.series" legend="true" options="vm.bar.options" colours="vm.bar.colours">
+                </canvas>
+              </md-card-content>
+            </md-card>
+        </div>
+    </div>
+
+
+</div>

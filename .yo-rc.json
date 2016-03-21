@@ -1,0 +1,48 @@
+{
+  "generator-angm": {
+    "appName": "vha",
+    "angularCookies": true,
+    "angularAnimate": true,
+    "angularSanitize": true,
+    "angularMaterial": true,
+    "modules": [
+      {
+        "name": "lead"
+      },
+      {
+        "name": "opportunity"
+      },
+      {
+        "name": "recommendation"
+      },
+      {
+        "name": "quote"
+      },
+      {
+        "name": "agreement"
+      }
+    ],
+    "menu": [
+      {
+        "link": "lead",
+        "title": "Lead"
+      },
+      {
+        "link": "opportunity",
+        "title": "Opportunity"
+      },
+      {
+        "link": "recommendation",
+        "title": "Recommendation"
+      },
+      {
+        "link": "quote",
+        "title": "Quote"
+      },
+      {
+        "link": "agreement",
+        "title": "Agreement"
+      }
+    ]
+  }
+}
