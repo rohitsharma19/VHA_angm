@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<base href="/">
-	<title>Vodafone Test</title>
+	<title>Vodafone</title>
 	<meta name="description" content="Modular AngularJS with Angm-generator" />
 	<meta name="author" content="" />
 	<meta name="keywords" content="" />
@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="/src/bower_components/angular-material-icons/angular-material-icons.css">
 	<link rel="stylesheet" href="/src/bower_components/angular-material/angular-material.css">
 	<link rel="stylesheet" href="/src/bower_components/angular-chart.js/dist/angular-chart.css">
+    <link rel="stylesheet" href="/src/bower_components/angular-ui-grid/ui-grid.min.css">
 	<!-- endinjector -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
@@ -75,11 +76,23 @@
 <body ng-cloak>
 
 <div layout="column">
-    <div ui-view layout="row" layout-fill></div>
-    <div style="align-self:flex-end; font-size:small; border-top:1px solid #ddd; width:100%; text-align:left;">
-        <strong >Copyright © 2016 <a href="http://www.tcs.com">TATA CONSULTANCY SERVICES</a>
-        </strong> All rights reserved. Version BETA
+    <div ui-view layout="row" layout-fill>
     </div>
+    <!-- <footer style="align-self:flex-end;  border-top:1px solid #ddd; width:100%; ">
+        
+        <span style="text-align:left; font-size:small;">
+        <strong >Copyright © 2016 <a href="http://www.tcs.com">TATA CONSULTANCY SERVICES</a></strong> All rights reserved.
+        </span> 
+        <span style="text-align:right;">Version BETA</span>
+    </footer> -->
+    <!-- <footer>
+        <div layout="row" style="align-self:flex-end;  border-top:1px solid #ddd; width:100%;">
+            <span style="text-align:left; font-size:small;">
+            <strong >Copyright © 2016 <a href="http://www.tcs.com">TATA CONSULTANCY SERVICES</a></strong> All rights reserved.
+            </span> 
+            <span style="text-align:right;">Version BETA</span>
+        </div>
+    </footer> -->
 
 </div>
 
@@ -183,6 +196,7 @@
 <script src="/src/bower_components/angular-material/angular-material.js"></script>
 <script src="/src/bower_components/Chart.js/Chart.js"></script>
 <script src="/src/bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<script src="/src/bower_components/angular-ui-grid/ui-grid.min.js" ></script>
 <script src="/app/app.js"></script>
 <script src="/app/app.config.js"></script>
 <script src="/app/modules/agreement/agreementModule.js"></script>
@@ -214,9 +228,6 @@
 <script src="/app/modules/quote/quoteService.js"></script>
 <script src="/app/modules/recommendation/recommendationService.js"></script>
 <!-- endinjector -->
-
-
-
 
 </body>
 </html>
