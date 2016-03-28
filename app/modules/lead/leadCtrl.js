@@ -46,11 +46,7 @@
                        { field: 'eMail' },
                        { field: 'contactNum' },
                        { name:  'Actions',
-                         cellTemplate: '<div>' +
-                             '<img ng-click="grid.appScope.actionLead(row,\'edit\')" src="http://icons.iconarchive.com/icons/custom-icon-design/office/16/edit-icon.png" alt="edit">' +
-                             ' ' +
-                             '<img ng-click="grid.appScope.deleteLead(row)" src="http://icons.iconarchive.com/icons/custom-icon-design/office/16/delete-icon.png" alt="delete">'+
-                             '</div>',
+                         cellTemplate: '<div><md-button ng-click="grid.appScope.actionLead(row,\'edit\')">E</md-button></div>',
                          enableFiltering:false
                     	   }
                 ];
@@ -68,41 +64,54 @@
 				});
 			}
 
+			vm.actionLead = function(row,mode) {
+
+		    	console.log("inside actionLead");
+		    	shared.set(row.entity);
+		    	shared.setPreviewMode(mode);
+				$location.path("vha_editLead");
+		    };
+
 			if($state.current.name === 'home.lead.viewAll'){
 				
 				console.log("VIEW ALL LEADS");
 				
 				setUpUiGrid();
+
+				vm.actionLead = function(row,mode) {
+
+			    	console.log("inside actionLead");
+			    	shared.set(row.entity);
+			    	shared.setPreviewMode(mode);
+    				$location.path("vha_editLead");
+			    };
+			    
+			    vm.deleteLead = function(row) {
+
+			    	var index = $scope.gridOptions.data.indexOf(row.entity);
+
+			    	if(confirm('Are you sure you want to delete?')){
+
+			        	leadManager.deleteLead(row.entity.leadId)
+			        	.then(
+				        	function (response) {
+		        				$scope.gridOptions.data.splice(index, 1);
+				        	},
+						    function (error) {
+						    	alert('Error While deleting Lead: '+ error.message );
+						    }
+				        )
+			        }
+			        else {
+			        	console.log("Lead deletion cancelled by User");
+			        }
+			    };
 			}
 
 			if($state.current.name === 'home.lead.create'){
 
 				console.log("CREATE LEAD");
 
-				/*vm.lead = {
-						"abn": null,
-						"accName": null,
-						"acn": null,
-						"compName": null,
-						"custType": null,
-						"pin": null,
-						"tradingAs": null,
-						"title": null,
-						"firstName": null,
-						"lastName": null,
-						"dob": null,
-						"eMail": null,
-						"contactNum": null,
-						"contactRole": null,
-						"prefModOfCom": null,
-						"businessStage": null,
-						"assignToGrp": null,
-						"assignToUser": null,
-						"createdByGroup": null,
-						"createdByUser": null,
-						"status": null
-				};*/
-				
 				vm.saveLead = function(lead){
 					console.log("Inside saveLead()");
 					console.log("lead : ");
