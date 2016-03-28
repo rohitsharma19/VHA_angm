@@ -80,7 +80,7 @@
 								        <input type="text" ng-model="lead.lastName">
 						         	</md-input-container>
 						        </div>
-						        <md-datepicker ng-model="" md-placeholder="Date of Birth" class="md-block">
+						        <md-datepicker ng-model="dtOfBirth" md-placeholder="Date of Birth" class="md-block">
 							    </md-datepicker>
 						        <md-input-container>
 							        <label class="placeholderColour">E-mail</label>
@@ -111,7 +111,7 @@
 						<md-tab-label>Segmentation</md-tab-label>	
 						<md-tab-body>
 							<p>Choose Service Type</p>
-						    <md-radio-group ng-model="">
+						    <md-radio-group ng-model="serviceType.value">
 								<md-radio-button value="Sim Only" >Sim Only</md-radio-button>
 								<md-radio-button value="With Device Only">With Device Only</md-radio-button>
 						    </md-radio-group>

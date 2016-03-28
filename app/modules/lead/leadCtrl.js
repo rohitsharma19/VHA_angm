@@ -13,7 +13,7 @@
 		.module('lead')
 		.controller('LeadCtrl', Lead);
 
-		Lead.$inject = ['$state'];
+		Lead.$inject = ['$state','leadManager'];
 
 		/*
 		* recommend
@@ -21,12 +21,12 @@
 		* and bindable members up top.
 		*/
 
-		function Lead($state) {
+		function Lead($state,leadManager) {
 			/*jshint validthis: true */
 			var vm = this;
 
-			if($state.current.name === 'home.lead.viewAll'){
-				
+			function setUpUiGrid() {
+
 				vm.gridOptions = {};
 				vm.gridOptions.enableHorizontalScrollbar = 2;
 				vm.gridOptions.enableVerticalScrollbar = 2;
@@ -55,21 +55,74 @@
                     	   }
                 ];
 
-                vm.myData = [{
-				        "creationDate": "22-03-2016",
-				        "compName": "TCS",
-				        "abn": "123",
-				        "firstName": "Rohit",
-				        "lastName" : "Sharma",
-				        "eMail" : "rohit@gmail.com",
-				        "contactNum" : "999971618"
-				    }
-				];
+                leadManager.getAllLeads().then(
+					function (response) {
+						console.log("getAllLeads SUCCESS");
+						console.log("data received");
+						console.log(response.data);
+						
+						vm.gridOptions.data = response.data;
+					},
+				    function (error) {
+				        console.log("getAllLeads ERROR : " + error.message);
+				});
 			}
 
-			/*vm.saveLead = function(lead){
-				console.log("inside save lead method");
-				$state.go("home.opportunityCreation");
-			};*/
+			if($state.current.name === 'home.lead.viewAll'){
+				
+				console.log("VIEW ALL LEADS");
+				
+				setUpUiGrid();
+			}
+
+			if($state.current.name === 'home.lead.create'){
+
+				console.log("CREATE LEAD");
+
+				/*vm.lead = {
+						"abn": null,
+						"accName": null,
+						"acn": null,
+						"compName": null,
+						"custType": null,
+						"pin": null,
+						"tradingAs": null,
+						"title": null,
+						"firstName": null,
+						"lastName": null,
+						"dob": null,
+						"eMail": null,
+						"contactNum": null,
+						"contactRole": null,
+						"prefModOfCom": null,
+						"businessStage": null,
+						"assignToGrp": null,
+						"assignToUser": null,
+						"createdByGroup": null,
+						"createdByUser": null,
+						"status": null
+				};*/
+				
+				vm.saveLead = function(lead){
+					console.log("Inside saveLead()");
+					console.log("lead : ");
+					console.log(lead);
+
+					leadManager.saveLead(lead);
+				};
+			}
+			if($state.current.name === 'home.lead.edit'){
+				console.log("EDIT LEAD");
+				
+			}
+			if($state.current.name === 'home.lead.view'){
+				console.log("VIEW LEAD");
+				
+			}
+			if($state.current.name === 'home.lead.delete'){
+				console.log("DELETE LEAD");
+			}
+
+			
 		}
 })();
