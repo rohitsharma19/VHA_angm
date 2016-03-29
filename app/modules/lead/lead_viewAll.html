@@ -1,5 +1,12 @@
 <div>
-	<h2 class="md-title">View All Leads</h2>
+	
+	<div style="display:inline-flex;">
+	<h2 class="md-title" style="width: 150px;">View All Leads</h2>
+	<md-button class="md-fab" ng-click="vm.createLead()">
+	    <md-icon>add</md-icon>
+	</md-button>
+	</div>
+
 	<div>
       <!-- <div id="grid1" ui-grid="{ data: vm.myData }" class="grid"></div> -->
       <div id="grid1" ui-grid="vm.gridOptions" class="grid"></div>

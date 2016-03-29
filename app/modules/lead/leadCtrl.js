@@ -48,7 +48,7 @@
                        { field: 'contactNum' },
                        { name:  'Actions',
                          /*cellTemplate: '<div><md-button id="editLead" ng-click="grid.appScope.vm.editLead(row)">E</md-button><md-button id="deleteLead" ng-click="grid.appScope.vm.deleteLead(row)">D</md-button></div>',*/
-                         cellTemplate: '<md-button ng-click="grid.appScope.vm.editLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">edit</md-icon></md-button><md-button ng-click="grid.appScope.vm.deleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+                         cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.editLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.deleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
 						 /*cellTemplate: '<md-button class="md-icon-button md-primary" aria-label="Edit"><md-icon md-font-library="material-icons">face</md-icon></md-button>',*/
 						 enableFiltering:false
                     	   }
@@ -131,6 +131,10 @@
 			        else {
 			        	console.log("Lead deletion cancelled by User");
 			        }
+			    };
+
+			    vm.createLead = function() {
+			    	$state.go('home.lead.create');
 			    };
 			}
 
