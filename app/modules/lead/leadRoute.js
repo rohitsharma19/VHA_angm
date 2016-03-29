@@ -25,31 +25,31 @@ angular.module('lead')
 				controllerAs: 'vm'
 			})
 			.state('home.lead.viewAll', {
-				/*url:'/viewAll',*/
+				url:'/viewAll',
 				templateUrl: 'app/modules/lead/lead_viewAll.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.create', {
-				/*url:'/create',*/
+				url:'/create',
 				templateUrl: 'app/modules/lead/lead_create.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.edit', {
-				/*url:'/edit',*/
+				url:'/edit',
 				templateUrl: 'app/modules/lead/lead_edit.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.view', {
-				/*url:'/view',*/
+				url:'/view',
 				templateUrl: 'app/modules/lead/lead_view.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.delete', {
-				/*url:'/delete',*/
+				url:'/delete',
 				templateUrl: 'app/modules/lead/lead_delete.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'

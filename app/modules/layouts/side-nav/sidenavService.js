@@ -26,7 +26,7 @@
 							name: 'Quick Lead Creation'
 					},
 					{
-						link: 'lead',
+						link: 'lead.viewAll',
 							name: 'Lead'
 					},
 			    
