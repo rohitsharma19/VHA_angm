@@ -19,28 +19,18 @@
 
 		function Lead ($http) {
 
-			//var leadMode = null;
 			var leadSharedData = null;
-
-			return{
-				/*setLeadMode : function(mode){
-					leadMode = mode;
+			
+			return {
+				set:function(leadData) {
+				  leadSharedData = leadData;
 				},
-				getLeadMode : function(){
-					return leadMode;
+				get:function() {
+				 return leadSharedData;
 				},
-				resetLeadMode : function(){
-					leadMode = null;
-				},*/
-				setLead : function(leadData){
-					leadSharedData = leadData;
-				},
-				getLead : function(){
-					return leadSharedData;
-				},
-				resetLead : function(){
-					leadSharedData = null;
-				} 
-			}
+				reset:function() {
+				  leadSharedData = null;
+				}
+			};
 		}
 })();

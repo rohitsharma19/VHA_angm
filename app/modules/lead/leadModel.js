@@ -29,8 +29,8 @@
 				save: function(){
 					return $http.post("http://203.200.67.15/VHAMW/webapi/Lead",this);
 				},
-				get: function(){
-					//$http.get('/Lead/');
+				get: function(leadId){
+					return $http.get("http://203.200.67.15/VHAMW/webapi/Lead/"+leadId);
 				},
 				remove: function(leadId){
 					return $http.delete("http://203.200.67.15/VHAMW/webapi/Lead/"+leadId);

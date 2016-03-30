@@ -1,10 +1,16 @@
 <div>
 	
-	<div style="display:inline-flex;">
-	<h2 class="md-title" style="width: 150px;">View All Leads</h2>
-	<md-button class="md-fab" ng-click="vm.createLead()">
-	    <md-icon>add</md-icon>
-	</md-button>
+	<div layout="row" >
+		<div flex="30">
+			<h2 class="md-title">View All Leads</h2>
+		</div>
+		<div flex="65">
+		</div>
+		<div flex="5">
+			<md-button class="md-fab" ng-click="vm.openCreateLead()">
+			    <md-icon>add</md-icon>
+			</md-button>
+		</div>
 	</div>
 
 	<div>
