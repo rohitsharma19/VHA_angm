@@ -18,12 +18,40 @@ angular.module('agreement')
 				controller: 'AgreementCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.agreementCreation', {
-				url:'/quickLead',
+			.state('home.quickagreement', {
+				url:'/quickagreement',
 				templateUrl: 'app/modules/agreement/agreementCreation.html',
 				controller: 'AgreementCtrl',
 				controllerAs: 'vm'
+			})
+			.state('home.agreement.viewAll', {
+				url:'/viewAll',
+				templateUrl: 'app/modules/agreement/agreement_viewAll.html',
+				controller: 'AgreementCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.agreement.create', {
+				url:'/create',
+				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
+				controller: 'AgreementCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.agreement.edit', {
+				url:'/edit',
+				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
+				controller: 'AgreementCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.agreement.view', {
+				url:'/view',
+				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
+				controller: 'AgreementCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.agreement.delete', {
+				url:'/delete',
+				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
+				controller: 'AgreementCtrl',
+				controllerAs: 'vm'
 			});
-
-		
 	}]);

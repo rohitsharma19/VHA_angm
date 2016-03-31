@@ -32,32 +32,26 @@ angular.module('lead')
 			})
 			.state('home.lead.create', {
 				url:'/create',
-				/*templateUrl: 'app/modules/lead/lead_create.html',*/
 				templateUrl: 'app/modules/lead/lead_CRUD.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.edit', {
 				url:'/edit',
-				/*templateUrl: 'app/modules/lead/lead_edit.html',*/
 				templateUrl: 'app/modules/lead/lead_CRUD.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.view', {
 				url:'/view',
-				/*templateUrl: 'app/modules/lead/lead_view.html',*/
 				templateUrl: 'app/modules/lead/lead_CRUD.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.delete', {
 				url:'/delete',
-				/*templateUrl: 'app/modules/lead/lead_delete.html',*/
 				templateUrl: 'app/modules/lead/lead_CRUD.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			});
-
-		
 	}]);

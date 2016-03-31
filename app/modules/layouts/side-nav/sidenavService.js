@@ -31,7 +31,7 @@
 					},
 			    
 					{
-						link: 'opportunity',
+						link: 'opportunity.viewAll',
 							name: 'Opportunity'
 					},
 			    
@@ -41,12 +41,12 @@
 					},*/
 			    
 					{
-						link: 'quote',
+						link: 'quote.viewAll',
 							name: 'Quote'
 					},
 			    
 					{
-						link: 'agreement',
+						link: 'agreement.viewAll',
 							name: 'Agreement'
 					},
 			    

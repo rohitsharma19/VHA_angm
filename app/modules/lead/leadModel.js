@@ -37,6 +37,9 @@
 				},
 				update: function(){
 					return $http.put("http://203.200.67.15/VHAMW/webapi/Lead/",this);
+				},
+				getAll: function(){
+					return $http.get("http://203.200.67.15/VHAMW/webapi/Lead");
 				}
 			};
 			return leadModel;

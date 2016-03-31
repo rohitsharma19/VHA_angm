@@ -121,7 +121,10 @@ module.exports = function (grunt) {
 						'app/**/*Route.js',
 						'app/**/*Ctrl.js',
 						'app/**/*Service.js',
-						'app/**/*Directive.js'
+						'app/**/*Directive.js',
+						'app/**/*Manager.js',
+						'app/**/*Model.js',
+						'app/**/*SharedData.js'
 					]
 				}
 			},

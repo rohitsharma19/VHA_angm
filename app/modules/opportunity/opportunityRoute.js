@@ -18,12 +18,40 @@ angular.module('opportunity')
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.opportunityCreation', {
-				url:'/quickLead',
+			.state('home.quickopportunity', {
+				url:'/quickopportunity',
 				templateUrl: 'app/modules/opportunity/opportunityCreation.html',
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'
-			});;
-
-		
+			})
+			.state('home.opportunity.viewAll', {
+				url:'/viewAll',
+				templateUrl: 'app/modules/opportunity/opportunity_viewAll.html',
+				controller: 'OpportunityCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.opportunity.create', {
+				url:'/create',
+				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
+				controller: 'OpportunityCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.opportunity.edit', {
+				url:'/edit',
+				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
+				controller: 'OpportunityCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.opportunity.view', {
+				url:'/view',
+				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
+				controller: 'OpportunityCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.opportunity.delete', {
+				url:'/delete',
+				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
+				controller: 'OpportunityCtrl',
+				controllerAs: 'vm'
+			});
 	}]);

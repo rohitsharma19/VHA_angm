@@ -32,7 +32,7 @@
 				vm = leadManager.setUpUiGrid(vm);
 
 				vm.openViewLead = function(row) {
-			    	console.log("Inside viewLead");
+			    	console.log("Inside openViewLead");
 			    	leadManager.openViewLead(row.entity.leadId);
 			    };
 			    
@@ -42,12 +42,12 @@
 			    };
 
 			    vm.openDeleteLead = function(row) {
-			    	console.log("inside deleteLead");
+			    	console.log("inside openDeleteLead");
 			    	leadManager.openDeleteLead(row.entity.leadId);
 			    };
 
 			    vm.openCreateLead = function() {
-			    	console.log("inside deleteLead");
+			    	console.log("inside openCreateLead");
 			    	leadManager.openCreateLead();
 			    };
 			}
@@ -56,16 +56,16 @@
 				console.log("CREATE LEAD");
 				vm.leadMode = "Create";
 
-				vm.saveLead = function(lead){
-					console.log("Inside saveLead().");
+				vm.createLead = function(lead){
+					console.log("Inside createLead().");
 					console.log(lead);
-					leadManager.saveLead(lead);
+					leadManager.createLead(lead);
 				};
 			}
 
 			if($state.current.name === 'home.lead.edit'){
 				console.log("EDIT LEAD");
-				vm.leadMode = "Edit";
+				vm.leadMode = "Update";
 
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
@@ -76,6 +76,7 @@
 					leadManager.updateLead(lead);
 				};
 			}
+
 			if($state.current.name === 'home.lead.view'){
 				console.log("VIEW LEAD");
 				vm.leadMode = "View";
@@ -83,6 +84,7 @@
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
 			}
+			
 			if($state.current.name === 'home.lead.delete'){
 				console.log("DELETE LEAD");
 				vm.leadMode = "Delete";
@@ -90,8 +92,10 @@
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
 
-				vm.deleteLead = function() {
-		    		leadManager.deleteLead(vm.lead.leadId);
+				vm.deleteLead = function(lead) {
+					console.log("Inside deleteLead()");
+					console.log(lead);
+		    		leadManager.deleteLead(lead.leadId);
 		        };
 			}
 		}

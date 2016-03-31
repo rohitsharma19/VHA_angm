@@ -1,13 +1,6 @@
 <div class="md-padding" flex layout-sm="column" >
-    <!-- <md-card > -->
-    	<!-- <md-card-title>
-			<md-card-title-text>
-				<span class="md-headline">Lead Creation</span>
-			</md-card-title-text>
-    	</md-card-title>
-        <md-card-content> -->
-        <h2 class="md-title">View Lead</h2>
-            <form name="leadForm">
+        	<div><h2>{{vm.agreementMode}} Agreement</h2></div>
+            <form name="agreementForm">
             	<md-tabs md-dynamic-height>
 	                <md-tab>
 		              <md-tab-label>Basic Details</md-tab-label>	
@@ -15,8 +8,8 @@
 					  <div layout="column">
 					  	<md-input-container style="display: block;">
 						    <label>ABN Number</label>
-						    <input name="lead.abn" ng-model="vm.lead.abn" required md-maxlength="10" minlength="4">
-						    <div ng-messages="leadForm.lead.abn.$error" ng-show="leadForm.lead.abn.$dirty">
+						    <input name="agreement.abn" ng-model="vm.agreement.abn" required md-maxlength="10" minlength="4">
+						    <div ng-messages="agreementForm.agreement.abn.$error" ng-show="agreementForm.agreement.abn.$dirty">
 						      <div ng-message="required">This is required!</div>
 						      <div ng-message="md-maxlength">That's too long!</div>
 						      <div ng-message="minlength">That's too short!</div>
@@ -24,24 +17,24 @@
 						</md-input-container>
 						<md-input-container >
 							        <label class="placeholderColour">Account Name </label>
-							        <p ng-show="showAsLabels">{{lead.accName}}</p>
-							        <input ng-show="!showAsLabels" type="text" ng-model="vm.lead.accName" size="190">
+							        <p ng-show="showAsLabels">{{agreement.accName}}</p>
+							        <input ng-show="!showAsLabels" type="text" ng-model="vm.agreement.accName" size="190">
 					    </md-input-container>
 	     				<md-input-container >
 						        <label class="placeholderColour">ACN</label>
-						        <p ng-show="showAsLabels">{{lead.acn}}</p>
-						        <input ng-show="!showAsLabels" type="text" ng-model="vm.lead.acn" size="190">
+						        <p ng-show="showAsLabels">{{agreement.acn}}</p>
+						        <input ng-show="!showAsLabels" type="text" ng-model="vm.agreement.acn" size="190">
 				        </md-input-container>
 				        <md-input-container >
 						        <label class="placeholderColour">Company Name</label>
-						        <p ng-show="showAsLabels">{{lead.compName}}</p>
-						        <input ng-show="!showAsLabels" type="text" ng-model="vm.lead.compName" size="190">
+						        <p ng-show="showAsLabels">{{agreement.compName}}</p>
+						        <input ng-show="!showAsLabels" type="text" ng-model="vm.agreement.compName" size="190">
 				        </md-input-container>
 				        <md-input-container>
 					        <label class="placeholderColour">Customer Type</label>
-					        <p ng-show="showAsLabels">{{lead.custType}}</p>
+					        <p ng-show="showAsLabels">{{agreement.custType}}</p>
 					        <div ng-show="!showAsLabels" style="width:1100px">
-					        <md-select ng-model="vm.lead.custType" style="width:600">
+					        <md-select ng-model="vm.agreement.custType" style="width:600">
 					          <md-option  value="New">New</md-option>
 					          <md-option  value="Existing">Existing</md-option>
 					        </md-select>
@@ -49,13 +42,13 @@
 					    </md-input-container>
 				        <md-input-container >
 						        <label class="placeholderColour">PIN</label>
-						        <p ng-show="showAsLabels">{{lead.pin}}</p>
-						        <input ng-show="!showAsLabels" type="text" ng-model="vm.lead.pin" size="190">
+						        <p ng-show="showAsLabels">{{agreement.pin}}</p>
+						        <input ng-show="!showAsLabels" type="text" ng-model="vm.agreement.pin" size="190">
 				        </md-input-container>
 				        <md-input-container >
 						        <label class="placeholderColour">Trading As</label>
-						        <p ng-show="showAsLabels">{{lead.tradingAs}}</p>
-						        <input ng-show="!showAsLabels" type="text" ng-model="vm.lead.tradingAs" size="190">
+						        <p ng-show="showAsLabels">{{agreement.tradingAs}}</p>
+						        <input ng-show="!showAsLabels" type="text" ng-model="vm.agreement.tradingAs" size="190">
 				        </md-input-container>
 				      </div>  
 					  </md-tab-body>
@@ -66,7 +59,7 @@
 							<div layout="column">
 								<div layout="row">
 							        <md-input-container flex="20">
-								        <md-select ng-model="vm.lead.title" placeholder="Title">
+								        <md-select ng-model="vm.agreement.title" placeholder="Title">
 								      	  	<md-option  value="Mr." >Mr.</md-option>
 								          	<md-option  value="Mrs.">Mrs.</md-option>
 								          	<md-option  value="Ms.">Ms.</md-option>
@@ -74,33 +67,33 @@
 							        </md-input-container>
 									<md-input-container flex="40">
 								        <label class="placeholderColour">First Name</label>
-								        <input type="text" ng-model="vm.lead.firstName">
+								        <input type="text" ng-model="vm.agreement.firstName">
 							        </md-input-container>
 							        <md-input-container flex="40">
 								        <label class="placeholderColour">Last Name</label>
-								        <input type="text" ng-model="vm.lead.lastName">
+								        <input type="text" ng-model="vm.agreement.lastName">
 						         	</md-input-container>
 						        </div>
 						        <md-datepicker ng-model="dtOfBirth" md-placeholder="Date of Birth" class="md-block">
 							    </md-datepicker>
 						        <md-input-container>
 							        <label class="placeholderColour">E-mail</label>
-							        <input type="email" ng-model="vm.lead.eMail">
+							        <input type="email" ng-model="vm.agreement.eMail">
 						        </md-input-container>
 						        <md-input-container >
 							        <label class="placeholderColour">Phone Number</label>
-							        <input type="number" ng-model="vm.lead.contactNum">
+							        <input type="number" ng-model="vm.agreement.contactNum">
 						        </md-input-container>
 						        <md-input-container>
 							        <label class="placeholderColour">Contact Mode</label>
-							        <md-select ng-model="vm.lead.contactRole">
+							        <md-select ng-model="vm.agreement.contactRole">
 							          	<md-option  value="Billing">Billing</md-option>
 							          	<md-option  value="Non-Billing">Non-Billing</md-option>
 							        </md-select>
 							    </md-input-container>
 		     					<md-input-container>
 							        <label class="placeholderColour">Preferred Mode of Communication</label>
-							        <md-select ng-model="vm.lead.prefModOfCom">
+							        <md-select ng-model="vm.agreement.prefModOfCom">
 							          	<md-option  value="Phone">Phone</md-option>
 							          	<md-option  value="Email">Email</md-option>
 							        </md-select>
@@ -134,7 +127,7 @@
 							<div layout="column">
 							<md-input-container>
 						        <label>Assigned To Group</label>
-						        <md-select ng-model="vm.lead.assignToGrp" style="width:600">
+						        <md-select ng-model="vm.agreement.assignToGrp" style="width:600">
 						          <md-option  value="Sales 1">Sales 1</md-option>
 						          <md-option  value="Sales 2">Sales 2</md-option>
 						        </md-select>
@@ -142,7 +135,7 @@
 
 						    <md-input-container>
 						        <label>Assigned To User</label>
-						        <md-select ng-model="vm.lead.assignToUser" style="width:600">
+						        <md-select ng-model="vm.agreement.assignToUser" style="width:600">
 						          <md-option  value="Exective 1">Exective 1</md-option>
 						          <md-option  value="Exective 2">Exective 2</md-option>
 						        </md-select>
@@ -150,7 +143,7 @@
 
 						    <md-input-container>
 						        <label>Created By Organization</label>
-						        <md-select ng-model="vm.lead.createdByGroup" style="width:600">
+						        <md-select ng-model="vm.agreement.createdByGroup" style="width:600">
 						          <md-option  value="Third Party">Third Party</md-option>
 						          <md-option  value="XXX">XXX</md-option>
 						        </md-select>
@@ -161,8 +154,8 @@
 				</md-tabs>
 			</form>  
 			<div layout="row" layout-align="center center">
-				<md-button class="md-raised md-primary" ng-click="vm.saveLead(vm.lead)">Save Lead</md-button>
+				<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Create'" ng-click="vm.createAgreement(vm.agreement)">Create Agreement</md-button>
+				<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Update'" ng-click="vm.updateAgreement(vm.agreement)">Update Agreement</md-button>
+				<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Delete'" ng-click="vm.deleteAgreement(vm.agreement)">Delete Agreement</md-button>
 			</div>
-        <!-- </md-card-content> -->
-    <!-- </md-card> -->
 </div>

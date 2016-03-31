@@ -18,12 +18,40 @@ angular.module('quote')
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.quoteCreation', {
-				url:'/quickLead',
+			.state('home.quickquote', {
+				url:'/quickquote',
 				templateUrl: 'app/modules/quote/quoteCreation.html',
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'
+			})
+			.state('home.quote.viewAll', {
+				url:'/viewAll',
+				templateUrl: 'app/modules/quote/quote_viewAll.html',
+				controller: 'QuoteCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.quote.create', {
+				url:'/create',
+				templateUrl: 'app/modules/quote/quote_CRUD.html',
+				controller: 'QuoteCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.quote.edit', {
+				url:'/edit',
+				templateUrl: 'app/modules/quote/quote_CRUD.html',
+				controller: 'QuoteCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.quote.view', {
+				url:'/view',
+				templateUrl: 'app/modules/quote/quote_CRUD.html',
+				controller: 'QuoteCtrl',
+				controllerAs: 'vm'
+			})
+			.state('home.quote.delete', {
+				url:'/delete',
+				templateUrl: 'app/modules/quote/quote_CRUD.html',
+				controller: 'QuoteCtrl',
+				controllerAs: 'vm'
 			});
-
-		
 	}]);
