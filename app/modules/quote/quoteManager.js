@@ -112,20 +112,37 @@
 						vm.gridOptions.enableFiltering=true;
 
 						vm.gridOptions.columnDefs = [
-		                       { field: 'quoteId',
-		                         cellTemplate:'<md-button class="md-primary" aria-label="quoteId" ng-click="grid.appScope.vm.openViewQuote(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.quoteId}}</md-button>'
-		                       },
-		                       { field: 'creationDate' },
-		                       { field: 'compName' },
-		                       { field: 'abn' },
-		                       { field: 'firstName' },
-		                       { field: 'lastName' },
-		                       { field: 'eMail' },
-		                       { field: 'contactNum' },
-		                       { name:  'Actions',
-		                         cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditQuote(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteQuote(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
-								 enableFiltering:false
-		                    	   }
+								{ field: 'quoteId',
+									cellTemplate:'<md-button class="md-primary" aria-label="quoteId" ng-click="grid.appScope.vm.openViewQuote(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.quoteId}}</md-button>'
+								},
+								{ field: 'modificationDate' },
+								{ field: 'creationDate' },
+								{ field: 'name' },
+								/*{ field: 'quoteVersion' },*/
+								{ field: 'stage' },
+								{ field: 'currency' },
+								/*{ field: 'territoryCode' },
+								{ field: 'value' },
+								{ field: 'discountedPrice' },
+								{ field: 'quoteCreatedBy' },
+								{ field: 'assignedGroup' },
+								{ field: 'assignedUser' },
+								{ field: 'quoteLineId' },
+								{ field: 'quoteLineVrsn' },
+								{ field: 'listPrice' },
+								{ field: 'originalPrice' },
+								{ field: 'revisedPrice' },*/
+								{ field: 'approvedPrice' },
+								{ field: 'discount' },
+								{ field: 'discountPrcnt' },
+								/*{ field: 'approver' },
+								{ field: 'approvedStatus' },
+								{ field: 'nextlevel' },
+								{ field: 'quantity' },*/
+								{ name:  'Actions',
+									cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditQuote(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteQuote(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+									enableFiltering:false
+								}
 		                ];
 
 		                quoteManager.getAllQuotes().then(

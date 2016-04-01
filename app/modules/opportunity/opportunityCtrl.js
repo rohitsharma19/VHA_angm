@@ -3,9 +3,9 @@
 
 	/**
 	* @ngdoc function
-	* @name app.controller:leadCtrl
+	* @name app.controller:opportunityCtrl
 	* @description
-	* # leadCtrl
+	* # opportunityCtrl
 	* Controller of the app
 	*/
 
@@ -33,17 +33,17 @@
 
 				vm.openViewOpportunity = function(row) {
 			    	console.log("Inside openViewOpportunity");
-			    	opportunityManager.openViewOpportunity(row.entity.leadId);
+			    	opportunityManager.openViewOpportunity(row.entity.opportunityId);
 			    };
 			    
 			    vm.openEditOpportunity = function(row) {
 			    	console.log("inside openEditOpportunity");
-			    	opportunityManager.openEditOpportunity(row.entity.leadId);
+			    	opportunityManager.openEditOpportunity(row.entity.opportunityId);
 			    };
 
 			    vm.openDeleteOpportunity = function(row) {
 			    	console.log("inside openDeleteOpportunity");
-			    	opportunityManager.openDeleteOpportunity(row.entity.leadId);
+			    	opportunityManager.openDeleteOpportunity(row.entity.opportunityId);
 			    };
 
 			    vm.openCreateOpportunity = function() {
@@ -54,7 +54,7 @@
 
 			if($state.current.name === 'home.opportunity.create'){
 				console.log("CREATE OPPORTUNITY");
-				vm.leadMode = "Create";
+				vm.opportunityMode = "Create";
 
 				vm.createOpportunity = function(opportunity){
 					console.log("Inside createOpportunity().");
@@ -65,7 +65,7 @@
 
 			if($state.current.name === 'home.opportunity.edit'){
 				console.log("EDIT OPPORTUNITY");
-				vm.leadMode = "Update";
+				vm.opportunityMode = "Update";
 
 				vm.opportunity = opportunitySharedData.getOpportunity();
 				opportunitySharedData.resetOpportunity();
@@ -79,7 +79,7 @@
 
 			if($state.current.name === 'home.opportunity.view'){
 				console.log("VIEW OPPORTUNITY");
-				vm.leadMode = "View";
+				vm.opportunityMode = "View";
 
 				vm.opportunity = opportunitySharedData.getOpportunity();
 				opportunitySharedData.resetOpportunity();
@@ -87,7 +87,7 @@
 			
 			if($state.current.name === 'home.opportunity.delete'){
 				console.log("DELETE OPPORTUNITY");
-				vm.leadMode = "Delete";
+				vm.opportunityMode = "Delete";
 
 				vm.opportunity = opportunitySharedData.getOpportunity();
 				opportunitySharedData.resetOpportunity();
@@ -95,7 +95,7 @@
 				vm.deleteOpportunity = function(opportunity) {
 					console.log("Inside deleteOpportunity()");
 					console.log(opportunity);
-		    		opportunityManager.deleteOpportunity(opportunity.leadId);
+		    		opportunityManager.deleteOpportunity(opportunity.opportunityId);
 		        };
 			}
 		}

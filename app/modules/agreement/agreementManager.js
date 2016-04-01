@@ -112,20 +112,40 @@
 						vm.gridOptions.enableFiltering=true;
 
 						vm.gridOptions.columnDefs = [
-		                       { field: 'agreementId',
-		                         cellTemplate:'<md-button class="md-primary" aria-label="agreementId" ng-click="grid.appScope.vm.openViewAgreement(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.agreementId}}</md-button>'
-		                       },
-		                       { field: 'creationDate' },
-		                       { field: 'compName' },
-		                       { field: 'abn' },
-		                       { field: 'firstName' },
-		                       { field: 'lastName' },
-		                       { field: 'eMail' },
-		                       { field: 'contactNum' },
-		                       { name:  'Actions',
-		                         cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditAgreement(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteAgreement(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
-								 enableFiltering:false
-		                    	   }
+								{ field: 'agreementId',
+									cellTemplate:'<md-button class="md-primary" aria-label="agreementId" ng-click="grid.appScope.vm.openViewAgreement(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.agreementId}}</md-button>'
+								},
+								{ field: 'agremntStartDate' },
+								{ field: 'agremntEndDate' },
+								{ field: 'agremntEffecDate' },
+								/*{ field: 'currency' },
+								{ field: 'agremntVersion' },
+								{ field: 'contractTerm' },
+								{ field: 'agremntStatus' },
+								{ field: 'offerName' },*/
+								{ field: 'listPrice' },
+								/*{ field: 'salePrice' },
+								{ field: 'quantity' },
+								{ field: 'totalPrice' },
+								{ field: 'agremntTmplateType' },
+								{ field: 'renewalTerm' },
+								{ field: 'origAgremntId' },
+								{ field: 'expecRevenue' },
+								{ field: 'internalContact' },
+								{ field: 'internalContactRole' },
+								{ field: 'custContact' },
+								{ field: 'custContactRole' },
+								{ field: 'autoRenewFlag' },
+								{ field: 'agremntType' },
+								{ field: 'agremntDocId' },
+								{ field: 'agremntDocName' },*/
+								{ field: 'agremntDocVer' },
+								{ field: 'agremntDocType' },
+								{ field: 'serviceReqDate' },
+								{ name:  'Actions',
+									cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditAgreement(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteAgreement(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+									enableFiltering:false
+								}
 		                ];
 
 		                agreementManager.getAllAgreements().then(

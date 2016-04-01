@@ -112,20 +112,46 @@
 						vm.gridOptions.enableFiltering=true;
 
 						vm.gridOptions.columnDefs = [
-		                       { field: 'opportunityId',
-		                         cellTemplate:'<md-button class="md-primary" aria-label="opportunityId" ng-click="grid.appScope.vm.openViewOpportunity(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.opportunityId}}</md-button>'
-		                       },
-		                       { field: 'creationDate' },
-		                       { field: 'compName' },
-		                       { field: 'abn' },
-		                       { field: 'firstName' },
-		                       { field: 'lastName' },
-		                       { field: 'eMail' },
-		                       { field: 'contactNum' },
-		                       { name:  'Actions',
-		                         cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditOpportunity(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteOpportunity(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
-								 enableFiltering:false
-		                    	   }
+								{ field: 'opportunityId',
+									cellTemplate:'<md-button class="md-primary" aria-label="opportunityId" ng-click="grid.appScope.vm.openViewOpportunity(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.opportunityId}}</md-button>'
+								},
+								{ field: 'opportunityName' },
+								{ field: 'opportunitySource' },
+								{ field: 'opportunityType' },
+								/*{ field: 'opportunitySize' },
+								{ field: 'purchaseTimeFrame' },
+								{ field: 'probability' },
+								{ field: 'competitor' },*/
+								/*{ field: 'requestedDate' },
+								{ field: 'closedDate' },*/
+								{ field: 'closureReason' },
+								{ field: 'territoryCodeOrRegion' },
+								{ field: 'stage' },
+								/*{ field: 'autoAssignFlag' },
+								{ field: 'opportunityRisksFlag' },
+								{ field: 'opportunityPotentialFlag' },
+								{ field: 'solutionOptionsFlag' },
+								{ field: 'communicationPreference' },
+								{ field: 'assignedToGroup' },
+								{ field: 'assignedToUser' },
+								{ field: 'createdByUser' },
+								{ field: 'createdByGroup' },
+								{ field: 'opportunityCreationDate' },
+								{ field: 'opportunityLastUpdateDate' },
+								{ field: 'title' },
+								{ field: 'firstName' },
+								{ field: 'lastName' },
+								{ field: 'contactNumber' },
+								{ field: 'dateOfBirth' },
+								{ field: 'emailAddress' },
+								{ field: 'contactRole' },
+								{ field: 'preferredModeOfCommmunication' },*/
+								{ field: 'leadId' },
+								{ field: 'opportunityVersion' },
+								{ name:  'Actions',
+									cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditOpportunity(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteOpportunity(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+									enableFiltering:false
+								}
 		                ];
 
 		                opportunityManager.getAllOpportunitys().then(

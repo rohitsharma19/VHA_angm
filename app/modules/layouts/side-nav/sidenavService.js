@@ -22,7 +22,7 @@
 			var menu = [
 				
 					{
-						link: 'quickLead',
+						link: 'lead.create',
 							name: 'Quick Lead Creation'
 					},
 					{

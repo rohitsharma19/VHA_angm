@@ -1,5 +1,24 @@
 <div class="md-padding" flex layout-sm="column" >
-        	<div><h2>{{vm.leadMode}} Lead</h2></div>
+			
+			<md-card>
+		        <md-card-header-text></md-card-header-text>
+		        <md-card-content>
+		        	<div style="border: #ffffff">
+						<ol class="progtrckr hidden-xs" data-progtrckr-steps="5" >
+				    		<li class="progtrckr-todo">Capture Initial Details</li>
+				    		<li class="progtrckr-todo">Know your customer</li>
+				    		<li class="progtrckr-todo">Recommendations</li>
+				    		<li class="progtrckr-todo">Generate quote</li>
+				    		<li class="progtrckr-todo">Generate agreement</li> 
+						</ol>
+					</div>
+				</md-card-content>
+		    </md-card>
+
+			<div><h2>{{vm.leadMode}} Lead</h2></div>
+
+        	<!-- <div><h2>{{vm.leadMode}} Lead</h2></div> -->
+        	<md-card><md-card-content>
             <form name="leadForm">
             	<md-tabs md-dynamic-height>
 	                <md-tab>
@@ -153,6 +172,7 @@
 					</md-tab>
 				</md-tabs>
 			</form>  
+			</md-card-content></md-card>
 			<div layout="row" layout-align="center center">
 				<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Create'" ng-click="vm.createLead(vm.lead)">Create Lead</md-button>
 				<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Update'" ng-click="vm.updateLead(vm.lead)">Update Lead</md-button>

@@ -1,5 +1,24 @@
 <div class="md-padding" flex layout-sm="column" >
-        	<div><h2>{{vm.agreementMode}} Agreement</h2></div>
+    
+    <md-card>
+        <md-card-header-text></md-card-header-text>
+        <md-card-content>
+        	<div style="border: #ffffff">
+				<ol class="progtrckr hidden-xs" data-progtrckr-steps="5" >
+		    		<li class="progtrckr-done">Capture Initial Details</li>
+		    		<li class="progtrckr-done">Know your customer</li>
+		    		<li class="progtrckr-done">Recommendations</li>
+		    		<li class="progtrckr-done">Generate quote</li>
+		    		<li class="progtrckr-todo">Generate agreement</li> 
+				</ol>
+			</div>
+		</md-card-content>
+    </md-card>
+
+    <div><h2>{{vm.agreementMode}} Agreement</h2></div>
+
+    <md-card>
+		<md-card-content>
             <form name="agreementForm">
             	<md-tabs md-dynamic-height>
 	                <md-tab>
@@ -152,10 +171,13 @@
 						</md-tab-body>
 					</md-tab>
 				</md-tabs>
-			</form>  
-			<div layout="row" layout-align="center center">
-				<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Create'" ng-click="vm.createAgreement(vm.agreement)">Create Agreement</md-button>
-				<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Update'" ng-click="vm.updateAgreement(vm.agreement)">Update Agreement</md-button>
-				<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Delete'" ng-click="vm.deleteAgreement(vm.agreement)">Delete Agreement</md-button>
-			</div>
+			</form> 
+		</md-card-content>
+	</md-card>	 
+	
+	<div layout="row" layout-align="center center">
+		<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Create'" ng-click="vm.createAgreement(vm.agreement)">Create Agreement</md-button>
+		<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Update'" ng-click="vm.updateAgreement(vm.agreement)">Update Agreement</md-button>
+		<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Delete'" ng-click="vm.deleteAgreement(vm.agreement)">Delete Agreement</md-button>
+	</div>
 </div>
