@@ -64,7 +64,13 @@
 									quote.save().then(
 							        	function (response) {
 					        				alert('Quote '+ quote.quoteId + ' created successfully.' );
-					        				$state.go('home.quote.viewAll');
+					        				
+					        				if($state.current.name === 'home.quote.QuickCreate'){
+												$state.go('home.agreement.QuickCreate');
+											}
+											else if($state.current.name === 'home.quote.create'){
+												$state.go('home.quote.viewAll');
+											}
 					        			},
 									    function (error) {
 									    	alert('Error While creating Quote: '+ error.message );

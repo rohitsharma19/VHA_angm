@@ -18,9 +18,9 @@ angular.module('lead')
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.quickLead', {
-				url:'/quickLead',
-				templateUrl: 'app/modules/lead/leadCreation.html',
+			.state('home.lead.QuickCreate', {
+				url:'/QuickCreate',
+				templateUrl: 'app/modules/lead/lead_CRUD.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})

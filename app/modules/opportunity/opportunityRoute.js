@@ -18,9 +18,9 @@ angular.module('opportunity')
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.quickopportunity', {
-				url:'/quickopportunity',
-				templateUrl: 'app/modules/opportunity/opportunityCreation.html',
+			.state('home.opportunity.QuickCreate', {
+				url:'/QuickCreate',
+				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'
 			})

@@ -1,6 +1,6 @@
 <div class="md-padding" flex layout-sm="column" >
 			
-			<md-card>
+			<md-card ng-if="vm.leadMode=='QuickCreate'">
 		        <md-card-header-text></md-card-header-text>
 		        <md-card-content>
 		        	<div style="border: #ffffff">
@@ -174,7 +174,7 @@
 			</form>  
 			</md-card-content></md-card>
 			<div layout="row" layout-align="center center">
-				<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Create'" ng-click="vm.createLead(vm.lead)">Create Lead</md-button>
+				<md-button class="md-raised md-primary" ng-if="(vm.leadMode=='Create')||(vm.leadMode=='QuickCreate')" ng-click="vm.createLead(vm.lead)">Create Lead</md-button>
 				<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Update'" ng-click="vm.updateLead(vm.lead)">Update Lead</md-button>
 				<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Delete'" ng-click="vm.deleteLead(vm.lead)">Delete Lead</md-button>
 			</div>

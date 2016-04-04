@@ -62,10 +62,18 @@
 									lead.save().then(
 							        	function (response) {
 					        				alert('Lead '+ lead.leadId + ' created successfully.' );
-					        				$state.go('home.lead.viewAll');
+
+					        				if($state.current.name === 'home.lead.QuickCreate'){
+					        					$state.go('home.opportunity.QuickCreate');
+					        				}
+					        				else if($state.current.name === 'home.lead.create'){
+					        					$state.go('home.lead.viewAll');
+					        				}
 					        			},
 									    function (error) {
 									    	alert('Error While creating Lead: '+ error.message );
+									    	console.log("ERROR lead.save()");
+									    	console.log(error.data);
 									    }
 							        );
 						}

@@ -58,16 +58,24 @@
 								    var today = yyyy+"-"+mm+"-"+dd;
 								    /* Date formation ends here */
 									
-									agreementData.creationDate = today;
+									//agreementData.creationDate = today;
 									
 									var agreement = new agreementModel(agreementData);
 									agreement.save().then(
 							        	function (response) {
 					        				alert('Agreement '+ agreement.agreementId + ' created successfully.' );
-					        				$state.go('home.agreement.viewAll');
+					        				
+					        				if($state.current.name === 'home.agreement.QuickCreate'){
+												$state.go('home.dashboard');
+											}
+											else if($state.current.name === 'home.agreement.create'){
+												$state.go('home.agreement.viewAll');
+											}
 					        			},
 									    function (error) {
-									    	alert('Error While creating Agreement: '+ error.message );
+									    	alert('Error While creating Agreement ');
+									    	console.log("Error While creating Agreement");
+									    	console.log(error.data);
 									    }
 							        );
 						}

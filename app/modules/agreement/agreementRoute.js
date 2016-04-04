@@ -18,9 +18,9 @@ angular.module('agreement')
 				controller: 'AgreementCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.quickagreement', {
-				url:'/quickagreement',
-				templateUrl: 'app/modules/agreement/agreementCreation.html',
+			.state('home.agreement.QuickCreate', {
+				url:'/QuickCreate',
+				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
 				controller: 'AgreementCtrl',
 				controllerAs: 'vm'
 			})

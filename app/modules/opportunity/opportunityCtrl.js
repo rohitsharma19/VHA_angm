@@ -52,9 +52,16 @@
 			    };
 			}
 
-			if($state.current.name === 'home.opportunity.create'){
-				console.log("CREATE OPPORTUNITY");
-				vm.opportunityMode = "Create";
+			if(($state.current.name === 'home.opportunity.create')||($state.current.name === 'home.opportunity.QuickCreate')){
+				
+				if($state.current.name === 'home.opportunity.QuickCreate'){
+					console.log("CREATE QUICK OPPORTUNITY");
+					vm.opportunityMode = "QuickCreate";
+				}
+				else if($state.current.name === 'home.opportunity.create'){
+					console.log("CREATE OPPORTUNITY");
+					vm.opportunityMode = "Create";
+				}
 
 				vm.createOpportunity = function(opportunity){
 					console.log("Inside createOpportunity().");

@@ -18,9 +18,9 @@ angular.module('quote')
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.quickquote', {
-				url:'/quickquote',
-				templateUrl: 'app/modules/quote/quoteCreation.html',
+			.state('home.quote.QuickCreate', {
+				url:'/QuickCreate',
+				templateUrl: 'app/modules/quote/quote_CRUD.html',
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'
 			})

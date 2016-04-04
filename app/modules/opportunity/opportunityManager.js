@@ -58,16 +58,24 @@
 								    var today = yyyy+"-"+mm+"-"+dd;
 								    /* Date formation ends here */
 									
-									opportunityData.creationDate = today;
+									opportunityData.opportunityCreationDate = today;
 									
 									var opportunity = new opportunityModel(opportunityData);
 									opportunity.save().then(
 							        	function (response) {
 					        				alert('Opportunity '+ opportunity.opportunityId + ' created successfully.' );
-					        				$state.go('home.opportunity.viewAll');
+					        				if($state.current.name === 'home.opportunity.QuickCreate'){
+												$state.go('home.quote.QuickCreate');
+											}
+											else if($state.current.name === 'home.opportunity.create'){
+												$state.go('home.opportunity.viewAll');
+											}
+					        				
 					        			},
 									    function (error) {
-									    	alert('Error While creating Opportunity: '+ error.message );
+									    	alert('Error While creating Opportunity:');
+									    	console.log("ERROR opportunity.save()");
+									    	console.log(error.data);
 									    }
 							        );
 						}

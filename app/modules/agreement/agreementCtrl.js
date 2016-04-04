@@ -52,9 +52,16 @@
 			    };
 			}
 
-			if($state.current.name === 'home.agreement.create'){
-				console.log("CREATE AGREEMENT");
-				vm.agreementMode = "Create";
+			if(($state.current.name === 'home.agreement.create')||($state.current.name === 'home.agreement.QuickCreate')){
+				
+				if($state.current.name === 'home.agreement.QuickCreate'){
+					console.log("CREATE QUICK AGREEMENT");
+					vm.agreementMode = "QuickCreate";
+				}
+				else if($state.current.name === 'home.agreement.create'){
+					console.log("CREATE AGREEMENT");
+					vm.agreementMode = "Create";
+				}
 
 				vm.createAgreement = function(agreement){
 					console.log("Inside createAgreement().");

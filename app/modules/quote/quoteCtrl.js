@@ -52,9 +52,16 @@
 			    };
 			}
 
-			if($state.current.name === 'home.quote.create'){
-				console.log("CREATE QUOTE");
-				vm.quoteMode = "Create";
+			if(($state.current.name === 'home.quote.create')||($state.current.name === 'home.quote.QuickCreate')){
+				
+				if($state.current.name === 'home.quote.create'){
+					console.log("CREATE QUOTE");
+					vm.quoteMode = "Create";
+				}
+				else if($state.current.name === 'home.quote.QuickCreate'){
+					console.log("CREATE QUICK QUOTE");
+					vm.quoteMode = "QuickCreate";
+				}
 
 				vm.createQuote = function(quote){
 					console.log("Inside createQuote().");

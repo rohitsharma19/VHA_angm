@@ -52,9 +52,17 @@
 			    };
 			}
 
-			if($state.current.name === 'home.lead.create'){
-				console.log("CREATE LEAD");
-				vm.leadMode = "Create";
+			if(($state.current.name === 'home.lead.create')||($state.current.name === 'home.lead.QuickCreate')){
+				
+				if($state.current.name === 'home.lead.QuickCreate'){
+					console.log("CREATE QUICK LEAD");
+					vm.leadMode = "QuickCreate";
+				}
+				else if($state.current.name === 'home.lead.create'){
+					console.log("CREATE LEAD");
+					vm.leadMode = "Create";	
+				}
+				
 
 				vm.createLead = function(lead){
 					console.log("Inside createLead().");
@@ -62,6 +70,8 @@
 					leadManager.createLead(lead);
 				};
 			}
+
+			
 
 			if($state.current.name === 'home.lead.edit'){
 				console.log("EDIT LEAD");
