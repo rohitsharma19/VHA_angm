@@ -20,6 +20,8 @@
 		'ngSanitize',
 		'ui.router',
 		'ui.grid',
+		'formly',
+		'formlyMaterial',
 		'home',
 		'lead',
 		'opportunity',
