@@ -25,53 +25,17 @@
 			/*jshint validthis: true */
 			var vm = this;
 
-			//.............................
-			vm.rental = {};
-			vm.rentalFields = [
-		        {
-		            key: 'first_name',
-		            type: 'input',
-		            templateOptions: {
-		                type: 'text',
-		                /*label: 'First Name',*/
-		                placeholder: 'Enter your first name',
-		                required: true
-		            }
-		        },
-		        {
-		            key: 'last_name',
-		            type: 'input',
-		            templateOptions: {
-		                type: 'text',
-		                label: 'Last Name',
-		                placeholder: 'Enter your last name',
-		                required: true
-		            }
-		        },
-		        {
-		            key: 'email',
-		            type: 'input',
-		            templateOptions: {
-		                type: 'email',
-		                label: 'Email address',
-		                placeholder: 'Enter email',
-		                required: true
-		            }
-		        },
-		    ];
-			//.............................
-
 			if($state.current.name === 'home.lead.viewAll'){
-				
+
 				console.log("VIEW ALL LEADS");
-				
+
 				vm = leadManager.setUpUiGrid(vm);
 
 				vm.openViewLead = function(row) {
 			    	console.log("Inside openViewLead");
 			    	leadManager.openViewLead(row.entity.leadId);
 			    };
-			    
+
 			    vm.openEditLead = function(row) {
 			    	console.log("inside openEditLead");
 			    	leadManager.openEditLead(row.entity.leadId);
@@ -89,16 +53,18 @@
 			}
 
 			if(($state.current.name === 'home.lead.create')||($state.current.name === 'home.lead.QuickCreate')){
-				
+
 				if($state.current.name === 'home.lead.QuickCreate'){
 					console.log("CREATE QUICK LEAD");
 					vm.leadMode = "QuickCreate";
 				}
 				else if($state.current.name === 'home.lead.create'){
 					console.log("CREATE LEAD");
-					vm.leadMode = "Create";	
+					vm.leadMode = "Create";
+					vm.lead = {};
+					vm.leadFields = leadSharedData.getLayout('lead_CRUD');
 				}
-				
+
 
 				vm.createLead = function(lead){
 					console.log("Inside createLead().");
@@ -107,7 +73,7 @@
 				};
 			}
 
-			
+
 
 			if($state.current.name === 'home.lead.edit'){
 				console.log("EDIT LEAD");
@@ -130,7 +96,7 @@
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
 			}
-			
+
 			if($state.current.name === 'home.lead.delete'){
 				console.log("DELETE LEAD");
 				vm.leadMode = "Delete";

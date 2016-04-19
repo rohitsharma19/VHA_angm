@@ -21,17 +21,41 @@
 
 			//var leadMode = null;
 			var leadSharedData = null;
+			var lead_CRUD = [
+						{
+								key: 'first_name',
+								type: 'input',
+								templateOptions: {
+										type: 'text',
+										label: '',
+										placeholder: 'Enter your first name',
+										required: true
+								}
+						},
+						{
+								key: 'last_name',
+								type: 'input',
+								templateOptions: {
+										type: 'text',
+										label: 'Last Name',
+										placeholder: 'Enter your last name',
+										required: true
+								}
+						},
+						{
+								key: 'email',
+								type: 'input',
+								templateOptions: {
+										type: 'email',
+										label: 'Email address',
+										placeholder: 'Enter email',
+										required: true
+								}
+						},
+				];
 
 			return{
-				/*setLeadMode : function(mode){
-					leadMode = mode;
-				},
-				getLeadMode : function(){
-					return leadMode;
-				},
-				resetLeadMode : function(){
-					leadMode = null;
-				},*/
+
 				setLead : function(leadData){
 					leadSharedData = leadData;
 				},
@@ -40,7 +64,12 @@
 				},
 				resetLead : function(){
 					leadSharedData = null;
-				} 
+				},
+				getLayout : function(view){
+					if(view === 'lead_CRUD'){
+						return lead_CRUD;
+					}
+				}
 			}
 		}
 })();
