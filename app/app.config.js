@@ -24,23 +24,32 @@
 		// This is required for Browser Sync to work poperly
 		$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-		
+
 		$urlRouterProvider
 			.otherwise('/dashboard');
 
 		$mdThemingProvider.theme('default')
 		    .primaryPalette('red')
 		    .accentPalette('blue');
-		
+
 	}
 
-	runBlock.$inject = ['$rootScope'];
+	//runBlock.$inject = ['$rootScope'];
 
-	function runBlock($rootScope) {
+	function runBlock($rootScope,formlyConfig) {
 		'use strict';
-
 		console.log('AngularJS run() function...');
-	}
 
+		formlyConfig.setType({
+			name:'test',
+			template:'<h1>Hello</h1>'
+		});
+
+		formlyConfig.setType({
+			name:'test1',
+			templateUrl:'test1.html'
+		});
+
+	}
 
 })();

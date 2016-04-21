@@ -23,35 +23,67 @@
 			var leadSharedData = null;
 			var lead_CRUD = [
 						{
-								key: 'first_name',
 								type: 'input',
+								key: 'lead.abn',
 								templateOptions: {
-										type: 'text',
-										label: '',
-										placeholder: 'Enter your first name',
-										required: true
+									type: 'text',
+									label:'ABN Number'
 								}
 						},
 						{
-								key: 'last_name',
 								type: 'input',
+								key: 'lead.acn',
 								templateOptions: {
-										type: 'text',
-										label: 'Last Name',
-										placeholder: 'Enter your last name',
-										required: true
+									type: 'text',
+									label:'ACN'
 								}
 						},
 						{
-								key: 'email',
 								type: 'input',
+								key: 'lead.compName',
 								templateOptions: {
-										type: 'email',
-										label: 'Email address',
-										placeholder: 'Enter email',
-										required: true
+									type: 'text',
+									label:'Company Name'
 								}
 						},
+						{
+								type: 'select',
+								key: 'lead.custType',
+								templateOptions: {
+									label:'Customer Type',
+									labelProp: "custType",
+							    valueProp: "id",
+							    options: [
+							        {custType: "New", id: 1},
+							        {custType: "Existing", id: 2}
+							    ]
+								}
+						},
+						{
+								type: 'input',
+								key: 'lead.pin',
+								templateOptions: {
+									type: 'text',
+									label:'PIN'
+								}
+						},
+						{
+								type: 'input',
+								key: 'lead.tradingAs',
+								templateOptions: {
+									type: 'text',
+									label:'Trading As'
+								}
+						},
+						{
+								type: 'test',
+								key: 'test',
+						},
+						{
+								type: 'test1',
+								key: 'test1',
+						},
+
 				];
 
 			return{

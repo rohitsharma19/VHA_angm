@@ -1,10 +1,17 @@
 <div flex layout-sm="column" >
 	<md-card>
     	<md-card-content>
-            <form>
-	            	<formly-form model="vm.lead" fields="vm.leadFields" form="vm.leadForm">
+            <form name="vm.leadForm">
+	            	<formly-form model="vm.lead" fields="vm.leadFields" >
 				    		</formly-form>
             </form>
         </md-card-content>
 	</md-card>
 </div>
+
+
+<script type="text/ng-template" id="test1.html">
+	<div>
+		<pre ng-repeat="(key,value) in this">$scope.{{key}} = {{ value | json }}</pre>
+	</div>
+</script>
