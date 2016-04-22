@@ -50,6 +50,11 @@
 			templateUrl:'test1.html'
 		});
 
+		formlyConfig.setType({
+			name:'tabs',
+			templateUrl:'tabs.html'
+		});
+
 	}
 
 })();
