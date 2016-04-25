@@ -1,4 +1,4 @@
-(function () {
+(function() {
 	'use strict';
 
 	/**
@@ -15,7 +15,7 @@
 		.config(configure)
 		.run(runBlock);
 
-	configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider','$mdThemingProvider'];
+	configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$mdThemingProvider'];
 
 	function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
 
@@ -29,31 +29,42 @@
 			.otherwise('/dashboard');
 
 		$mdThemingProvider.theme('default')
-		    .primaryPalette('red')
-		    .accentPalette('blue');
+			.primaryPalette('red')
+			.accentPalette('blue');
 
 	}
 
 	//runBlock.$inject = ['$rootScope'];
 
-	function runBlock($rootScope,formlyConfig) {
+	function runBlock($rootScope, formlyConfig) {
 		'use strict';
 		console.log('AngularJS run() function...');
 
 		formlyConfig.setType({
-			name:'test',
-			template:'<h1>Hello</h1>'
+			name: 'test',
+			templateUrl: 'test.html'
+		});
+		formlyConfig.setType({
+			name: 'tabset',
+			templateUrl: 'tabset.html'
 		});
 
 		formlyConfig.setType({
-			name:'test1',
-			templateUrl:'test1.html'
+			name: 'card',
+			templateUrl: 'card.html',
+			defaultOptions: {
+				templateOptions: {
+					 disabled: false,
+					// imagePath: imagePath,
+					// headline: headline,
+					// formName: formName,
+					// model: model,
+					// fields: fields,
+					// actions: actions
+				}
+			}
 		});
 
-		formlyConfig.setType({
-			name:'tabs',
-			templateUrl:'tabs.html'
-		});
 
 	}
 

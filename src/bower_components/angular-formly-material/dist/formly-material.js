@@ -294,7 +294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 7 */
 /***/ function(module, exports) {
 
-	module.exports = "<md-input-container md-theme=\"{{to.theme}}\">\n    <formly-transclude></formly-transclude>\n</md-input-container>\n";
+	module.exports = "<md-input-container md-theme=\"{{to.theme}}\" style=\"{{to.styleElements}}\">\n    <formly-transclude></formly-transclude>\n</md-input-container>\n";
 
 /***/ },
 /* 8 */

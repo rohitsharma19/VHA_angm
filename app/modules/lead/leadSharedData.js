@@ -21,98 +21,39 @@
 
 		//var leadMode = null;
 		var leadSharedData = null;
-		// var lead_CRUD = [
-		// 			{
-		// 					type: 'input',
-		// 					key: 'lead.abn',
-		// 					templateOptions: {
-		// 						type: 'text',
-		// 						label:'ABN Number'
-		// 					}
-		// 			},
-		// 			{
-		// 					type: 'input',
-		// 					key: 'lead.acn',
-		// 					templateOptions: {
-		// 						type: 'text',
-		// 						label:'ACN'
-		// 					}
-		// 			},
-		// 			{
-		// 					type: 'input',
-		// 					key: 'lead.compName',
-		// 					templateOptions: {
-		// 						type: 'text',
-		// 						label:'Company Name'
-		// 					}
-		// 			},
-		// 			{
-		// 					type: 'select',
-		// 					key: 'lead.custType',
-		// 					templateOptions: {
-		// 						label:'Customer Type',
-		// 						labelProp: "custType",
-		// 				    valueProp: "id",
-		// 				    options: [
-		// 				        {custType: "New", id: 1},
-		// 				        {custType: "Existing", id: 2}
-		// 				    ]
-		// 					}
-		// 			},
-		// 			{
-		// 					type: 'input',
-		// 					key: 'lead.pin',
-		// 					templateOptions: {
-		// 						type: 'text',
-		// 						label:'PIN'
-		// 					}
-		// 			},
-		// 			{
-		// 					type: 'input',
-		// 					key: 'lead.tradingAs',
-		// 					templateOptions: {
-		// 						type: 'text',
-		// 						label:'Trading As'
-		// 					}
-		// 			},
-		// 			{
-		// 					type: 'test',
-		// 					key: 'test',
-		// 			},
-		// 			{
-		// 					type: 'test1',
-		// 					key: 'test1',
-		// 			},
-		//
-		// 	];
 
 		var basicDetailFields = [{
 			"key": "abn",
 			"type": "input",
 			"templateOptions": {
 				"label": "ABN Number",
-				"type": "text"
+				"type": "text",
+				"className": "classBlock",
+				"styleElements": "display:block;"
 			}
 		}, {
 			"key": "accName",
 			"type": "input",
 			"templateOptions": {
 				"label": "Account Name",
-				"type": "text"
+				"type": "text",
+				"styleElements": "display:block;"
 			}
 		}, {
 			"key": "acn",
 			"type": "input",
 			"templateOptions": {
 				"label": "ACN",
-				"type": "text"
+				"type": "text",
+				"styleElements": "display:block;"
 			}
 		}, {
 			"key": "compName",
 			"type": "input",
 			"templateOptions": {
 				"label": "Company Name",
-				"type": "text"
+				"type": "text",
+				"styleElements": "display:block;"
 			}
 		}, {
 			"type": "select",
@@ -121,6 +62,7 @@
 				"label": "Customer Type",
 				"theme": "",
 				"multiple": true,
+				"styleElements": "display:block;",
 				"labelProp": "label",
 				"valueProp": "value",
 				"options": [{
@@ -136,14 +78,16 @@
 			"type": "input",
 			"templateOptions": {
 				"label": "PIN",
-				"type": "text"
+				"type": "text",
+				"styleElements": "display:block;"
 			}
 		}, {
 			"key": "tradingAs",
 			"type": "input",
 			"templateOptions": {
 				"label": "Trading As",
-				"type": "text"
+				"type": "text",
+				"styleElements": "display:block;"
 			}
 		}];
 
@@ -155,10 +99,12 @@
 			"fieldGroup": [{
 				"type": "select",
 				"key": "title",
+				"className": "flex-20",
 				"templateOptions": {
 					"label": "Title",
 					"theme": "",
 					"multiple": true,
+					"styleElements": "display:block;",
 					"labelProp": "label",
 					"valueProp": "value",
 					"options": [{
@@ -170,218 +116,188 @@
 					}, {
 						"label": "Ms.",
 						"value": "Ms."
-					}],
-					"flex":"20"
+					}]
 				}
 			}, {
 				"key": "firstName",
-				"className": "flex",
+				"className": "flex-40",
 				"type": "input",
 				"templateOptions": {
 					"label": "First Name",
-					"flex":"40"
+					"styleElements": "display:block;"
 				}
 			}, {
 				"key": "lastName",
-				"className": "flex",
+				"className": "flex-40",
 				"type": "input",
 				"templateOptions": {
 					"label": "Last Name",
-					"flex":"40"
+					"styleElements": "display:block;"
 				}
 			}]
+		}, {
+			"type": "datepicker",
+			"key": "dtOfBirth",
+			"templateOptions": {
+				"theme": "custom",
+				"placeholder": "Date of Birth",
+				"styleElements": "display:block;",
+				"label":"Date of Birth"
+			}
+		}, {
+			"key": "email",
+			"type": "input",
+			"templateOptions": {
+				"label": "E mail",
+				"type": "email",
+				"styleElements": "display:block;"
+			}
+		}, {
+			"key": "contactNum",
+			"type": "input",
+			"templateOptions": {
+				"label": "Phone Number",
+				"type": "number",
+				"styleElements": "display:block;"
+			}
+		}, {
+			"type": "select",
+			"key": "contactRole",
+			"templateOptions": {
+				"label": "Contact Mode",
+				"theme": "",
+				"styleElements": "display:block;",
+				"multiple": true,
+				"labelProp": "label",
+				"valueProp": "value",
+				"options": [{
+					"label": "Billing",
+					"value": "Billing"
+				}, {
+					"label": "Non-Billing",
+					"value": "Non-Billing"
+				}],
+				"flex": ""
+			}
+		}, {
+			"type": "select",
+			"key": "prefModOfCom",
+			"templateOptions": {
+				"label": "Preferred Mode of Communication",
+				"theme": "",
+				"styleElements": "display:block;",
+				"multiple": true,
+				"labelProp": "label",
+				"valueProp": "value",
+				"options": [{
+					"label": "Phone",
+					"value": "Phone"
+				}, {
+					"label": "Email",
+					"value": "Email"
+				}],
+				"flex": ""
+			}
 		}];
 
-		var segementationFields = [
-			// 	{
-			// 	"key": "lead.businessStage",
-			// 	"templateOptions": {
-			// 		"width": "12",
-			// 		"label": "Choose Service Type",
-			// 		"placeholder": "placeholder",
-			// 		"valueProp": "value",
-			// 		"keyProp": "name",
-			// 		"options": [{
-			// 			"name": "Sim Only",
-			// 			"value": "Sim Only"
-			// 		}, {
-			// 			"name": "Device Only",
-			// 			"value": "Device Only"
-			// 		}]
-			// 	},
-			// 	"className": "",
-			// 	"type": "radio",
-			// 	"data": {},
-			// 	"validation": {
-			// 		"messages": {}
-			// 	},
-			// 	"noFormControl": false,
-			// 	"id": "formly_2_radio_lead.businessStage_0"
-			// }, {
-			// 	"key": "planType.value",
-			// 	"templateOptions": {
-			// 		"width": "12",
-			// 		"label": "Choose Service Type",
-			// 		"placeholder": "placeholder",
-			// 		"valueProp": "value",
-			// 		"keyProp": "name",
-			// 		"options": [{
-			// 			"name": "Voice",
-			// 			"value": "Voice"
-			// 		}, {
-			// 			"name": "Mobile Broadband",
-			// 			"value": "Mobile Broadband"
-			// 		}]
-			// 	},
-			// 	"className": "",
-			// 	"type": "radio",
-			// 	"data": {},
-			// 	"validation": {
-			// 		"messages": {}
-			// 	},
-			// 	"noFormControl": false,
-			// 	"id": "formly_2_radio_planType.value_1"
-			// }
-		];
+		var segementationFields = [{
+			"type": "select",
+			"key": "serviceType",
+			"templateOptions": {
+				"label": "Choose Service Type",
+				"theme": "",
+				"styleElements": "display:block;",
+				"multiple": true,
+				"labelProp": "label",
+				"valueProp": "value",
+				"options": [{
+					"label": "Sim Only",
+					"value": "Sim Only"
+				}, {
+					"label": "With Device Only",
+					"value": "With Device Only"
+				}],
+				"flex": ""
+			}
+		}, {
+			"type": "select",
+			"key": "planType",
+			"templateOptions": {
+				"label": "Choose Plan Type",
+				"theme": "",
+				"styleElements": "display:block;",
+				"multiple": true,
+				"labelProp": "label",
+				"valueProp": "value",
+				"options": [{
+					"label": "Voice",
+					"value": "Voice"
+				}, {
+					"label": "Mobile Broadband",
+					"value": "Mobile Broadband"
+				}],
+				"flex": ""
+			}
+		}];
 
-		var additionalDetailFields = [
-			// 	{
-			// 	"key": "lead.assignToGrp",
-			// 	"templateOptions": {
-			// 		"width": "6",
-			// 		"required": true,
-			// 		"label": "Assigned To Group",
-			// 		"placeholder": "placeholder",
-			// 		"options": [{
-			// 			"name": "Sales 1",
-			// 			"value": "Sales 1"
-			// 		}, {
-			// 			"name": "Sales 2",
-			// 			"value": "Sales 2"
-			// 		}]
-			// 	},
-			// 	"className": "",
-			// 	"type": "select",
-			// 	"data": {},
-			// 	"validation": {
-			// 		"messages": {}
-			// 	},
-			// 	"ngModelAttrs": {
-			// 		"option[to.valueProp || 'value'] as option[to.labelProp || 'name'] group by option[to.groupProp || 'group'] for option in to.options": {
-			// 			"value": "ng-options"
-			// 		}
-			// 	},
-			// 	"id": "formly_2_select_lead.assignToGrp_0"
-			// }, {
-			// 	"key": "lead.assignToUser",
-			// 	"templateOptions": {
-			// 		"width": "6",
-			// 		"required": true,
-			// 		"label": "Assigned To User",
-			// 		"placeholder": "placeholder",
-			// 		"options": [{
-			// 			"name": "Executive 1",
-			// 			"value": "Executive 1"
-			// 		}, {
-			// 			"name": "Executive 2",
-			// 			"value": "Executive 2"
-			// 		}]
-			// 	},
-			// 	"className": "",
-			// 	"type": "select",
-			// 	"data": {},
-			// 	"validation": {
-			// 		"messages": {}
-			// 	},
-			// 	"ngModelAttrs": {
-			// 		"option[to.valueProp || 'value'] as option[to.labelProp || 'name'] group by option[to.groupProp || 'group'] for option in to.options": {
-			// 			"value": "ng-options"
-			// 		}
-			// 	},
-			// 	"id": "formly_2_select_lead.assignToUser_1"
-			// }, {
-			// 	"key": "lead.createdByGroup",
-			// 	"templateOptions": {
-			// 		"width": "6",
-			// 		"required": true,
-			// 		"label": "Lead Created By Organisation",
-			// 		"placeholder": "placeholder",
-			// 		"options": [{
-			// 			"name": "Third Party",
-			// 			"value": "Third Party"
-			// 		}, {
-			// 			"name": "Demo Party",
-			// 			"value": "Demo Party"
-			// 		}]
-			// 	},
-			// 	"className": "",
-			// 	"type": "select",
-			// 	"data": {},
-			// 	"validation": {
-			// 		"messages": {}
-			// 	},
-			// 	"ngModelAttrs": {
-			// 		"option[to.valueProp || 'value'] as option[to.labelProp || 'name'] group by option[to.groupProp || 'group'] for option in to.options": {
-			// 			"value": "ng-options"
-			// 		}
-			// 	},
-			// 	"id": "formly_2_select_lead.createdByGroup_2"
-			// }, {
-			// 	"key": "lead.createdByUser",
-			// 	"templateOptions": {
-			// 		"width": "6",
-			// 		"required": true,
-			// 		"label": "Created By User",
-			// 		"placeholder": "placeholder",
-			// 		"options": [{
-			// 			"name": "Tom",
-			// 			"value": "Tom"
-			// 		}, {
-			// 			"name": "Leo",
-			// 			"value": "Leo"
-			// 		}]
-			// 	},
-			// 	"className": "",
-			// 	"type": "select",
-			// 	"data": {},
-			// 	"validation": {
-			// 		"messages": {}
-			// 	},
-			// 	"ngModelAttrs": {
-			// 		"option[to.valueProp || 'value'] as option[to.labelProp || 'name'] group by option[to.groupProp || 'group'] for option in to.options": {
-			// 			"value": "ng-options"
-			// 		}
-			// 	},
-			// 	"id": "formly_2_select_lead.createdByUser_3"
-			// }, {
-			// 	"key": "lead.status",
-			// 	"templateOptions": {
-			// 		"width": "6",
-			// 		"required": true,
-			// 		"label": "Status",
-			// 		"placeholder": "placeholder",
-			// 		"options": [{
-			// 			"name": "New",
-			// 			"value": "New"
-			// 		}, {
-			// 			"name": "Existing",
-			// 			"value": "Existing"
-			// 		}]
-			// 	},
-			// 	"className": "",
-			// 	"type": "select",
-			// 	"data": {},
-			// 	"validation": {
-			// 		"messages": {}
-			// 	},
-			// 	"ngModelAttrs": {
-			// 		"option[to.valueProp || 'value'] as option[to.labelProp || 'name'] group by option[to.groupProp || 'group'] for option in to.options": {
-			// 			"value": "ng-options"
-			// 		}
-			// 	},
-			// 	"id": "formly_2_select_lead.status_4"
-			// }
-		];
+		var additionalDetailFields = [{
+			"type": "select",
+			"key": "assignToGrp",
+			"templateOptions": {
+				"label": "Assigned To Group",
+				"theme": "",
+				"styleElements": "display:block;",
+				"multiple": true,
+				"labelProp": "label",
+				"valueProp": "value",
+				"options": [{
+					"label": "Sales 1",
+					"value": "Sales 1"
+				}, {
+					"label": "Sales 2",
+					"value": "Sales 2"
+				}],
+				"flex": ""
+			}
+		}, {
+			"type": "select",
+			"key": "assignToUser",
+			"templateOptions": {
+				"label": "Assigned To User",
+				"theme": "",
+				"styleElements": "display:block;",
+				"multiple": true,
+				"labelProp": "label",
+				"valueProp": "value",
+				"options": [{
+					"label": "Exective 1",
+					"value": "Exective 1"
+				}, {
+					"label": "Exective 2",
+					"value": "Exective 2"
+				}],
+				"flex": ""
+			}
+		}, {
+			"type": "select",
+			"key": "createdByGroup",
+			"templateOptions": {
+				"label": "Created By Organization",
+				"theme": "",
+				"styleElements": "display:block;",
+				"multiple": true,
+				"labelProp": "label",
+				"valueProp": "value",
+				"options": [{
+					"label": "Third Party",
+					"value": "Third Party"
+				}, {
+					"label": "XXX",
+					"value": "XXX"
+				}],
+				"flex": ""
+			}
+		}];
 
 		var tabs = [{
 			title: 'Basic Details',
@@ -414,49 +330,42 @@
 			}
 		}];
 
-
+		// var lead_CRUD = [{
+		// 	type: 'tabset',
+		// 	templateOptions: {
+		// 		tabs: tabs
+		// 	}
+		// }, {
+		// 	type: 'test'
+		// }];
 
 		var lead_CRUD = [{
-			type: 'tabs',
+			type: 'card',
 			templateOptions: {
-				tabs: tabs
-					// 	[
-					// 		{
-					// 		title: 'Basic Details',
-					// 		active: true,
-					// 		form: {
-					// 			options: {},
-					// 			model: vm.lead,
-					// 			fields: vm.basicDetailFields
-					// 		}
-					// 	},
-					// 	{
-					// 		title: 'Contact',
-					// 		form: {
-					// 			options: {},
-					// 			model: vm.lead,
-					// 			fields: vm.contactFields
-					// 		}
-					// 	},
-					// 	{
-					// 		title: 'Segementation',
-					// 		form: {
-					// 			options: {},
-					// 			model: vm.lead,
-					// 			fields: vm.segementationFields
-					// 		}
-					// 	},
-					// 	{
-					// 		title: 'Additional Details',
-					// 		form: {
-					// 			options: {},
-					// 			model: vm.lead,
-					// 			fields: vm.additionalDetailFields
-					// 		}
-					// 	}
-					// ]
+				disabled: false,
+				imagePath: '',
+				headline: 'Lead',
+				formName: 'leadForm',
+				model: 'leadModel',
+				components: [{
+					type: 'tabset',
+					templateOptions: {
+						tabs: tabs
+					}
+				}],
+				actions: [{
+					label: 'Save',
+					class:'md-raised md-primary',
+					method: ''
+				}, {
+					label: 'Reset',
+					class:'md-raised md-warn',
+					method: ''
+				}]
 			}
 		}];
+
+
 
 		return {
 

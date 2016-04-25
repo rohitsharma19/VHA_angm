@@ -57,12 +57,18 @@
 				if($state.current.name === 'home.lead.QuickCreate'){
 					console.log("CREATE QUICK LEAD");
 					vm.leadMode = "QuickCreate";
+					vm.lead = {};
+					vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+					console.log("leadFields : ");
+					console.log(vm.leadFields);
 				}
 				else if($state.current.name === 'home.lead.create'){
 					console.log("CREATE LEAD");
 					vm.leadMode = "Create";
 					vm.lead = {};
 					vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+					console.log("leadFields : ");
+					console.log(JSON.stringify(vm.leadFields));
 				}
 
 
@@ -78,7 +84,8 @@
 			if($state.current.name === 'home.lead.edit'){
 				console.log("EDIT LEAD");
 				vm.leadMode = "Update";
-
+				//vm.lead = {};
+				vm.leadFields = leadSharedData.getLayout('lead_CRUD');
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
 
@@ -92,7 +99,8 @@
 			if($state.current.name === 'home.lead.view'){
 				console.log("VIEW LEAD");
 				vm.leadMode = "View";
-
+				//vm.lead = {};
+				vm.leadFields = leadSharedData.getLayout('lead_CRUD');
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
 			}
@@ -100,7 +108,8 @@
 			if($state.current.name === 'home.lead.delete'){
 				console.log("DELETE LEAD");
 				vm.leadMode = "Delete";
-
+				//vm.lead = {};
+				vm.leadFields = leadSharedData.getLayout('lead_CRUD');
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
 
