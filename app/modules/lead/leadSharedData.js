@@ -28,7 +28,6 @@
 			"templateOptions": {
 				"label": "ABN Number",
 				"type": "text",
-				"className": "classBlock",
 				"styleElements": "display:block;"
 			}
 		}, {
@@ -142,7 +141,7 @@
 				"theme": "custom",
 				"placeholder": "Date of Birth",
 				"styleElements": "display:block;",
-				"label":"Date of Birth"
+				"label": "Date of Birth"
 			}
 		}, {
 			"key": "email",
@@ -304,66 +303,90 @@
 			active: true,
 			form: {
 				options: {},
-				model: 'vm.lead',
 				fields: basicDetailFields
 			}
 		}, {
 			title: 'Contact',
 			form: {
 				options: {},
-				model: 'vm.lead',
 				fields: contactFields
 			}
 		}, {
 			title: 'Segementation',
 			form: {
 				options: {},
-				model: 'vm.lead',
 				fields: segementationFields
 			}
 		}, {
 			title: 'Additional Details',
 			form: {
 				options: {},
-				model: 'vm.lead',
 				fields: additionalDetailFields
 			}
 		}];
 
-		// var lead_CRUD = [{
-		// 	type: 'tabset',
-		// 	templateOptions: {
-		// 		tabs: tabs
-		// 	}
-		// }, {
-		// 	type: 'test'
-		// }];
-
 		var lead_CRUD = [{
-			type: 'card',
-			templateOptions: {
-				disabled: false,
-				imagePath: '',
-				headline: 'Lead',
-				formName: 'leadForm',
-				model: 'leadModel',
-				components: [{
-					type: 'tabset',
-					templateOptions: {
-						tabs: tabs
+				type: 'card_tabset',
+				templateOptions: {
+					tabs: tabs,
+					card: {
+						imagePath: "",
+						headline: "Lead",
+						actions:[{
+							class:'md-raised md-primary',
+							methodName:{
+								name:"createLead",
+								input:"lead"
+							},
+							label:'Create Lead'
+						}]
 					}
-				}],
-				actions: [{
-					label: 'Save',
-					class:'md-raised md-primary',
-					method: ''
-				}, {
-					label: 'Reset',
-					class:'md-raised md-warn',
-					method: ''
-				}]
+				}
 			}
-		}];
+			// , {
+			// 	type: 'test'
+			// }
+		];
+
+		// var lead_CRUD = [{
+		// 	type: "input",
+		// 	key: "firstName",
+		// 	templateOptions: {
+		// 		type: "text",
+		// 		label: "First name",
+		// 		model:"qwerty"
+		// 	}
+		// }]
+
+
+
+		// 	var lead_CRUD = [{
+		// 		type: 'card',
+		// 		templateOptions: {
+		// 			disabled: false,
+		// 			imagePath: '',
+		// 			headline: 'Lead',
+		// 			formName: 'leadForm',
+		// 			model: 'vm.lead',
+		// 			components: [{
+		// 				type: 'tabset',
+		// 				templateOptions: {
+		// 					tabs: tabs
+		// 				}
+		// 			}],
+		// 			actions: [{
+		// 				label: 'Save',
+		// 				class:'md-raised md-primary',
+		// 				method: ''
+		// 			}, {
+		// 				label: 'Reset',
+		// 				class:'md-raised md-warn',
+		// 				method: ''
+		// 			}]
+		// 		}
+		// 	},
+		// 	{type:'test'}
+		// ];
 
 
 
@@ -380,7 +403,7 @@
 			},
 			getLayout: function(view) {
 				if (view === 'lead_CRUD') {
-					return lead_CRUD;
+					return JSON.stringify(lead_CRUD);
 				}
 			}
 		}

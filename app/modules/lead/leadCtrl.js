@@ -24,6 +24,7 @@
 		function Lead($state,leadManager,leadSharedData) {
 			/*jshint validthis: true */
 			var vm = this;
+			vm.lead = {};
 
 			if($state.current.name === 'home.lead.viewAll'){
 
@@ -58,17 +59,14 @@
 					console.log("CREATE QUICK LEAD");
 					vm.leadMode = "QuickCreate";
 					vm.lead = {};
-					vm.leadFields = leadSharedData.getLayout('lead_CRUD');
-					console.log("leadFields : ");
-					console.log(vm.leadFields);
+					vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 				}
 				else if($state.current.name === 'home.lead.create'){
 					console.log("CREATE LEAD");
 					vm.leadMode = "Create";
 					vm.lead = {};
-					vm.leadFields = leadSharedData.getLayout('lead_CRUD');
-					console.log("leadFields : ");
-					console.log(JSON.stringify(vm.leadFields));
+					//vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+					vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 				}
 
 
@@ -85,7 +83,8 @@
 				console.log("EDIT LEAD");
 				vm.leadMode = "Update";
 				//vm.lead = {};
-				vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+				//vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+				vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
 
@@ -100,8 +99,10 @@
 				console.log("VIEW LEAD");
 				vm.leadMode = "View";
 				//vm.lead = {};
-				vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+				//vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+				vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 				vm.lead = leadSharedData.getLead();
+
 				leadSharedData.resetLead();
 			}
 
@@ -109,7 +110,8 @@
 				console.log("DELETE LEAD");
 				vm.leadMode = "Delete";
 				//vm.lead = {};
-				vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+				//vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+				vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 				vm.lead = leadSharedData.getLead();
 				leadSharedData.resetLead();
 

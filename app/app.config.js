@@ -49,20 +49,46 @@
 			templateUrl: 'tabset.html'
 		});
 
-		formlyConfig.setType({
+		// formlyConfig.setType({
+		// 	name: 'card',
+		// 	templateUrl: 'card.html',
+		// 	defaultOptions: {
+		// 		templateOptions: {
+		// 			disabled: false,
+		// 			// imagePath: imagePath,
+		// 			// headline: headline,
+		// 			// formName: formName,
+		// 			// model: model,
+		// 			// fields: fields,
+		// 			// actions: actions
+		// 		}
+		// 	}
+		// });
+
+		formlyConfig.setWrapper({
 			name: 'card',
-			templateUrl: 'card.html',
-			defaultOptions: {
-				templateOptions: {
-					 disabled: false,
-					// imagePath: imagePath,
-					// headline: headline,
-					// formName: formName,
-					// model: model,
-					// fields: fields,
-					// actions: actions
-				}
-			}
+			template: [
+				'<md-card>\
+					<img ng-src="{{to.card.imagePath}}" class="md-card-image">\
+					<md-card-title>\
+						<md-card-title-text>\
+							<span class="md-headline">{{to.card.headline}}</span>\
+						</md-card-title-text>\
+					</md-card-title>\
+					<md-card-content>\
+						<formly-transclude></formly-transclude>\
+					</md-card-content>\
+					<md-card-actions layout="row" layout-align="center">\
+					<md-button ng-repeat="action in to.card.actions" class={{action.class}} ng-click="vm.{{action.methodName.name}}(vm.{{action.methodName.input}})">{{action.label}}</md-button>\
+					</md-card-actions>\
+				</md-card>'
+			].join(' ')
+		});
+
+		formlyConfig.setType({
+			name: 'card_tabset',
+			extends: 'tabset',
+			wrapper: ['card']
 		});
 
 
