@@ -48,22 +48,10 @@
 			name: 'tabset',
 			templateUrl: 'tabset.html'
 		});
-
-		// formlyConfig.setType({
-		// 	name: 'card',
-		// 	templateUrl: 'card.html',
-		// 	defaultOptions: {
-		// 		templateOptions: {
-		// 			disabled: false,
-		// 			// imagePath: imagePath,
-		// 			// headline: headline,
-		// 			// formName: formName,
-		// 			// model: model,
-		// 			// fields: fields,
-		// 			// actions: actions
-		// 		}
-		// 	}
-		// });
+		formlyConfig.setType({
+			name: 'progressTracker',
+			templateUrl: 'progressTracker.html'
+		});
 
 		formlyConfig.setWrapper({
 			name: 'card',
@@ -79,7 +67,7 @@
 						<formly-transclude></formly-transclude>\
 					</md-card-content>\
 					<md-card-actions layout="row" layout-align="center">\
-					<md-button ng-repeat="action in to.card.actions" class={{action.class}} ng-click="vm.{{action.methodName.name}}(vm.{{action.methodName.input}})">{{action.label}}</md-button>\
+					<md-button ng-repeat="action in to.card.actions" class={{action.class}} ng-click="">{{action.label}}</md-button>\
 					</md-card-actions>\
 				</md-card>'
 			].join(' ')
@@ -91,6 +79,11 @@
 			wrapper: ['card']
 		});
 
+		formlyConfig.setType({
+			name: 'card_progressTracker',
+			extends: 'progressTracker',
+			wrapper: ['card']
+		});
 
 	}
 

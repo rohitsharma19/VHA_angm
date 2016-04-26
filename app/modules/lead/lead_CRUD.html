@@ -1,6 +1,6 @@
 <div flex layout-sm="column">
 
-	<md-card ng-if="vm.leadMode=='QuickCreate'">
+	<!-- <md-card ng-if="vm.leadMode=='QuickCreate'">
 		<md-card-header-text></md-card-header-text>
 		<md-card-content>
 			<div style="border: #ffffff">
@@ -13,16 +13,16 @@
 				</ol>
 			</div>
 		</md-card-content>
-	</md-card>
+	</md-card> -->
 
 	<formly-form model="vm.lead" fields="vm.leadFields">
 	</formly-form>
 
-	<div layout="row" layout-align="center center">
+	<!-- <div layout="row" layout-align="center center">
 		<md-button class="md-raised md-primary" ng-if="(vm.leadMode=='Create')||(vm.leadMode=='QuickCreate')" ng-click="vm.createLead(vm.lead)">Create Lead</md-button>
 		<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Update'" ng-click="vm.updateLead(vm.lead)">Update Lead</md-button>
 		<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Delete'" ng-click="vm.deleteLead(vm.lead)">Delete Lead</md-button>
-	</div>
+	</div> -->
 
 </div>
 
@@ -44,28 +44,16 @@
 				{{tab.title}}
 			</md-tab-label>
 			<md-tab-body>
-				<formly-form model="::$parent.model" fields="tab.form.fields" ></formly-form>
+				<formly-form model="::$parent.model" fields="tab.form.fields"></formly-form>
 			</md-tab-body>
 		</md-tab>
 	</md-tabs>
 </script>
 
-<script type="text/ng-template" id="card.html">
-	<md-card>
-		<img ng-src="{{to.imagePath}}" class="md-card-image">
-		<md-card-title>
-			<md-card-title-text>
-				<span class="md-headline">{{to.headline}}</span>
-			</md-card-title-text>
-		</md-card-title>
-		<md-card-content>
-			<form name="to.formName">
-				<formly-form model="to.model" fields="to.components">
-				</formly-form>
-			</form>
-		</md-card-content>
-		<md-card-actions layout="row" layout-align="center">
-			<md-button class={{action.class}} ng-repeat="action in to.actions">{{action.label}}</md-button>
-		</md-card-actions>
-	</md-card>
+<script type="text/ng-template" id="progressTracker.html">
+	<div style="border: #ffffff">
+		<ol class="progtrckr hidden-xs" data-progtrckr-steps={{to.totalSteps}}>
+			<li ng-repeat = "step in to.steps" class={{step.class}}>{{step.label}}</li>
+		</ol>
+	</div>
 </script>

@@ -326,20 +326,48 @@
 		}];
 
 		var lead_CRUD = [{
+				type: 'card_progressTracker',
+				templateOptions: {
+					totalSteps: 5,
+					steps: [{
+						class: 'progtrckr-todo',
+						label: 'Capture Initial Details'
+					}, {
+						class: 'progtrckr-todo',
+						label: 'Know your customer'
+					}, {
+						class: 'progtrckr-todo',
+						label: 'Recommendations'
+					}, {
+						class: 'progtrckr-todo',
+						label: 'Generate quote'
+					}, {
+						class: 'progtrckr-todo',
+						label: 'Generate agreement'
+					}],
+					card: {
+						imagePath: "",
+						headline: "",
+						actions: '',
+						ifCondition:"a==b"
+					}
+				}
+			}, {
 				type: 'card_tabset',
 				templateOptions: {
 					tabs: tabs,
 					card: {
 						imagePath: "",
 						headline: "Lead",
-						actions:[{
-							class:'md-raised md-primary',
-							methodName:{
-								name:"createLead",
-								input:"lead"
+						actions: [{
+							class: 'md-raised md-primary',
+							methodName: {
+								name: "createLead",
+								input: "lead"
 							},
-							label:'Create Lead'
-						}]
+							label: 'Create Lead'
+						}],
+						ifCondition:""
 					}
 				}
 			}
