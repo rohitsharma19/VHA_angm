@@ -90,6 +90,12 @@
 			templateUrl: 'button.html'
 		});
 
+		formlyConfig.setType({
+			name: 'ui-grid',
+			templateUrl: 'uiGrid.html',
+			wrapper: ['card']
+		});
+
 	}
 
 })();

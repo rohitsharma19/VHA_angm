@@ -383,9 +383,11 @@
 			// expressionProperties: {
 			// 	'templateOptions.method': 'vm.createLead(vm.lead)'
 			// }
-		}, {
-			type: 'test'
-		}];
+		}
+		// , {
+		// 	type: 'test'
+		// }
+	];
 
 
 
