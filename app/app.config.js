@@ -85,6 +85,11 @@
 			wrapper: ['card']
 		});
 
+		formlyConfig.setType({
+			name: 'button',
+			templateUrl: 'button.html'
+		});
+
 	}
 
 })();

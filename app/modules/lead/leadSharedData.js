@@ -326,95 +326,66 @@
 		}];
 
 		var lead_CRUD = [{
-				type: 'card_progressTracker',
-				templateOptions: {
-					totalSteps: 5,
-					steps: [{
-						class: 'progtrckr-todo',
-						label: 'Capture Initial Details'
-					}, {
-						class: 'progtrckr-todo',
-						label: 'Know your customer'
-					}, {
-						class: 'progtrckr-todo',
-						label: 'Recommendations'
-					}, {
-						class: 'progtrckr-todo',
-						label: 'Generate quote'
-					}, {
-						class: 'progtrckr-todo',
-						label: 'Generate agreement'
-					}],
-					card: {
-						imagePath: "",
-						headline: "",
-						actions: '',
-						ifCondition:"a==b"
-					}
+			type: 'card_progressTracker',
+			templateOptions: {
+				totalSteps: 5,
+				steps: [{
+					status: 'todo',
+					label: 'Capture Initial Details'
+				}, {
+					status: 'todo',
+					label: 'Know your customer'
+				}, {
+					status: 'todo',
+					label: 'Recommendations'
+				}, {
+					status: 'todo',
+					label: 'Generate quote'
+				}, {
+					status: 'todo',
+					label: 'Generate agreement'
+				}],
+				card: {
+					imagePath: "",
+					headline: "",
+					actions: ''
 				}
-			}, {
-				type: 'card_tabset',
-				templateOptions: {
-					tabs: tabs,
-					card: {
-						imagePath: "",
-						headline: "Lead",
-						actions: [{
-							class: 'md-raised md-primary',
-							methodName: {
-								name: "createLead",
-								input: "lead"
-							},
-							label: 'Create Lead'
-						}],
-						ifCondition:""
-					}
+			},
+			hideExpression: 'model.leadMode!="QuickCreate"'
+		}, {
+			type: 'card_tabset',
+			templateOptions: {
+				tabs: tabs,
+				card: {
+					imagePath: "",
+					headline: "Lead",
+					actions: [
+						// 	{
+						// 	class: 'md-raised md-primary',
+						// 	methodName: {
+						// 		name: "createLead",
+						// 		input: "lead"
+						// 	},
+						// 	label: 'Create Lead',
+						// 	hideExpression: 'true'
+						// }
+					]
 				}
 			}
-			// , {
-			// 	type: 'test'
+		}, {
+			type: 'button',
+			templateOptions: {
+				label: 'Create Lead',
+				class: 'md-raised md-primary',
+				method: 'abc',
+			},
+			//hideExpression: 'model.leadMode!="QuickCreate"'
+			// expressionProperties: {
+			// 	'templateOptions.method': 'vm.createLead(vm.lead)'
 			// }
-		];
-
-		// var lead_CRUD = [{
-		// 	type: "input",
-		// 	key: "firstName",
-		// 	templateOptions: {
-		// 		type: "text",
-		// 		label: "First name",
-		// 		model:"qwerty"
-		// 	}
-		// }]
-
-
-
-		// 	var lead_CRUD = [{
-		// 		type: 'card',
-		// 		templateOptions: {
-		// 			disabled: false,
-		// 			imagePath: '',
-		// 			headline: 'Lead',
-		// 			formName: 'leadForm',
-		// 			model: 'vm.lead',
-		// 			components: [{
-		// 				type: 'tabset',
-		// 				templateOptions: {
-		// 					tabs: tabs
-		// 				}
-		// 			}],
-		// 			actions: [{
-		// 				label: 'Save',
-		// 				class:'md-raised md-primary',
-		// 				method: ''
-		// 			}, {
-		// 				label: 'Reset',
-		// 				class:'md-raised md-warn',
-		// 				method: ''
-		// 			}]
-		// 		}
-		// 	},
-		// 	{type:'test'}
-		// ];
+		}, {
+			type: 'test'
+		}];
 
 
 
