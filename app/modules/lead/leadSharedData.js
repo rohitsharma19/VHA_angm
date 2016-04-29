@@ -377,19 +377,67 @@
 			templateOptions: {
 				label: 'Create Lead',
 				class: 'md-raised md-primary',
-				method: 'abc',
+				method: 'createLead'
 			},
-			//hideExpression: 'model.leadMode!="QuickCreate"'
-			// expressionProperties: {
-			// 	'templateOptions.method': 'vm.createLead(vm.lead)'
-			// }
-		}
-		// , {
-		// 	type: 'test'
-		// }
-	];
+			hideExpression: 'model.leadMode!="QuickCreate"'
+				// expressionProperties: {
+				// 	'templateOptions.method': 'vm.createLead(vm.lead)'
+				// }
+		}, {
+			type: 'button',
+			templateOptions: {
+				label: 'Update Lead',
+				class: 'md-raised md-primary',
+				method: 'updateLead'
+			},
+			hideExpression: 'model.leadMode!="Update"'
+		}, {
+			type: 'button',
+			templateOptions: {
+				label: 'Delete Lead',
+				class: 'md-raised md-primary',
+				method: 'deleteLead'
+			},
+			hideExpression: 'model.leadMode!="Delete"'
+		}, {
+			type: 'test'
+		}];
 
 
+		var columnDefs;
+
+		columnDefs = [{
+			field: 'leadId',
+			cellTemplate: '<md-button class="md-primary" aria-label="leadId" ng-click="grid.appScope.vm.openViewLead(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.leadId}}</md-button>'
+		}, {
+			field: 'creationDate'
+		}, {
+			field: 'compName'
+		}, {
+			field: 'abn'
+		}, {
+			field: 'firstName'
+		}, {
+			field: 'lastName'
+		}, {
+			field: 'eMail'
+		}, {
+			field: 'contactNum'
+		}, {
+			name: 'Actions',
+			cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+			enableFiltering: false
+		}];
+
+		var lead_viewAll = [{
+			key: 'list',
+			type: 'ui-grid',
+			templateOptions: {
+				label: 'View All Leads',
+				columnDefs: columnDefs,
+				onRegisterApi: ''
+			}
+		}];
 
 		return {
 
@@ -405,6 +453,8 @@
 			getLayout: function(view) {
 				if (view === 'lead_CRUD') {
 					return JSON.stringify(lead_CRUD);
+				} else if (view === 'lead_viewAll') {
+					return JSON.stringify(lead_viewAll);
 				}
 			}
 		}

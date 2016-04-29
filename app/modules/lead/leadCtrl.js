@@ -24,77 +24,30 @@
 	function Lead($state, leadManager, leadSharedData) {
 		/*jshint validthis: true */
 		var vm = this;
+
+
+
+		vm.getMethod = function(methodName) {
+			if(methodName === "createLead") {
+				return vm.createLead(vm.lead);
+			}
+			else if(methodName === "updateLead") {
+				return vm.updateLead(vm.lead);
+			}
+			else if(methodName === "deleteLead") {
+				return vm.deleteLead(vm.lead);
+			}
+		}
+
 		vm.lead = {};
 
 		if ($state.current.name === 'home.lead.viewAll') {
 
 			console.log("VIEW ALL LEADS");
+			vm.leadsList=[];
 
-			//vm = leadManager.setUpUiGrid(vm);
-
-			//.............
-			var columnDefs;
-
-			columnDefs = [{
-				name: 'State',
-				field: 'name'
-			}, {
-				name: 'Abbr',
-				field: 'abbr'
-			}];
-
-			vm.model = {
-				list: [{
-					"name": "Alabama",
-					"abbr": "AL"
-				}, {
-					"name": "Alaska",
-					"abbr": "AK"
-				}, {
-					"name": "American Samoa",
-					"abbr": "AS"
-				}, {
-					"name": "Arizona",
-					"abbr": "AZ"
-				}, {
-					"name": "Arkansas",
-					"abbr": "AR"
-				}, {
-					"name": "California",
-					"abbr": "CA"
-				}, {
-					"name": "Colorado",
-					"abbr": "CO"
-				}, {
-					"name": "Connecticut",
-					"abbr": "CT"
-				}]
-			};
-			vm.options = {
-				formState: {
-					uiGridCtrl: function($scope) {
-						$scope.to.onRegisterApi = function(gridApi) {
-							vm.gridApi = gridApi;
-						};
-					}
-				}
-			};
-
-
-			vm.fields = [{
-				key: 'list',
-				type: 'ui-grid',
-				templateOptions: {
-					label: 'Simple UI Grid',
-					columnDefs: columnDefs,
-					onRegisterApi: ''
-				},
-				controller: 'formState.uiGridCtrl'
-			}];
-
-			vm.originalFields = angular.copy(vm.fields);
-
-			//.............
+			vm.fields = JSON.parse(leadSharedData.getLayout('lead_viewAll'));
+			leadManager.inflateUiGrid(vm);
 
 			vm.openViewLead = function(row) {
 				console.log("Inside openViewLead");

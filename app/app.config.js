@@ -87,7 +87,19 @@
 
 		formlyConfig.setType({
 			name: 'button',
-			templateUrl: 'button.html'
+			templateUrl: 'button.html',
+			controller: function($scope) {
+				$scope.clicked = function(param) {
+					$scope.options.templateOptions.label = param +"() method will be called";
+
+					var localScope = $scope.$parent.$parent.$parent.$parent.vm;
+
+					console.log("localScope");
+					console.log($scope.$parent.$parent.$parent.$parent);
+
+					localScope.getMethod(param);
+				};
+			}
 		});
 
 		formlyConfig.setType({

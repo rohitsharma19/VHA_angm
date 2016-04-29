@@ -1,29 +1,12 @@
 <div flex layout-sm="column">
+	<!-- <form ng-submit="vm.onSubmit()" name="vm.form" novalidate> -->
+		<formly-form model="vm.lead" fields="vm.leadFields">
+			<!-- <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Submit</button>
+			<button type="button" class="btn btn-default" ng-click="vm.options.resetModel()">Reset</button> -->
+		</formly-form>
+	<!-- </form> -->
 
-	<!-- <md-card ng-if="vm.leadMode=='QuickCreate'">
-		<md-card-header-text></md-card-header-text>
-		<md-card-content>
-			<div style="border: #ffffff">
-				<ol class="progtrckr hidden-xs" data-progtrckr-steps="5">
-					<li class="progtrckr-todo">Capture Initial Details</li>
-					<li class="progtrckr-todo">Know your customer</li>
-					<li class="progtrckr-todo">Recommendations</li>
-					<li class="progtrckr-todo">Generate quote</li>
-					<li class="progtrckr-todo">Generate agreement</li>
-				</ol>
-			</div>
-		</md-card-content>
-	</md-card> -->
-
-	<formly-form model="vm.lead" fields="vm.leadFields">
-	</formly-form>
-
-	<!-- <div layout="row" layout-align="center center">
-		<md-button class="md-raised md-primary" ng-if="(vm.leadMode=='Create')||(vm.leadMode=='QuickCreate')" ng-click="vm.createLead(vm.lead)">Create Lead</md-button>
-		<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Update'" ng-click="vm.updateLead(vm.lead)">Update Lead</md-button>
-		<md-button class="md-raised md-primary" ng-if="vm.leadMode=='Delete'" ng-click="vm.deleteLead(vm.lead)">Delete Lead</md-button>
-	</div> -->
-
+		<!-- <md-button class="md-primary md-raised" ng-click='alert("Test")'>Test Button!</md-button> -->
 </div>
 
 
@@ -59,9 +42,5 @@
 </script>
 
 <script type="text/ng-template" id="button.html">
-	<md-button class={{to.class}} ng-click={{to.method}}>{{to.label}}</md-button>
-</script>
-
-<script type="text/ng-template" id="uiGrid.html">
-	<div ui-grid="{ data: model[options.key], columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
+	<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method)'>{{to.label}}</md-button>
 </script>
