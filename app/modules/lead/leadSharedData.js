@@ -60,7 +60,7 @@
 			"templateOptions": {
 				"label": "Customer Type",
 				"theme": "",
-				"multiple": true,
+				"multiple": false,
 				"styleElements": "display:block;",
 				"labelProp": "label",
 				"valueProp": "value",
@@ -326,115 +326,141 @@
 		}];
 
 		var lead_CRUD = [{
-			type: 'card_progressTracker',
-			templateOptions: {
-				totalSteps: 5,
-				steps: [{
-					status: 'todo',
-					label: 'Capture Initial Details'
-				}, {
-					status: 'todo',
-					label: 'Know your customer'
-				}, {
-					status: 'todo',
-					label: 'Recommendations'
-				}, {
-					status: 'todo',
-					label: 'Generate quote'
-				}, {
-					status: 'todo',
-					label: 'Generate agreement'
-				}],
-				card: {
-					imagePath: "",
-					headline: "",
-					actions: ''
+				type: 'card_progressTracker',
+				templateOptions: {
+					totalSteps: 5,
+					steps: [{
+						status: 'todo',
+						label: 'Capture Initial Details'
+					}, {
+						status: 'todo',
+						label: 'Know your customer'
+					}, {
+						status: 'todo',
+						label: 'Recommendations'
+					}, {
+						status: 'todo',
+						label: 'Generate quote'
+					}, {
+						status: 'todo',
+						label: 'Generate agreement'
+					}],
+					card: {
+						imagePath: "",
+						headline: "",
+						actions: ''
+					}
+				},
+				hideExpression: 'model.leadMode!="QuickCreate"'
+			}, {
+				type: 'card_tabset',
+				templateOptions: {
+					tabs: tabs,
+					card: {
+						imagePath: "",
+						headline: "Lead",
+						actions: [
+							// 	{
+							// 	class: 'md-raised md-primary',
+							// 	methodName: {
+							// 		name: "createLead",
+							// 		input: "lead"
+							// 	},
+							// 	label: 'Create Lead',
+							// 	hideExpression: 'true'
+							// }
+						]
+					}
 				}
+			}, {
+				type: 'button',
+				templateOptions: {
+					label: 'Create Lead',
+					class: 'md-raised md-primary',
+					method: 'createLead'
+				},
+				hideExpression: 'model.leadMode!="QuickCreate" && model.leadMode!="Create"'
+					// expressionProperties: {
+					// 	'templateOptions.method': 'vm.createLead(vm.lead)'
+					// }
+			}, {
+				type: 'button',
+				templateOptions: {
+					label: 'Update Lead',
+					class: 'md-raised md-primary',
+					method: 'updateLead'
+				},
+				hideExpression: 'model.leadMode!="Update"'
+			}, {
+				type: 'button',
+				templateOptions: {
+					label: 'Delete Lead',
+					class: 'md-raised md-primary',
+					method: 'deleteLead'
+				},
+				hideExpression: 'model.leadMode!="Delete"'
 			},
-			hideExpression: 'model.leadMode!="QuickCreate"'
-		}, {
-			type: 'card_tabset',
-			templateOptions: {
-				tabs: tabs,
-				card: {
-					imagePath: "",
-					headline: "Lead",
-					actions: [
-						// 	{
-						// 	class: 'md-raised md-primary',
-						// 	methodName: {
-						// 		name: "createLead",
-						// 		input: "lead"
-						// 	},
-						// 	label: 'Create Lead',
-						// 	hideExpression: 'true'
-						// }
-					]
-				}
-			}
-		}, {
-			type: 'button',
-			templateOptions: {
-				label: 'Create Lead',
-				class: 'md-raised md-primary',
-				method: 'createLead'
-			},
-			hideExpression: 'model.leadMode!="QuickCreate"'
-				// expressionProperties: {
-				// 	'templateOptions.method': 'vm.createLead(vm.lead)'
-				// }
-		}, {
-			type: 'button',
-			templateOptions: {
-				label: 'Update Lead',
-				class: 'md-raised md-primary',
-				method: 'updateLead'
-			},
-			hideExpression: 'model.leadMode!="Update"'
-		}, {
-			type: 'button',
-			templateOptions: {
-				label: 'Delete Lead',
-				class: 'md-raised md-primary',
-				method: 'deleteLead'
-			},
-			hideExpression: 'model.leadMode!="Delete"'
-		}, {
-			type: 'test'
-		}];
+			//  {
+			// 	type: 'test'
+			// }
+		];
 
 
-		var columnDefs;
-
-		columnDefs = [{
-			field: 'leadId',
-			cellTemplate: '<md-button class="md-primary" aria-label="leadId" ng-click="grid.appScope.vm.openViewLead(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.leadId}}</md-button>'
-		}, {
-			field: 'creationDate'
-		}, {
-			field: 'compName'
-		}, {
-			field: 'abn'
-		}, {
-			field: 'firstName'
-		}, {
-			field: 'lastName'
-		}, {
-			field: 'eMail'
-		}, {
-			field: 'contactNum'
-		}, {
-			name: 'Actions',
-			cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
-			enableFiltering: false
-		}];
+		// var columnDefs;
+		//
+		// columnDefs = [{
+		// 	field: 'leadId',
+		// 	//cellTemplate: '<md-button class="md-primary" aria-label="leadId" ng-click=grid.appScope.clicked("openViewLead",row) style="margin: 0px 0px; font-size: 12px;">{{row.entity.leadId}}</md-button>'
+		// }, {
+		// 	field: 'creationDate'
+		// }, {
+		// 	field: 'compName'
+		// }, {
+		// 	field: 'abn'
+		// }, {
+		// 	field: 'firstName'
+		// }, {
+		// 	field: 'lastName'
+		// }, {
+		// 	field: 'eMail'
+		// }, {
+		// 	field: 'contactNum'
+		// }, {
+		// 	name: 'Actions',
+		// 	//cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openViewLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">mode_edit</md-icon></md-button><md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',																																																																																												cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+		// 	cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openViewLead(row)" style="min-width: 0px;"><md-icon style="color:rgb(68,138,255); vertical-align: baseline;">remove_red_eye</md-icon></md-button><md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+		// 	enableFiltering: false
+		// }];
 
 		var lead_viewAll = [{
 			key: 'list',
 			type: 'ui-grid',
 			templateOptions: {
-				label: 'View All Leads',
-				columnDefs: columnDefs,
+				label: 'Lead',
+				columnDefs: [{
+					field: 'leadId',
+					//cellTemplate: '<md-button class="md-primary" aria-label="leadId" ng-click=grid.appScope.clicked("openViewLead",row) style="margin: 0px 0px; font-size: 12px;">{{row.entity.leadId}}</md-button>'
+				}, {
+					field: 'creationDate'
+				}, {
+					field: 'compName'
+				}, {
+					field: 'abn'
+				}, {
+					field: 'firstName'
+				}, {
+					field: 'lastName'
+				}, {
+					field: 'eMail'
+				}, {
+					field: 'contactNum'
+				}, {
+					name: 'Actions',
+					//cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openViewLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">mode_edit</md-icon></md-button><md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',																																																																																												cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+					cellTemplate: '<md-button class="md-icon-button" ng-click=grid.appScope.clicked("openViewLead",row) style="min-width: 0px;"><md-icon style="color:rgb(68,138,255); vertical-align: baseline;">remove_red_eye</md-icon></md-button><md-button class="md-icon-button" ng-click=grid.appScope.clicked("openEditLead",row) style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click=grid.appScope.clicked("openDeleteLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+					enableFiltering: false
+				}],
+
 				onRegisterApi: ''
 			}
 		}];

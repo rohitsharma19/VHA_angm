@@ -141,6 +141,7 @@
 								console.log(response.data);
 
 								vm.leadsList = response.data;
+								// vm.gridOptions.data = response.data;
 							},
 						    function (error) {
 						        console.log("getAllLeads ERROR : " + error.message);

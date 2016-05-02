@@ -10,13 +10,13 @@
 
 angular.module('lead')
 	.config(['$stateProvider', function ($stateProvider) {
-		
+
 		$stateProvider
 			.state('home.lead', {
 				url:'/lead',
 				templateUrl: 'app/modules/lead/lead.html',
-				controller: 'LeadCtrl',
-				controllerAs: 'vm'
+				//controller: 'LeadCtrl',
+				//controllerAs: 'vm'
 			})
 			.state('home.lead.QuickCreate', {
 				url:'/QuickCreate',

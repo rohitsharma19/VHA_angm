@@ -73,6 +73,26 @@
 			].join(' ')
 		});
 
+		formlyConfig.setWrapper({
+			name: 'gridWrapper',
+			template: [
+				'<div layout="row">\
+					<div flex="30">\
+						<h2 class="md-title">View all {{to.label}}s</h2>\
+					</div>\
+					<div flex="65">\
+					</div>\
+					<div flex="5">\
+						<md-button class="md-fab" ng-click=clicked("openCreate"+options.templateOptions.label)>\
+							<md-icon>add</md-icon>\
+						</md-button>\
+					</div>\
+				</div>\
+				<formly-transclude></formly-transclude>\
+				'
+			].join(' ')
+		});
+
 		formlyConfig.setType({
 			name: 'card_tabset',
 			extends: 'tabset',
@@ -89,15 +109,12 @@
 			name: 'button',
 			templateUrl: 'button.html',
 			controller: function($scope) {
-				$scope.clicked = function(param) {
-					$scope.options.templateOptions.label = param +"() method will be called";
-
-					var localScope = $scope.$parent.$parent.$parent.$parent.vm;
-
-					console.log("localScope");
-					console.log($scope.$parent.$parent.$parent.$parent);
-
-					localScope.getMethod(param);
+				$scope.clicked = function(functionName, functionParam) {
+					var targetScope = $scope;
+					while (!targetScope.vm) {
+						targetScope = targetScope.$parent;
+					}
+					targetScope.vm[functionName](functionParam);
 				};
 			}
 		});
@@ -105,8 +122,20 @@
 		formlyConfig.setType({
 			name: 'ui-grid',
 			templateUrl: 'uiGrid.html',
-			wrapper: ['card']
+			wrapper: ['gridWrapper'],
+			controller: function($scope) {
+				$scope.clicked = function(functionName, functionParam) {
+					console.log('functionName :' + functionName);
+					var targetScope = $scope;
+					while (!targetScope.vm) {
+						targetScope = targetScope.$parent;
+					}
+					targetScope.vm[functionName](functionParam);
+				};
+			}
 		});
+
+
 
 	}
 
