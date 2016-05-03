@@ -1,138 +1,39 @@
-<div class="md-padding" flex layout-sm="column" >
-	
-	<md-card ng-if="vm.opportunityMode=='QuickCreate'">
-        <md-card-header-text></md-card-header-text>
-        <md-card-content>
-        	<div style="border: #ffffff">
-				<ol class="progtrckr hidden-xs" data-progtrckr-steps="5" >
-		    		<li class="progtrckr-done">Capture Initial Details</li>
-		    		<li class="progtrckr-todo">Know your customer</li>
-		    		<li class="progtrckr-todo">Recommendations</li>
-		    		<li class="progtrckr-todo">Generate quote</li>
-		    		<li class="progtrckr-todo">Generate agreement</li> 
-				</ol>
-			</div>
-		</md-card-content>
-    </md-card>
-
-    <div><h2>{{vm.opportunityMode}} Opportunity</h2></div>
-
-	<md-card>
-		<md-card-content>
-			<form name="opportunityForm">
-				<md-tabs md-dynamic-height>
-	                <md-tab>
-		              	<md-tab-label>Communication Preferences</md-tab-label>	
-					  	<md-tab-body>
-					  		<div layout="column">
-					  			<p>Question 1</p>
-							    <md-radio-group ng-model="vm.Ques1.value">
-									<md-radio-button value="Option1" >Option 1</md-radio-button>
-									<md-radio-button value="Option1">Option 2</md-radio-button>
-							    </md-radio-group>
-							    <p>Question 2</p>
-							    <md-radio-group ng-model="vm.Ques2.value">
-									<md-radio-button value="Option1" >Option 1</md-radio-button>
-									<md-radio-button value="Option1">Option 2</md-radio-button>
-							    </md-radio-group>
-							    <p>Question 3</p>
-							    <md-radio-group ng-model="vm.Ques3.value">
-									<md-radio-button value="Option1" >Option 1</md-radio-button>
-									<md-radio-button value="Option1">Option 2</md-radio-button>
-							    </md-radio-group>
-							    <p>Question 4</p>
-							    <md-radio-group ng-model="vm.Ques4.value">
-									<md-radio-button value="Option1" >Option 1</md-radio-button>
-									<md-radio-button value="Option1">Option 2</md-radio-button>
-							    </md-radio-group>
-							</div>
-					  	</md-tab-body>
-					</md-tab>
-					<md-tab>
-						<md-tab-label>Contact</md-tab-label>	
-						<md-tab-body>
-							<div layout="column">
-								<div layout="row">
-							        <md-input-container flex="20">
-								        <md-select ng-model="vm.opportunity.title" placeholder="Title">
-								      	  	<md-option  value="Mr." >Mr.</md-option>
-								          	<md-option  value="Mrs.">Mrs.</md-option>
-								          	<md-option  value="Ms.">Ms.</md-option>
-								        </md-select>
-							        </md-input-container>
-									<md-input-container flex="40">
-								        <label class="placeholderColour">First Name</label>
-								        <input type="text" ng-model="vm.opportunity.firstName">
-							        </md-input-container>
-							        <md-input-container flex="40">
-								        <label class="placeholderColour">Last Name</label>
-								        <input type="text" ng-model="vm.opportunity.lastName">
-						         	</md-input-container>
-						        </div>
-						        <md-datepicker ng-model="dtOfBirth" md-placeholder="Date of Birth" class="md-block">
-							    </md-datepicker>
-						        <md-input-container>
-							        <label class="placeholderColour">E-mail</label>
-							        <input type="email" ng-model="vm.opportunity.eMail">
-						        </md-input-container>
-						        <md-input-container >
-							        <label class="placeholderColour">Phone Number</label>
-							        <input type="number" ng-model="vm.opportunity.contactNum">
-						        </md-input-container>
-						        <md-input-container>
-							        <label class="placeholderColour">Contact Mode</label>
-							        <md-select ng-model="vm.opportunity.contactRole">
-							          	<md-option  value="Billing">Billing</md-option>
-							          	<md-option  value="Non-Billing">Non-Billing</md-option>
-							        </md-select>
-							    </md-input-container>
-		     					<md-input-container>
-							        <label class="placeholderColour">Preferred Mode of Communication</label>
-							        <md-select ng-model="vm.opportunity.prefModOfCom">
-							          	<md-option  value="Phone">Phone</md-option>
-							          	<md-option  value="Email">Email</md-option>
-							        </md-select>
-							    </md-input-container>
-					  		</div>
-						</md-tab-body>
-					</md-tab>
-					<md-tab>
-						<md-tab-label>Additional Details</md-tab-label>	
-						<md-tab-body>
-							<div layout="column">
-								<md-input-container>
-							        <label>Assigned To Group</label>
-							        <md-select ng-model="vm.opportunity.assignToGrp" style="width:600">
-							          <md-option  value="Sales 1">Sales 1</md-option>
-							          <md-option  value="Sales 2">Sales 2</md-option>
-							        </md-select>
-							    </md-input-container>
-
-							    <md-input-container>
-							        <label>Assigned To User</label>
-							        <md-select ng-model="vm.opportunity.assignToUser" style="width:600">
-							          <md-option  value="Exective 1">Exective 1</md-option>
-							          <md-option  value="Exective 2">Exective 2</md-option>
-							        </md-select>
-							    </md-input-container>
-
-							    <md-input-container>
-							        <label>Created By Organization</label>
-							        <md-select ng-model="vm.opportunity.createdByGroup" style="width:600">
-							          <md-option  value="Third Party">Third Party</md-option>
-							          <md-option  value="XXX">XXX</md-option>
-							        </md-select>
-							    </md-input-container>
-					  		</div>
-						</md-tab-body>
-					</md-tab>
-			</form>  
-		</md-card-content>
-	</md-card>	
-		
-	<div layout="row" layout-align="center center">
-		<md-button class="md-raised md-primary" ng-if="(vm.opportunityMode=='Create')||(vm.opportunityMode=='QuickCreate')" ng-click="vm.createOpportunity(vm.opportunity)">Create Opportunity</md-button>
-		<md-button class="md-raised md-primary" ng-if="vm.opportunityMode=='Update'" ng-click="vm.updateOpportunity(vm.opportunity)">Update Opportunity</md-button>
-		<md-button class="md-raised md-primary" ng-if="vm.opportunityMode=='Delete'" ng-click="vm.deleteOpportunity(vm.opportunity)">Delete Opportunity</md-button>
-	</div>
+<div flex layout-sm="column">
+		<formly-form model="vm.opportunity" fields="vm.opportunityFields"></formly-form>
 </div>
+
+
+<script type="text/ng-template" id="test.html">
+	<div>
+		<pre ng-repeat="(key,value) in this">$scope.{{key}} = {{ value | json }}</pre>
+	</div>
+	<p>HEMAN</p>
+	<div>
+		<pre ng-repeat="(key,value) in this">vm.{{key}} = {{ value | json }}</pre>
+	</div>
+</script>
+
+<script type="text/ng-template" id="tabset.html">
+	<md-tabs md-dynamic-height>
+		<md-tab ng-repeat="tab in to.tabs">
+			<md-tab-label>
+				{{tab.title}}
+			</md-tab-label>
+			<md-tab-body>
+				<formly-form model="::$parent.model" fields="tab.form.fields"></formly-form>
+			</md-tab-body>
+		</md-tab>
+	</md-tabs>
+</script>
+
+<script type="text/ng-template" id="progressTracker.html">
+	<div style="border: #ffffff">
+		<ol class="progtrckr hidden-xs" data-progtrckr-steps={{to.totalSteps}}>
+			<li ng-repeat="step in to.steps" class=progtrckr-{{step.status}}>{{step.label}}</li>
+		</ol>
+	</div>
+</script>
+
+<script type="text/ng-template" id="button.html">
+	<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method,model)'>{{to.label}}</md-button>
+</script>

@@ -26,16 +26,21 @@
 			var vm = this;
 
 			if($state.current.name === 'home.opportunity.viewAll'){
-				
+
 				console.log("VIEW ALL OPPORTUNITIES");
-				
-				vm = opportunityManager.setUpUiGrid(vm);
+
+				vm.opportunitiesList=[];
+
+				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_viewAll'));
+				opportunityManager.inflateUiGrid(vm);
+
+				// vm = opportunityManager.setUpUiGrid(vm);
 
 				vm.openViewOpportunity = function(row) {
 			    	console.log("Inside openViewOpportunity");
 			    	opportunityManager.openViewOpportunity(row.entity.opportunityId);
 			    };
-			    
+
 			    vm.openEditOpportunity = function(row) {
 			    	console.log("inside openEditOpportunity");
 			    	opportunityManager.openEditOpportunity(row.entity.opportunityId);
@@ -53,14 +58,20 @@
 			}
 
 			if(($state.current.name === 'home.opportunity.create')||($state.current.name === 'home.opportunity.QuickCreate')){
-				
+
 				if($state.current.name === 'home.opportunity.QuickCreate'){
 					console.log("CREATE QUICK OPPORTUNITY");
-					vm.opportunityMode = "QuickCreate";
+
+					vm.opportunity = {};
+					vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
+					vm.opportunity.opportunityMode = "QuickCreate";
 				}
 				else if($state.current.name === 'home.opportunity.create'){
 					console.log("CREATE OPPORTUNITY");
-					vm.opportunityMode = "Create";
+
+					vm.opportunity = {};
+					vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
+					vm.opportunity.opportunityMode = "Create";
 				}
 
 				vm.createOpportunity = function(opportunity){
@@ -74,7 +85,9 @@
 				console.log("EDIT OPPORTUNITY");
 				vm.opportunityMode = "Update";
 
+				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity = opportunitySharedData.getOpportunity();
+				vm.opportunity.opportunityMode = "Update";
 				opportunitySharedData.resetOpportunity();
 
 				vm.updateOpportunity = function(opportunity){
@@ -86,17 +99,20 @@
 
 			if($state.current.name === 'home.opportunity.view'){
 				console.log("VIEW OPPORTUNITY");
-				vm.opportunityMode = "View";
 
+				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity = opportunitySharedData.getOpportunity();
+				vm.opportunity.opportunityMode = "View";
+
 				opportunitySharedData.resetOpportunity();
 			}
-			
+
 			if($state.current.name === 'home.opportunity.delete'){
 				console.log("DELETE OPPORTUNITY");
-				vm.opportunityMode = "Delete";
 
+				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity = opportunitySharedData.getOpportunity();
+				vm.opportunity.opportunityMode = "Delete";
 				opportunitySharedData.resetOpportunity();
 
 				vm.deleteOpportunity = function(opportunity) {

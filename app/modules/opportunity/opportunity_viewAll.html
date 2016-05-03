@@ -1,21 +1,7 @@
 <div>
-	
-	<div layout="row" >
-		<div flex="30">
-			<h2 class="md-title">View All Opportunities</h2>
-		</div>
-		<div flex="65">
-		</div>
-		<div flex="5">
-			<md-button class="md-fab" ng-click="vm.openCreateOpportunity()">
-			    <md-icon>add</md-icon>
-			</md-button>
-		</div>
-	</div>
-
-	<div>
-      <!-- <div id="grid1" ui-grid="{ data: vm.myData }" class="grid"></div> -->
-      <div id="grid1" ui-grid="vm.gridOptions" class="grid"></div>
-    </div>
+  <formly-form model="vm.opportunitiesList" fields="vm.opportunityFields" options="vm.options"></formly-form>
 </div>
 
+<script type="text/ng-template" id="uiGrid.html">
+	<div ui-grid="{ data: model, columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
+</script>
