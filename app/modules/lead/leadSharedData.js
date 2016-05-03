@@ -359,6 +359,7 @@
 					card: {
 						imagePath: "",
 						headline: "Lead",
+						headlineBackgroundColor:"#e4e4e4",
 						actions: [
 							// 	{
 							// 	class: 'md-raised md-primary',
@@ -456,7 +457,7 @@
 					field: 'contactNum'
 				}, {
 					name: 'Actions',
-					//cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openViewLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">mode_edit</md-icon></md-button><md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',																																																																																												cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditLead(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteLead(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+					//cellTemplate: '<div><md-button class="md-icon-button md-mini md-warning" ng-click=grid.appScope.clicked("openViewLead",row) style="min-width: 0px;"><md-icon style=" vertical-align: baseline;">remove_red_eye</md-icon></md-button><md-button class="md-icon-button md-primary md-raised md-mini" ng-click=grid.appScope.clicked("openEditLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary md-raised md-mini" ng-click=grid.appScope.clicked("openDeleteLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button></div>',
 					cellTemplate: '<md-button class="md-icon-button" ng-click=grid.appScope.clicked("openViewLead",row) style="min-width: 0px;"><md-icon style="color:rgb(68,138,255); vertical-align: baseline;">remove_red_eye</md-icon></md-button><md-button class="md-icon-button" ng-click=grid.appScope.clicked("openEditLead",row) style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click=grid.appScope.clicked("openDeleteLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
 					enableFiltering: false
 				}],

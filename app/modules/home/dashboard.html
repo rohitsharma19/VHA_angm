@@ -17,7 +17,7 @@
         </md-card-content>
     </md-card> -->
 
-    
+
     <div layout="row" layout-margin>
         <div flex=25 >
             <div class="dashboard-stat blue-chambray" md-whiteframe="5">
@@ -105,7 +105,7 @@
                 </md-card-title-text>
               </md-card-title>
               <md-card-content>
-                <canvas id="line" class="chart chart-line chart-xl" data="vm.line.data" labels="vm.line.labels" legend="true" click="line.onClick" series="vm.line.series">
+                <canvas id="line" class="chart chart-line chart-xl" chart-data="vm.line.data" chart-labels="vm.line.labels" chart-legend="true" click="line.onClick" chart-series="vm.line.series">
                 </canvas>
               </md-card-content>
             </md-card>
@@ -119,7 +119,7 @@
                 </md-card-title-text>
               </md-card-title>
               <md-card-content>
-                <canvas id="bar" class="chart chart-bar" data="vm.bar.data" labels="vm.bar.labels" series="vm.bar.series" legend="true" options="vm.bar.options" colours="vm.bar.colours">
+                <canvas id="bar" class="chart chart-bar" chart-data="vm.bar.data" chart-labels="vm.bar.labels" chart-series="vm.bar.series" chart-legend="true" options="vm.bar.options" chart-colours="vm.bar.colours">
                 </canvas>
               </md-card-content>
             </md-card>

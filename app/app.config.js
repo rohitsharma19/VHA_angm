@@ -32,6 +32,14 @@
 			.primaryPalette('red')
 			.accentPalette('blue');
 
+		$mdThemingProvider.theme('input')
+			.primaryPalette('red')
+			.accentPalette('blue');
+
+		$mdThemingProvider.theme('custom')
+			.primaryPalette('red')
+			.accentPalette('blue');
+
 	}
 
 	//runBlock.$inject = ['$rootScope'];
@@ -58,11 +66,12 @@
 			template: [
 				'<md-card>\
 					<img ng-src="{{to.card.imagePath}}" class="md-card-image">\
-					<md-card-title>\
+					<md-card-title style="background:{{to.card.headlineBackgroundColor}};">\
 						<md-card-title-text>\
-							<span class="md-headline">{{to.card.headline}}</span>\
+							<span class="md-display-1">{{to.card.headline}}</span>\
 						</md-card-title-text>\
 					</md-card-title>\
+					<md-divider></md-divider>\
 					<md-card-content>\
 						<formly-transclude></formly-transclude>\
 					</md-card-content>\
@@ -76,9 +85,9 @@
 		formlyConfig.setWrapper({
 			name: 'gridWrapper',
 			template: [
-				'<div layout="row">\
+				'<div layout="row" style="background:#e4e4e4;">\
 					<div flex="30">\
-						<h2 class="md-title">View all {{to.label}}s</h2>\
+						<div class="md-display-1" style="padding: 14px;">View All {{to.label}}s</div>\
 					</div>\
 					<div flex="65">\
 					</div>\
