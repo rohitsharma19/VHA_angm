@@ -10,7 +10,7 @@
 
 angular.module('recommendation')
 	.config(['$stateProvider', function ($stateProvider) {
-		
+
 		$stateProvider
 			.state('home.recommendation', {
 				url:'/recommendation',
@@ -23,7 +23,13 @@ angular.module('recommendation')
 				templateUrl: 'app/modules/recommendation/recommendationCreation.html',
 				controller: 'RecommendationCtrl',
 				controllerAs: 'vm'
+			})
+			.state('home.recommendation.QuickCreate', {
+				url:'/QuickCreate',
+				templateUrl: 'app/modules/opportunity/recommendation_CRUD.html',
+				controller: 'RecommendationCtrl',
+				controllerAs: 'vm'
 			});
 
-		
+
 	}]);

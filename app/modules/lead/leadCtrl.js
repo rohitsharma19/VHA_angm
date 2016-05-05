@@ -79,6 +79,12 @@
 				console.log(lead);
 				leadManager.createLead(lead);
 			};
+
+			vm.addContact = function(lead){
+				console.log("Inside addContact().");
+				console.log(lead);
+				console.log(vm.leadFields);
+			};
 		}
 
 

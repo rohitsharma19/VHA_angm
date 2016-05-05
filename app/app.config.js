@@ -29,8 +29,8 @@
 			.otherwise('/dashboard');
 
 		$mdThemingProvider.theme('default')
-			.primaryPalette('red')
-			.accentPalette('blue');
+			.primaryPalette('blue')
+			.accentPalette('red');
 
 		$mdThemingProvider.theme('input')
 			.primaryPalette('red')
@@ -44,9 +44,14 @@
 
 	//runBlock.$inject = ['$rootScope'];
 
-	function runBlock($rootScope, formlyConfig) {
+	function runBlock($rootScope, formlyConfig, formlyValidationMessages) {
 		'use strict';
 		console.log('AngularJS run() function...');
+
+		formlyValidationMessages.messages.required = getRequiredMessage;
+		function getRequiredMessage($viewValue, $modelValue, scope) {
+			return scope.to.label + ' is required';
+		};
 
 		formlyConfig.setType({
 			name: 'test',
@@ -71,13 +76,23 @@
 							<span class="md-display-1">{{to.card.headline}}</span>\
 						</md-card-title-text>\
 					</md-card-title>\
-					<md-divider></md-divider>\
 					<md-card-content>\
 						<formly-transclude></formly-transclude>\
 					</md-card-content>\
-					<md-card-actions layout="row" layout-align="center">\
+					<md-card-actions layout="row" layout-align="left">\
 					<md-button ng-repeat="action in to.card.actions" class={{action.class}} ng-click="">{{action.label}}</md-button>\
 					</md-card-actions>\
+				</md-card>'
+			].join(' ')
+		});
+
+		formlyConfig.setWrapper({
+			name: 'card_noHeaderNoActions',
+			template: [
+				'<md-card>\
+					<md-card-content>\
+						<formly-transclude></formly-transclude>\
+					</md-card-content>\
 				</md-card>'
 			].join(' ')
 		});
@@ -87,7 +102,7 @@
 			template: [
 				'<div layout="row" style="background:#e4e4e4;">\
 					<div flex="30">\
-						<div class="md-display-1" style="padding: 14px;">View All {{to.label}}s</div>\
+						<div class="md-display-1" style="padding: 14px;">{{to.cardLabel}}</div>\
 					</div>\
 					<div flex="65">\
 					</div>\
@@ -111,7 +126,7 @@
 		formlyConfig.setType({
 			name: 'card_progressTracker',
 			extends: 'progressTracker',
-			wrapper: ['card']
+			wrapper: ['card_noHeaderNoActions']
 		});
 
 		formlyConfig.setType({
@@ -144,7 +159,12 @@
 			}
 		});
 
+		formlyConfig.setType({
+			name: 'contact_Card',
+			templateUrl: 'contact_Card.html'
+		});
 
+		
 
 	}
 

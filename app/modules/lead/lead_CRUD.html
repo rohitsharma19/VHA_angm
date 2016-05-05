@@ -1,12 +1,12 @@
 <div flex layout-sm="column">
 	<!-- <form ng-submit="vm.onSubmit()" name="vm.form" novalidate> -->
-		<formly-form model="vm.lead" fields="vm.leadFields">
-			<!-- <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Submit</button>
+	<formly-form model="vm.lead" fields="vm.leadFields">
+		<!-- <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Submit</button>
 			<button type="button" class="btn btn-default" ng-click="vm.options.resetModel()">Reset</button> -->
-		</formly-form>
+	</formly-form>
 	<!-- </form> -->
 
-		<!-- <md-button class="md-primary md-raised" ng-click='alert("Test")'>Test Button!</md-button> -->
+	<!-- <md-button class="md-primary md-raised" ng-click='alert("Test")'>Test Button!</md-button> -->
 </div>
 
 
@@ -43,4 +43,29 @@
 
 <script type="text/ng-template" id="button.html">
 	<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method,model)'>{{to.label}}</md-button>
+</script>
+
+<script type="text/ng-template" id="contact_Card.html">
+	<div layout="row">
+		<div flex="20">
+			<md-card>
+				<md-card-content>
+					<md-list-item style="" role="listitem" class="md-2-line contact-item md-no-proxy ng-scope" ng-repeat="contact in to.contacts">
+						<img src="http://lorempixel.com/50/50/people?0" ng-src="http://lorempixel.com/50/50/people?0" class="md-avatar" alt="Roberto Karlos">
+						<div class="md-list-item-text compact">
+							<h3 class="ng-binding">{{contact.name}}</h3>
+							<p class="ng-binding">{{contact.email}}</p>
+						</div>
+					</md-list-item>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex="80">
+			<md-card>
+				<md-card-content>
+					<formly-form model="::$parent.model" fields="to.form.fields"></formly-form>
+				</md-card-content>
+			</md-card>
+		</div>
+	</div>
 </script>

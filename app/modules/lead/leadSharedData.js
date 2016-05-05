@@ -28,7 +28,8 @@
 			"templateOptions": {
 				"label": "ABN Number",
 				"type": "text",
-				"styleElements": "display:block;"
+				"styleElements": "display:block;",
+				"required": "true",
 			}
 		}, {
 			"key": "accName",
@@ -90,114 +91,268 @@
 			}
 		}];
 
+
 		var contactFields = [{
-			"elementAttributes": {
-				"layout": "row",
-				"layout-sm": "column"
-			},
-			"fieldGroup": [{
-				"type": "select",
-				"key": "title",
-				"className": "flex-20",
-				"templateOptions": {
-					"label": "Title",
-					"theme": "",
-					"multiple": true,
-					"styleElements": "display:block;",
-					"labelProp": "label",
-					"valueProp": "value",
-					"options": [{
-						"label": "Mr.",
-						"value": "Mr."
+			"type": "contact_Card",
+			"key": "contact_Card",
+			"templateOptions": {
+				"form": {
+					"fields": [{
+						"elementAttributes": {
+							"layout": "row",
+							"layout-sm": "column"
+						},
+						"fieldGroup": [{
+							"type": "select",
+							"key": "title",
+							"className": "flex-20",
+							"templateOptions": {
+								"label": "Title",
+								"theme": "",
+								"multiple": false,
+								"styleElements": "display:block;",
+								"labelProp": "label",
+								"valueProp": "value",
+								"options": [{
+									"label": "Mr.",
+									"value": "Mr."
+								}, {
+									"label": "Mrs.",
+									"value": "Mrs."
+								}, {
+									"label": "Ms.",
+									"value": "Ms."
+								}]
+							}
+						}, {
+							"key": "firstName",
+							"className": "flex-40",
+							"type": "input",
+							"templateOptions": {
+								"label": "First Name",
+								"styleElements": "display:block;"
+							}
+						}, {
+							"key": "lastName",
+							"className": "flex-40",
+							"type": "input",
+							"templateOptions": {
+								"label": "Last Name",
+								"styleElements": "display:block;"
+							}
+						}]
 					}, {
-						"label": "Mrs.",
-						"value": "Mrs."
+						"type": "datepicker",
+						"key": "dob",
+						"templateOptions": {
+							"theme": "custom",
+							"placeholder": "Date of Birth",
+							"styleElements": "display:block;",
+							"label": "Date of Birth"
+						}
 					}, {
-						"label": "Ms.",
-						"value": "Ms."
+						"key": "eMail",
+						"type": "input",
+						"templateOptions": {
+							"label": "E mail",
+							"type": "email",
+							"styleElements": "display:block;"
+						}
+					}, {
+						"key": "contactNum",
+						"type": "input",
+						"templateOptions": {
+							"label": "Phone Number",
+							"type": "number",
+							"styleElements": "display:block;"
+						}
+					}, {
+						"type": "select",
+						"key": "contactRole",
+						"templateOptions": {
+							"label": "Contact Mode",
+							"theme": "",
+							"styleElements": "display:block;",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Billing",
+								"value": "Billing"
+							}, {
+								"label": "Non-Billing",
+								"value": "Non-Billing"
+							}],
+							"flex": ""
+						}
+					}, {
+						"type": "select",
+						"key": "prefModOfCom",
+						"templateOptions": {
+							"label": "Preferred Mode of Communication",
+							"theme": "",
+							"styleElements": "display:block;",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Phone",
+								"value": "Phone"
+							}, {
+								"label": "Email",
+								"value": "Email"
+							}],
+							"flex": ""
+						}
+					}, {
+						"elementAttributes": {
+							"layout": "row",
+						},
+						"fieldGroup": [{
+							type: 'button',
+							templateOptions: {
+								label: 'Add Contact',
+								class: 'md-raised md-primary',
+								method: 'addContact'
+							}
+						}, {
+							type: 'button',
+							templateOptions: {
+								label: 'Edit Contact',
+								class: 'md-raised md-primary',
+								method: 'editContact'
+							}
+						}, {
+							type: 'button',
+							templateOptions: {
+								label: 'Delete Contact',
+								class: 'md-raised md-primary',
+								method: 'deleteContact'
+							}
+						}]
 					}]
-				}
-			}, {
-				"key": "firstName",
-				"className": "flex-40",
-				"type": "input",
-				"templateOptions": {
-					"label": "First Name",
-					"styleElements": "display:block;"
-				}
-			}, {
-				"key": "lastName",
-				"className": "flex-40",
-				"type": "input",
-				"templateOptions": {
-					"label": "Last Name",
-					"styleElements": "display:block;"
-				}
-			}]
-		}, {
-			"type": "datepicker",
-			"key": "dtOfBirth",
-			"templateOptions": {
-				"theme": "custom",
-				"placeholder": "Date of Birth",
-				"styleElements": "display:block;",
-				"label": "Date of Birth"
-			}
-		}, {
-			"key": "email",
-			"type": "input",
-			"templateOptions": {
-				"label": "E mail",
-				"type": "email",
-				"styleElements": "display:block;"
-			}
-		}, {
-			"key": "contactNum",
-			"type": "input",
-			"templateOptions": {
-				"label": "Phone Number",
-				"type": "number",
-				"styleElements": "display:block;"
-			}
-		}, {
-			"type": "select",
-			"key": "contactRole",
-			"templateOptions": {
-				"label": "Contact Mode",
-				"theme": "",
-				"styleElements": "display:block;",
-				"multiple": true,
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "Billing",
-					"value": "Billing"
-				}, {
-					"label": "Non-Billing",
-					"value": "Non-Billing"
-				}],
-				"flex": ""
-			}
-		}, {
-			"type": "select",
-			"key": "prefModOfCom",
-			"templateOptions": {
-				"label": "Preferred Mode of Communication",
-				"theme": "",
-				"styleElements": "display:block;",
-				"multiple": true,
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "Phone",
-					"value": "Phone"
-				}, {
-					"label": "Email",
-					"value": "Email"
-				}],
-				"flex": ""
+				},
+				contacts: [{
+					name: 'Rohit',
+					email: 'rht@gmail.com'
+				},{
+					name: 'Sukhi',
+					email: 'sukhi@gmail.com'
+				},{
+					name: 'Arpan',
+					email: 'arpan@gmail.com'
+				}]
 			}
 		}];
+
+		// var contactFields = [{
+		// 	"elementAttributes": {
+		// 		"layout": "row",
+		// 		"layout-sm": "column"
+		// 	},
+		// 	"fieldGroup": [{
+		// 		"type": "select",
+		// 		"key": "title",
+		// 		"className": "flex-20",
+		// 		"templateOptions": {
+		// 			"label": "Title",
+		// 			"theme": "",
+		// 			"multiple": false,
+		// 			"styleElements": "display:block;",
+		// 			"labelProp": "label",
+		// 			"valueProp": "value",
+		// 			"options": [{
+		// 				"label": "Mr.",
+		// 				"value": "Mr."
+		// 			}, {
+		// 				"label": "Mrs.",
+		// 				"value": "Mrs."
+		// 			}, {
+		// 				"label": "Ms.",
+		// 				"value": "Ms."
+		// 			}]
+		// 		}
+		// 	}, {
+		// 		"key": "firstName",
+		// 		"className": "flex-40",
+		// 		"type": "input",
+		// 		"templateOptions": {
+		// 			"label": "First Name",
+		// 			"styleElements": "display:block;"
+		// 		}
+		// 	}, {
+		// 		"key": "lastName",
+		// 		"className": "flex-40",
+		// 		"type": "input",
+		// 		"templateOptions": {
+		// 			"label": "Last Name",
+		// 			"styleElements": "display:block;"
+		// 		}
+		// 	}]
+		// }, {
+		// 	"type": "datepicker",
+		// 	"key": "dob",
+		// 	"templateOptions": {
+		// 		"theme": "custom",
+		// 		"placeholder": "Date of Birth",
+		// 		"styleElements": "display:block;",
+		// 		"label": "Date of Birth"
+		// 	}
+		// }, {
+		// 	"key": "eMail",
+		// 	"type": "input",
+		// 	"templateOptions": {
+		// 		"label": "E mail",
+		// 		"type": "email",
+		// 		"styleElements": "display:block;"
+		// 	}
+		// }, {
+		// 	"key": "contactNum",
+		// 	"type": "input",
+		// 	"templateOptions": {
+		// 		"label": "Phone Number",
+		// 		"type": "number",
+		// 		"styleElements": "display:block;"
+		// 	}
+		// }, {
+		// 	"type": "select",
+		// 	"key": "contactRole",
+		// 	"templateOptions": {
+		// 		"label": "Contact Mode",
+		// 		"theme": "",
+		// 		"styleElements": "display:block;",
+		// 		"multiple": false,
+		// 		"labelProp": "label",
+		// 		"valueProp": "value",
+		// 		"options": [{
+		// 			"label": "Billing",
+		// 			"value": "Billing"
+		// 		}, {
+		// 			"label": "Non-Billing",
+		// 			"value": "Non-Billing"
+		// 		}],
+		// 		"flex": ""
+		// 	}
+		// }, {
+		// 	"type": "select",
+		// 	"key": "prefModOfCom",
+		// 	"templateOptions": {
+		// 		"label": "Preferred Mode of Communication",
+		// 		"theme": "",
+		// 		"styleElements": "display:block;",
+		// 		"multiple": false,
+		// 		"labelProp": "label",
+		// 		"valueProp": "value",
+		// 		"options": [{
+		// 			"label": "Phone",
+		// 			"value": "Phone"
+		// 		}, {
+		// 			"label": "Email",
+		// 			"value": "Email"
+		// 		}],
+		// 		"flex": ""
+		// 	}
+		// }];
 
 		var segementationFields = [{
 			"type": "select",
@@ -206,7 +361,7 @@
 				"label": "Choose Service Type",
 				"theme": "",
 				"styleElements": "display:block;",
-				"multiple": true,
+				"multiple": false,
 				"labelProp": "label",
 				"valueProp": "value",
 				"options": [{
@@ -225,7 +380,7 @@
 				"label": "Choose Plan Type",
 				"theme": "",
 				"styleElements": "display:block;",
-				"multiple": true,
+				"multiple": false,
 				"labelProp": "label",
 				"valueProp": "value",
 				"options": [{
@@ -246,7 +401,7 @@
 				"label": "Assigned To Group",
 				"theme": "",
 				"styleElements": "display:block;",
-				"multiple": true,
+				"multiple": false,
 				"labelProp": "label",
 				"valueProp": "value",
 				"options": [{
@@ -265,7 +420,7 @@
 				"label": "Assigned To User",
 				"theme": "",
 				"styleElements": "display:block;",
-				"multiple": true,
+				"multiple": false,
 				"labelProp": "label",
 				"valueProp": "value",
 				"options": [{
@@ -284,7 +439,7 @@
 				"label": "Created By Organization",
 				"theme": "",
 				"styleElements": "display:block;",
-				"multiple": true,
+				"multiple": false,
 				"labelProp": "label",
 				"valueProp": "value",
 				"options": [{
@@ -359,7 +514,7 @@
 					card: {
 						imagePath: "",
 						headline: "Lead",
-						headlineBackgroundColor:"#e4e4e4",
+						headlineBackgroundColor: "#e4e4e4",
 						actions: [
 							// 	{
 							// 	class: 'md-raised md-primary',
@@ -368,7 +523,25 @@
 							// 		input: "lead"
 							// 	},
 							// 	label: 'Create Lead',
-							// 	hideExpression: 'true'
+							// 	hideExpression: 'model.leadMode!="QuickCreate" && model.leadMode!="Create"'
+							// },
+							// {
+							// 	class: 'md-raised md-primary',
+							// 	methodName: {
+							// 		name: "updateLead",
+							// 		input: "lead"
+							// 	},
+							// 	label: 'Update Lead',
+							// 	hideExpression: 'model.leadMode!="Update"'
+							// },
+							// {
+							// 	class: 'md-raised md-primary',
+							// 	methodName: {
+							// 		name: "deleteLead",
+							// 		input: "lead"
+							// 	},
+							// 	label: 'Delete Lead',
+							// 	hideExpression: 'model.leadMode!="Delete"'
 							// }
 						]
 					}
@@ -401,9 +574,9 @@
 				},
 				hideExpression: 'model.leadMode!="Delete"'
 			},
-			//  {
-			// 	type: 'test'
-			// }
+			 {
+				type: 'test'
+			}
 		];
 
 
@@ -438,29 +611,33 @@
 			type: 'ui-grid',
 			templateOptions: {
 				label: 'Lead',
+				cardLabel: 'View All Leads',
 				columnDefs: [{
-					field: 'leadId',
-					//cellTemplate: '<md-button class="md-primary" aria-label="leadId" ng-click=grid.appScope.clicked("openViewLead",row) style="margin: 0px 0px; font-size: 12px;">{{row.entity.leadId}}</md-button>'
-				}, {
-					field: 'creationDate'
-				}, {
-					field: 'compName'
-				}, {
-					field: 'abn'
-				}, {
-					field: 'firstName'
-				}, {
-					field: 'lastName'
-				}, {
-					field: 'eMail'
-				}, {
-					field: 'contactNum'
-				}, {
-					name: 'Actions',
-					//cellTemplate: '<div><md-button class="md-icon-button md-mini md-warning" ng-click=grid.appScope.clicked("openViewLead",row) style="min-width: 0px;"><md-icon style=" vertical-align: baseline;">remove_red_eye</md-icon></md-button><md-button class="md-icon-button md-primary md-raised md-mini" ng-click=grid.appScope.clicked("openEditLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary md-raised md-mini" ng-click=grid.appScope.clicked("openDeleteLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button></div>',
-					cellTemplate: '<md-button class="md-icon-button" ng-click=grid.appScope.clicked("openViewLead",row) style="min-width: 0px;"><md-icon style="color:rgb(68,138,255); vertical-align: baseline;">remove_red_eye</md-icon></md-button><md-button class="md-icon-button" ng-click=grid.appScope.clicked("openEditLead",row) style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click=grid.appScope.clicked("openDeleteLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
-					enableFiltering: false
-				}],
+						field: 'leadId',
+						//cellTemplate: '<md-button class="md-primary" aria-label="leadId" ng-click=grid.appScope.clicked("openViewLead",row) style="margin: 0px 0px; font-size: 12px;">{{row.entity.leadId}}</md-button>'
+					},
+					// {
+					// 	field: 'creationDate'
+					// },
+					{
+						field: 'compName'
+					}, {
+						field: 'abn'
+					}, {
+						field: 'firstName'
+					}, {
+						field: 'lastName'
+					}, {
+						field: 'eMail'
+					}, {
+						field: 'contactNum'
+					}, {
+						name: 'Actions',
+						//cellTemplate: '<div><md-button class="md-icon-button md-mini md-warning" ng-click=grid.appScope.clicked("openViewLead",row) style="min-width: 0px;"><md-icon style=" vertical-align: baseline;">remove_red_eye</md-icon></md-button><md-button class="md-icon-button md-primary md-raised md-mini" ng-click=grid.appScope.clicked("openEditLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary md-raised md-mini" ng-click=grid.appScope.clicked("openDeleteLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button></div>',
+						cellTemplate: '<md-button class="md-icon-button" ng-click=grid.appScope.clicked("openViewLead",row) style="min-width: 0px;"><md-icon style="color:rgb(68,138,255); vertical-align: baseline;">remove_red_eye</md-icon></md-button><md-button class="md-icon-button" ng-click=grid.appScope.clicked("openEditLead",row) style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-accent" ng-click=grid.appScope.clicked("openDeleteLead",row) style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
+						enableFiltering: false
+					}
+				],
 
 				onRegisterApi: ''
 			}

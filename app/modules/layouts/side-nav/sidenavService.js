@@ -20,36 +20,41 @@
 		function Menu ($http) {
 
 			var menu = [
-				
+
 					{
 						link: 'lead.QuickCreate',
-							name: 'Quick Lead Creation'
+							name: 'Quick Lead Creation',
+							icon: 'style'
 					},
 					{
 						link: 'lead.viewAll',
-							name: 'Lead'
+							name: 'Lead',
+							icon: 'supervisor_account'
 					},
-			    
+
 					{
 						link: 'opportunity.viewAll',
-							name: 'Opportunity'
+							name: 'Opportunity',
+							icon: 'business'
 					},
-			    
+
 					/*{
 						link: 'recommendation',
 							name: 'Recommendation'
 					},*/
-			    
+
 					{
 						link: 'quote.viewAll',
-							name: 'Quote'
+							name: 'Quote',
+							icon: 'storage'
 					},
-			    
+
 					{
 						link: 'agreement.viewAll',
-							name: 'Agreement'
+							name: 'Agreement',
+							icon: 'work'
 					},
-			    
+
 		  	];
 
 			return {

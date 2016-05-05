@@ -4,7 +4,7 @@
             <div layout="column" class="md-toolbar-tools-bottom inset">
                 <div layout="row">
                     <div flex="80" style="margin-top: 10px;">
-                        <div>Vodafone</div>
+                        <div><b>HOBS </b><span style="font-size: medium;">CPQ</span></div>
                     </div>
                 </div>
             </div>
@@ -16,15 +16,15 @@
                 </div>
                 <p> Dashboard </p>
             </md-list-item>
-            <md-list-item ng-repeat="item in vm.menu" ng-click="vm.navigateTo('home.' + item.link)">
-                <div class="inset" ng-show="item.icon">
-                    <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+            <md-list-item ng-repeat="item in vm.menu" ng-click="vm.navigateTo('home.' + item.link)" style="margin:6px 8px;">
+                <div class="inset" ng-show="item.icon" >
+                  <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
                 </div>
-                <p > {{ item.name }}</p>
+                <p> {{ item.name }} </p>
             </md-list-item>
             <md-divider></md-divider>
             <md-subheader>Admin</md-subheader>
-            <md-list-item ng-repeat="item in vm.admin" ng-click="vm.showSettingsBottom($event)" >
+            <md-list-item ng-repeat="item in vm.admin" ng-click="vm.showSettingsBottom($event)" style="margin:6px 8px;">
                 <div class="inset">
                     <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
                 </div>
@@ -40,7 +40,7 @@
             <md-button ng-click="layout.toggleSidenav('left')" hide-gt-md aria-label="Menu">
                 <ng-md-icon icon="menu"></ng-md-icon>
             </md-button>
-            <h3>Vodafone</h3>
+            <!-- <h3>Vodafone</h3> -->
             <span flex></span>
             <md-button aria-label="Search" ng-click="showSearch = !showSearch">
                 <ng-md-icon icon="search"></ng-md-icon>
