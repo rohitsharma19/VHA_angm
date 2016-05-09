@@ -235,10 +235,10 @@
 				contacts: [{
 					name: 'Rohit',
 					email: 'rht@gmail.com'
-				},{
+				}, {
 					name: 'Sukhi',
 					email: 'sukhi@gmail.com'
-				},{
+				}, {
 					name: 'Arpan',
 					email: 'arpan@gmail.com'
 				}]
@@ -480,104 +480,537 @@
 			}
 		}];
 
-		var lead_CRUD = [{
-				type: 'card_progressTracker',
-				templateOptions: {
-					totalSteps: 5,
-					steps: [{
-						status: 'todo',
-						label: 'Capture Initial Details'
-					}, {
-						status: 'todo',
-						label: 'Know your customer'
-					}, {
-						status: 'todo',
-						label: 'Recommendations'
-					}, {
-						status: 'todo',
-						label: 'Generate quote'
-					}, {
-						status: 'todo',
-						label: 'Generate agreement'
-					}],
-					card: {
-						imagePath: "",
-						headline: "",
-						actions: ''
-					}
-				},
-				hideExpression: 'model.leadMode!="QuickCreate"'
-			}, {
-				type: 'card_tabset',
-				templateOptions: {
-					tabs: tabs,
-					card: {
-						imagePath: "",
-						headline: "Lead",
-						headlineBackgroundColor: "#e4e4e4",
-						actions: [
-							// 	{
-							// 	class: 'md-raised md-primary',
-							// 	methodName: {
-							// 		name: "createLead",
-							// 		input: "lead"
-							// 	},
-							// 	label: 'Create Lead',
-							// 	hideExpression: 'model.leadMode!="QuickCreate" && model.leadMode!="Create"'
-							// },
-							// {
-							// 	class: 'md-raised md-primary',
-							// 	methodName: {
-							// 		name: "updateLead",
-							// 		input: "lead"
-							// 	},
-							// 	label: 'Update Lead',
-							// 	hideExpression: 'model.leadMode!="Update"'
-							// },
-							// {
-							// 	class: 'md-raised md-primary',
-							// 	methodName: {
-							// 		name: "deleteLead",
-							// 		input: "lead"
-							// 	},
-							// 	label: 'Delete Lead',
-							// 	hideExpression: 'model.leadMode!="Delete"'
-							// }
-						]
-					}
-				}
-			}, {
-				type: 'button',
-				templateOptions: {
-					label: 'Create Lead',
-					class: 'md-raised md-primary',
-					method: 'createLead'
-				},
-				hideExpression: 'model.leadMode!="QuickCreate" && model.leadMode!="Create"'
-					// expressionProperties: {
-					// 	'templateOptions.method': 'vm.createLead(vm.lead)'
-					// }
-			}, {
-				type: 'button',
-				templateOptions: {
-					label: 'Update Lead',
-					class: 'md-raised md-primary',
-					method: 'updateLead'
-				},
-				hideExpression: 'model.leadMode!="Update"'
-			}, {
-				type: 'button',
-				templateOptions: {
-					label: 'Delete Lead',
-					class: 'md-raised md-primary',
-					method: 'deleteLead'
-				},
-				hideExpression: 'model.leadMode!="Delete"'
-			},
-			 {
-				type: 'test'
-			}
-		];
+		// var lead_CRUD_bak = [{
+		// 	type: 'card_progressTracker',
+		// 	templateOptions: {
+		// 		totalSteps: 5,
+		// 		steps: [{
+		// 			status: 'todo',
+		// 			label: 'Capture Initial Details'
+		// 		}, {
+		// 			status: 'todo',
+		// 			label: 'Know your customer'
+		// 		}, {
+		// 			status: 'todo',
+		// 			label: 'Recommendations'
+		// 		}, {
+		// 			status: 'todo',
+		// 			label: 'Generate quote'
+		// 		}, {
+		// 			status: 'todo',
+		// 			label: 'Generate agreement'
+		// 		}],
+		// 		card: {
+		// 			imagePath: "",
+		// 			headline: "",
+		// 			actions: ''
+		// 		}
+		// 	},
+		// 	hideExpression: 'model.leadMode!="QuickCreate"'
+		// }, {
+		// 	type: 'card_tabset',
+		// 	templateOptions: {
+		// 		tabs: tabs,
+		// 		card: {
+		// 			imagePath: "",
+		// 			headline: "Lead",
+		// 			headlineBackgroundColor: "#e4e4e4",
+		// 			actions: [
+		// 				// 	{
+		// 				// 	class: 'md-raised md-primary',
+		// 				// 	methodName: {
+		// 				// 		name: "createLead",
+		// 				// 		input: "lead"
+		// 				// 	},
+		// 				// 	label: 'Create Lead',
+		// 				// 	hideExpression: 'model.leadMode!="QuickCreate" && model.leadMode!="Create"'
+		// 				// },
+		// 				// {
+		// 				// 	class: 'md-raised md-primary',
+		// 				// 	methodName: {
+		// 				// 		name: "updateLead",
+		// 				// 		input: "lead"
+		// 				// 	},
+		// 				// 	label: 'Update Lead',
+		// 				// 	hideExpression: 'model.leadMode!="Update"'
+		// 				// },
+		// 				// {
+		// 				// 	class: 'md-raised md-primary',
+		// 				// 	methodName: {
+		// 				// 		name: "deleteLead",
+		// 				// 		input: "lead"
+		// 				// 	},
+		// 				// 	label: 'Delete Lead',
+		// 				// 	hideExpression: 'model.leadMode!="Delete"'
+		// 				// }
+		// 			]
+		// 		}
+		// 	}
+		// }, {
+		// 	type: 'button',
+		// 	templateOptions: {
+		// 		label: 'Create Lead',
+		// 		class: 'md-raised md-primary',
+		// 		method: 'createLead'
+		// 	},
+		// 	hideExpression: 'model.leadMode!="QuickCreate" && model.leadMode!="Create"'
+		// 		// expressionProperties: {
+		// 		// 	'templateOptions.method': 'vm.createLead(vm.lead)'
+		// 		// }
+		// }, {
+		// 	type: 'button',
+		// 	templateOptions: {
+		// 		label: 'Update Lead',
+		// 		class: 'md-raised md-primary',
+		// 		method: 'updateLead'
+		// 	},
+		// 	hideExpression: 'model.leadMode!="Update"'
+		// }, {
+		// 	type: 'button',
+		// 	templateOptions: {
+		// 		label: 'Delete Lead',
+		// 		class: 'md-raised md-primary',
+		// 		method: 'deleteLead'
+		// 	},
+		// 	hideExpression: 'model.leadMode!="Delete"'
+		// }, {
+		// 	type: 'test'
+		// }];
+
+		var lead_CRUD = [
+  {
+    "wrapper": "wrapper_tabset",
+    "fieldGroup": [
+      {
+        "wrapper": "wrapper_tab",
+        "templateOptions": {
+          "title": "Basic Details",
+          "active": true
+        },
+        "fieldGroup": [
+          {
+            "key": "abn",
+            "type": "input",
+            "templateOptions": {
+              "label": "ABN Number",
+              "type": "text",
+              "styleElements": "display:block;"
+            }
+          },
+          {
+            "key": "accName",
+            "type": "input",
+            "templateOptions": {
+              "label": "Account Name",
+              "type": "text",
+              "styleElements": "display:block;"
+            }
+          },
+          {
+            "key": "acn",
+            "type": "input",
+            "templateOptions": {
+              "label": "ACN",
+              "type": "text",
+              "styleElements": "display:block;"
+            }
+          },
+          {
+            "key": "compName",
+            "type": "input",
+            "templateOptions": {
+              "label": "Company Name",
+              "type": "text",
+              "styleElements": "display:block;"
+            }
+          },
+          {
+            "type": "select",
+            "key": "custType",
+            "templateOptions": {
+              "label": "Customer Type",
+              "theme": "",
+              "multiple": false,
+              "styleElements": "display:block;",
+              "labelProp": "label",
+              "valueProp": "value",
+              "options": [
+                {
+                  "label": "New",
+                  "value": "New"
+                },
+                {
+                  "label": "Existing",
+                  "value": "Existing"
+                }
+              ]
+            }
+          },
+          {
+            "key": "pin",
+            "type": "input",
+            "templateOptions": {
+              "label": "PIN",
+              "type": "text",
+              "styleElements": "display:block;"
+            }
+          },
+          {
+            "key": "tradingAs",
+            "type": "input",
+            "templateOptions": {
+              "label": "Trading As",
+              "type": "text",
+              "styleElements": "display:block;"
+            }
+          }
+        ]
+      },
+      {
+        "wrapper": "wrapper_tab",
+        "elementAttributes": {
+          "layout": "row"
+        },
+        "templateOptions": {
+          "title": "Contact",
+          "active": false
+        },
+        "fieldGroup": [
+          {
+            "wrapper": "card",
+            "elementAttributes": {
+              "formlyFieldGroupClass": "flex-30"
+            },
+            "fieldGroup": [
+              {
+                "key": "pin",
+                "type": "input",
+                "templateOptions": {
+                  "label": "PIN",
+                  "type": "text",
+                  "styleElements": "display:block;"
+                }
+              },
+              {
+                "key": "pin",
+                "type": "input",
+                "templateOptions": {
+                  "label": "PIN",
+                  "type": "text",
+                  "styleElements": "display:block;"
+                }
+              },
+              {
+                "key": "pin",
+                "type": "input",
+                "templateOptions": {
+                  "label": "PIN",
+                  "type": "text",
+                  "styleElements": "display:block;"
+                }
+              }
+            ]
+          },
+          {
+            "wrapper": "card",
+            "elementAttributes": {
+              "formlyFieldGroupClass": "flex-70"
+            },
+            "fieldGroup": [
+              {
+                "elementAttributes": {
+                  "layout": "row",
+                  "layout-sm": "column"
+                },
+                "fieldGroup": [
+                  {
+                    "type": "select",
+                    "key": "title",
+                    "className": "flex-20",
+                    "templateOptions": {
+                      "label": "Title",
+                      "theme": "",
+                      "multiple": false,
+                      "styleElements": "display:block;",
+                      "labelProp": "label",
+                      "valueProp": "value",
+                      "options": [
+                        {
+                          "label": "Mr.",
+                          "value": "Mr."
+                        },
+                        {
+                          "label": "Mrs.",
+                          "value": "Mrs."
+                        },
+                        {
+                          "label": "Ms.",
+                          "value": "Ms."
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "key": "firstName",
+                    "className": "flex-40",
+                    "type": "input",
+                    "templateOptions": {
+                      "label": "First Name",
+                      "styleElements": "display:block;"
+                    }
+                  },
+                  {
+                    "key": "lastName",
+                    "className": "flex-40",
+                    "type": "input",
+                    "templateOptions": {
+                      "label": "Last Name",
+                      "styleElements": "display:block;"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "datepicker",
+                "key": "dob",
+                "templateOptions": {
+                  "theme": "custom",
+                  "placeholder": "Date of Birth",
+                  "styleElements": "display:block;",
+                  "label": "Date of Birth"
+                }
+              },
+              {
+                "key": "eMail",
+                "type": "input",
+                "templateOptions": {
+                  "label": "E mail",
+                  "type": "email",
+                  "styleElements": "display:block;"
+                }
+              },
+              {
+                "key": "contactNum",
+                "type": "input",
+                "templateOptions": {
+                  "label": "Phone Number",
+                  "type": "number",
+                  "styleElements": "display:block;"
+                }
+              },
+              {
+                "type": "select",
+                "key": "contactRole",
+                "templateOptions": {
+                  "label": "Contact Mode",
+                  "theme": "",
+                  "styleElements": "display:block;",
+                  "multiple": false,
+                  "labelProp": "label",
+                  "valueProp": "value",
+                  "options": [
+                    {
+                      "label": "Billing",
+                      "value": "Billing"
+                    },
+                    {
+                      "label": "Non-Billing",
+                      "value": "Non-Billing"
+                    }
+                  ],
+                  "flex": ""
+                }
+              },
+              {
+                "type": "select",
+                "key": "prefModOfCom",
+                "templateOptions": {
+                  "label": "Preferred Mode of Communication",
+                  "theme": "",
+                  "styleElements": "display:block;",
+                  "multiple": false,
+                  "labelProp": "label",
+                  "valueProp": "value",
+                  "options": [
+                    {
+                      "label": "Phone",
+                      "value": "Phone"
+                    },
+                    {
+                      "label": "Email",
+                      "value": "Email"
+                    }
+                  ],
+                  "flex": ""
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "wrapper": "wrapper_tab",
+        "templateOptions": {
+          "title": "Segementation",
+          "active": false
+        },
+        "fieldGroup": [
+          {
+            "type": "select",
+            "key": "businessStage",
+            "templateOptions": {
+              "label": "Choose Service Type",
+              "theme": "",
+              "styleElements": "display:block;",
+              "multiple": false,
+              "labelProp": "label",
+              "valueProp": "value",
+              "options": [
+                {
+                  "label": "Sim Only",
+                  "value": "Sim Only"
+                },
+                {
+                  "label": "With Device Only",
+                  "value": "With Device Only"
+                }
+              ],
+              "flex": ""
+            }
+          },
+          {
+            "type": "select",
+            "key": "status",
+            "templateOptions": {
+              "label": "Choose Plan Type",
+              "theme": "",
+              "styleElements": "display:block;",
+              "multiple": false,
+              "labelProp": "label",
+              "valueProp": "value",
+              "options": [
+                {
+                  "label": "Voice",
+                  "value": "Voice"
+                },
+                {
+                  "label": "Mobile Broadband",
+                  "value": "Mobile Broadband"
+                }
+              ],
+              "flex": ""
+            }
+          }
+        ]
+      },
+      {
+        "wrapper": "wrapper_tab",
+        "templateOptions": {
+          "title": "Additional Details",
+          "active": false
+        },
+        "fieldGroup": [
+          {
+            "type": "select",
+            "key": "assignToGrp",
+            "templateOptions": {
+              "label": "Assigned To Group",
+              "theme": "",
+              "styleElements": "display:block;",
+              "multiple": false,
+              "labelProp": "label",
+              "valueProp": "value",
+              "options": [
+                {
+                  "label": "Sales 1",
+                  "value": "Sales 1"
+                },
+                {
+                  "label": "Sales 2",
+                  "value": "Sales 2"
+                }
+              ],
+              "flex": ""
+            }
+          },
+          {
+            "type": "select",
+            "key": "assignToUser",
+            "templateOptions": {
+              "label": "Assigned To User",
+              "theme": "",
+              "styleElements": "display:block;",
+              "multiple": false,
+              "labelProp": "label",
+              "valueProp": "value",
+              "options": [
+                {
+                  "label": "Exective 1",
+                  "value": "Exective 1"
+                },
+                {
+                  "label": "Exective 2",
+                  "value": "Exective 2"
+                }
+              ],
+              "flex": ""
+            }
+          },
+          {
+            "type": "select",
+            "key": "createdByGroup",
+            "templateOptions": {
+              "label": "Created By Organization",
+              "theme": "",
+              "styleElements": "display:block;",
+              "multiple": false,
+              "labelProp": "label",
+              "valueProp": "value",
+              "options": [
+                {
+                  "label": "Third Party",
+                  "value": "Third Party"
+                },
+                {
+                  "label": "XXX",
+                  "value": "XXX"
+                }
+              ],
+              "flex": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "templateOptions": {
+      "label": "Create Lead",
+      "class": "md-raised md-primary",
+      "method": "createLead"
+    },
+    "hideExpression": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
+  },
+  {
+    "type": "button",
+    "templateOptions": {
+      "label": "Update Lead",
+      "class": "md-raised md-primary",
+      "method": "updateLead"
+    },
+    "hideExpression": "model.leadMode!=\"Update\""
+  },
+  {
+    "type": "button",
+    "templateOptions": {
+      "label": "Delete Lead",
+      "class": "md-raised md-primary",
+      "method": "deleteLead"
+    },
+    "hideExpression": "model.leadMode!=\"Delete\""
+  }
+];
 
 
 		// var columnDefs;
@@ -642,6 +1075,40 @@
 				onRegisterApi: ''
 			}
 		}];
+
+		// var lead_CRUD = [{
+		// 	"key": "eMail",
+		// 	"type": "input",
+		// 	"id": "eMail",
+		// 	"templateOptions": {
+		// 		"label": "E mail",
+		// 		"type": "email",
+		// 		"styleElements": "display:block;",
+		//
+		// 	}
+		// }, {
+		// 	"type": "select",
+		// 	"key": "createdByGroup",
+		// 	"id": "createdByGroup",
+		// 	"templateOptions": {
+		// 		"label": "Created By Organization",
+		// 		"theme": "",
+		// 		"styleElements": "display:block;",
+		// 		"multiple": false,
+		// 		"labelProp": "label",
+		// 		"valueProp": "value",
+		// 		"options": [{
+		// 			"label": "Third Party",
+		// 			"value": "Third Party"
+		// 		}, {
+		// 			"label": "XXX",
+		// 			"value": "XXX"
+		// 		}],
+		// 		"flex": ""
+		// 	}
+		// }, {
+		// 	"type": "test"
+		// }];
 
 		return {
 

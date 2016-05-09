@@ -39,6 +39,7 @@
 				vm.openViewOpportunity = function(row) {
 			    	console.log("Inside openViewOpportunity");
 			    	opportunityManager.openViewOpportunity(row.entity.opportunityId);
+						
 			    };
 
 			    vm.openEditOpportunity = function(row) {

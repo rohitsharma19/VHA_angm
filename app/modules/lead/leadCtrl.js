@@ -38,6 +38,7 @@
 			vm.openViewLead = function(row) {
 				console.log("Inside openViewLead");
 				leadManager.openViewLead(row.entity.leadId);
+				
 			};
 
 			vm.openEditLead = function(row) {

@@ -86,6 +86,25 @@
 			].join(' ')
 		});
 
+
+		formlyConfig.setWrapper({
+			name: 'card2',
+			template: [
+				'<div class="layout-row">\
+				<md-card class="">\
+					<md-card-content>\
+						<formly-transclude></formly-transclude>\
+					</md-card-content>\
+				</md-card>\
+				<md-card class="">\
+					<md-card-content>\
+						<formly-transclude></formly-transclude>\
+					</md-card-content>\
+				</md-card>\
+				</div>'
+			].join(' ')
+		});
+
 		formlyConfig.setWrapper({
 			name: 'card_noHeaderNoActions',
 			template: [
@@ -116,6 +135,40 @@
 				'
 			].join(' ')
 		});
+
+		formlyConfig.setWrapper({
+			name: 'wrapper_tabset',
+			template: [
+					'<md-tabs md-dynamic-height>\
+						<formly-transclude></formly-transclude>\
+					</md-tabs>\
+					'
+				].join(' ')
+			});
+
+			formlyConfig.setWrapper({
+				name: 'wrapper_tab',
+				template: [
+						'<md-tab active="{{to.active}}">\
+							<md-tab-label>\
+								{{to.title}}\
+							</md-tab-label>\
+							<md-tab-body>\
+								<formly-transclude></formly-transclude>\
+							</md-tab-body>\
+						</md-tab>\
+						'
+					].join(' ')
+				});
+
+				formlyConfig.setWrapper({
+					name: 'wrapper_div',
+					template: [
+							'<formly-transclude></formly-transclude>'
+						].join(' ')
+					});
+
+
 
 		formlyConfig.setType({
 			name: 'card_tabset',
@@ -164,7 +217,7 @@
 			templateUrl: 'contact_Card.html'
 		});
 
-		
+
 
 	}
 
