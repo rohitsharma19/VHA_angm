@@ -61,7 +61,7 @@
 				listMenu: function () {
 					return menu;
 				}
-		  	}
+			};
 
 		}
 

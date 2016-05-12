@@ -9,7 +9,7 @@
 	* Controller of the app
 	*/
 
-  	angular
+		angular
 		.module('agreement')
 		.controller('AgreementCtrl', Agreement);
 
@@ -26,16 +26,16 @@
 			var vm = this;
 
 			if($state.current.name === 'home.agreement.viewAll'){
-				
+
 				console.log("VIEW ALL AGREEMENTS");
-				
+
 				vm = agreementManager.setUpUiGrid(vm);
 
 				vm.openViewAgreement = function(row) {
 			    	console.log("Inside openViewAgreement");
 			    	agreementManager.openViewAgreement(row.entity.agreementId);
 			    };
-			    
+
 			    vm.openEditAgreement = function(row) {
 			    	console.log("inside openEditAgreement");
 			    	agreementManager.openEditAgreement(row.entity.agreementId);
@@ -53,7 +53,7 @@
 			}
 
 			if(($state.current.name === 'home.agreement.create')||($state.current.name === 'home.agreement.QuickCreate')){
-				
+
 				if($state.current.name === 'home.agreement.QuickCreate'){
 					console.log("CREATE QUICK AGREEMENT");
 					vm.agreementMode = "QuickCreate";
@@ -91,7 +91,7 @@
 				vm.agreement = agreementSharedData.getAgreement();
 				agreementSharedData.resetAgreement();
 			}
-			
+
 			if($state.current.name === 'home.agreement.delete'){
 				console.log("DELETE AGREEMENT");
 				vm.agreementMode = "Delete";

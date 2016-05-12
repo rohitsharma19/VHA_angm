@@ -27,44 +27,26 @@
 		    			var quote = new quoteModel();
 		    			return quote.get(quoteId);
 		    		},
-		    		
+
 				    getAllQuotes: function() {
 				    		//return $http.get("http://203.200.67.15/VHAMW/webapi/Quote");
 				    		var quote = new quoteModel();
 				    		return quote.getAll();
 				    },
-				    
+
 					createQuote: function(quoteData) {
-						
-						if( quoteData==null  ){
+
+						if( quoteData === null  ){
 							console.log("quoteData is null.");
-							alert('Please fill in the required details.');	
+							alert('Please fill in the required details.');
 						}
 						else{
-									quoteData.quoteId = "L" + Date.now();
-									
-									/* Creating formatted date */
-								    var today = new Date();
-								    var dd = today.getDate();
-								    var mm = today.getMonth()+1; //January is 0!
 
-								    var yyyy = today.getFullYear();
-								    if(dd<10){
-								        dd='0'+dd
-								    } 
-								    if(mm<10){
-								        mm='0'+mm
-								    } 
-								    var today = yyyy+"-"+mm+"-"+dd;
-								    /* Date formation ends here */
-									
-									quoteData.creationDate = today;
-									
 									var quote = new quoteModel(quoteData);
 									quote.save().then(
 							        	function (response) {
 					        				alert('Quote '+ quote.quoteId + ' created successfully.' );
-					        				
+
 					        				if($state.current.name === 'home.quote.QuickCreate'){
 												$state.go('home.agreement.QuickCreate');
 											}
@@ -78,7 +60,7 @@
 							        );
 						}
 					},
-		    		
+
 		    		updateQuote: function(quoteData) {
 		    			var quote = new quoteModel(quoteData);
 		    			quote.update().then(
@@ -91,7 +73,7 @@
 						    }
 				        );
 		    		},
-		    		
+
 		    		deleteQuote: function(quoteId) {
 		    			if(confirm('Are you sure you want to delete this quote?')){
 		    				var quote = new quoteModel();
@@ -156,7 +138,7 @@
 								console.log("getAllQuotes SUCCESS");
 								console.log("data received");
 								console.log(response.data);
-								
+
 								vm.gridOptions.data = response.data;
 							},
 						    function (error) {
@@ -167,7 +149,7 @@
 					},
 
 					openViewQuote: function(quoteId) {
-						new quoteModel().get(quoteId).then(	
+						new quoteModel().get(quoteId).then(
 				    		function (response) {
 				    			console.log("getQuote SUCCESS");
 				    			console.log(response.data);
@@ -184,7 +166,7 @@
 					},
 
 					openEditQuote: function(quoteId) {
-						new quoteModel().get(quoteId).then(	
+						new quoteModel().get(quoteId).then(
 				    		function (response) {
 				    			console.log("getQuote SUCCESS");
 				    			console.log(response.data);
@@ -201,7 +183,7 @@
 					},
 
 					openDeleteQuote: function(quoteId) {
-						new quoteModel().get(quoteId).then(	
+						new quoteModel().get(quoteId).then(
 				    		function (response) {
 				    			console.log("getQuote SUCCESS");
 				    			console.log(response.data);

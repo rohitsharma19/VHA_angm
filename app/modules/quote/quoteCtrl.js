@@ -26,26 +26,26 @@
 			var vm = this;
 
 			if($state.current.name === 'home.quote.viewAll'){
-				
+
 				console.log("VIEW ALL QUOTES");
-				
+
 				vm = quoteManager.setUpUiGrid(vm);
 
 				vm.openViewQuote = function(row) {
 			    	console.log("Inside openViewQuote");
 			    	quoteManager.openViewQuote(row.entity.quoteId);
 			    };
-			    
+
 			    vm.openEditQuote = function(row) {
 			    	console.log("inside openEditQuote");
-			    	quoteManager.openEditQuote(row.entity.quoteId);
+						quoteManager.openEditQuote(row.entity.quoteId);
 			    };
 
 			    vm.openDeleteQuote = function(row) {
 			    	console.log("inside openDeleteQuote");
-			    	quoteManager.openDeleteQuote(row.entity.quoteId);
+						quoteManager.openDeleteQuote(row.entity.quoteId);
 			    };
-
+					
 			    vm.openCreateQuote = function() {
 			    	console.log("inside openCreateQuote");
 			    	quoteManager.openCreateQuote();
@@ -53,7 +53,7 @@
 			}
 
 			if(($state.current.name === 'home.quote.create')||($state.current.name === 'home.quote.QuickCreate')){
-				
+
 				if($state.current.name === 'home.quote.create'){
 					console.log("CREATE QUOTE");
 					vm.quoteMode = "Create";
@@ -91,7 +91,7 @@
 				vm.quote = quoteSharedData.getQuote();
 				quoteSharedData.resetQuote();
 			}
-			
+
 			if($state.current.name === 'home.quote.delete'){
 				console.log("DELETE QUOTE");
 				vm.quoteMode = "Delete";

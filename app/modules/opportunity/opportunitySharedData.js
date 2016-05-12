@@ -29,7 +29,7 @@
 				"label": "Service Type",
 				"theme": "",
 				"multiple": false,
-				"styleElements": "display:block;",
+				"styleElements": 'display:block;',
 				"labelProp": "label",
 				"valueProp": "value",
 				"options": [{
@@ -442,6 +442,6 @@
 					return JSON.stringify(opportunity_viewAll);
 				}
 			}
-		}
+		};
 	}
 })();

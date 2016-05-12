@@ -16,6 +16,10 @@
 
 	function homeService($http) {
 
+		function getFeaturesList() {
+			return list;
+		}
+
 		var list = [
 			{"feature": "Implemented Best Practices, following: John Papa's Guide"},
 			{"feature": "Using Controller AS syntax"},
@@ -32,11 +36,6 @@
 		return {
 			getFeaturesList: getFeaturesList
 		};
-
-		function getFeaturesList() {
-			return list
-		}
-
 	}
 
 })();

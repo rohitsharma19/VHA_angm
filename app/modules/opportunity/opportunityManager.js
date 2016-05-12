@@ -36,28 +36,10 @@
 
 			createOpportunity: function(opportunityData) {
 
-				if (opportunityData == null) {
+				if (opportunityData === null) {
 					console.log("opportunityData is null.");
 					alert('Please fill in the required details.');
 				} else {
-					opportunityData.opportunityId = "L" + Date.now();
-
-					/* Creating formatted date */
-					var today = new Date();
-					var dd = today.getDate();
-					var mm = today.getMonth() + 1; //January is 0!
-
-					var yyyy = today.getFullYear();
-					if (dd < 10) {
-						dd = '0' + dd
-					}
-					if (mm < 10) {
-						mm = '0' + mm
-					}
-					var today = yyyy + "-" + mm + "-" + dd;
-					/* Date formation ends here */
-
-					opportunityData.opportunityCreationDate = today;
 
 					var opportunity = new opportunityModel(opportunityData);
 					opportunity.save().then(

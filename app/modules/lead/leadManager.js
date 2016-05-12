@@ -34,30 +34,11 @@
 
 					createLead: function(leadData) {
 
-						if( leadData==null  ){
+						if( leadData===null  ){
 							console.log("leadData is null.");
 							alert('Please fill in the required details.');
 						}
 						else{
-									leadData.leadId = "L" + Date.now();
-
-									/* Creating formatted date */
-								    var today = new Date();
-								    var dd = today.getDate();
-								    var mm = today.getMonth()+1; //January is 0!
-
-								    var yyyy = today.getFullYear();
-								    if(dd<10){
-								        dd='0'+dd
-								    }
-								    if(mm<10){
-								        mm='0'+mm
-								    }
-								    var today = yyyy+"-"+mm+"-"+dd;
-								    /* Date formation ends here */
-
-									leadData.creationDate = today;
-
 									var lead = new leadModel(leadData);
 									lead.save().then(
 							        	function (response) {

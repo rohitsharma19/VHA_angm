@@ -19,12 +19,12 @@
 
 		function Opportunity ($http) {
 
-			var opportunityModel = function(opportunityData){
+			var opportunityModel = function (opportunityData){
 				if(opportunityData){
 					angular.extend(this,opportunityData);
 				}
 			};
-			
+
 			opportunityModel.prototype = {
 				save: function(){
 					return $http.post("http://203.200.67.15/VHAMW/webapi/Opportunity",this);

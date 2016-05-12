@@ -27,44 +27,26 @@
 		    			var agreement = new agreementModel();
 		    			return agreement.get(agreementId);
 		    		},
-		    		
+
 				    getAllAgreements: function() {
 				    		//return $http.get("http://203.200.67.15/VHAMW/webapi/Agreement");
 				    		var agreement = new agreementModel();
 				    		return agreement.getAll();
 				    },
-				    
+
 					createAgreement: function(agreementData) {
-						
-						if( agreementData==null  ){
+
+						if( agreementData===null  ){
 							console.log("agreementData is null.");
-							alert('Please fill in the required details.');	
+							alert('Please fill in the required details.');
 						}
 						else{
-									agreementData.agreementId = "L" + Date.now();
-									
-									/* Creating formatted date */
-								    var today = new Date();
-								    var dd = today.getDate();
-								    var mm = today.getMonth()+1; //January is 0!
 
-								    var yyyy = today.getFullYear();
-								    if(dd<10){
-								        dd='0'+dd
-								    } 
-								    if(mm<10){
-								        mm='0'+mm
-								    } 
-								    var today = yyyy+"-"+mm+"-"+dd;
-								    /* Date formation ends here */
-									
-									//agreementData.creationDate = today;
-									
 									var agreement = new agreementModel(agreementData);
 									agreement.save().then(
 							        	function (response) {
 					        				alert('Agreement '+ agreement.agreementId + ' created successfully.' );
-					        				
+
 					        				if($state.current.name === 'home.agreement.QuickCreate'){
 												$state.go('home.dashboard');
 											}
@@ -80,7 +62,7 @@
 							        );
 						}
 					},
-		    		
+
 		    		updateAgreement: function(agreementData) {
 		    			var agreement = new agreementModel(agreementData);
 		    			agreement.update().then(
@@ -93,7 +75,7 @@
 						    }
 				        );
 		    		},
-		    		
+
 		    		deleteAgreement: function(agreementId) {
 		    			if(confirm('Are you sure you want to delete this agreement?')){
 		    				var agreement = new agreementModel();
@@ -161,7 +143,7 @@
 								console.log("getAllAgreements SUCCESS");
 								console.log("data received");
 								console.log(response.data);
-								
+
 								vm.gridOptions.data = response.data;
 							},
 						    function (error) {
@@ -172,7 +154,7 @@
 					},
 
 					openViewAgreement: function(agreementId) {
-						new agreementModel().get(agreementId).then(	
+						new agreementModel().get(agreementId).then(
 				    		function (response) {
 				    			console.log("getAgreement SUCCESS");
 				    			console.log(response.data);
@@ -189,7 +171,7 @@
 					},
 
 					openEditAgreement: function(agreementId) {
-						new agreementModel().get(agreementId).then(	
+						new agreementModel().get(agreementId).then(
 				    		function (response) {
 				    			console.log("getAgreement SUCCESS");
 				    			console.log(response.data);
@@ -206,7 +188,7 @@
 					},
 
 					openDeleteAgreement: function(agreementId) {
-						new agreementModel().get(agreementId).then(	
+						new agreementModel().get(agreementId).then(
 				    		function (response) {
 				    			console.log("getAgreement SUCCESS");
 				    			console.log(response.data);

@@ -40,7 +40,7 @@
 				},
 				resetQuote : function(){
 					quoteSharedData = null;
-				} 
-			}
+				}
+			};
 		}
 })();

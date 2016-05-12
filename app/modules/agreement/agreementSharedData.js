@@ -40,7 +40,7 @@
 				},
 				resetAgreement : function(){
 					agreementSharedData = null;
-				} 
-			}
+				}
+			};
 		}
 })();
