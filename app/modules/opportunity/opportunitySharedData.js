@@ -325,6 +325,8 @@
 			templateOptions: {
 				label: 'Opportunity',
 				cardLabel: 'View All Opportunities',
+				cardHeaderBackground:'#f2784b',
+				cardLabelColor:'white',
 				columnDefs: [{
 					field: 'opportunityId',
 					// cellTemplate: '<md-button class="md-primary" aria-label="opportunityId" ng-click="grid.appScope.vm.openViewOpportunity(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.opportunityId}}</md-button>'

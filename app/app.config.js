@@ -119,7 +119,7 @@
 		formlyConfig.setWrapper({
 			name: 'gridWrapper',
 			template: [
-				'<div layout="row" style="background:#e4e4e4;">\
+				'<div layout="row" style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}};">\
 					<div flex="30">\
 						<div class="md-display-1" style="padding: 14px;">{{to.cardLabel}}</div>\
 					</div>\

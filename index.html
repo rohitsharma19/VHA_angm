@@ -14,9 +14,10 @@
     <link rel="apple-touch-icon" sizes="72x72" href="app/assets/images/apple-touch-icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="app/assets/images/apple-touch-icon-114x114.png" />
     <!-- injector:css -->
-    <link rel="stylesheet" href="/app/assets/css/DashboardStatistics.css">
-    <link rel="stylesheet" href="/app/assets/css/progressBar.css">
-    <link rel="stylesheet" href="/app/assets/css/rht_components.css">
+    <link rel="stylesheet" href="/src/bower_components/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="/src/bower_components/angular-material-icons/angular-material-icons.css">
+    <link rel="stylesheet" href="/src/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/src/bower_components/angular-chart.js/dist/angular-chart.css">
     <!-- endinjector -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
@@ -162,9 +163,67 @@
 
 
 <!-- injector:js -->
-<script src="/app/assets/js/templates.js"></script>
-<script src="/app/assets/js/vha-angularbundle.js"></script>
-<script src="/app/assets/js/vha-appbundle.js"></script>
+<script src="/src/bower_components/es5-shim/es5-shim.js"></script>
+<script src="/src/bower_components/json3/lib/json3.min.js"></script>
+<script src="/src/bower_components/angular/angular.js"></script>
+<script src="/src/bower_components/angular-resource/angular-resource.js"></script>
+<script src="/src/bower_components/angular-aria/angular-aria.js"></script>
+<script src="/src/bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="/src/bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="/src/bower_components/angular-animate/angular-animate.js"></script>
+<script src="/src/bower_components/angular-ui-grid/ui-grid.js"></script>
+<script src="/src/bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="/src/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="/src/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+<script src="/src/bower_components/angular-messages/angular-messages.js"></script>
+<script src="/src/bower_components/angular-material/angular-material.js"></script>
+<script src="/src/bower_components/Chart.js/Chart.js"></script>
+<script src="/src/bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<script src="/src/bower_components/api-check/dist/api-check.js"></script>
+<script src="/src/bower_components/angular-formly/dist/formly.js"></script>
+<script src="/src/bower_components/angular-formly-material/dist/formly-material.js"></script>
+<script src="/app/app.js"></script>
+<script src="/app/app.config.js"></script>
+<script src="/app/modules/agreement/agreementModule.js"></script>
+<script src="/app/modules/home/homeModule.js"></script>
+<script src="/app/modules/lead/leadModule.js"></script>
+<script src="/app/modules/opportunity/opportunityModule.js"></script>
+<script src="/app/modules/quote/quoteModule.js"></script>
+<script src="/app/modules/recommendation/recommendationModule.js"></script>
+<script src="/app/modules/agreement/agreementRoute.js"></script>
+<script src="/app/modules/home/homeRoute.js"></script>
+<script src="/app/modules/lead/leadRoute.js"></script>
+<script src="/app/modules/opportunity/opportunityRoute.js"></script>
+<script src="/app/modules/quote/quoteRoute.js"></script>
+<script src="/app/modules/recommendation/recommendationRoute.js"></script>
+<script src="/app/modules/agreement/agreementCtrl.js"></script>
+<script src="/app/modules/home/homeCtrl.js"></script>
+<script src="/app/modules/layouts/main-page/mainPageCtrl.js"></script>
+<script src="/app/modules/layouts/side-nav/sidenavCtrl.js"></script>
+<script src="/app/modules/lead/leadCtrl.js"></script>
+<script src="/app/modules/opportunity/opportunityCtrl.js"></script>
+<script src="/app/modules/quote/quoteCtrl.js"></script>
+<script src="/app/modules/recommendation/recommendationCtrl.js"></script>
+<script src="/app/modules/agreement/agreementService.js"></script>
+<script src="/app/modules/home/homeService.js"></script>
+<script src="/app/modules/layouts/nav-bar/navBarService.js"></script>
+<script src="/app/modules/layouts/side-nav/sidenavService.js"></script>
+<script src="/app/modules/lead/leadService.js"></script>
+<script src="/app/modules/opportunity/opportunityService.js"></script>
+<script src="/app/modules/quote/quoteService.js"></script>
+<script src="/app/modules/recommendation/recommendationService.js"></script>
+<script src="/app/modules/agreement/agreementManager.js"></script>
+<script src="/app/modules/lead/leadManager.js"></script>
+<script src="/app/modules/opportunity/opportunityManager.js"></script>
+<script src="/app/modules/quote/quoteManager.js"></script>
+<script src="/app/modules/agreement/agreementModel.js"></script>
+<script src="/app/modules/lead/leadModel.js"></script>
+<script src="/app/modules/opportunity/opportunityModel.js"></script>
+<script src="/app/modules/quote/quoteModel.js"></script>
+<script src="/app/modules/agreement/agreementSharedData.js"></script>
+<script src="/app/modules/lead/leadSharedData.js"></script>
+<script src="/app/modules/opportunity/opportunitySharedData.js"></script>
+<script src="/app/modules/quote/quoteSharedData.js"></script>
 <!-- endinjector -->
 
 </body>

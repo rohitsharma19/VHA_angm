@@ -578,7 +578,7 @@
 		// }];
 
 		var lead_CRUD = [{
-			type: 'card_progressTracker',
+			type: 'progressTracker',
 			templateOptions: {
 				totalSteps: 5,
 				steps: [{
@@ -603,6 +603,8 @@
 					actions: ''
 				}
 			}
+		}, {
+			template: '<hr style="margin-top: 50px";>'
 		}, {
 			"wrapper": "wrapper_tabset",
 			"fieldGroup": [{
@@ -1000,6 +1002,8 @@
 			templateOptions: {
 				label: 'Lead',
 				cardLabel: 'View All Leads',
+				cardHeaderBackground: '#2C3E50',
+				cardLabelColor: 'white',
 				columnDefs: [{
 						field: 'leadId',
 						//cellTemplate: '<md-button class="md-primary" aria-label="leadId" ng-click=grid.appScope.clicked("openViewLead",row) style="margin: 0px 0px; font-size: 12px;">{{row.entity.leadId}}</md-button>'
