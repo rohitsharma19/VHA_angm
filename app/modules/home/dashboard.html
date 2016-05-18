@@ -20,7 +20,7 @@
 
     <div layout="row" layout-margin>
         <div flex=25 >
-            <div class="dashboard-stat blue-chambray" md-whiteframe="5">
+            <div class="dashboard-stat blue-chambray" md-whiteframe="3">
                 <div class="visual">
                     <i class="fa fa-tasks"></i>
                 </div>
@@ -39,7 +39,7 @@
         </div>
 
         <div flex=25>
-            <div class="dashboard-stat yellow-casablanca" md-whiteframe="5">
+            <div class="dashboard-stat yellow-casablanca" md-whiteframe="3">
                 <div class="visual">
                     <i class="fa fa-check-square-o"></i>
                 </div>
@@ -58,7 +58,7 @@
         </div>
 
         <div flex=25 >
-            <div class="dashboard-stat blue-hoki" md-whiteframe="5">
+            <div class="dashboard-stat blue-hoki" md-whiteframe="3">
                 <div class="visual">
                     <i class="fa fa-tasks"></i>
                 </div>
@@ -77,7 +77,7 @@
         </div>
 
         <div flex=25>
-            <div class="dashboard-stat red-pink" md-whiteframe="5">
+            <div class="dashboard-stat red-pink" md-whiteframe="3">
                 <div class="visual">
                     <i class="fa fa-check-square-o"></i>
                 </div>
@@ -97,8 +97,8 @@
     </div>
 
     <div layout="row">
-        <div flex=50>
-            <md-card md-whiteframe="5">
+        <div flex=33>
+            <md-card md-whiteframe="3">
               <md-card-title>
                 <md-card-title-text>
                   <span class="md-headline">Pipeline</span>
@@ -111,8 +111,8 @@
             </md-card>
         </div>
 
-        <div flex=50>
-            <md-card md-whiteframe="5">
+        <div flex=33>
+            <md-card md-whiteframe="3">
               <md-card-title>
                 <md-card-title-text>
                   <span class="md-headline">Current Month Activity</span>
@@ -124,6 +124,22 @@
               </md-card-content>
             </md-card>
         </div>
+
+        <div flex=33>
+            <md-card md-whiteframe="3">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">ABC</span>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="vm.donut.data" labels="vm.donut.labels" legend="true" colours="vm.donut.colours">
+					      </canvas>
+              </md-card-content>
+            </md-card>
+        </div>
+
+
     </div>
 
 </div>
