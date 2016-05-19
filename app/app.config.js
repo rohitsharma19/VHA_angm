@@ -268,6 +268,11 @@
 			}
 		});
 
+		formlyConfig.setType({
+			name:'SummaryDialogBox',
+			templateUrl: 'confirmationDialogueBox1.html'
+		});
+
 
 		formlyConfig.setType({
 			name: 'summaryCard',

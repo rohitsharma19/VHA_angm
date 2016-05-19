@@ -19,243 +19,41 @@
 
 	function Opportunity($http) {
 
-		//var opportunityMode = null;
 		var opportunitySharedData = null;
 
-		var commPrefFields = [{
-			"type": "select",
-			"key": "closureReason",
-			"templateOptions": {
-				"label": "Service Type",
-				"theme": "",
-				"multiple": false,
-				"styleElements": 'display:block;',
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "Voice",
-					"value": "Voice"
-				}, {
-					"label": "Data",
-					"value": "Data"
-				}]
-			}
-		}, {
-			"type": "select",
-			"key": "purchaseTimeFrame",
-			"templateOptions": {
-				"label": "Plan Type",
-				"theme": "",
-				"multiple": false,
-				"styleElements": "display:block;",
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "SIM Only",
-					"value": "SIM Only"
-				}, {
-					"label": "Option 2",
-					"value": "Option 2"
-				}]
-			}
-		}];
-
-
-		var contactFields = [{
-			"elementAttributes": {
-				"layout": "row",
-				"layout-sm": "column"
-			},
-			"fieldGroup": [{
-				"type": "select",
-				"key": "title",
-				"className": "flex-20",
-				"templateOptions": {
-					"label": "Title",
-					"theme": "",
-					"multiple": false,
-					"styleElements": "display:block;",
-					"labelProp": "label",
-					"valueProp": "value",
-					"options": [{
-						"label": "Mr.",
-						"value": "Mr."
-					}, {
-						"label": "Mrs.",
-						"value": "Mrs."
-					}, {
-						"label": "Ms.",
-						"value": "Ms."
-					}]
-				}
-			}, {
-				"key": "firstName",
-				"className": "flex-40",
-				"type": "input",
-				"templateOptions": {
-					"label": "First Name",
-					"styleElements": "display:block;"
-				}
-			}, {
-				"key": "lastName",
-				"className": "flex-40",
-				"type": "input",
-				"templateOptions": {
-					"label": "Last Name",
-					"styleElements": "display:block;"
-				}
-			}]
-		}, {
-			"type": "datepicker",
-			"key": "dateOfBirth",
-			"templateOptions": {
-				"theme": "custom",
-				"placeholder": "Date of Birth",
-				"styleElements": "display:block;",
-				"label": "Date of Birth"
-			}
-		}, {
-			"key": "emailAddress",
-			"type": "input",
-			"templateOptions": {
-				"label": "E mail",
-				"type": "email",
-				"styleElements": "display:block;"
-			}
-		}, {
-			"key": "contactNumber",
-			"type": "input",
-			"templateOptions": {
-				"label": "Phone Number",
-				"type": "number",
-				"styleElements": "display:block;"
-			}
-		}, {
-			"type": "select",
-			"key": "contactRole",
-			"templateOptions": {
-				"label": "Contact Mode",
-				"theme": "",
-				"styleElements": "display:block;",
-				"multiple": false,
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "Billing",
-					"value": "Billing"
-				}, {
-					"label": "Non-Billing",
-					"value": "Non-Billing"
-				}],
-				"flex": ""
-			}
-		}, {
-			"type": "select",
-			"key": "preferredModeOfCommmunication",
-			"templateOptions": {
-				"label": "Preferred Mode of Communication",
-				"theme": "",
-				"styleElements": "display:block;",
-				"multiple": false,
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "Phone",
-					"value": "Phone"
-				}, {
-					"label": "Email",
-					"value": "Email"
-				}],
-				"flex": ""
-			}
-		}];
-
-		var additionalDetailFields = [{
-			"type": "select",
-			"key": "assignedToGroup",
-			"templateOptions": {
-				"label": "Assigned To Group",
-				"theme": "",
-				"styleElements": "display:block;",
-				"multiple": false,
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "Sales 1",
-					"value": "Sales 1"
-				}, {
-					"label": "Sales 2",
-					"value": "Sales 2"
-				}],
-				"flex": ""
-			}
-		}, {
-			"type": "select",
-			"key": "assignedToUser",
-			"templateOptions": {
-				"label": "Assigned To User",
-				"theme": "",
-				"styleElements": "display:block;",
-				"multiple": false,
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "Exective 1",
-					"value": "Exective 1"
-				}, {
-					"label": "Exective 2",
-					"value": "Exective 2"
-				}],
-				"flex": ""
-			}
-		}, {
-			"type": "select",
-			"key": "createdByGroup",
-			"templateOptions": {
-				"label": "Created By Organization",
-				"theme": "",
-				"styleElements": "display:block;",
-				"multiple": false,
-				"labelProp": "label",
-				"valueProp": "value",
-				"options": [{
-					"label": "Third Party",
-					"value": "Third Party"
-				}, {
-					"label": "XXX",
-					"value": "XXX"
-				}],
-				"flex": ""
-			}
-		}];
-
-		var tabs = [{
-			title: 'Communication Preferences',
-			active: true,
-			form: {
-				options: {},
-				fields: commPrefFields
-			}
-		}, {
-			title: 'Contact',
-			form: {
-				options: {},
-				fields: contactFields
-			}
-		}, {
-			title: 'Additional Details',
-			form: {
-				options: {},
-				fields: additionalDetailFields
-			}
-		}];
-
-
-		var opportunity_CRUD = [
+		var opportunity_CRUD =[
 	{
 			"fieldGroup": [
 				{
-								"type":"summaryCard",
+					type: 'card_progressTracker',
+					templateOptions: {
+						totalSteps: 5,
+						steps: [{
+							status: 'done',
+							label: 'Capture Initial Details'
+						}, {
+							status: 'done',
+							label: 'Know your customer'
+						}, {
+							status: 'todo',
+							label: 'Recommendations'
+						}, {
+							status: 'todo',
+							label: 'Generate quote'
+						}, {
+							status: 'todo',
+							label: 'Generate agreement'
+						}],
+						card: {
+							imagePath: "",
+							headline: "",
+							actions: ''
+						}
+					}}],
+					hideExpression: 'model.self.opportunityMode!="QuickCreate"'
+				},
+				{
+								"type":"topHeaderDetails",
 								"templateOptions":{
 									"objectType":"leadDetails",
 									"style":"color:black; margin:5 auto; text-align:left; font-size:16px; padding:15px; margin:.2em 0; background-color: #80CBC4;",
@@ -267,7 +65,6 @@
 										},
 										{
 											"title":"Created By User",
-											// "type":"leadDetails",
 											"key":"createdByUser"
 										},
 										{
@@ -278,8 +75,7 @@
 									]
 								},
 								// "hideExpression": "model.self.opportunityMode!=\"QuickCreate\"&& model.self.opportunityMode!=\"Update\""
-							}]
-			},
+							},
 			{
 			"wrapper": "wrapper_tabset",
 			"fieldGroup": [
@@ -814,6 +610,9 @@
 		    "hideExpression": "model.self.opportunityMode!=\"Delete\""
 		  }
 	];
+
+
+
 
 
 		var opportunity_viewAll = [{

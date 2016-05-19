@@ -13,7 +13,7 @@
 		.module('lead')
 		.controller('LeadCtrl', Lead);
 
-	Lead.$inject = ['$state', 'leadManager', 'leadSharedData'];
+	Lead.$inject = ['$state', 'leadManager', 'leadSharedData','$mdDialog','$mdMedia','$scope'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Lead($state, leadManager, leadSharedData) {
+	function Lead($state, leadManager, leadSharedData, $mdDialog, $mdMedia, $scope) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -38,7 +38,7 @@
 			vm.openViewLead = function(row) {
 				console.log("Inside openViewLead");
 				leadManager.openViewLead(row.entity.leadId);
-				
+
 			};
 
 			vm.openEditLead = function(row) {
@@ -87,6 +87,52 @@
 				console.log(vm.leadFields);
 			};
 		}
+
+		vm.showAdvanced = function(lead) {
+    // var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: 'confirmationDialogueBox.html',
+			targetEvent: '',
+      parent: angular.element(document.body),
+      clickOutsideToClose:true
+      // fullscreen: useFullScreen
+    })
+    .then(function(answer)
+		{
+      // vm.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      // vm.status = 'You cancelled the dialog.';
+    }
+	);
+		console.log(vm.status);
+		vm.fields = JSON.parse(leadSharedData.getLayout('SummaryDialog'));
+    // $scope.$watch(function() {
+    //   return $mdMedia('xs') || $mdMedia('sm');
+    // },
+		// function(wantsFullScreen) {
+    //   vm.customFullscreen = (wantsFullScreen === true);
+    // });
+  };
+
+	function DialogController($scope, $mdDialog) {
+		$scope.lead =vm.lead;
+		console.log($scope.lead);
+		$scope.fields=vm.fields;
+   $scope.hide = function() {
+     $mdDialog.hide();
+   };
+   $scope.cancel = function() {
+     $mdDialog.cancel();
+   };
+	 $scope.save = function(answer) {
+		 vm.createLead(vm.lead);
+		 $mdDialog.hide(answer);
+	 };
+   $scope.answer = function(answer) {
+     $mdDialog.hide(answer);
+   };
+}
 
 
 

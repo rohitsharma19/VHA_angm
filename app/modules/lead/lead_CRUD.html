@@ -93,3 +93,39 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 		</div>
 	</div>
 </script>
+
+<script type="text/ng-template" id="confirmationDialogueBox.html">
+  <md-dialog aria-label=""  ng-cloak>
+        <formly-form model=lead fields=fields></formly-form>
+  <md-dialog-actions layout="row">
+    <span flex-33>
+    <md-button ng-click="save()" md-autofocus>
+      Save
+    </md-button>
+  </span>
+  <span flex-33>
+    <md-button ng-click="cancel()">
+    Cancel
+    </md-button>
+  </span>
+  </md-dialog-actions>
+</md-dialog>
+</script>
+
+<script type="text/ng-template" id="confirmationDialogueBox1.html">
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <span flex>{{to.heading}}</span>
+            </div>
+  </md-toolbar>
+  <md-dialog-content style="{{to.style}};">
+    <div class="md-dialog-content">
+  <div ng-repeat="itr in to.setOfFields" layout=row >
+<span style="background:ghostwhite;" flex=50 >{{itr.label}} </span>
+<span flex=50 >: {{model[itr.key]}}</span>
+</div>
+</div>
+</md-dialog-content>
+  </form>
+</script>
