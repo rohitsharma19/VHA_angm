@@ -48,10 +48,21 @@
 		'use strict';
 		console.log('AngularJS run() function...');
 
+		/*** validations code start ***/
 		formlyValidationMessages.messages.required = getRequiredMessage;
+
 		function getRequiredMessage($viewValue, $modelValue, scope) {
 			return scope.to.label + ' is required';
 		};
+
+		formlyValidationMessages.messages.pattern = function(viewValue, modelValue, scope) {
+			return viewValue + ' is Invalid Input. (Expected Input Stream: ' + scope.to.patternMessage + ')';
+		};
+
+		formlyValidationMessages.messages.validations = function(viewValue, modelValue, scope) {
+			return viewValue + ' is invalid';
+		};
+		/*** validations code end ***/
 
 		formlyConfig.setType({
 			name: 'test',
@@ -139,17 +150,17 @@
 		formlyConfig.setWrapper({
 			name: 'wrapper_tabset',
 			template: [
-					'<md-tabs md-dynamic-height>\
+				'<md-tabs md-dynamic-height>\
 						<formly-transclude></formly-transclude>\
 					</md-tabs>\
 					'
-				].join(' ')
-			});
+			].join(' ')
+		});
 
-			formlyConfig.setWrapper({
-				name: 'wrapper_tab',
-				template: [
-						'<md-tab active="{{to.active}}">\
+		formlyConfig.setWrapper({
+			name: 'wrapper_tab',
+			template: [
+				'<md-tab active="{{to.active}}">\
 							<md-tab-label>\
 								{{to.title}}\
 							</md-tab-label>\
@@ -158,15 +169,15 @@
 							</md-tab-body>\
 						</md-tab>\
 						'
-					].join(' ')
-				});
+			].join(' ')
+		});
 
-				formlyConfig.setWrapper({
-					name: 'wrapper_div',
-					template: [
-							'<formly-transclude></formly-transclude>'
-						].join(' ')
-					});
+		formlyConfig.setWrapper({
+			name: 'wrapper_div',
+			template: [
+				'<formly-transclude></formly-transclude>'
+			].join(' ')
+		});
 
 
 
@@ -210,6 +221,62 @@
 					targetScope.vm[functionName](functionParam);
 				};
 			}
+		});
+
+		formlyConfig.setType({
+			name: 'itemsList',
+			templateUrl: 'itemsList.html',
+			controller: function($scope) {
+				$scope.clicked = function(functionName, functionParam) {
+					console.log('functionName :' + functionName);
+					var targetScope = $scope;
+					while (!targetScope.vm) {
+						targetScope = targetScope.$parent;
+					}
+					targetScope.vm[functionName](functionParam);
+				};
+			}
+		});
+
+		formlyConfig.setType({
+			name: 'itemDetail',
+			templateUrl: 'itemDetail.html',
+			controller: function($scope) {
+				$scope.clicked = function(functionName, functionParam) {
+					console.log('functionName :' + functionName);
+					var targetScope = $scope;
+					while (!targetScope.vm) {
+						targetScope = targetScope.$parent;
+					}
+					targetScope.vm[functionName](functionParam);
+				};
+			}
+		});
+
+		formlyConfig.setType({
+			name: 'chips',
+			templateUrl: 'chips.html',
+			controller: function($scope) {
+				$scope.clicked = function(functionName, functionParam) {
+					console.log('functionName :' + functionName);
+					var targetScope = $scope;
+					while (!targetScope.vm) {
+						targetScope = targetScope.$parent;
+					}
+					targetScope.vm[functionName](functionParam);
+				};
+			}
+		});
+
+
+		formlyConfig.setType({
+			name: 'summaryCard',
+			template: '<md-card class="layout-row layout-wrap" style="{{to.style}};">\
+										  <div  ng-repeat="label in to.fields" class="{{to.class}}" >\
+										 		<div class="layout-row layout-wrap">\
+												<div flex-45>{{label.title}}</div> : <div flex-45>{{model[options.templateOptions.objectType][label.key]}} </div></div>\
+												</div>\
+											</md-card>'
 		});
 
 		formlyConfig.setType({

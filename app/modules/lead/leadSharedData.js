@@ -577,130 +577,79 @@
 		// 	type: 'test'
 		// }];
 
-		var lead_CRUD = [{
-			type: 'progressTracker',
-			templateOptions: {
-				totalSteps: 5,
-				steps: [{
-					status: 'todo',
-					label: 'Capture Initial Details'
-				}, {
-					status: 'todo',
-					label: 'Know your customer'
-				}, {
-					status: 'todo',
-					label: 'Recommendations'
-				}, {
-					status: 'todo',
-					label: 'Generate quote'
-				}, {
-					status: 'todo',
-					label: 'Generate agreement'
-				}],
-				card: {
-					imagePath: "",
-					headline: "",
-					actions: ''
-				}
-			}
-		}, {
-			template: '<hr style="margin-top: 50px";>'
-		}, {
-			"wrapper": "wrapper_tabset",
-			"fieldGroup": [{
-				"wrapper": "wrapper_tab",
-				"templateOptions": {
-					"title": "Basic Details",
-					"active": true
-				},
+		var lead_CRUD = [
+
+			//form starts here
+			{
+				"wrapper": "wrapper_tabset",
 				"fieldGroup": [{
-					"key": "abn",
-					"type": "input",
+					"wrapper": "wrapper_tab",
 					"templateOptions": {
-						"label": "ABN Number",
-						"type": "text",
-						"styleElements": "display:block;"
-					}
-				}, {
-					"key": "accName",
-					"type": "input",
-					"templateOptions": {
-						"label": "Account Name",
-						"type": "text",
-						"styleElements": "display:block;"
-					}
-				}, {
-					"key": "acn",
-					"type": "input",
-					"templateOptions": {
-						"label": "ACN",
-						"type": "text",
-						"styleElements": "display:block;"
-					}
-				}, {
-					"key": "compName",
-					"type": "input",
-					"templateOptions": {
-						"label": "Company Name",
-						"type": "text",
-						"styleElements": "display:block;"
-					}
-				}, {
-					"type": "select",
-					"key": "custType",
-					"templateOptions": {
-						"label": "Customer Type",
-						"theme": "",
-						"multiple": false,
-						"styleElements": "display:block;",
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "New",
-							"value": "New"
-						}, {
-							"label": "Existing",
-							"value": "Existing"
-						}]
-					}
-				}, {
-					"key": "pin",
-					"type": "input",
-					"templateOptions": {
-						"label": "PIN",
-						"type": "text",
-						"styleElements": "display:block;"
-					}
-				}, {
-					"key": "tradingAs",
-					"type": "input",
-					"templateOptions": {
-						"label": "Trading As",
-						"type": "text",
-						"styleElements": "display:block;"
-					}
-				}]
-			}, {
-				"wrapper": "wrapper_tab",
-				"elementAttributes": {
-					"layout": "row"
-				},
-				"templateOptions": {
-					"title": "Contact",
-					"active": false
-				},
-				"fieldGroup": [{
-					"wrapper": "card",
-					"elementAttributes": {
-						"formlyFieldGroupClass": "flex-30"
+						"title": "Basic Details",
+						"active": true
 					},
 					"fieldGroup": [{
-						"key": "pin",
+						"key": "abn",
 						"type": "input",
 						"templateOptions": {
-							"label": "PIN",
+							"label": "ABN Number",
 							"type": "text",
-							"styleElements": "display:block;"
+							"styleElements": "display:block;",
+							"required": "true",
+							"pattern": '([0-9]{11})',
+							"patternMessage": "11 Digit Number"
+						}
+					}, {
+						"key": "accName",
+						"type": "input",
+						"templateOptions": {
+							"label": "Account Name",
+							"type": "text",
+							"styleElements": "display:block;",
+							"required": "true",
+							"pattern": '([a-zA-Z ]{3,30})',
+							"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters"
+						}
+					}, {
+						"key": "acn",
+						"type": "input",
+						"templateOptions": {
+							"label": "ACN",
+							"type": "text",
+							"styleElements": "display:block;",
+							"required": "true",
+							"pattern": '([0-9]{9})',
+							"patternMessage": "9 Digit Number"
+						}
+					}, {
+						"key": "compName",
+						"type": "input",
+						"templateOptions": {
+							"label": "Company Name",
+							"type": "text",
+							"styleElements": "display:block;",
+							"required": "true",
+							"pattern": "",
+							"patternMessage": ""
+						}
+					}, {
+						"type": "select",
+						"key": "custType",
+						"templateOptions": {
+							"label": "Customer Type",
+							"theme": "",
+							"multiple": false,
+							"styleElements": "display:block;",
+							"required": "true",
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "New",
+								"value": "New"
+							}, {
+								"label": "Existing",
+								"value": "Existing"
+							}]
 						}
 					}, {
 						"key": "pin",
@@ -708,266 +657,381 @@
 						"templateOptions": {
 							"label": "PIN",
 							"type": "text",
-							"styleElements": "display:block;"
+							"styleElements": "display:block;",
+							"required": "true",
+							"pattern": '([0-9]{6})',
+							"patternMessage": "6 Digit Number"
 						}
 					}, {
-						"key": "pin",
+						"key": "tradingAs",
 						"type": "input",
 						"templateOptions": {
-							"label": "PIN",
+							"label": "Trading As",
 							"type": "text",
-							"styleElements": "display:block;"
+							"styleElements": "display:block;",
+							"pattern": '([a-zA-Z ]{3,30})',
+							"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters.",
 						}
 					}]
 				}, {
-					"wrapper": "card",
+					"wrapper": "wrapper_tab",
 					"elementAttributes": {
-						"formlyFieldGroupClass": "flex-70"
+						"layout": "row"
+					},
+					"templateOptions": {
+						"title": "Contact",
+						"active": false
 					},
 					"fieldGroup": [{
+						"wrapper": "card",
 						"elementAttributes": {
-							"layout": "row",
-							"layout-sm": "column"
+							"formlyFieldGroupClass": "flex-30"
 						},
 						"fieldGroup": [{
-							"type": "select",
-							"key": "title",
-							"className": "flex-20",
+							"key": "pin",
+							"type": "input",
 							"templateOptions": {
-								"label": "Title",
-								"theme": "",
-								"multiple": false,
+								"label": "PIN",
+								"type": "text",
+								"styleElements": "display:block;"
+							}
+						}, {
+							"key": "pin",
+							"type": "input",
+							"templateOptions": {
+								"label": "PIN",
+								"type": "text",
+								"styleElements": "display:block;"
+							}
+						}, {
+							"key": "pin",
+							"type": "input",
+							"templateOptions": {
+								"label": "PIN",
+								"type": "text",
+								"styleElements": "display:block;"
+							}
+						}]
+					}, {
+						"wrapper": "card",
+						"elementAttributes": {
+							"formlyFieldGroupClass": "flex-70"
+						},
+						"fieldGroup": [{
+							"elementAttributes": {
+								"layout": "row",
+								"layout-sm": "column"
+							},
+							"fieldGroup": [{
+								"type": "select",
+								"key": "title",
+								"className": "flex-20",
+								"templateOptions": {
+									"label": "Title",
+									"theme": "",
+									"multiple": false,
+									"styleElements": "display:block;",
+									"required": "true",
+									"labelProp": "label",
+									"valueProp": "value",
+									"options": [{
+										"label": "Mr.",
+										"value": "Mr."
+									}, {
+										"label": "Mrs.",
+										"value": "Mrs."
+									}, {
+										"label": "Ms.",
+										"value": "Ms."
+									}]
+								}
+							}, {
+								"key": "firstName",
+								"className": "flex-40",
+								"type": "input",
+								"templateOptions": {
+									"label": "First Name",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": '([a-zA-Z ]{3,30})',
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters.",
+								}
+							}, {
+								"key": "lastName",
+								"className": "flex-40",
+								"type": "input",
+								"templateOptions": {
+									"label": "Last Name",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": '([a-zA-Z ]{3,30})',
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters.",
+								}
+							}]
+						}, {
+							"key": "contactNum",
+							"type": "input",
+							"templateOptions": {
+								"label": "Phone Number",
+								"type": "number",
 								"styleElements": "display:block;",
+								"required": "true",
+								"pattern": '([0-9]{10})',
+								"patternMessage": "Only Numbers. 10 Digits"
+							}
+						}, {
+							"type": "datepicker",
+							"key": "dob",
+							"templateOptions": {
+								"theme": "custom",
+								"placeholder": "Date of Birth",
+								"styleElements": "display:block;",
+								"label": "Date of Birth",
+								"required": "true",
+								"md-min-date": "1/1/2015",
+								"md-max-date": "1/1/2016",
+								// "pattern": "([0-9]{11})",
+								"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}",
+								"patternMessage": "yyyy-mm-dd ."
+							}
+						}, {
+							"key": "eMail",
+							"type": "input",
+							"templateOptions": {
+								"label": "E mail",
+								"type": "email",
+								"styleElements": "display:block;",
+								"required": "true",
+								"pattern": '([_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))',
+								"patternMessage": "For ex. example@domain.com ."
+							}
+						}, {
+							"type": "select",
+							"key": "contactRole",
+							"templateOptions": {
+								"label": "Contact Mode",
+								"theme": "",
+								"styleElements": "display:block;",
+								"required": "true",
+								"multiple": false,
 								"labelProp": "label",
 								"valueProp": "value",
 								"options": [{
-									"label": "Mr.",
-									"value": "Mr."
+									"label": "Billing",
+									"value": "Billing"
 								}, {
-									"label": "Mrs.",
-									"value": "Mrs."
-								}, {
-									"label": "Ms.",
-									"value": "Ms."
-								}]
+									"label": "Non-Billing",
+									"value": "Non-Billing"
+								}],
+								"flex": ""
 							}
 						}, {
-							"key": "firstName",
-							"className": "flex-40",
-							"type": "input",
+							"type": "select",
+							"key": "prefModOfCom",
 							"templateOptions": {
-								"label": "First Name",
-								"styleElements": "display:block;"
-							}
-						}, {
-							"key": "lastName",
-							"className": "flex-40",
-							"type": "input",
-							"templateOptions": {
-								"label": "Last Name",
-								"styleElements": "display:block;"
+								"label": "Preferred Mode of Communication",
+								"theme": "",
+								"styleElements": "display:block;",
+								"required": "true",
+								"multiple": false,
+								"labelProp": "label",
+								"valueProp": "value",
+								"options": [{
+									"label": "Phone",
+									"value": "Phone"
+								}, {
+									"label": "Email",
+									"value": "Email"
+								}],
+								"flex": ""
 							}
 						}]
-					}, {
-						"type": "datepicker",
-						"key": "dob",
-						"templateOptions": {
-							"theme": "custom",
-							"placeholder": "Date of Birth",
-							"styleElements": "display:block;",
-							"label": "Date of Birth"
-						}
-					}, {
-						"key": "eMail",
-						"type": "input",
-						"templateOptions": {
-							"label": "E mail",
-							"type": "email",
-							"styleElements": "display:block;"
-						}
-					}, {
-						"key": "contactNum",
-						"type": "input",
-						"templateOptions": {
-							"label": "Phone Number",
-							"type": "number",
-							"styleElements": "display:block;"
-						}
-					}, {
+					}]
+				}, {
+					"wrapper": "wrapper_tab",
+					"templateOptions": {
+						"title": "Segementation",
+						"active": false
+					},
+					"fieldGroup": [{
 						"type": "select",
-						"key": "contactRole",
+						"key": "industryType",
 						"templateOptions": {
-							"label": "Contact Mode",
+							"label": "Industry Type",
 							"theme": "",
 							"styleElements": "display:block;",
+							"required": "true",
 							"multiple": false,
 							"labelProp": "label",
 							"valueProp": "value",
 							"options": [{
-								"label": "Billing",
-								"value": "Billing"
+								"label": "Sim Only",
+								"value": "Sim Only"
 							}, {
-								"label": "Non-Billing",
-								"value": "Non-Billing"
+								"label": "With Device Only",
+								"value": "With Device Only"
 							}],
 							"flex": ""
 						}
 					}, {
 						"type": "select",
-						"key": "prefModOfCom",
+						"key": "businessStage",
 						"templateOptions": {
-							"label": "Preferred Mode of Communication",
+							"label": "Business Stage",
 							"theme": "",
 							"styleElements": "display:block;",
 							"multiple": false,
 							"labelProp": "label",
 							"valueProp": "value",
 							"options": [{
-								"label": "Phone",
-								"value": "Phone"
+								"label": "Voice",
+								"value": "Voice"
 							}, {
-								"label": "Email",
-								"value": "Email"
+								"label": "Mobile Broadband",
+								"value": "Mobile Broadband"
+							}],
+							"flex": ""
+						}
+					}]
+				}, {
+					"wrapper": "wrapper_tab",
+					"templateOptions": {
+						"title": "Additional Details",
+						"active": false
+					},
+					"fieldGroup": [{
+						"type": "select",
+						"key": "assignToGrp",
+						"templateOptions": {
+							"label": "Assigned To Group",
+							"theme": "",
+							"styleElements": "display:block;",
+							"required": "true",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Sales 1",
+								"value": "Sales 1"
+							}, {
+								"label": "Sales 2",
+								"value": "Sales 2"
+							}],
+							"flex": ""
+						}
+					}, {
+						"type": "select",
+						"key": "assignToUser",
+						"templateOptions": {
+							"label": "Assigned To User",
+							"theme": "",
+							"styleElements": "display:block;",
+							"required": "true",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Exective 1",
+								"value": "Exective 1"
+							}, {
+								"label": "Exective 2",
+								"value": "Exective 2"
+							}],
+							"flex": ""
+						}
+					}, {
+						"type": "select",
+						"key": "createdByUser",
+						"templateOptions": {
+							"label": "Created By User",
+							"theme": "",
+							"styleElements": "display:block;",
+							"disabled": true,
+							"required": "true",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Third Party",
+								"value": "Third Party"
+							}, {
+								"label": "XXX",
+								"value": "XXX"
+							}],
+							"flex": ""
+						}
+					}, {
+						"type": "select",
+						"key": "createdByGroup",
+						"templateOptions": {
+							"label": "Created By Group",
+							"theme": "",
+							"styleElements": "display:block;",
+							"disabled": true,
+							"required": "true",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Third Party",
+								"value": "Third Party"
+							}, {
+								"label": "XXX",
+								"value": "XXX"
+							}],
+							"flex": ""
+						}
+					}, {
+						"type": "select",
+						"key": "status",
+						"templateOptions": {
+							"label": "status",
+							"theme": "",
+							"styleElements": "display:block;",
+							"required": "true",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Qualified",
+								"value": "Qualified"
+							}, {
+								"label": "New",
+								"value": "New"
+							}, {
+								"label": "Old",
+								"value": "Old"
 							}],
 							"flex": ""
 						}
 					}]
 				}]
 			}, {
-				"wrapper": "wrapper_tab",
+				"type": "button",
 				"templateOptions": {
-					"title": "Segementation",
-					"active": false
+					"label": "Create Lead",
+					"class": "md-raised md-primary",
+					"method": "createLead"
 				},
-				"fieldGroup": [{
-					"type": "select",
-					"key": "businessStage",
-					"templateOptions": {
-						"label": "Choose Service Type",
-						"theme": "",
-						"styleElements": "display:block;",
-						"multiple": false,
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "Sim Only",
-							"value": "Sim Only"
-						}, {
-							"label": "With Device Only",
-							"value": "With Device Only"
-						}],
-						"flex": ""
-					}
-				}, {
-					"type": "select",
-					"key": "status",
-					"templateOptions": {
-						"label": "Choose Plan Type",
-						"theme": "",
-						"styleElements": "display:block;",
-						"multiple": false,
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "Voice",
-							"value": "Voice"
-						}, {
-							"label": "Mobile Broadband",
-							"value": "Mobile Broadband"
-						}],
-						"flex": ""
-					}
-				}]
+				"hideExpression": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
 			}, {
-				"wrapper": "wrapper_tab",
+				"type": "button",
 				"templateOptions": {
-					"title": "Additional Details",
-					"active": false
+					"label": "Update Lead",
+					"class": "md-raised md-primary",
+					"method": "updateLead"
 				},
-				"fieldGroup": [{
-					"type": "select",
-					"key": "assignToGrp",
-					"templateOptions": {
-						"label": "Assigned To Group",
-						"theme": "",
-						"styleElements": "display:block;",
-						"multiple": false,
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "Sales 1",
-							"value": "Sales 1"
-						}, {
-							"label": "Sales 2",
-							"value": "Sales 2"
-						}],
-						"flex": ""
-					}
-				}, {
-					"type": "select",
-					"key": "assignToUser",
-					"templateOptions": {
-						"label": "Assigned To User",
-						"theme": "",
-						"styleElements": "display:block;",
-						"multiple": false,
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "Exective 1",
-							"value": "Exective 1"
-						}, {
-							"label": "Exective 2",
-							"value": "Exective 2"
-						}],
-						"flex": ""
-					}
-				}, {
-					"type": "select",
-					"key": "createdByGroup",
-					"templateOptions": {
-						"label": "Created By Organization",
-						"theme": "",
-						"styleElements": "display:block;",
-						"multiple": false,
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "Third Party",
-							"value": "Third Party"
-						}, {
-							"label": "XXX",
-							"value": "XXX"
-						}],
-						"flex": ""
-					}
-				}]
-			}]
-		}, {
-			"type": "button",
-			"templateOptions": {
-				"label": "Create Lead",
-				"class": "md-raised md-primary",
-				"method": "createLead"
-			},
-			"hideExpression": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
-		}, {
-			"type": "button",
-			"templateOptions": {
-				"label": "Update Lead",
-				"class": "md-raised md-primary",
-				"method": "updateLead"
-			},
-			"hideExpression": "model.leadMode!=\"Update\""
-		}, {
-			"type": "button",
-			"templateOptions": {
-				"label": "Delete Lead",
-				"class": "md-raised md-primary",
-				"method": "deleteLead"
-			},
-			"hideExpression": "model.leadMode!=\"Delete\""
-		}];
+				"hideExpression": "model.leadMode!=\"Update\""
+			}, {
+				"type": "button",
+				"templateOptions": {
+					"label": "Delete Lead",
+					"class": "md-raised md-primary",
+					"method": "deleteLead"
+				},
+				"hideExpression": "model.leadMode!=\"Delete\""
+			}
+		];
 
 
 		// var columnDefs;

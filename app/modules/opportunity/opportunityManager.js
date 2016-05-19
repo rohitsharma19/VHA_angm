@@ -15,9 +15,9 @@
 	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 	// function Name ($http, someSevide) {...}
 
-	Opportunity.$inject = ['$state', 'opportunityModel', 'opportunitySharedData'];
+	Opportunity.$inject = ['$state', 'opportunityModel', 'opportunitySharedData','sharedService'];
 
-	function Opportunity($state, opportunityModel, opportunitySharedData) {
+	function Opportunity($state, opportunityModel, opportunitySharedData, sharedService) {
 
 
 		var opportunityManager = {
@@ -36,17 +36,35 @@
 
 			createOpportunity: function(opportunityData) {
 
-				if (opportunityData === null) {
+				if (opportunityData == null) {
 					console.log("opportunityData is null.");
 					alert('Please fill in the required details.');
 				} else {
+					// opportunityData.opportunityId = "L" + Date.now();
+					//
+					// /* Creating formatted date */
+					// var today = new Date();
+					// var dd = today.getDate();
+					// var mm = today.getMonth() + 1; //January is 0!
+					//
+					// var yyyy = today.getFullYear();
+					// if (dd < 10) {
+					// 	dd = '0' + dd
+					// }
+					// if (mm < 10) {
+					// 	mm = '0' + mm
+					// }
+					// var today = yyyy + "-" + mm + "-" + dd;
+					// /* Date formation ends here */
+					//
+					// opportunityData.opportunityCreationDate = today;
 
 					var opportunity = new opportunityModel(opportunityData);
 					opportunity.save().then(
 						function(response) {
 							alert('Opportunity ' + opportunity.opportunityId + ' created successfully.');
 							if ($state.current.name === 'home.opportunity.QuickCreate') {
-								$state.go('home.quote.QuickCreate');
+								$state.go('home.recommendation.QuickCreate');
 							} else if ($state.current.name === 'home.opportunity.create') {
 								$state.go('home.opportunity.viewAll');
 							}
@@ -93,54 +111,6 @@
 
 			inflateUiGrid: function(vm) {
 
-				// vm.gridOptions = {};
-				// vm.gridOptions.enableHorizontalScrollbar = 2;
-				// vm.gridOptions.enableVerticalScrollbar = 2;
-				// vm.gridOptions.enableFiltering=true;
-				//
-				// vm.gridOptions.columnDefs = [
-				// 		{ field: 'opportunityId',
-				// 			cellTemplate:'<md-button class="md-primary" aria-label="opportunityId" ng-click="grid.appScope.vm.openViewOpportunity(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.opportunityId}}</md-button>'
-				// 		},
-				// 		{ field: 'opportunityName' },
-				// 		{ field: 'opportunitySource' },
-				// 		{ field: 'opportunityType' },
-				// 		/*{ field: 'opportunitySize' },
-				// 		{ field: 'purchaseTimeFrame' },
-				// 		{ field: 'probability' },
-				// 		{ field: 'competitor' },*/
-				// 		/*{ field: 'requestedDate' },
-				// 		{ field: 'closedDate' },*/
-				// 		{ field: 'closureReason' },
-				// 		{ field: 'territoryCodeOrRegion' },
-				// 		{ field: 'stage' },
-				// 		/*{ field: 'autoAssignFlag' },
-				// 		{ field: 'opportunityRisksFlag' },
-				// 		{ field: 'opportunityPotentialFlag' },
-				// 		{ field: 'solutionOptionsFlag' },
-				// 		{ field: 'communicationPreference' },
-				// 		{ field: 'assignedToGroup' },
-				// 		{ field: 'assignedToUser' },
-				// 		{ field: 'createdByUser' },
-				// 		{ field: 'createdByGroup' },
-				// 		{ field: 'opportunityCreationDate' },
-				// 		{ field: 'opportunityLastUpdateDate' },
-				// 		{ field: 'title' },
-				// 		{ field: 'firstName' },
-				// 		{ field: 'lastName' },
-				// 		{ field: 'contactNumber' },
-				// 		{ field: 'dateOfBirth' },
-				// 		{ field: 'emailAddress' },
-				// 		{ field: 'contactRole' },
-				// 		{ field: 'preferredModeOfCommmunication' },*/
-				// 		{ field: 'leadId' },
-				// 		{ field: 'opportunityVersion' },
-				// 		{ name:  'Actions',
-				// 			cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditOpportunity(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteOpportunity(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
-				// 			enableFiltering:false
-				// 		}
-				//         ];
-
 				opportunityManager.getAllOpportunitys().then(
 					function(response) {
 						console.log("getAllOpportunitys SUCCESS");
@@ -162,10 +132,21 @@
 					function(response) {
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
+						var opportunity = {self:{}, leadDetails:{}};
+						opportunity.self = response.data;
 
-						opportunitySharedData.setOpportunity(response.data);
-
-						$state.go('home.opportunity.view');
+						sharedService.getLead(opportunity.self.leadId).then(
+							function(response){
+								opportunity.leadDetails = response.data;
+								console.log(opportunity.leadDetails);
+								opportunitySharedData.setOpportunity(opportunity);
+								$state.go('home.opportunity.view');
+							},
+							function(error) {
+								console.log("getOpportunity_Lead ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getOpportunity ERROR");
@@ -179,10 +160,21 @@
 					function(response) {
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
+						var opportunity = {self:{}, leadDetails:{}};
+						opportunity.self = response.data;
 
-						opportunitySharedData.setOpportunity(response.data);
-
-						$state.go('home.opportunity.edit');
+						sharedService.getLead(opportunity.self.leadId).then(
+							function(response){
+								opportunity.leadDetails = response.data;
+								console.log(opportunity.leadDetails);
+								opportunitySharedData.setOpportunity(opportunity);
+								$state.go('home.opportunity.edit');
+							},
+							function(error) {
+								console.log("getOpportunity_Lead ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getOpportunity ERROR");
@@ -196,10 +188,21 @@
 					function(response) {
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
+						var opportunity = {self:{}, leadDetails:{}};
+						opportunity.self = response.data;
 
-						opportunitySharedData.setOpportunity(response.data);
-
-						$state.go('home.opportunity.delete');
+						sharedService.getLead(opportunity.self.leadId).then(
+							function(response){
+								opportunity.leadDetails = response.data;
+								console.log(opportunity.leadDetails);
+								opportunitySharedData.setOpportunity(opportunity);
+								$state.go('home.opportunity.view');
+							},
+							function(error) {
+								console.log("getOpportunity_Lead ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getOpportunity ERROR");

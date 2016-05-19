@@ -42,10 +42,10 @@
 									var lead = new leadModel(leadData);
 									lead.save().then(
 							        	function (response) {
-					        				alert('Lead '+ lead.leadId + ' created successfully.' );
-
+					        				alert('Lead '+ response.data.leadId + ' created successfully.' );
+														console.log(response.data);
 					        				if($state.current.name === 'home.lead.QuickCreate'){
-					        					$state.go('home.opportunity.QuickCreate');
+					        					$state.go('home.opportunity.QuickCreate', {leadDetails: response.data});
 					        				}
 					        				else if($state.current.name === 'home.lead.create'){
 					        					$state.go('home.lead.viewAll');

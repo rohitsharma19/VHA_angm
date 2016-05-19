@@ -20,6 +20,9 @@
       },
       {
         "name": "agreement"
+      },
+      {
+        "name": "shared"
       }
     ],
     "menu": [

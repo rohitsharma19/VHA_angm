@@ -36,6 +36,7 @@
 				[175, 200, 250, 177, 141, 265],
 				[130, 100, 80, 99, 60, 30]
 			],
+			colors : ["#ffe6e6","#e6e6ff","#f2f2f2","#f2f5f2","#f7f2f2","#f2f2f5"],
 			onClick: function(points, evt) {
 				console.log(points, evt);
 			}
@@ -60,6 +61,60 @@
 			data: [35, 10, 55],
 			colours: ['#e35b5a', '#FFA500', '#66B366']
 		};
+
+		vm.line1 = {
+			labels: ['Aug 15', 'Sep 15', 'Oct 15', 'Nov 15', 'Dec 15', 'Jan 16'],
+			series: ['Need Analysis', 'Prospecting', 'Perception Analysis'],
+			data: [
+				[200, 220, 280, 180, 150, 300],
+				[175, 200, 250, 177, 141, 265],
+				[130, 100, 80, 99, 60, 30]
+			],
+			onClick: function(points, evt) {
+				console.log(points, evt);
+			}
+		};
+
+		vm.bar1 = {
+			labels: ['14/12/2015', '21/12/2015', '28/12/2015', '4/1/2016', '11/1/2016'],
+			/*labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],*/
+			series: ['Call', 'Presentations', 'Meeting'],
+
+			data: [
+				[51, 4, 6, 11, 27],
+				[15, 24, 62, 31, 17],
+				[30, 48, 46, 59, 36]
+			],
+
+			colors : ["#ffe6e6","#e6e6ff","#f2f2f2"]
+		};
+
+		// vm.radar = {
+		// 	labels : ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+		//
+		// 	data : [
+		// 		[65, 59, 90, 81, 56, 55, 40],
+		// 		[28, 48, 40, 19, 96, 27, 100]
+		// 	],
+		//
+		// 	colors : ["#ffe6e6","#e6e6ff","#f2f2f2","#f2f5f2","#f7f2f2","#f2f2f5"]
+		// };
+
+		vm.radar = {
+			labels: ["Chrome", "Mozilla", "Safari", "IE10", "iPhone"],
+			datasets: [{
+				label: "First dataset",
+				fillColor: "rgba(255,255,255,0.2)",
+				strokeColor: "#fff",
+				pointColor: "#00796b",
+				pointStrokeColor: "#fff",
+				pointHighlightFill: "#fff",
+				pointHighlightStroke: "#fff",
+				data: [5, 6, 7, 8, 6]
+			}],
+		};
+
+
 
 	}
 

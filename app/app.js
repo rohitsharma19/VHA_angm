@@ -28,6 +28,7 @@
 		'recommendation',
 		'quote',
 		'agreement',
+		'shared'
 	]);
 
 })();

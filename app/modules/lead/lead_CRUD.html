@@ -1,3 +1,27 @@
+<style>
+md-datepicker ~ [ng-messages],
+md-datepicker ~ [ng-messages] [ng-message-exp]:not(.md-char-counter){
+  padding-right: 5px;
+  padding-left: 0;
+}
+
+md-datepicker.ng-invalid ~ [ng-messages],
+md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
+  font-size: 12px;
+  line-height: 14px;
+  overflow: hidden;
+  transition: all .3s cubic-bezier(.55,0,.55,.2);
+  opacity: 1;
+  margin-top: 0;
+  padding-top: 5px;
+}
+
+md-datepicker.ng-invalid ~ [ng-messages],
+md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
+  color: rgb(221,44,0);
+}
+</style>
+
 <div flex layout-sm="column">
 	<!-- <form ng-submit="vm.onSubmit()" name="vm.form" novalidate> -->
 	<formly-form model="vm.lead" fields="vm.leadFields">

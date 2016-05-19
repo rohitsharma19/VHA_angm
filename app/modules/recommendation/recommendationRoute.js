@@ -18,15 +18,15 @@ angular.module('recommendation')
 				controller: 'RecommendationCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.recommendationCreation', {
-				url:'/quickLead',
+			.state('home.recommendation.QuickCreate', {
+				url: '/QuickCreate',
 				templateUrl: 'app/modules/recommendation/recommendationCreation.html',
 				controller: 'RecommendationCtrl',
 				controllerAs: 'vm'
 			})
-			.state('home.recommendation.QuickCreate', {
-				url:'/QuickCreate',
-				templateUrl: 'app/modules/opportunity/recommendation_CRUD.html',
+			.state('home.recommendationCreation', {
+				url:'/quickLead',
+				templateUrl: 'app/modules/recommendation/recommendationCreation.html',
 				controller: 'RecommendationCtrl',
 				controllerAs: 'vm'
 			});

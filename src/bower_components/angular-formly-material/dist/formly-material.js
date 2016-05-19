@@ -623,7 +623,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 20 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n    <md-datepicker ng-model=\"model[options.key]\" md-theme=\"{{to.theme}}\"></md-datepicker>\n</div>\n";
+	module.exports = "<md-datepicker ng-model=\"model[options.key]\" md-theme=\"{{to.theme}}\"></md-datepicker>";
 
 /***/ },
 /* 21 */

@@ -10,16 +10,17 @@
 
 angular.module('opportunity')
 	.config(['$stateProvider', function ($stateProvider) {
-		
+
 		$stateProvider
 			.state('home.opportunity', {
 				url:'/opportunity',
 				templateUrl: 'app/modules/opportunity/opportunity.html',
-				controller: 'OpportunityCtrl',
-				controllerAs: 'vm'
+				// controller: 'OpportunityCtrl',
+				// controllerAs: 'vm'
 			})
 			.state('home.opportunity.QuickCreate', {
 				url:'/QuickCreate',
+				params: {leadDetails: 'null'},
 				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'
