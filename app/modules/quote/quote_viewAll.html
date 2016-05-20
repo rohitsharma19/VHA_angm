@@ -1,5 +1,5 @@
-<div>
-	
+<!-- <div>
+
 	<div layout="row" >
 		<div flex="30">
 			<h2 class="md-title">View All Quotes</h2>
@@ -13,9 +13,16 @@
 		</div>
 	</div>
 
-	<div>
-      <!-- <div id="grid1" ui-grid="{ data: vm.myData }" class="grid"></div> -->
+	<div> -->
+      <!-- <div id="grid1" ui-grid="{ data: vm.myData }" class="grid"></div>
       <div id="grid1" ui-grid="vm.gridOptions" class="grid"></div>
     </div>
+</div> -->
+<div>
+<formly-form model="vm.quotesList" fields="vm.quoteFields" ></formly-form>
+
 </div>
 
+<script type="text/ng-template" id="uiGrid.html">
+<div ui-grid="{ data: model, columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
+</script>

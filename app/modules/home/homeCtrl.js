@@ -36,7 +36,7 @@
 				[175, 200, 250, 177, 141, 265],
 				[130, 100, 80, 99, 60, 30]
 			],
-			colors : ["#ffe6e6","#e6e6ff","#f2f2f2","#f2f5f2","#f7f2f2","#f2f2f5"],
+			colors: ["#ffe6e6", "#e6e6ff", "#f2f2f2", "#f2f5f2", "#f7f2f2", "#f2f2f5"],
 			onClick: function(points, evt) {
 				console.log(points, evt);
 			}
@@ -86,32 +86,36 @@
 				[30, 48, 46, 59, 36]
 			],
 
-			colors : ["#ffe6e6","#e6e6ff","#f2f2f2"]
+			colors: ["#ffe6e6", "#e6e6ff", "#f2f2f2"]
 		};
 
-		// vm.radar = {
-		// 	labels : ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-		//
-		// 	data : [
-		// 		[65, 59, 90, 81, 56, 55, 40],
-		// 		[28, 48, 40, 19, 96, 27, 100]
-		// 	],
-		//
-		// 	colors : ["#ffe6e6","#e6e6ff","#f2f2f2","#f2f5f2","#f7f2f2","#f2f2f5"]
-		// };
-
 		vm.radar = {
-			labels: ["Chrome", "Mozilla", "Safari", "IE10", "iPhone"],
-			datasets: [{
-				label: "First dataset",
-				fillColor: "rgba(255,255,255,0.2)",
-				strokeColor: "#fff",
-				pointColor: "#00796b",
-				pointStrokeColor: "#fff",
-				pointHighlightFill: "#fff",
-				pointHighlightStroke: "#fff",
-				data: [5, 6, 7, 8, 6]
-			}],
+			labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+
+			data: [
+				[65, 59, 90, 81, 56, 55, 40],
+				[28, 48, 40, 19, 96, 27, 100]
+			],
+
+			colors: ["#ffe6e6", "#e6e6ff", "#f2f2f2", "#f2f5f2", "#f7f2f2", "#f2f2f5"]
+		};
+
+		vm.map = {
+			center: {
+				latitude: 40,
+				longitude: -99
+			},
+			zoom: 8,
+			marker : {
+				id: 0,
+				coords: {
+					latitude: 40.1451,
+					longitude: -99.6680
+				},
+				options: {
+					draggable: true
+				}
+			}
 		};
 
 

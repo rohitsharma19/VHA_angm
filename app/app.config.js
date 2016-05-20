@@ -131,10 +131,11 @@
 			name: 'gridWrapper',
 			template: [
 				'<div layout="row" style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}};">\
-					<div flex="30">\
+					<div flex="75">\
 						<div class="md-display-1" style="padding: 14px;">{{to.cardLabel}}</div>\
 					</div>\
-					<div flex="65">\
+					<div flex="20">\
+					<h2>Total : {{model.self.discountedPrice}}</h2>\
 					</div>\
 					<div flex="5">\
 						<md-button class="md-fab" ng-click=clicked("openCreate"+options.templateOptions.label)>\
@@ -175,7 +176,9 @@
 		formlyConfig.setWrapper({
 			name: 'wrapper_div',
 			template: [
-				'<formly-transclude></formly-transclude>'
+				'<div style="{{to.div_style}}">\
+						<formly-transclude></formly-transclude>\
+				</div>'
 			].join(' ')
 		});
 
@@ -190,6 +193,43 @@
 		formlyConfig.setType({
 			name: 'card_progressTracker',
 			extends: 'progressTracker',
+			wrapper: ['card_noHeaderNoActions']
+		});
+
+		formlyConfig.setType({
+			name: 'list_of_cndn',
+			template: '<div>\
+								  <span style="color:red;text-align:center;"class="md-display-1">{{to.headline}}</span>\
+									<p>{{to.brief}}</p>\
+								  <md-list>\
+								    <md-list-item class=\"md-2-line\" ng-repeat=\"item in to.list1\">\
+								      <div class=\"md-list-item-text\">\
+											<li>\
+								      <p style="color:black;">{{item}}</p>\
+											<br>\
+								      </div>\
+									  </md-list-item>\
+									</md-list>\
+								</div>\
+								<md-checkbox id="check" md-no-ink aria-label=\"Checkbox No Ink\" ng-model=\"data.cb5\" class=\"md-primary\">\
+								{{to.label}}\
+								</md-checkbox>',
+			wrapper: ['card_noHeaderNoActions']
+		});
+
+		formlyConfig.setType({
+			name: 'product_details',
+			templateUrl: 'productSummary.html',
+			wrapper: ['card_noHeaderNoActions']
+		});
+
+		formlyConfig.setType({
+			name: 'agreement_Details',
+			templateUrl: 'agreementDetails.html'
+		});
+		formlyConfig.setType({
+			name: 'signature',
+			templateUrl: 'signature.html',
 			wrapper: ['card_noHeaderNoActions']
 		});
 
@@ -269,7 +309,7 @@
 		});
 
 		formlyConfig.setType({
-			name:'SummaryDialogBox',
+			name: 'SummaryDialogBox',
 			templateUrl: 'confirmationDialogueBox1.html'
 		});
 
@@ -287,6 +327,16 @@
 		formlyConfig.setType({
 			name: 'contact_Card',
 			templateUrl: 'contact_Card.html'
+		});
+
+		formlyConfig.setType({
+			name: 'topHeaderDetails',
+			template: '<md-card class="layout-row layout-wrap" style="{{to.style}};">\
+								  <div  style="width:1362px" ng-repeat="label in to.fields" class="{{to.class}}" >\
+								 		<div class="layout-row layout-wrap">\
+										<div flex-45>{{label.title}}</div> : <div flex-45>{{model[options.templateOptions.objectType][label.key]}} </div></div>\
+										</div>\
+									</md-card>'
 		});
 
 

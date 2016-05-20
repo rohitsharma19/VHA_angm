@@ -97,6 +97,104 @@
 	</div>
 
 	<div layout="row">
+		<div flex=33>
+			<md-card md-whiteframe="3">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">Pipeline</span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<canvas id="line" class="chart chart-line chart-xl" chart-data="vm.line.data" chart-labels="vm.line.labels" chart-legend="true" click="line.onClick" chart-series="vm.line.series">
+					</canvas>
+				</md-card-content>
+			</md-card>
+		</div>
+
+		<div flex=33>
+			<md-card md-whiteframe="3">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">Current Month Activity</span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<canvas id="bar" class="chart chart-bar" chart-data="vm.bar.data" chart-labels="vm.bar.labels" chart-series="vm.bar.series" chart-legend="true" options="vm.bar.options" chart-colours="vm.bar.colours">
+					</canvas>
+				</md-card-content>
+			</md-card>
+		</div>
+
+		<div flex=33>
+			<md-card md-whiteframe="3">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">Opportunity Categorization</span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<canvas id="doughnut" class="chart chart-doughnut chart-xs" data="vm.donut.data" labels="vm.donut.labels" legend="true" colours="vm.donut.colours">
+					</canvas>
+				</md-card-content>
+			</md-card>
+		</div>
+	</div>
+
+	<div layout="row">
+		<div flex=66>
+			<md-card md-whiteframe="3">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">Latest Leads Generated</span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
+						<!-- <ui-gmap-marker ng-repeat="marker in vm.map.markers" idkey="vm.map.marker.id" coords="vm.map.marker.coords" click="vm.map.marker.id" options="vm.map.marker.options">
+						</ui-gmap-marker> -->
+						<ui-gmap-marker coords="vm.map.marker.coords" options="vm.map.marker.options" events="vm.map.marker.events" idkey="vm.map.marker.id">
+        		</ui-gmap-marker>
+					</ui-gmap-google-map>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div flex=33>
+			<md-card md-whiteframe="3">
+				<img ng-src="./../../app/assets/images/zoozoo-vodafone-wallpaper-4.jpg" class="md-card-image" alt="Washed Out">
+				<md-card-actions layout="row" layout-align="end center" style="margin:-26px 10px 0 0;">
+					<md-button class="md-fab md-mini md-primary" aria-label="Menu">
+						<md-icon md-svg-src="./../../app/assets/images/ic_more_vert_white_24px.svg"></md-icon>
+					</md-button>
+					<md-button class="md-fab md-mini md-warn" aria-label="Menu">
+						<md-icon md-svg-src="./../../app/assets/images/ic_menu_white_24px.svg"></md-icon>
+					</md-button>
+				</md-card-actions>
+				<md-card-content>
+					<!-- <div layout="row"> -->
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-headline">Featured Product Of Month</span>
+							</md-card-title-text>
+						</md-card-title>
+					<!-- </div> -->
+				</md-card-content>
+			</md-card>
+		</div>
+	</div>
+
+	<div layout="row">
+		<div flex=33>
+			<md-card md-whiteframe="3" style="background-color:#009688">
+				<md-card-content layout="row" style="background-color:#009688" layout-align="center center">
+					<canvas id="radar" class="chart chart-radar" chart-data="vm.radar.data" chart-labels="vm.radar.labels" chart-colours="vm.radar.colors">
+					</canvas>
+				</md-card-content>
+				<md-card-content layout="row" style="background-color:#00796b" layout-align="center center">
+					<canvas id="line" class="chart chart-line chart-xl" chart-data="vm.line.data" chart-labels="vm.line.labels" click="line.onClick" chart-series="vm.line.series" chart-colours="vm.line.colors">
+					</canvas>
+				</md-card-content>
+			</md-card>
+		</div>
 		<div flex=66>
 			<md-card md-whiteframe="3">
 				<md-card-title>
@@ -105,11 +203,10 @@
 					</md-card-title-text>
 				</md-card-title>
 				<md-card-content>
-
 					<md-list layout="row">
 						<md-list-item>
 							<div layout="column">
-								<img ng-src="./../../app/assets/images/user1-128x128.jpg" alt="" style="border-radius:50%; " />
+								<img ng-src="./../../app/assets/images/user1-128x128.jpg" alt="" style="border-radius:50%; max-width: 100%; height: auto;" />
 								<md-subheader class="md-no-sticky">Alexander Pierce</md-subheader>
 							</div>
 						</md-list-item>
@@ -161,117 +258,22 @@
 				</md-card-content>
 			</md-card>
 		</div>
-		<div flex=33>
-			<md-card md-whiteframe="3">
-				<img ng-src="./../../app/assets/images/zoozoo-vodafone-wallpaper-4.jpg" class="md-card-image" alt="Washed Out">
-				<md-card-actions layout="row" layout-align="end center" style="margin:-26px 10px 0 0;">
-					<md-button class="md-fab md-mini md-primary" aria-label="Menu">
-						<md-icon md-svg-src="./../../app/assets/images/ic_more_vert_white_24px.svg"></md-icon>
-					</md-button>
-					<md-button class="md-fab md-mini md-warn" aria-label="Menu">
-						<md-icon md-svg-src="./../../app/assets/images/ic_menu_white_24px.svg"></md-icon>
-					</md-button>
-				</md-card-actions>
-				<md-card-content>
-					<div layout="row">
-						<md-card-title>
-							<md-card-title-text>
-								<span class="md-headline">Featured Product Of Month</span>
-								<!-- <p>$ 120</p> -->
-							</md-card-title-text>
-						</md-card-title>
-					</div>
-				</md-card-content>
-			</md-card>
-		</div>
 	</div>
-
-	<div layout="row">
-		<div flex=66>
-		</div>
-		<div flex=33>
-			<md-card md-whiteframe="3" style="background-color:#009688">
-				<md-card-content layout="row" style="background-color:#009688" layout-align="center center">
-					<canvas id="radar" class="chart chart-radar" chart-data="vm.radar.datasets" chart-labels="vm.radar.labels" chart-colours="vm.radar.colors">
-					</canvas>
-				</md-card-content>
-				<md-card-content layout="row" style="background-color:#00796b" layout-align="center center">
-          <canvas id="line" class="chart chart-line chart-xl" chart-data="vm.line.data" chart-labels="vm.line.labels" click="line.onClick" chart-series="vm.line.series" chart-colours="vm.line.colors">
-					</canvas>
-				</md-card-content>
-			</md-card>
-		</div>
-	</div>
-
-	<!-- <div layout="row">
-		<div flex=33>
-			<md-card md-whiteframe="3">
-				<md-card-title>
-					<md-card-title-text>
-						<span class="md-headline">Pipeline</span>
-					</md-card-title-text>
-				</md-card-title>
-				<md-card-content>
-					<canvas id="line" class="chart chart-line chart-xl" chart-data="vm.line.data" chart-labels="vm.line.labels" chart-legend="true" click="line.onClick" chart-series="vm.line.series">
-					</canvas>
-				</md-card-content>
-			</md-card>
-		</div>
-
-		<div flex=33>
-			<md-card md-whiteframe="3">
-				<md-card-title>
-					<md-card-title-text>
-						<span class="md-headline">Current Month Activity</span>
-					</md-card-title-text>
-				</md-card-title>
-				<md-card-content>
-					<canvas id="bar" class="chart chart-bar" chart-data="vm.bar.data" chart-labels="vm.bar.labels" chart-series="vm.bar.series" chart-legend="true" options="vm.bar.options" chart-colours="vm.bar.colours">
-					</canvas>
-				</md-card-content>
-			</md-card>
-		</div>
-
-		<div flex=33>
-			<md-card md-whiteframe="3">
-				<md-card-title>
-					<md-card-title-text>
-						<span class="md-headline">ABC</span>
-					</md-card-title-text>
-				</md-card-title>
-				<md-card-content>
-					<canvas id="doughnut" class="chart chart-doughnut chart-xs" data="vm.donut.data" labels="vm.donut.labels" legend="true" colours="vm.donut.colours">
-					</canvas>
-				</md-card-content>
-			</md-card>
-		</div>
-	</div> -->
-
-	<!-- <div layout="row">
-		<div flex=66>
-			<md-card md-whiteframe="3">
-				<md-card-title>
-					<md-card-title-text>
-						<span class="md-headline">Latest Orders</span>
-					</md-card-title-text>
-				</md-card-title>
-				<md-card-content>
-
-				</md-card-content>
-			</md-card>
-		</div>
-		<div flex=33>
-			<md-card md-whiteframe="3">
-				<md-card-title>
-					<md-card-title-text>
-						<span class="md-headline">Latest Members</span>
-					</md-card-title-text>
-				</md-card-title>
-				<md-card-content>
-
-				</md-card-content>
-			</md-card>
-		</div>
-	</div> -->
-
 </div>
+
+
+<style>
+.angular-google-map-container
+{
+	height: 373px;
+}
+.marker_labels {
+     color: red;
+     /* background-color: red; */
+     font-family: "Lucida Grande", "Arial", sans-serif;
+     font-size: 12px;
+     text-align: center;
+     /* width: 10px; */
+     white-space: nowrap;
+
+</style>

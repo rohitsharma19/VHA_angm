@@ -24,22 +24,22 @@
 					angular.extend(this,quoteData);
 				}
 			};
-			
+
 			quoteModel.prototype = {
 				save: function(){
-					return $http.post("http://203.200.67.15/VHAMW/webapi/Quote",this);
+					return $http.post("http://125.20.35.91/VHAMW/webapi/Quote",this);
 				},
 				get: function(quoteId){
-					return $http.get("http://203.200.67.15/VHAMW/webapi/Quote/"+quoteId);
+					return $http.get("http://125.20.35.91/VHAMW/webapi/Quote/"+quoteId);
 				},
 				remove: function(quoteId){
-					return $http.delete("http://203.200.67.15/VHAMW/webapi/Quote/"+quoteId);
+					return $http.delete("http://125.20.35.91/VHAMW/webapi/Quote/"+quoteId);
 				},
 				update: function(){
-					return $http.put("http://203.200.67.15/VHAMW/webapi/Quote/",this);
+					return $http.put("http://125.20.35.91/VHAMW/webapi/Quote/",this);
 				},
 				getAll: function(){
-					return $http.get("http://203.200.67.15/VHAMW/webapi/Quote");
+					return $http.get("http://125.20.35.91/VHAMW/webapi/Quote");
 				}
 			};
 			return quoteModel;

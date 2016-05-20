@@ -1,5 +1,69 @@
-<div class="md-padding" flex layout-sm="column" >
-    
+<div flex layout-sm="column">
+  <formly-form model="vm.agreement" fields="vm.agreementFields">
+  </formly-form>
+</div>
+
+
+
+<script type="text/ng-template" id="progressTracker.html">
+	<div style="border: #ffffff">
+		<ol class="progtrckr hidden-xs" data-progtrckr-steps={{to.totalSteps}}>
+			<li ng-repeat="step in to.steps" class=progtrckr-{{step.status}}>{{step.label}}</li>
+		</ol>
+	</div>
+</script>
+
+
+<script type="text/ng-template" id="productSummary.html">
+  <div style="height:155px;">Offer Name: {{model.offerName}}<br><br><br>
+    List Price: {{model.listPrice}}<br><br><br>
+    Offer Price: {{model.salePrice}}
+
+  </div>
+</script>
+
+
+
+
+<script type="text/ng-template" id="button.html">
+	<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method,model)'>{{to.label}}</md-button>
+</script>
+
+
+<script type="text/ng-template" id="signature.html">
+<div style="text-align:center;background:url("{{model.signature}}");">
+  <div id="signature"></div>
+   <md-button class="md-raised" id="reset" onclick="$('#signature').jSignature('clear')"> <b>Reset</b> </md-button>
+</div>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script type="text/ng-template" id="list.html">
+  <p> {{to.brief}}</p>
+  <md-list>
+    <md-list-item class="md-2-line" ng-repeat="item in to.list1">
+      <div class="md-list-item-text">
+      <p>{{item}}</p>
+      </div>
+      <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="data.cb5" class="md-primary">
+                  {{to.label}}
+      </md-checkbox>
+    </md-list-item>
+  </md-list>
+</script> -->
+
+
+<!-- <div class="md-padding" flex layout-sm="column" >
+
     <md-card ng-if="vm.agreementMode=='QuickCreate'">
         <md-card-header-text></md-card-header-text>
         <md-card-content>
@@ -9,7 +73,7 @@
 		    		<li class="progtrckr-done">Know your customer</li>
 		    		<li class="progtrckr-done">Recommendations</li>
 		    		<li class="progtrckr-done">Generate quote</li>
-		    		<li class="progtrckr-todo">Generate agreement</li> 
+		    		<li class="progtrckr-todo">Generate agreement</li>
 				</ol>
 			</div>
 		</md-card-content>
@@ -32,13 +96,13 @@
 			        <label class="placeholderColour">Quantity</label>
 			        <input type="text" ng-model="vm.agreement.quantity" size="190">
 		        </md-input-container>
-			</form> 
+			</form>
 		</md-card-content>
-	</md-card>	 
-	
+	</md-card>
+
 	<div layout="row" layout-align="center center">
 		<md-button class="md-raised md-primary" ng-if=(("vm.agreementMode=='Create'")||("vm.agreementMode=='QuickCreate'")) ng-click="vm.createAgreement(vm.agreement)">Create Agreement</md-button>
 		<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Update'" ng-click="vm.updateAgreement(vm.agreement)">Update Agreement</md-button>
 		<md-button class="md-raised md-primary" ng-if="vm.agreementMode=='Delete'" ng-click="vm.deleteAgreement(vm.agreement)">Delete Agreement</md-button>
 	</div>
-</div>
+</div> -->

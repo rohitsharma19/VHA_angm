@@ -22,6 +22,7 @@
 		'ui.grid',
 		'formly',
 		'formlyMaterial',
+		'uiGmapgoogle-maps',
 		'home',
 		'lead',
 		'opportunity',

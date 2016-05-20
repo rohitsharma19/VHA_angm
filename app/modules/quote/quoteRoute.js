@@ -10,16 +10,17 @@
 
 angular.module('quote')
 	.config(['$stateProvider', function ($stateProvider) {
-		
+
 		$stateProvider
 			.state('home.quote', {
 				url:'/quote',
-				templateUrl: 'app/modules/quote/quote.html',
-				controller: 'QuoteCtrl',
-				controllerAs: 'vm'
+				templateUrl: 'app/modules/quote/quote.html'
+				// controller: 'QuoteCtrl',
+				// controllerAs: 'vm'
 			})
 			.state('home.quote.QuickCreate', {
 				url:'/QuickCreate',
+				params:{finalSelection:null},
 				templateUrl: 'app/modules/quote/quote_CRUD.html',
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'

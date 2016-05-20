@@ -24,22 +24,22 @@
 					angular.extend(this,agreementData);
 				}
 			};
-			
+
 			agreementModel.prototype = {
 				save: function(){
-					return $http.post("http://203.200.67.15/VHAMW/webapi/Agreement",this);
+					return $http.post("http://125.20.35.91/VHAMW/webapi/Agreement",this);
 				},
 				get: function(agreementId){
-					return $http.get("http://203.200.67.15/VHAMW/webapi/Agreement/"+agreementId);
+					return $http.get("http://125.20.35.91/VHAMW/webapi/Agreement/"+agreementId);
 				},
 				remove: function(agreementId){
-					return $http.delete("http://203.200.67.15/VHAMW/webapi/Agreement/"+agreementId);
+					return $http.delete("http://125.20.35.91/VHAMW/webapi/Agreement/"+agreementId);
 				},
 				update: function(){
-					return $http.put("http://203.200.67.15/VHAMW/webapi/Agreement/",this);
+					return $http.put("http://125.20.35.91/VHAMW/webapi/Agreement/",this);
 				},
 				getAll: function(){
-					return $http.get("http://203.200.67.15/VHAMW/webapi/Agreement");
+					return $http.get("http://125.20.35.91/VHAMW/webapi/Agreement");
 				}
 			};
 			return agreementModel;
