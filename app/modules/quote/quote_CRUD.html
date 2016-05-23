@@ -290,3 +290,11 @@
 <script type="text/ng-template" id="uiGrid.html">
 	<div ui-grid="{enableCellEdit: true, enableFiltering: true, data: model['finalSelection']['Offer_Devices'], columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
 </script>
+
+<script type="text/ng-template" id="progressTracker.html">
+	<div style="border: #ffffff">
+		<ol class="progtrckr hidden-xs" data-progtrckr-steps={{to.totalSteps}}>
+			<li ng-repeat="step in to.steps" class=progtrckr-{{step.status}}>{{step.label}}</li>
+		</ol>
+	</div>
+</script>

@@ -22,7 +22,58 @@
 		//var quoteMode = null;
 		var quoteSharedData = null;
 
-		var quote_CRUD = [{
+		var quote_CRUD = [
+			{
+					type: 'card_progressTracker',
+					templateOptions: {
+						totalSteps: 5,
+						steps: [{
+							status: 'done',
+							label: 'Capture Initial Details'
+						}, {
+							status: 'done',
+							label: 'Know your customer'
+						}, {
+							status: 'todo',
+							label: 'Recommendations'
+						}, {
+							status: 'todo',
+							label: 'Generate quote'
+						}, {
+							status: 'todo',
+							label: 'Generate agreement'
+						}],
+						card: {
+							imagePath: "",
+							headline: "",
+							actions: ''
+						},
+						style:"margin-top:5%;"
+					}
+				}, {
+				"type": "topHeaderDetails",
+				"templateOptions": {
+					"objectType": "leadDetails",
+					"style": "color:black; background-color: #80CBC4;",
+					"class": "flex-33",
+					"fields": [{
+						"title": "Company Name",
+						"key": "compName"
+					}, {
+						"title": "Created By User",
+						"key": "createdByUser"
+					}, {
+						"title": "Lead status",
+						// "type":"leadDetails",
+						"key": "status"
+					}]
+				},
+				// "hideExpression": "model.self.opportunityMode!=\"QuickCreate\"&& model.self.opportunityMode!=\"Update\""
+			},
+			{
+  "wrapper": "card_noHeaderNoActions",
+  "fieldGroup": [
+    {
 			"wrapper": "wrapper_tabset",
 			"fieldGroup": [{
 				"wrapper": "wrapper_tab",
@@ -212,7 +263,9 @@
 					}
 				}]
 			}]
-		},
+		}
+  ]
+},
 		{
 	    "type": "button",
 	    "templateOptions": {

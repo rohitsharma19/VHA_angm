@@ -119,7 +119,7 @@
 		formlyConfig.setWrapper({
 			name: 'card_noHeaderNoActions',
 			template: [
-				'<md-card>\
+				'<md-card style="{{to.style}}">\
 					<md-card-content>\
 						<formly-transclude></formly-transclude>\
 					</md-card-content>\
@@ -331,12 +331,14 @@
 
 		formlyConfig.setType({
 			name: 'topHeaderDetails',
-			template: '<md-card class="layout-row layout-wrap" style="{{to.style}};">\
-								  <div  style="width:1362px" ng-repeat="label in to.fields" class="{{to.class}}" >\
+			template: '<md-card class="md-padding" style="{{to.style}};">\
+									<md-content class="layout-row layout-wrap" style="{{to.style}};" >\
+								  <div ng-repeat="label in to.fields" class="{{to.class}}" >\
 								 		<div class="layout-row layout-wrap">\
 										<div flex-45>{{label.title}}</div> : <div flex-45>{{model[options.templateOptions.objectType][label.key]}} </div></div>\
-										</div>\
-									</md-card>'
+									</div>\
+									<md-content>\
+								</md-card>'
 		});
 
 

@@ -22,7 +22,6 @@
 		var opportunitySharedData = null;
 
 		var opportunity_CRUD = [{
-			"fieldGroup": [{
 				type: 'card_progressTracker',
 				templateOptions: {
 					totalSteps: 5,
@@ -46,15 +45,14 @@
 						imagePath: "",
 						headline: "",
 						actions: ''
-					}
+					},
+					style:"margin-top:5%;"
 				}
-			}],
-			hideExpression: 'model.self.opportunityMode!="QuickCreate"'
-		}, {
+			}, {
 			"type": "topHeaderDetails",
 			"templateOptions": {
 				"objectType": "leadDetails",
-				"style": "color:black; margin:5 auto; text-align:left; font-size:16px; padding:15px; margin:.2em 0; background-color: #80CBC4;",
+				"style": "color:black; background-color: #80CBC4;",
 				"class": "flex-33",
 				"fields": [{
 					"title": "Company Name",
@@ -70,6 +68,9 @@
 			},
 			// "hideExpression": "model.self.opportunityMode!=\"QuickCreate\"&& model.self.opportunityMode!=\"Update\""
 		}, {
+			"wrapper": "card_noHeaderNoActions",
+			"fieldGroup": [
+{
 			"wrapper": "wrapper_tabset",
 			"fieldGroup": [{
 				"wrapper": "wrapper_tab",
@@ -77,40 +78,8 @@
 					"title": "Preferences",
 					"active": true
 				},
-				"fieldGroup": [{
-					"key": "self.compName",
-					"type": "input",
-					"templateOptions": {
-						"label": "Company Name",
-						"type": "text",
-						"styleElements": "display:block;",
-						"disabled": true,
-						"required": "true",
-						"flex": ""
-					}
-				}, {
-					"type": "input",
-					"key": "self.createdByUser",
-					"templateOptions": {
-						"label": "Created By User",
-						"theme": "",
-						"styleElements": "display:block;",
-						"disabled": true,
-						"required": "true",
-						"flex": ""
-					}
-				}, {
-					"type": "input",
-					"key": "self.leadStatus",
-					"templateOptions": {
-						"label": "Lead status",
-						"theme": "",
-						"styleElements": "display:block;",
-						"disabled": true,
-						"required": "true",
-						"flex": ""
-					}
-				}, {
+				"fieldGroup": [
+					{
 					"key": "self.opportunityName",
 					"type": "input",
 					"templateOptions": {
@@ -512,7 +481,8 @@
 				}]
 
 			}]
-		}, {
+		}
+		]}, {
 			"type": "button",
 			"templateOptions": {
 				"label": "Create Opportunity",
@@ -537,10 +507,6 @@
 			},
 			"hideExpression": "model.self.opportunityMode!=\"Delete\""
 		}];
-
-
-
-
 
 		var opportunity_viewAll = [{
 			key: 'list',
