@@ -52,6 +52,11 @@ ol.progtrckr li.progtrckr-todo {
 	border-bottom: 4px solid silver;
 }
 
+ol.progtrckr li.progtrckr-current {
+	color: orange;
+	border-bottom: 4px solid orange;
+}
+
 ol.progtrckr li:after {
 	content: "\00a0\00a0";
 }
@@ -78,6 +83,14 @@ ol.progtrckr li.progtrckr-done:before {
 ol.progtrckr li.progtrckr-todo:before {
 	content: "\039F";
 	color: silver;
+	background-color: white;
+	font-size: 1.5em;
+	bottom: -1.6em;
+}
+
+ol.progtrckr li.progtrckr-current:before {
+	content: "\029F";
+	color: orange;
 	background-color: white;
 	font-size: 1.5em;
 	bottom: -1.6em;

@@ -539,7 +539,7 @@
 											      "type": "select",
 											      "key": "status",
 											      "templateOptions": {
-											        "label": "status",
+											        "label": "Status",
 											        "theme": "",
 											        "styleElements": "display:block;",
 															"required":"true",

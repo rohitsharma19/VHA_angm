@@ -29,7 +29,7 @@
 						status: 'done',
 						label: 'Capture Initial Details'
 					}, {
-						status: 'done',
+						status: 'current',
 						label: 'Know your customer'
 					}, {
 						status: 'todo',
@@ -52,7 +52,7 @@
 			"type": "topHeaderDetails",
 			"templateOptions": {
 				"objectType": "leadDetails",
-				"style": "color:black; background-color: #80CBC4;",
+				"style": "color:white; background-color: rgb(33,150,243);",
 				"class": "flex-33",
 				"fields": [{
 					"title": "Company Name",
@@ -159,36 +159,50 @@
 						"pattern": '([a-zA-Z0-9]{3,30})',
 						"patternMessage": "Alphabets and Numbers Only. No Special Character. 3-30 Characters"
 					}
-				}, {
-					"type": "datepicker",
-					"key": "self.requestedDate",
-					"templateOptions": {
-						"theme": "custom",
-						"placeholder": "Request Date",
-						"styleElements": "display:block;",
-						"label": "Requested Date",
-						"required": "true",
-						"md-min-date": "1/1/2015",
-						"md-max-date": "1/1/2016",
-						// "pattern": "([0-9]{11})",
-						"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}",
-						"patternMessage": "yyyy-mm-dd ."
-					}
-				}, {
-					"type": "datepicker",
-					"key": "self.closedDate",
-					"templateOptions": {
-						"theme": "custom",
-						"placeholder": "Closure Date",
-						"styleElements": "display:block;",
-						"label": "Closure Date",
-						"md-min-date": "1/1/2015",
-						"md-max-date": "1/1/2016",
-						// "pattern": "([0-9]{11})",
-						"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}",
-						"patternMessage": "yyyy-mm-dd ."
-					}
-				}, {
+				},
+				{
+				  "elementAttributes": {
+				    "layout": "row",
+				    "layout-sm": "column"
+				  },
+				  "fieldGroup": [
+						{
+	 					"type": "datepicker",
+	 					"key": "self.requestedDate",
+						"className": "flex-50",
+	 					"templateOptions": {
+	 						"theme": "custom",
+	 						"placeholder": "Request Date",
+	 						"styleElements": "display:block;",
+	 						"label": "Requested Date",
+	 						"required": "true",
+	 						"md-min-date": "1/1/2015",
+	 						"md-max-date": "1/1/2016",
+	 						// "pattern": "([0-9]{11})",
+	 						"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}",
+	 						"patternMessage": "yyyy-mm-dd ."
+	 					}
+	 				}, {
+	 					"type": "datepicker",
+	 					"key": "self.closedDate",
+						"className": "flex-50",
+	 					"templateOptions": {
+	 						"theme": "custom",
+	 						"placeholder": "Closure Date",
+	 						"styleElements": "display:block;",
+	 						"label": "Closure Date",
+	 						"md-min-date": "1/1/2015",
+	 						"md-max-date": "1/1/2016",
+	 						// "pattern": "([0-9]{11})",
+	 						"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}",
+	 						"patternMessage": "yyyy-mm-dd ."
+	 					}
+	 				}
+					]
+				}
+
+
+				 , {
 					"key": "self.closureReason",
 					"type": "input",
 					"templateOptions": {
@@ -239,115 +253,63 @@
 						// "pattern":'([a-zA-Z]{3,30})',
 						// "patternMessage":"Alpha Numeric and Special Characters allowed."
 					}
-				}, {
-					"key": "self.autoAssignFlag",
-					"type": "checkbox",
-					"templateOptions": {
-						"label": "Auto Assign",
-
-						"styleElements": "display:block;"
-
-					}
-				}, {
-					"key": "self.opportunityRisksFlag",
-					"type": "checkbox",
-					"templateOptions": {
-						"label": "Opportunity Risk",
-
-						"styleElements": "display:block;"
-
-					}
-				}, {
-					"key": "opportunityPotentialFlag",
-					"type": "checkbox",
-					"templateOptions": {
-						"label": "Opportunity Potential",
-
-						"styleElements": "display:block;"
-
-					}
-				}, {
-					"key": "self.solutionOptionsFlag",
-					"type": "checkbox",
-					"templateOptions": {
-						"label": "Solution Options",
-
-						"styleElements": "display:block;"
-
-					}
-				}]
-			}, {
-				"wrapper": "wrapper_tab",
-				"templateOptions": {
-					"title": "Additional Details",
-					"active": false
 				},
-				"fieldGroup": [{
-					"type": "select",
-					"key": "self.assignedToGroup",
-					"templateOptions": {
-						"label": "Assigned To Group",
-						"theme": "",
-						"styleElements": "display:block;",
-						"multiple": false,
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "Sales 1",
-							"value": "Sales 1"
-						}, {
-							"label": "Sales 2",
-							"value": "Sales 2"
-						}],
-						"flex": ""
-					}
-				}, {
-					"type": "select",
-					"key": "self.assignedToUser",
-					"templateOptions": {
-						"label": "Assigned To User",
-						"theme": "",
-						"styleElements": "display:block;",
-						"required": "true",
-						"multiple": false,
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "Exective 1",
-							"value": "Exective 1"
-						}, {
-							"label": "Exective 2",
-							"value": "Exective 2"
-						}],
-						"flex": ""
-					}
-				}, {
-					"type": "input",
-					"key": "self.createdByUser",
-					"templateOptions": {
-						"label": "Created By User",
-						"theme": "",
-						"styleElements": "display:block;",
-						"disabled": true,
-						// "required":"true",
-						"flex": ""
-					}
-				}, {
-					"type": "input",
-					"key": "self.createdByGroup",
-					"templateOptions": {
-						"label": "Created By Group",
-						"theme": "",
-						"styleElements": "display:block;",
-						"disabled": true,
-						// "required":"true",
-						"flex": ""
-					}
-				}]
-			}, {
+				{
+				  "elementAttributes": {
+				    "layout": "row",
+				    "layout-sm": "column"
+				  },
+				  "fieldGroup": [{
+						"key": "self.autoAssignFlag",
+						"type": "checkbox",
+						"className": "flex-25",
+						"templateOptions": {
+							"label": "Auto Assign",
+
+							"styleElements": "display:block;"
+
+						}
+					}, {
+						"key": "self.opportunityRisksFlag",
+						"type": "checkbox",
+						"className": "flex-25",
+						"templateOptions": {
+							"label": "Opportunity Risk",
+
+							"styleElements": "display:block;"
+
+						}
+					}, {
+						"key": "opportunityPotentialFlag",
+						"type": "checkbox",
+						"className": "flex-25",
+						"templateOptions": {
+							"label": "Opportunity Potential",
+
+							"styleElements": "display:block;"
+
+						}
+					}, {
+						"key": "self.solutionOptionsFlag",
+						"type": "checkbox",
+						"className": "flex-25",
+						"templateOptions": {
+							"label": "Solution Options",
+
+							"styleElements": "display:block;"
+
+						}
+					}]
+				}
+
+
+
+				]
+			},
+			{
 				"wrapper": "wrapper_tab",
 				"templateOptions": {
-					"title": "Opportunity Contact Details",
+					"title": "Contact Details",
 					"active": false
 				},
 				"fieldGroup": [{
@@ -480,7 +442,76 @@
 					}
 				}]
 
-			}]
+			}
+			,{
+				"wrapper": "wrapper_tab",
+				"templateOptions": {
+					"title": "Additional Details",
+					"active": false
+				},
+				"fieldGroup": [{
+					"type": "select",
+					"key": "self.assignedToGroup",
+					"templateOptions": {
+						"label": "Assigned To Group",
+						"theme": "",
+						"styleElements": "display:block;",
+						"multiple": false,
+						"labelProp": "label",
+						"valueProp": "value",
+						"options": [{
+							"label": "Sales 1",
+							"value": "Sales 1"
+						}, {
+							"label": "Sales 2",
+							"value": "Sales 2"
+						}],
+						"flex": ""
+					}
+				}, {
+					"type": "select",
+					"key": "self.assignedToUser",
+					"templateOptions": {
+						"label": "Assigned To User",
+						"theme": "",
+						"styleElements": "display:block;",
+						"required": "true",
+						"multiple": false,
+						"labelProp": "label",
+						"valueProp": "value",
+						"options": [{
+							"label": "Exective 1",
+							"value": "Exective 1"
+						}, {
+							"label": "Exective 2",
+							"value": "Exective 2"
+						}],
+						"flex": ""
+					}
+				}, {
+					"type": "input",
+					"key": "self.createdByUser",
+					"templateOptions": {
+						"label": "Created By User",
+						"theme": "",
+						"styleElements": "display:block;",
+						"disabled": true,
+						// "required":"true",
+						"flex": ""
+					}
+				}, {
+					"type": "input",
+					"key": "self.createdByGroup",
+					"templateOptions": {
+						"label": "Created By Group",
+						"theme": "",
+						"styleElements": "display:block;",
+						"disabled": true,
+						// "required":"true",
+						"flex": ""
+					}
+				}]
+			} ]
 		}
 		]}, {
 			"type": "button",
