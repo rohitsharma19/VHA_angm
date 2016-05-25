@@ -58,7 +58,7 @@
 									headline: "",
 									actions: ''
 								},
-								style:"margin-top:5%;"
+								style:""
 							}}],
 							hideExpression: 'model.leadMode!="QuickCreate"'
 						},

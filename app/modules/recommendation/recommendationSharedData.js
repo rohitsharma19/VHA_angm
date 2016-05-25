@@ -136,7 +136,7 @@
 		}];
 
 		var Offers = [{
-			"name": "40Gb_Data",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -146,9 +146,9 @@
 			"price": 51,
 			"usageGroup": [],
 			"attributes": [],
-
+			"imagePath":"app/assets/images/voda5.jpg"
 		}, {
-			"name": "Broadband_Core",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-20T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -158,9 +158,10 @@
 			"price": 100,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda2.jpg"
 
 		}, {
-			"name": "Installation",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2016-02-09T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -170,9 +171,10 @@
 			"price": 201,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda3.jpg"
 
 		}, {
-			"name": "50Mbps_QOS",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -182,9 +184,10 @@
 			"price": 400,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda4.jpg"
 
 		}, {
-			"name": "1Month_Validity",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -194,9 +197,10 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda5.jpg"
 
 		}, {
-			"name": "60Gb_Data",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -206,9 +210,10 @@
 			"price": 51,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda6.jpg"
 
 		}, {
-			"name": "Broadband_Core",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-20T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -218,9 +223,10 @@
 			"price": 100,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda5.jpg"
 
 		}, {
-			"name": "Installation_1",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2016-02-09T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -230,9 +236,10 @@
 			"price": 201,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda2.jpg"
 
 		}, {
-			"name": "100Mbps_QOS",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -242,9 +249,10 @@
 			"price": 400,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda3.jpg"
 
 		}, {
-			"name": "2Month_Validity",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -253,9 +261,10 @@
 			"defaultState": "OptIn",
 			"price": 120,
 			"usageGroup": [],
-			"attributes": []
+			"attributes": [],
+			"imagePath":"app/assets/images/voda4.jpg"
 		}, {
-			"name": "3Month_Validity",
+			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
 			"endDateTime": "2030-12-30T23:59:59.000+05:30",
 			"productCategory": "Broadband",
@@ -265,7 +274,7 @@
 			"price": 240,
 			"usageGroup": [],
 			"attributes": [],
-
+			"imagePath":"app/assets/images/voda5.jpg"
 		}];
 
 		var Devices = [{
