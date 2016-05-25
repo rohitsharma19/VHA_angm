@@ -89,10 +89,15 @@ ol.progtrckr li.progtrckr-todo:before {
 }
 
 ol.progtrckr li.progtrckr-current:before {
-	content: "\029F";
+	content: "\02609";
 	color: orange;
 	background-color: white;
 	font-size: 1.5em;
 	bottom: -1.6em;
+	/*height: 1.2em;
+	width: 1.2em;
+	line-height: 1.2em;
+	border: none;
+	border-radius: 1.2em;*/
 }
 /* end progress bar */
