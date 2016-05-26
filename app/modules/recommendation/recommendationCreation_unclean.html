@@ -24,7 +24,7 @@
 	}
 
 	.custom-chips .md-chips md-chip {
-		padding: 0 25px 0 0;
+    padding: 0 25px 0 0;
 	}
 
 	.custom-chips .md-chip .md-chip-remove-container button.vegetablechip md-icon {
@@ -112,9 +112,11 @@
 	}
 
 	md-list-item .md-no-style {
-		padding: 0px;
+		padding:0px;
 	}
+
 </style>
+
 
 <!-- <md-tabs md-dynamic-height>
 	<md-tab>
@@ -251,17 +253,26 @@
 			<div flex=100 id="offerList" style="margin-right: -20px; max-width:none !important; overflow-y:scroll; overflow-x:hidden;">
 				<md-list style="padding:0;">
 					<md-list-item style="padding:0px;" ng-repeat="item in model[options.templateOptions.itemType]" ng-click="clicked('select'+options.templateOptions.itemType+'ForDetail', item)">
-						<md-card style="height:88px; margin:4px;" layout="row" flex=100 class="md-3-line">
-							<img flex=40 ng-src="{{item.imagePath}}" style="padding:5px; border-radius:8px;" alt="{{offer}}" />
-							<div flex=60 style="padding:5px;" class="md-list-item-text" layout="column">
-								<span layout="row" flex=50>{{item.name}}</span>
-								<div layout="row" layout-align="end center" flex=50>
-									<div flex=40 md-whiteframe="3" style="background:#2196F3; padding:5%; border-radius:2px; color:white; text-align:center;">${{ item.price }}</div>
-								</div>
+					<md-card style="height:88px; margin:4px;" layout="row" flex=100 class="md-3-line" >
+						<img flex=40 ng-src="{{item.imagePath}}" style="padding:5px; border-radius:8px;" alt="{{offer}}" />
+						<div flex=60 style="padding:5px;" class="md-list-item-text" layout="column" >
+							<span layout="row" flex=50>{{item.name}}</span>
+							<div layout="row" layout-align="end center" flex=50>
+								<div flex=40 md-whiteframe="3" style="background:#2196F3; padding:5%; border-radius:2px; color:white; text-align:center;">${{ item.price }}</div>
 							</div>
-							<md-divider></md-divider>
-						</md-card>
-					</md-list-item>
+							<!-- <div layout="row" layout-align="start center">
+								<h4 flex=70><b>${{ item.price }}</b></h4>
+								<div flex=20 ng-click="$event.stopPropagation()">
+									<input ng-model="item.quantity" type=number min=0 style="width:100%;">
+								</div>
+								<div flex=10>
+								<md-icon ng-click="clicked('add'+options.templateOptions.itemType+'ToFinal',item)" aria-label="Add" class="md-secondary md-hue-3">done</md-icon>
+							</div>
+							</div> -->
+						</div>
+						<md-divider></md-divider>
+					</md-card>
+				</md-list-item>
 				</md-list>
 			</div>
 		</div>
@@ -270,17 +281,44 @@
 
 <script type="text/ng-template" id="itemDetail.html">
 	<md-card flex=100 md-whiteframe="3" layout="column">
+		<!-- <md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">{{options.templateOptions.itemType}} Detail</span>
+				</md-card-title-text>
+			</md-card-title> -->
 		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
 			<span style="font-weight: 600; letter-spacing: 2px;"> {{options.templateOptions.itemType}} Detail </span>
 		</div>
 		<md-divider></md-divider>
 		<md-content id="bottomsheet" flex=95 style="overflow:hidden;">
 			<div flex=100 style="overflow:hidden;" layout="column" layout-fill ng-repeat="item in model['selectedItem'][options.templateOptions.itemType]">
+				<!-- <div  style="background:red;" flex=30></div>
+				<div  style="background:blue;" flex=30></div>
+				<div  style="background:black;" flex=30></div>
+				<div  style="background:grey;" flex=10></div> -->
 				<div flex=40 style="overflow:hidden;">
 					<img ng-src="{{item.imagePath}}" class="md-card-image" alt="Washed Out">
 				</div>
+				<!-- <md-card-actions layout="row" layout-align="end center" style="margin:-26px 10px 0 0;">
+				<div >
+          <md-button ng-click="showBottomSheet(item)" class="md-fab md-raised md-primary" aria-label="ADD">
+            <md-icon >add</md-icon>
+          </md-button>
+				</div>
+      </md-card-actions> -->
+				<!-- <div  > -->
+				<!-- <md-button class="md-fab md-raised md-primary" style="margin: -26px 10px 0px;" ng-click=clicked("openCreate"+options.templateOptions.label)>
+						<md-icon>add</md-icon>
+					</md-button> -->
+				<!-- </div> -->
+				<!-- <md-input-container md-theme="">
+					<label for="formly_2_input_abn_0" ng-style="['input', 'textarea', 'select'].indexOf(options.type) === -1 &amp;&amp; {'font-size':'12px', 'color': 'rgb(117, 117, 117)'}" class="ng-binding">
+						Quanity
+					</label>
+					<input ng-model="item.quantity" type=number min=0 class="ng-pristine ng-valid md-input ng-touched" aria-disabled="false" aria-invalid="false" style="">
+				</md-input-container> -->
 				<md-card-title flex=10>
-					<md-text-float class="md-headline" style="font-size:35px; font-weight:900;">Red Business Grow Plan</md-text-float>
+					<md-text-float  class="md-headline" style="font-size:35px; font-weight:900;">Red Business Grow Plan</md-text-float>
 				</md-card-title>
 				<md-divider></md-divider>
 				<md-card-content flex=40 style="background:#f1f1f3;">
@@ -306,14 +344,68 @@
 						</md-button>
 					</div>
 				</md-card-actions>
+				<!-- <md-fab-toolbar layout="row" layout-align="end end" style="margin: -26px 10px 0px;" md-direction="left">
+					<md-fab-trigger class="align-with-text">
+						<md-button aria-label="menu" class="md-fab md-primary">
+							<md-icon >add</md-icon>
+						</md-button>
+					</md-fab-trigger>
+					<md-toolbar>
+						<md-fab-actions class="md-toolbar-tools">
+							<md-input-container md-theme="">
+								<label for="formly_2_input_abn_0" ng-style="['input', 'textarea', 'select'].indexOf(options.type) === -1 &amp;&amp; {'font-size':'12px', 'color': 'rgb(117, 117, 117)'}" class="ng-binding">
+									Quanity
+								</label>
+								<input ng-model="item.quantity" type=number min=0 class="ng-pristine ng-valid md-input ng-touched" aria-disabled="false" aria-invalid="false" style="">
+							</md-input-container>
+							<md-button aria-label="menu" class="md-warn">
+								<md-icon >done</md-icon>
+							</md-button>
+						</md-fab-actions>
+					</md-toolbar>
+				</md-fab-toolbar> -->
 		</md-content>
 		</div>
 	</md-card>
+	<!-- <md-card flex=100>
+			<md-card-content flex layout=column layout-fill layout-align="center center">
+				<md-card flex=90 ng-repeat="item in model['selectedItem'][options.templateOptions.itemType]">
+					<md-card-title>
+						<md-card-title-text>
+							<span class="md-headline">{{item.name}}</span>
+							<span class="md-subhead">${{item.price }}</span>
+						</md-card-title-text>
+						<md-card-title-media>
+							<div class="md-media-lg card-media"><img ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAALZAAAAJGViNTRjNGVmLTlhMDUtNDEyZS04NTlmLThmMjE0ODkzNGM4NA.jpg" class="md-card-image" alt="Washed Out"></div>
+						</md-card-title-media>
+					</md-card-title>
+					<md-card-content>
+						<p>
+							The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene\'s musical language: feel it. It's a simple request, as well...
+						</p>
+					</md-card-content>
+					<md-card-actions layout="row" layout-align="end center">
+						<md-input-container md-theme="">
+							<label for="formly_2_input_abn_0" ng-style="['input', 'textarea', 'select'].indexOf(options.type) === -1 &amp;&amp; {'font-size':'12px', 'color': 'rgb(117, 117, 117)'}" class="ng-binding">
+								Quanity
+							</label>
+							<input ng-model="item.quantity" type=number min=0 class="ng-pristine ng-valid md-input ng-touched" aria-disabled="false" aria-invalid="false" style="">
+						</md-input-container>
+						<md-button class="md-primary md-raised" ng-disbale="!item.quantity"   ng-click="clicked('add'+options.templateOptions.itemType+'ToFinal',item)">SELECT</md-button>
+					</md-card-actions>
+				</md-card>
+			</md-card-content>
+		</md-card> -->
 </script>
 
 
 <script type="text/ng-template" id="chips.html" md-whiteframe="3">
 	<md-card flex=100 layout="column">
+		<!-- <md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Selected items</span>
+				</md-card-title-text>
+			</md-card-title> -->
 		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
 			<span style="font-weight: 600; letter-spacing: 2px;"> Selected {{options.templateOptions.itemType}}s </span>
 		</div>
@@ -322,10 +414,11 @@
 			<md-chips class="custom-chips" ng-model="model['finalSelection'][options.templateOptions.itemType+'s']" md-on-remove="clicked('resetQuantity',$chip)">
 				<md-chip-template>
 					<div layout="row">
-						<div flex=25 class="md-contact-avatar layout-column" style=" background-image: url({{$chip.imagePath}}); background-size: cover; border-radius:40%;">
+						<div flex=30 class="md-contact-avatar layout-column" style=" background-image: url({{$chip.imagePath}}); background-size: cover; border-radius:40%;">
+							<!-- <img flex=100 ng-src="{{$chip.imagePath}}" > -->
 						</div>
-						<div flex=75>
-							<span>{{$chip.name}}({{$chip.quantity}})</span>
+						<div flex=70 >
+						<span>{{$chip.name}}({{$chip.quantity}})</span>
 						</div>
 					</div>
 				</md-chip-template>
@@ -333,6 +426,14 @@
 					<md-icon md-svg-icon="md-close"></md-icon>
 				</button>
 			</md-chips>
+
+			<!-- <md-contact-chips
+					 ng-model="model['finalSelection'][options.templateOptions.itemType+'s']"
+					 md-contact-name="name"
+					 md-contact-image="imagePath"
+					 md-contact-email="price" >
+				</md-contact-chips> -->
+
 		</md-card-content>
 	</md-card>
 </script>

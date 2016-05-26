@@ -288,6 +288,7 @@
 			"price": 51,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda2.jpg"
 
 		}, {
 			"name": "Broadband_Core",
@@ -300,6 +301,7 @@
 			"price": 100,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda3.jpg"
 
 		}, {
 			"name": "Installation",
@@ -312,6 +314,7 @@
 			"price": 201,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda4.jpg"
 
 		}, {
 			"name": "50Mbps_QOS",
@@ -324,6 +327,7 @@
 			"price": 400,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda5.jpg"
 
 		}, {
 			"name": "1Month_Validity",
@@ -336,6 +340,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda6.jpg"
 
 		}, {
 			"name": "3Month_Validity",
@@ -348,6 +353,8 @@
 			"price": 240,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda2.jpg"
+
 		}, {
 			"name": "1_Year_Validity",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
@@ -359,6 +366,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda3.jpg"
 
 		}, {
 			"name": "Zero Balance",
@@ -371,6 +379,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda4.jpg"
 
 		}, {
 			"name": "1Month_TalkTime",
@@ -383,6 +392,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda5.jpg"
 
 		}, {
 			"name": "5Month_Validity",
@@ -395,6 +405,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
+			"imagePath":"app/assets/images/voda6.jpg"
 
 		}];
 

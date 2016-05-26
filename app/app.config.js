@@ -303,15 +303,11 @@
 			    $mdBottomSheet.show({
 			      // template: '<md-bottom-sheet class="md-list md-has-header" ng-cloak><input type=number ><md-button>Add</md-button></md-bottom-sheet>',
 						template:'<md-bottom-sheet ng-cloak>\
-												<md-input-container style="visibility:hidden;" md-theme="">\
-												<label> Quanity </label>\
-													<input type=number min=0 class="ng-pristine ng-valid md-input ng-touched" aria-disabled="false" aria-invalid="false" style="">\
-												</md-input-container>\
-												<md-input-container md-theme="">\
+												<md-input-container style="margin-left:15%; margin-right:15%;" md-theme="">\
 												<label> Quanity </label>\
 													<input ng-model="item.quantity" type=number min=0 class="ng-pristine ng-valid md-input ng-touched" aria-disabled="false" aria-invalid="false" style="">\
 												</md-input-container>\
-												<md-button ng-click="addQuantity()" class="md-raised md-primary"> ADD </md-button>\
+												<md-button ng-click="addQuantity()" ng-disabled="!item.quantity" class="md-fab md-raised md-primary"> <md-icon aria-label="Add" class="md-secondary md-hue-3">done</md-icon> </md-button>\
 											</md-bottom-sheet>',
 						parent: parentElement,
 			      controller: function($scope, $mdBottomSheet) {
