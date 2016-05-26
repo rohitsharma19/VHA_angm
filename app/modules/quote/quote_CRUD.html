@@ -357,7 +357,7 @@
 	</md-card>
 </script> -->
 
-<script type="text/ng-template" id="chips.html" md-whiteframe="3">
+<script type="text/ng-template" id="itemChips.html" md-whiteframe="3">
 	<md-card flex=100 layout="column">
 		<div flex="25" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
 			<span style="font-weight: 600; letter-spacing: 2px;"> Selected {{options.templateOptions.itemType}}s </span>
@@ -387,7 +387,7 @@
 </script>
 
 <script type="text/ng-template" id="uiGrid.html">
-	<div ui-grid="{enableCellEdit: true, enableFiltering: true, data: model['finalSelection']['Offer_Devices'], columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
+	<div ui-grid="{enableCellEdit: true, enableFiltering: false, data: model['finalSelection']['Offer_Devices'], columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
 </script>
 
 <script type="text/ng-template" id="progressTracker.html">

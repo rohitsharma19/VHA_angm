@@ -21,119 +21,207 @@
 
 		var recommendationSharedData = null;
 
-		var recommendation_CRUD = [{
-			"wrapper": "wrapper_tabset",
-			"fieldGroup": [{
-				"wrapper": "wrapper_tab",
-				"elementAttributes": {
-					"layout": "row",
-					"style": "height:700px;"
-				},
-				"templateOptions": {
-					"title": "Offers",
-					"active": true
-				},
-				"fieldGroup": [{
-					"elementAttributes": {
-						"formlyFieldGroupClass": "flex-30 layout-fill layout-column"
-					},
-					"fieldGroup": [{
-						"type": "itemsList",
-						"elementAttributes": {
-							"class": "layout-row flex-100"
-						},
-						"templateOptions": {
-							"itemType": "Offer",
-							"items": "model"
-						}
-					}]
-				}, {
-					"elementAttributes": {
-						"formlyFieldGroupClass": "flex-50 layout-fill layout-column"
-					},
-					"fieldGroup": [{
-						"elementAttributes": {
-							"class": "layout-row flex-100"
-						},
-						"type": "itemDetail",
-						"templateOptions": {
-							"itemType": "Offer"
-						}
-					}]
-				}, {
-					"elementAttributes": {
-						"formlyFieldGroupClass": "flex-20 layout-fill layout-column"
-					},
-					"fieldGroup": [{
-						"elementAttributes": {
-							"class": "layout-row flex-100"
-						},
-						"type": "chips",
-						"templateOptions": {
-							"itemType": "Offer"
-						}
-					}]
-				}]
-			}, {
-				"wrapper": "wrapper_tab",
-				"elementAttributes": {
-					"layout": "row",
-					"style": "height:700px;"
-				},
-				"templateOptions": {
-					"title": "Devices",
-					"active": true
-				},
-				"fieldGroup": [{
-					"elementAttributes": {
-						"formlyFieldGroupClass": "flex-30 layout-fill layout-column"
-					},
-					"fieldGroup": [{
-						"type": "itemsList",
-						"elementAttributes": {
-							"class": "layout-row flex-100"
-						},
-						"templateOptions": {
-							"itemType": "Device",
-							"items": []
-						}
-					}]
-				}, {
-					"elementAttributes": {
-						"formlyFieldGroupClass": "flex-50 layout-fill layout-column"
-					},
-					"fieldGroup": [{
-						"elementAttributes": {
-							"class": "layout-row flex-100"
-						},
-						"type": "itemDetail",
-						"templateOptions": {
-							"itemType": "Device"
-						}
-					}]
-				}, {
-					"elementAttributes": {
-						"formlyFieldGroupClass": "flex-20 layout-fill layout-column"
-					},
-					"fieldGroup": [{
-						"elementAttributes": {
-							"class": "layout-row flex-100"
-						},
-						"type": "chips",
-						"templateOptions": {
-							"itemType": "Device"
-						}
-					}]
-				}]
-			}]
-		}, {
-			"type": "button",
-			"templateOptions": {
-				"label": "Save Recommendation",
-				"class": "md-raised md-primary",
-				"method": "saveRecommendation"
-			}
-		}];
+		var recommendation_CRUD = [
+  {
+    "type": "progressTracker",
+    "wrapper": "card_noHeaderNoActions",
+    "templateOptions": {
+      "totalSteps": 5,
+      "steps": [
+        {
+          "status": "done",
+          "label": "Capture Initial Details"
+        },
+        {
+          "status": "done",
+          "label": "Know your customer"
+        },
+        {
+          "status": "current",
+          "label": "Recommendations"
+        },
+        {
+          "status": "todo",
+          "label": "Generate quote"
+        },
+        {
+          "status": "todo",
+          "label": "Generate agreement"
+        }
+      ],
+      "card": {
+        "imagePath": "",
+        "headline": "",
+        "actions": ""
+      },
+      "style": ""
+    }
+  },
+  {
+    "type": "topHeaderDetails",
+    "templateOptions": {
+      "objectType": "leadDetails",
+      "style": "color:white; background-color: rgb(33, 150, 243);",
+      "class": "flex-33",
+      "fields": [
+        {
+          "title": "Company Name",
+          "key": "compName"
+        },
+        {
+          "title": "Created By User",
+          "key": "createdByUser"
+        },
+        {
+          "title": "Lead status",
+          "key": "status"
+        }
+      ]
+    }
+  },
+  {
+    "wrapper": "card_noHeaderNoActions",
+    "fieldGroup": [
+      {
+        "wrapper": "wrapper_tabset",
+        "fieldGroup": [
+          {
+            "wrapper": "wrapper_tab",
+            "elementAttributes": {
+              "layout": "row",
+              "style": "height:700px;"
+            },
+            "templateOptions": {
+              "title": "Offers",
+              "active": true
+            },
+            "fieldGroup": [
+              {
+                "elementAttributes": {
+                  "formlyFieldGroupClass": "flex-30 layout-fill layout-column"
+                },
+                "fieldGroup": [
+                  {
+                    "type": "itemsList",
+                    "elementAttributes": {
+                      "class": "layout-row flex-100"
+                    },
+                    "templateOptions": {
+                      "itemType": "Offer",
+                      "items": "model"
+                    }
+                  }
+                ]
+              },
+              {
+                "elementAttributes": {
+                  "formlyFieldGroupClass": "flex-50 layout-fill layout-column"
+                },
+                "fieldGroup": [
+                  {
+                    "elementAttributes": {
+                      "class": "layout-row flex-100"
+                    },
+                    "type": "itemDetail",
+                    "templateOptions": {
+                      "itemType": "Offer"
+                    }
+                  }
+                ]
+              },
+              {
+                "elementAttributes": {
+                  "formlyFieldGroupClass": "flex-20 layout-fill layout-column"
+                },
+                "fieldGroup": [
+                  {
+                    "elementAttributes": {
+                      "class": "layout-row flex-100"
+                    },
+                    "type": "itemChips",
+                    "templateOptions": {
+                      "itemType": "Offer"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "wrapper": "wrapper_tab",
+            "elementAttributes": {
+              "layout": "row",
+              "style": "height:700px;"
+            },
+            "templateOptions": {
+              "title": "Devices",
+              "active": true
+            },
+            "fieldGroup": [
+              {
+                "elementAttributes": {
+                  "formlyFieldGroupClass": "flex-30 layout-fill layout-column"
+                },
+                "fieldGroup": [
+                  {
+                    "type": "itemsList",
+                    "elementAttributes": {
+                      "class": "layout-row flex-100"
+                    },
+                    "templateOptions": {
+                      "itemType": "Device",
+                      "items": []
+                    }
+                  }
+                ]
+              },
+              {
+                "elementAttributes": {
+                  "formlyFieldGroupClass": "flex-50 layout-fill layout-column"
+                },
+                "fieldGroup": [
+                  {
+                    "elementAttributes": {
+                      "class": "layout-row flex-100"
+                    },
+                    "type": "itemDetail",
+                    "templateOptions": {
+                      "itemType": "Device"
+                    }
+                  }
+                ]
+              },
+              {
+                "elementAttributes": {
+                  "formlyFieldGroupClass": "flex-20 layout-fill layout-column"
+                },
+                "fieldGroup": [
+                  {
+                    "elementAttributes": {
+                      "class": "layout-row flex-100"
+                    },
+                    "type": "itemChips",
+                    "templateOptions": {
+                      "itemType": "Device"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "templateOptions": {
+          "label": "Save Recommendation",
+          "class": "md-raised md-primary",
+          "method": "saveRecommendation"
+        }
+      }
+    ]
+  }
+];
 
 		var Offers = [{
 			"name": "Red Business Grow Plan",
@@ -146,7 +234,7 @@
 			"price": 51,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda5.jpg"
+			"imagePath": "app/assets/images/voda5.jpg"
 		}, {
 			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-20T00:00:00.000+05:30",
@@ -158,7 +246,7 @@
 			"price": 100,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda2.jpg"
+			"imagePath": "app/assets/images/voda2.jpg"
 
 		}, {
 			"name": "Red Business Grow Plan",
@@ -171,7 +259,7 @@
 			"price": 201,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda3.jpg"
+			"imagePath": "app/assets/images/voda3.jpg"
 
 		}, {
 			"name": "Red Business Grow Plan",
@@ -184,7 +272,7 @@
 			"price": 400,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda4.jpg"
+			"imagePath": "app/assets/images/voda4.jpg"
 
 		}, {
 			"name": "Red Business Grow Plan",
@@ -197,7 +285,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda5.jpg"
+			"imagePath": "app/assets/images/voda5.jpg"
 
 		}, {
 			"name": "Red Business Grow Plan",
@@ -210,7 +298,7 @@
 			"price": 51,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda6.jpg"
+			"imagePath": "app/assets/images/voda6.jpg"
 
 		}, {
 			"name": "Red Business Grow Plan",
@@ -223,7 +311,7 @@
 			"price": 100,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda5.jpg"
+			"imagePath": "app/assets/images/voda5.jpg"
 
 		}, {
 			"name": "Red Business Grow Plan",
@@ -236,7 +324,7 @@
 			"price": 201,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda2.jpg"
+			"imagePath": "app/assets/images/voda2.jpg"
 
 		}, {
 			"name": "Red Business Grow Plan",
@@ -249,7 +337,7 @@
 			"price": 400,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda3.jpg"
+			"imagePath": "app/assets/images/voda3.jpg"
 
 		}, {
 			"name": "Red Business Grow Plan",
@@ -262,7 +350,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda4.jpg"
+			"imagePath": "app/assets/images/voda4.jpg"
 		}, {
 			"name": "Red Business Grow Plan",
 			"startDateTime": "2015-11-23T00:00:00.000+05:30",
@@ -274,7 +362,7 @@
 			"price": 240,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda5.jpg"
+			"imagePath": "app/assets/images/voda5.jpg"
 		}];
 
 		var Devices = [{
@@ -288,7 +376,7 @@
 			"price": 51,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda2.jpg"
+			"imagePath": "app/assets/images/voda2.jpg"
 
 		}, {
 			"name": "Broadband_Core",
@@ -301,7 +389,7 @@
 			"price": 100,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda3.jpg"
+			"imagePath": "app/assets/images/voda3.jpg"
 
 		}, {
 			"name": "Installation",
@@ -314,7 +402,7 @@
 			"price": 201,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda4.jpg"
+			"imagePath": "app/assets/images/voda4.jpg"
 
 		}, {
 			"name": "50Mbps_QOS",
@@ -327,7 +415,7 @@
 			"price": 400,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda5.jpg"
+			"imagePath": "app/assets/images/voda5.jpg"
 
 		}, {
 			"name": "1Month_Validity",
@@ -340,7 +428,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda6.jpg"
+			"imagePath": "app/assets/images/voda6.jpg"
 
 		}, {
 			"name": "3Month_Validity",
@@ -353,7 +441,7 @@
 			"price": 240,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda2.jpg"
+			"imagePath": "app/assets/images/voda2.jpg"
 
 		}, {
 			"name": "1_Year_Validity",
@@ -366,7 +454,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda3.jpg"
+			"imagePath": "app/assets/images/voda3.jpg"
 
 		}, {
 			"name": "Zero Balance",
@@ -379,7 +467,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda4.jpg"
+			"imagePath": "app/assets/images/voda4.jpg"
 
 		}, {
 			"name": "1Month_TalkTime",
@@ -392,7 +480,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda5.jpg"
+			"imagePath": "app/assets/images/voda5.jpg"
 
 		}, {
 			"name": "5Month_Validity",
@@ -405,7 +493,7 @@
 			"price": 120,
 			"usageGroup": [],
 			"attributes": [],
-			"imagePath":"app/assets/images/voda6.jpg"
+			"imagePath": "app/assets/images/voda6.jpg"
 
 		}];
 

@@ -27,19 +27,24 @@
 
 			quoteModel.prototype = {
 				save: function(){
-					return $http.post("http://125.20.35.91/VHAMW/webapi/Quote",this);
+					// return $http.post("http://125.20.35.91/VHAMW/webapi/Quote",this);
+					return $http.post("http://192.168.100.16:8080/VHAMW/webapi/Quote",this);
 				},
 				get: function(quoteId){
-					return $http.get("http://125.20.35.91/VHAMW/webapi/Quote/"+quoteId);
+					// return $http.get("http://125.20.35.91/VHAMW/webapi/Quote/"+quoteId);
+					return $http.get("http://192.168.100.16:8080/VHAMW/webapi/Quote/"+quoteId);
 				},
 				remove: function(quoteId){
-					return $http.delete("http://125.20.35.91/VHAMW/webapi/Quote/"+quoteId);
+					// return $http.delete("http://125.20.35.91/VHAMW/webapi/Quote/"+quoteId);
+					return $http.delete("http://192.168.100.16:8080/VHAMW/webapi/Quote/"+quoteId);
 				},
 				update: function(){
-					return $http.put("http://125.20.35.91/VHAMW/webapi/Quote/",this);
+					// return $http.put("http://125.20.35.91/VHAMW/webapi/Quote/",this);
+					return $http.put("http://192.168.100.16:8080/VHAMW/webapi/Quote/",this);
 				},
 				getAll: function(){
-					return $http.get("http://125.20.35.91/VHAMW/webapi/Quote");
+					// return $http.get("http://125.20.35.91/VHAMW/webapi/Quote");
+					return $http.get("http://192.168.100.16:8080/VHAMW/webapi/Quote");
 				}
 			};
 			return quoteModel;

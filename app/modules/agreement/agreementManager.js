@@ -107,7 +107,35 @@
 							        );
 						}
 					},
-
+					updateAgreement: function(agreementData) {
+						var agreement = new agreementModel(agreementData);
+						agreement.update().then(
+								function (response) {
+									alert('Agreement '+ agreementData.agreementId + ' updated successfully.' );
+									$state.go('home.agreement.viewAll');
+								},
+							function (error) {
+								alert('Error While deleting Agreement: '+ error.message );
+							}
+							);
+					},
+					deleteAgreement: function(agreementId) {
+						if(confirm('Are you sure you want to delete this agreement?')){
+							var agreement = new agreementModel();
+							agreement.remove(agreementId).then(
+									function (response) {
+										alert('Agreement '+ agreementId + ' deleted successfully.' );
+										$state.go('home.agreement.viewAll');
+									},
+								function (error) {
+									alert('Error While deleting Agreement: '+ error.message );
+								}
+								);
+						}
+						else{
+								console.log("Agreement deletion cancelled by User");
+							}
+					},
 		    	// <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 					// 	updateAgreement: function(agreementData) {
 		    	// 		var agreement = new agreementModel(agreementData);
@@ -267,6 +295,39 @@
 // 				    	);
 // 					},
 // 					@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+openEditAgreement: function(agreementId) {
+	new agreementModel().get(agreementId).then(
+			function (response) {
+				console.log("getAgreement SUCCESS");
+				console.log(response.data);
+
+				agreementSharedData.setAgreement(response.data);
+
+				$state.go('home.agreement.edit');
+				},
+			function (error) {
+				console.log("getAgreement ERROR");
+				console.log(error);
+			}
+		);
+},
+
+openDeleteAgreement: function(agreementId) {
+	new agreementModel().get(agreementId).then(
+			function (response) {
+				console.log("getAgreement SUCCESS");
+				console.log(response.data);
+
+				agreementSharedData.setAgreement(response.data);
+
+				$state.go('home.agreement.delete');
+				},
+			function (error) {
+				console.log("getAgreement ERROR");
+				console.log(error);
+			}
+		);
+},
 					openCreateAgreement: function() {
 						$state.go('home.agreement.create');
 					}

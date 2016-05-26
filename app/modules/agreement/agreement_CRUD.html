@@ -15,8 +15,8 @@
 
 
 <script type="text/ng-template" id="productSummary.html">
-  <div style="height:155px;">Offer Name: {{model.offerName}}<br><br><br>
-    List Price: {{model.listPrice}}<br><br><br>
+  <div style="height:274px;"><br><br><br><br>Offer Name: {{model.offerName}}<br><br><br><br>
+    List Price: {{model.listPrice}}<br><br><br><br>
     Offer Price: {{model.salePrice}}
 
   </div>
@@ -31,10 +31,11 @@
 
 
 <script type="text/ng-template" id="signature.html">
-<div style="text-align:center;background:url("{{model.signature}}");">
-  <div id="signature"></div>
-   <md-button class="md-raised" id="reset" onclick="$('#signature').jSignature('clear')"> <b>Reset</b> </md-button>
+ <div style="text-align: center;" >
+      <canvas width="500" height="300" id="canvas" style="border-width: 2px 2px 2px 2px; border-style: solid; background-color: #FFF;" drawing ></canvas>
+
 </div>
+
 </script>
 
 
