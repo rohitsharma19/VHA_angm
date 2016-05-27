@@ -95,37 +95,76 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 </script>
 
 <script type="text/ng-template" id="confirmationDialogueBox.html">
-  <md-dialog aria-label=""  ng-cloak>
-        <formly-form model=lead fields=fields></formly-form>
-  <md-dialog-actions layout="row">
-    <span flex-33>
+	<md-dialog style="min-width:500px; min-height:350px;" aria-label="" ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+    <span layout="row" layout-align="space-between center" flex="33">Lead Summary
+      <!-- {{to.heading}} -->
+      <md-dialog-actions>
+        <span flex-33>
+      <md-button style="background:#5FB4F7" ng-click="save()" md-autofocus>
+        Save
+      </md-button>
+      </span>
+        <span flex-33>
+      <md-button ng-click="cancel()">
+      Cancel
+      </md-button>
+      </span>
+      </md-dialog-actions>
+    </span>
+    </div>
+    </md-toolbar>
+		<formly-form model=model fields=fields></formly-form>
+		<!-- <md-dialog-actions layout="row">
+			<span flex-33>
     <md-button ng-click="save()" md-autofocus>
       Save
     </md-button>
   </span>
-  <span flex-33>
+			<span flex-33>
     <md-button ng-click="cancel()">
     Cancel
     </md-button>
   </span>
-  </md-dialog-actions>
-</md-dialog>
+		</md-dialog-actions> -->
+	</md-dialog>
 </script>
 
 <script type="text/ng-template" id="confirmationDialogueBox1.html">
-  <form>
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <span flex>{{to.heading}}</span>
-            </div>
-  </md-toolbar>
-  <md-dialog-content style="{{to.style}};">
-    <div class="md-dialog-content">
-  <div ng-repeat="itr in to.setOfFields" layout=row >
-<span style="background:ghostwhite;" flex=50 >{{itr.label}} </span>
-<span flex=50 >: {{model[itr.key]}}</span>
-</div>
-</div>
-</md-dialog-content>
-  </form>
+
+	<!-- <form> -->
+		<!-- <md-toolbar>
+			<div class="md-toolbar-tools"> -->
+
+				<!-- <span flex>{{to.heading}}
+          <md-dialog-actions layout="row">
+            <span flex-33>
+          <md-button ng-click="save()" md-autofocus>
+            Save
+          </md-button>
+          </span>
+            <span flex-33>
+          <md-button ng-click="cancel()">
+          Cancel
+          </md-button>
+          </span>
+          </md-dialog-actions>
+        </span> -->
+			<!-- </div>
+		</md-toolbar> -->
+		<md-dialog-content>
+			<div class="md-dialog-content">
+				<md-list>
+					<md-list-item style="background:ghostwhite;" ng-repeat="itr in to.setOfFields" >
+            <div layout="row" flex="100">
+						<span  flex=50>{{itr.label}} </span>
+						<span flex=50>: {{model[itr.key]}}</span>
+          </div>
+            <md-divider></md-divider>
+					</md-list-item>
+				</md-list>
+			</div>
+		</md-dialog-content>
+	<!-- </form> -->
 </script>

@@ -128,8 +128,6 @@
 				vm.viewSign(vm.agreement.signature);
 
 				vm.agreement.agreementMode = "View";
-
-
 				agreementSharedData.resetAgreement();
 			}
 			if ($state.current.name === 'home.agreement.edit') {
@@ -141,9 +139,7 @@
 					var img=new Image();
 					img.src=value;
 					context.drawImage(img,0,0);
-
-
-						});
+					});
 				}
 				vm.agreementFields = JSON.parse(agreementSharedData.getLayout('agreement_CRUD'));
 				vm.agreement = agreementSharedData.getAgreement();

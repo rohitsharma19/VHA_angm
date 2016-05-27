@@ -576,7 +576,7 @@
     "templateOptions": {
       "label": "Create Lead",
       "class": "md-raised md-primary",
-      "method": "showAdvanced"
+      "method": "confirmDetails"
     },
     "hideExpression": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
   },

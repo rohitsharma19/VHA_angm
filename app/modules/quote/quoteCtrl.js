@@ -106,11 +106,12 @@
 			}
 
 			vm.addOffer_DeviceToFinal = function(object) {
-				console.log("Inside addDeviceToFinal");
-				if (vm.quote.finalSelection.Offer_Devices.indexOf(object) == -1)
+				console.log("Inside addOffer_DeviceToFinal");
+				if (vm.quote.finalSelection.Offer_Devices.indexOf(object) == -1) {
 					object.total = object.price * object.quantity;
 					vm.quote.finalSelection.Offer_Devices.push(object);
 					vm.calculateGrandTotal();
+				}
 			}
 
 			vm.selectDeviceForDetail = function(object) {

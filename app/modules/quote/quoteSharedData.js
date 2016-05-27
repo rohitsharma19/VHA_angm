@@ -360,7 +360,8 @@
 ];
 
 
-	var Offers = [{
+	var Offers = [
+	{
 		"name": "Red Business Grow Plan",
 		"startDateTime": "2015-11-23T00:00:00.000+05:30",
 		"endDateTime": "2030-12-30T23:59:59.000+05:30",
@@ -429,210 +430,55 @@
 		"startDateTime": "2015-11-23T00:00:00.000+05:30",
 		"endDateTime": "2030-12-30T23:59:59.000+05:30",
 		"productCategory": "Broadband",
-		"productType": "Quota",
-		"productSpecificationRefId": "PRD_13",
-		"defaultState": "OptIn",
-		"price": 51,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda6.jpg"
-
-	}, {
-		"name": "Red Business Grow Plan",
-		"startDateTime": "2015-11-20T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Core",
-		"productSpecificationRefId": "PRD_1",
-		"defaultState": "OptIn",
-		"price": 100,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda5.jpg"
-
-	}, {
-		"name": "Red Business Grow Plan",
-		"startDateTime": "2016-02-09T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "VAS",
-		"productSpecificationRefId": "PRD_113",
-		"defaultState": "OptIn",
-		"price": 201,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda2.jpg"
-
-	}, {
-		"name": "Red Business Grow Plan",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Product",
-		"productSpecificationRefId": "PRD_15",
-		"defaultState": "OptIn",
-		"price": 400,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda3.jpg"
-
-	}, {
-		"name": "Red Business Grow Plan",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
 		"productType": "Validity",
-		"productSpecificationRefId": "PRD_16",
+		"productSpecificationRefId": "PRD_17",
 		"defaultState": "OptIn",
-		"price": 120,
+		"price": 210,
 		"usageGroup": [],
 		"attributes": [],
-		"imagePath":"app/assets/images/voda4.jpg"
-	}, {
-		"name": "Red Business Grow Plan",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Validity",
-		"productSpecificationRefId": "PRD_18",
-		"defaultState": "OptIn",
-		"price": 240,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda5.jpg"
-	}];
+		"imagePath": "app/assets/images/voda5.jpg"
+	}
+];
 
-	var Devices = [{
-		"name": "40Gb_Data",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Quota",
-		"productSpecificationRefId": "PRD_13",
-		"defaultState": "OptIn",
-		"price": 51,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda2.jpg"
+var Devices = [{
+	"name": "Iphone 6/6 Plus",
+	"startDateTime": "2015-11-23T00:00:00.000+05:30",
+	"endDateTime": "2030-12-30T23:59:59.000+05:30",
+	"productCategory": "Broadband",
+	"productType": "Quota",
+	"productSpecificationRefId": "PRD_13",
+	"defaultState": "OptIn",
+	"price": 51,
+	"usageGroup": [],
+	"attributes": [],
+	"imagePath": "app/assets/images/device_1.png"
 
-	}, {
-		"name": "Broadband_Core",
-		"startDateTime": "2015-11-20T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Core",
-		"productSpecificationRefId": "PRD_1",
-		"defaultState": "OptIn",
-		"price": 100,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda3.jpg"
+}, {
+	"name": "BlackBerry BX01",
+	"startDateTime": "2015-11-20T00:00:00.000+05:30",
+	"endDateTime": "2030-12-30T23:59:59.000+05:30",
+	"productCategory": "Broadband",
+	"productType": "Core",
+	"productSpecificationRefId": "PRD_1",
+	"defaultState": "OptIn",
+	"price": 100,
+	"usageGroup": [],
+	"attributes": [],
+	"imagePath": "app/assets/images/device_2.jpg"
 
-	}, {
-		"name": "Installation",
-		"startDateTime": "2016-02-09T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "VAS",
-		"productSpecificationRefId": "PRD_113",
-		"defaultState": "OptIn",
-		"price": 201,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda4.jpg"
-
-	}, {
-		"name": "50Mbps_QOS",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Product",
-		"productSpecificationRefId": "PRD_15",
-		"defaultState": "OptIn",
-		"price": 400,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda5.jpg"
-
-	}, {
-		"name": "1Month_Validity",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Validity",
-		"productSpecificationRefId": "PRD_16",
-		"defaultState": "OptIn",
-		"price": 120,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda6.jpg"
-
-	}, {
-		"name": "3Month_Validity",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Validity",
-		"productSpecificationRefId": "PRD_18",
-		"defaultState": "OptIn",
-		"price": 240,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda2.jpg"
-
-	}, {
-		"name": "1_Year_Validity",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Validity",
-		"productSpecificationRefId": "PRD_16",
-		"defaultState": "OptIn",
-		"price": 120,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda3.jpg"
-
-	}, {
-		"name": "Zero Balance",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Validity",
-		"productSpecificationRefId": "PRD_16",
-		"defaultState": "OptIn",
-		"price": 120,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda4.jpg"
-
-	}, {
-		"name": "1Month_TalkTime",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Validity",
-		"productSpecificationRefId": "PRD_16",
-		"defaultState": "OptIn",
-		"price": 120,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda5.jpg"
-
-	}, {
-		"name": "5Month_Validity",
-		"startDateTime": "2015-11-23T00:00:00.000+05:30",
-		"endDateTime": "2030-12-30T23:59:59.000+05:30",
-		"productCategory": "Broadband",
-		"productType": "Validity",
-		"productSpecificationRefId": "PRD_16",
-		"defaultState": "OptIn",
-		"price": 120,
-		"usageGroup": [],
-		"attributes": [],
-		"imagePath":"app/assets/images/voda6.jpg"
-	}];
-
+}, {
+	"name": "Samsung Galaxy 7",
+	"startDateTime": "2016-02-09T00:00:00.000+05:30",
+	"endDateTime": "2030-12-30T23:59:59.000+05:30",
+	"productCategory": "Broadband",
+	"productType": "VAS",
+	"productSpecificationRefId": "PRD_113",
+	"defaultState": "OptIn",
+	"price": 201,
+	"usageGroup": [],
+	"attributes": [],
+	"imagePath": "app/assets/images/device_3.jpg"
+}];
 
 		var quote_viewAll = [{
 			"key": "list",

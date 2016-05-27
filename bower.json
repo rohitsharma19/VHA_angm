@@ -26,8 +26,7 @@
     "angular-formly-material": "^0.14.1",
     "api-check": "^7.5.5",
     "angular-formly": "^8.2.0",
-    "angular-google-maps": "^2.3.3",
-    "jSignature":"2.0.2"
+    "angular-google-maps": "^2.3.3"
   },
   "resolutions": {
     "angular": ">=1.3.*"

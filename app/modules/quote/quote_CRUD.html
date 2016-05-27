@@ -197,6 +197,12 @@
 		-webkit-animation-duration: 1s;
 		animation-duration: 1s;
 	}
+
+	md-list-item .md-no-style {
+		padding:0px;
+		padding-right: 2%;
+	}
+
 </style>
 
 <formly-form model="vm.quote" fields="vm.quoteFields"></formly-form>
@@ -233,7 +239,7 @@
 
 <script type="text/ng-template" id="itemsList.html">
 	<md-card flex=100 md-whiteframe="3" layout="column">
-		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
+		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white; max-height:30px;">
 			<span style="font-weight: 600; letter-spacing: 2px;"> All {{options.templateOptions.itemType}}s </span>
 		</div>
 		<md-divider></md-divider>
@@ -246,7 +252,7 @@
 							<div flex=60 style="padding:5px;" class="md-list-item-text" layout="column">
 								<span layout="row" flex=50>{{item.name}}</span>
 								<div layout="row" layout-align="end center" flex=50>
-									<div flex=40 md-whiteframe="3" style="background:#2196F3; padding:5%; border-radius:2px; color:white; text-align:center;">${{ item.price }}</div>
+									<div flex=40 md-whiteframe="3" style="background:#2196F3; /*padding:5%;*/ border-radius:2px; color:white; text-align:center;">${{ item.price }}</div>
 								</div>
 							</div>
 							<md-divider></md-divider>
@@ -291,13 +297,13 @@
 </script> -->
 <script type="text/ng-template" id="itemDetail.html">
 	<md-card flex=100 md-whiteframe="3" layout="column">
-		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
+		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white; max-height:30px;">
 			<span style="font-weight: 600; letter-spacing: 2px;"> {{options.templateOptions.itemType}} Detail </span>
 		</div>
 		<md-divider></md-divider>
-		<md-content id="bottomsheet" flex=95 style="overflow:hidden;">
+		<md-content id="{{options.templateOptions.itemType}}" flex=95 style="overflow:hidden;">
 			<div flex=100 style="overflow:hidden;" layout="column" layout-fill ng-repeat="item in model['selectedItem'][options.templateOptions.itemType]">
-				<div flex=40 style="overflow:hidden;">
+				<div flex=40 style="overflow:hidden; max-height:285px;">
 					<img ng-src="{{item.imagePath}}" class="md-card-image" alt="Washed Out">
 				</div>
 				<md-card-title style="padding:8px;" flex=10>
@@ -322,7 +328,7 @@
 				</md-card-content>
 				<md-card-actions layout="row" layout-align="end center">
 					<div>
-						<md-button ng-click="showBottomSheet('add'+options.templateOptions.itemType+'ToFinal',item)" class="md-fab md-raised md-primary" aria-label="ADD">
+						<md-button ng-click="showBottomSheet('add'+options.templateOptions.itemType+'ToFinal', options.templateOptions.itemType, item)" class="md-fab md-raised md-primary" aria-label="ADD">
 							<md-icon>add</md-icon>
 						</md-button>
 					</div>
@@ -359,7 +365,7 @@
 
 <script type="text/ng-template" id="itemChips.html" md-whiteframe="3">
 	<md-card flex=100 layout="column">
-		<div flex="25" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
+		<div flex="25" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white; max-height:30px;">
 			<span style="font-weight: 600; letter-spacing: 2px;"> Selected {{options.templateOptions.itemType}}s </span>
 		</div>
 		<md-divider></md-divider>

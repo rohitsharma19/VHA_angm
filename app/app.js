@@ -23,13 +23,14 @@
 		'ui.grid',
 		'formly',
 		'formlyMaterial',
+		'uiGmapgoogle-maps',
 		'home',
 		'lead',
 		'opportunity',
 		'recommendation',
 		'quote',
-		'agreement'
-
+		'agreement',
+		'shared'
 	]).directive("drawing", function(){
 	return {
 

@@ -566,7 +566,7 @@
     "templateOptions": {
       "label": "Create Opportunity",
       "class": "md-raised md-primary",
-      "method": "createOpportunity"
+      "method": "confirmDetails"
     },
     "hideExpression": "model.self.opportunityMode!=\"QuickCreate\" && model.self.opportunityMode!=\"Create\""
   },
@@ -626,6 +626,66 @@
 			}
 		}];
 
+		var SummaryDialog=[
+			{
+				"type":"SummaryDialogBox",
+				"templateOptions":{
+						"heading":"Opportunity Summary",
+						"style":"min-width:680px; min-height:310px;",
+						"setOfFields":[
+							{
+								"label":"Opportunity Name",
+								"key":"opportunityName"
+							},
+							{
+								"label":"Opportunity Source",
+								"key":"opportunitySource"
+							},
+							{
+								"label":"Opportunity Type",
+								"key":"opportunityType"
+							},
+							{
+								"label":"Opportunity Size",
+								"key":"opportunitySize"
+							},
+							{
+								"label":"Purchase Time Frame",
+								"key":"purchaseTimeFrame"
+							},
+							{
+								"label":"Probability",
+								"key":"probability"
+							},
+							{
+								"label":"Competitor",
+								"key":"competitor"
+							},
+							{
+								"label":"Requested Date",
+								"key":"requestedDate"
+							},
+							{
+								"label":"Closed Date",
+								"key":"closedDate"
+							},
+							{
+								"label":"Closure Reason",
+								"key":"closureReason"
+							},
+							{
+								"label":"Territory Code Or Region",
+								"key":"territoryCodeOrRegion"
+							},
+							{
+								"label":"Stage",
+								"key":"stage"
+							}
+						]
+					}
+				}];
+
+
 
 		return {
 			/*setOpportunityMode : function(mode){
@@ -651,6 +711,8 @@
 					return JSON.stringify(opportunity_CRUD);
 				} else if (view === 'opportunity_viewAll') {
 					return JSON.stringify(opportunity_viewAll);
+				} else if (view === 'SummaryDialog') {
+					return JSON.stringify(SummaryDialog);
 				}
 			}
 		};

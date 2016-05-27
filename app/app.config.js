@@ -150,11 +150,8 @@
 		formlyConfig.setWrapper({
 			name: 'gridWrapperNoAction',
 			template: [
-				'<div layout="row" style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}};">\
-					<div flex="75">\
-						<div class="md-display-1" style="padding: 14px;">{{to.cardLabel}}</div>\
-					</div>\
-					<div flex="25">\
+				'<div layout="row" layout-align="end end" style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}};">\
+					<div flex=10 style="margin-right:1%">\
 					<h2>Total : {{model.self.discountedPrice}}</h2>\
 					</div>\
 				</div>\
@@ -339,10 +336,10 @@
 					targetScope.vm[functionName](functionParam);
 				};
 
-				$scope.showBottomSheet = function(functionName, functionParam) {
+				$scope.showBottomSheet = function(functionName, parentDivId, functionParam) {
 					$scope.alert = '';
 
-					var parentElement = document.querySelector('#bottomsheet');
+					var parentElement = document.querySelector('#'+parentDivId);
 					console.log("parentElement");
 					console.log(parentElement);
 
@@ -359,7 +356,9 @@
 						controller: function($scope, $mdBottomSheet) {
 							$scope.item = functionParam;
 							$scope.addQuantity = function() {
+								console.log("Inside bottomSheet Controller addQuantity() ");
 								targetScope.vm[functionName](functionParam);
+								console.log("Before $mdBottomSheet.hide()");
 								$mdBottomSheet.hide();
 							}
 						}

@@ -88,7 +88,7 @@
 			};
 		}
 
-		vm.showAdvanced = function(lead) {
+		vm.confirmDetails = function(lead) {
     // var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
     $mdDialog.show({
       controller: DialogController,
@@ -116,8 +116,7 @@
   };
 
 	function DialogController($scope, $mdDialog) {
-		$scope.lead =vm.lead;
-		console.log($scope.lead);
+		$scope.model =vm.lead;
 		$scope.fields=vm.fields;
    $scope.hide = function() {
      $mdDialog.hide();
