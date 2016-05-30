@@ -102,6 +102,7 @@
 
 					agreementManager.createAgreement(agreement);
 				};
+
 			}
 			if ($state.current.name === 'home.agreement.view') {
 

@@ -13,7 +13,7 @@
 		.module('lead')
 		.controller('LeadCtrl', Lead);
 
-	Lead.$inject = ['$state', 'leadManager', 'leadSharedData','$mdDialog','$mdMedia','$scope'];
+	Lead.$inject = ['$state', 'leadManager', 'leadSharedData','$mdDialog','$mdMedia','$scope','sharedService'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Lead($state, leadManager, leadSharedData, $mdDialog, $mdMedia, $scope) {
+	function Lead($state, leadManager, leadSharedData, $mdDialog, $mdMedia, $scope, sharedService) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -73,7 +73,6 @@
 				vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 				vm.lead.leadMode = "Create";
 			}
-
 
 			vm.createLead = function(lead) {
 				console.log("Inside createLead().");

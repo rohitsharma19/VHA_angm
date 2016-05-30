@@ -44,9 +44,9 @@ module.exports = function (grunt) {
 					'app/app.config.js',
 					'app/modules/**/*Module.js',
 					'app/modules/**/*Route.js',
-					'app/modules/**/*Ctrl.js',
 					'app/modules/**/*Service.js',
-					'app/modules/**/*Directive.js'
+					'app/modules/**/*Directive.js',
+					'app/modules/**/*Ctrl.js'
 				],
 				dest: 'app/assets/js/<%= pkg.name %>-appbundle.js'
 			},
@@ -85,7 +85,7 @@ module.exports = function (grunt) {
 					keepalive: true,
 					port: 4000,
 					base: '.',
-					hostname: '192.168.100.2',
+					hostname: '192.168.100.14',
 					debug: true,
 					livereload: true,
 					open: true
@@ -119,12 +119,12 @@ module.exports = function (grunt) {
             'app/app.config.js',
 						'app/**/*Module.js',
 						'app/**/*Route.js',
-						'app/**/*Ctrl.js',
 						'app/**/*Service.js',
 						'app/**/*Directive.js',
 						'app/**/*Manager.js',
 						'app/**/*Model.js',
-						'app/**/*SharedData.js'
+						'app/**/*SharedData.js',
+						'app/**/*Ctrl.js'
 					]
 				}
 			},

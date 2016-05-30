@@ -15,9 +15,9 @@
 	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 	// function Name ($http, someSevide) {...}
 
-	Quote.$inject = ['$state', 'quoteModel', 'quoteSharedData'];
+	Quote.$inject = ['$state', 'quoteModel', 'quoteSharedData', 'sharedService'];
 
-	function Quote($state, quoteModel, quoteSharedData) {
+	function Quote($state, quoteModel, quoteSharedData, sharedService) {
 
 
 		var quoteManager = {
@@ -35,6 +35,8 @@
 			},
 
 			createQuote: function(quoteData) {
+				//showing progress bar while the quote is saved
+				sharedService.showProgressBar();
 
 				if (quoteData == null) {
 					console.log("quoteData is null.");
@@ -42,32 +44,19 @@
 				} else {
 					quoteData.quoteId = "L" + Date.now();
 
-					/* Creating formatted date */
-					var today = new Date();
-					var dd = today.getDate();
-					var mm = today.getMonth() + 1; //January is 0!
-
-					var yyyy = today.getFullYear();
-					if (dd < 10) {
-						dd = '0' + dd
-					}
-					if (mm < 10) {
-						mm = '0' + mm
-					}
-					var today = yyyy + "-" + mm + "-" + dd;
-					/* Date formation ends here */
-
-					quoteData.creationDate = today;
-
 					var quote = new quoteModel(quoteData);
 					quote.save().then(
 						function(response) {
 							alert('Quote ' + quote.quoteId + ' created successfully.');
 
 							if ($state.current.name === 'home.quote.QuickCreate') {
-								$state.go('home.agreement.QuickCreate');
+								$state.go('home.agreement.QuickCreate').then(function() {
+									sharedService.hideProgressBar();
+								});
 							} else if ($state.current.name === 'home.quote.create') {
-								$state.go('home.quote.viewAll');
+								$state.go('home.quote.viewAll').then(function() {
+									sharedService.hideProgressBar();
+								});
 							}
 						},
 						function(error) {
@@ -78,11 +67,16 @@
 			},
 
 			updateQuote: function(quoteData) {
+
+				sharedService.showProgressBar();
+
 				var quote = new quoteModel(quoteData);
 				quote.update().then(
 					function(response) {
 						alert('Quote ' + quoteData.quoteId + ' updated successfully.');
-						$state.go('home.quote.viewAll');
+						$state.go('home.quote.viewAll').then(function() {
+							sharedService.hideProgressBar();
+						});
 					},
 					function(error) {
 						alert('Error While deleting Quote: ' + error.message);
@@ -91,12 +85,17 @@
 			},
 
 			deleteQuote: function(quoteId) {
+
+				sharedService.showProgressBar();
+
 				if (confirm('Are you sure you want to delete this quote?')) {
 					var quote = new quoteModel();
 					quote.remove(quoteId).then(
 						function(response) {
 							alert('Quote ' + quoteId + ' deleted successfully.');
-							$state.go('home.quote.viewAll');
+							$state.go('home.quote.viewAll').then(function() {
+								sharedService.hideProgressBar();
+							});
 						},
 						function(error) {
 							alert('Error While deleting Quote: ' + error.message);
@@ -126,6 +125,9 @@
 			},
 
 			openViewQuote: function(quoteId) {
+
+				sharedService.showProgressBar();
+
 				new quoteModel().get(quoteId).then(
 					function(response) {
 						console.log("getQuote SUCCESS");
@@ -133,7 +135,9 @@
 
 						quoteSharedData.setQuote(response.data);
 
-						$state.go('home.quote.view');
+						$state.go('home.quote.view').then(function() {
+							sharedService.hideProgressBar();
+						});
 					},
 					function(error) {
 						console.log("getQuote ERROR");
@@ -143,6 +147,9 @@
 			},
 
 			openEditQuote: function(quoteId) {
+
+				sharedService.showProgressBar();
+
 				new quoteModel().get(quoteId).then(
 					function(response) {
 						console.log("getQuote SUCCESS");
@@ -150,7 +157,9 @@
 
 						quoteSharedData.setQuote(response.data);
 
-						$state.go('home.quote.edit');
+						$state.go('home.quote.edit').then(function() {
+							sharedService.hideProgressBar();
+						});
 					},
 					function(error) {
 						console.log("getQuote ERROR");
@@ -160,6 +169,9 @@
 			},
 
 			openDeleteQuote: function(quoteId) {
+
+				sharedService.showProgressBar();
+
 				new quoteModel().get(quoteId).then(
 					function(response) {
 						console.log("getQuote SUCCESS");
@@ -167,7 +179,9 @@
 
 						quoteSharedData.setQuote(response.data);
 
-						$state.go('home.quote.delete');
+						$state.go('home.quote.delete').then(function() {
+							sharedService.hideProgressBar();
+						});
 					},
 					function(error) {
 						console.log("getQuote ERROR");
@@ -177,7 +191,12 @@
 			},
 
 			openCreateQuote: function() {
-				$state.go('home.quote.create');
+
+				sharedService.showProgressBar();
+
+				$state.go('home.quote.create').then(function() {
+					sharedService.hideProgressBar();
+				});
 			}
 		};
 		return quoteManager;

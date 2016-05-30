@@ -13,7 +13,7 @@
 		.module('quote')
 		.controller('QuoteCtrl', Quote);
 
-	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData'];
+	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData','sharedService'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Quote($state, $stateParams, quoteManager, quoteSharedData) {
+	function Quote($state, $stateParams, quoteManager, quoteSharedData, sharedService) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -70,6 +70,7 @@
 		}
 
 		if (($state.current.name === 'home.quote.create') || ($state.current.name === 'home.quote.QuickCreate')) {
+
 
 			vm.calculateGrandTotal = function() {
 				vm.quote.self.discountedPrice = 0;
@@ -136,6 +137,7 @@
 				console.log(quote);
 				quoteManager.createQuote(quote.self);
 			};
+
 		}
 
 		if ($state.current.name === 'home.quote.edit') {

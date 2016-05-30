@@ -66,14 +66,17 @@
       "fields": [
         {
           "title": "Company Name",
+					"type":"leadDetails",
           "key": "compName"
         },
         {
           "title": "Created By User",
+					"type":"leadDetails",
           "key": "createdByUser"
         },
         {
           "title": "Lead status",
+					"type":"leadDetails",
           "key": "status"
         }
       ]

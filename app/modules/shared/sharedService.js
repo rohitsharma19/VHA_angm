@@ -9,32 +9,41 @@
 	 * Service of the app
 	 */
 
-  	angular
+	angular
 		.module('shared')
 		.factory('sharedService', Shared);
-		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
-		// function Name ($http, someSevide) {...}
+	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
+	// function Name ($http, someSevide) {...}
 
-		Shared.$inject = ['leadManager'];
+	Shared.$inject = ['leadModel', '$rootScope'];
 
-		function Shared (leadManager) {
+	function Shared(leadModel, $rootScope) {
 
-			var sharedService = {
+		var sharedService = {
 
-				getLead: function(leadId) {
-					return leadManager.getLead(leadId);
-				},
-				getOpportunity: function(opportunityId) {
-					return opportunityManager.getOpportunity(opportunityId);
-				},
+			getLead: function(leadId) {
+				return new leadModel().get(leadId);
+			},
+			// getOpportunity: function(opportunityId) {
+			// 	return opportunityManager.getOpportunity(opportunityId);
+			// },
+			//
+			// getQuote: function(quoteId) {
+			// 	return quoteManager.getQuote(quoteId);
+			// },
+			//
+			// getAgreement: function(agreementId) {
+			// 	return agreementManager.getAgreement(agreementId);
+			// },
 
-				getQuote: function(quoteId) {
-					return quoteManager.getQuote(quoteId);
-				},
+			showProgressBar: function() {
+				$rootScope.showProgressBar = true;
+			},
 
-				getAgreement: function(agreementId) {
-					return agreementManager.getAgreement(agreementId);
-				}
+			hideProgressBar: function() {
+				$rootScope.showProgressBar = false;
+			}
+
 		}
 		return sharedService;
 	}

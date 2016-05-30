@@ -60,20 +60,23 @@
   {
     "type": "topHeaderDetails",
     "templateOptions": {
-      "objectType": "leadDetails",
+      "objectType": "opportunityDetails",
       "style": "color:white; background-color: rgb(33, 150, 243);",
       "class": "flex-33",
       "fields": [
         {
           "title": "Company Name",
+					"type":"leadDetails",
           "key": "compName"
-        },
         {
-          "title": "Created By User",
+				},
+          "title": "Opportunity created By User",
+					"type":"opportunityDetails",
           "key": "createdByUser"
         },
         {
-          "title": "Lead status",
+          "title": "Opportunity status",
+					"type":"opportunityDetails",
           "key": "status"
         }
       ]

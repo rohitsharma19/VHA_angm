@@ -15,7 +15,7 @@
 	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 	// function Name ($http, someSevide) {...}
 
-	Opportunity.$inject = ['$state', 'opportunityModel', 'opportunitySharedData','sharedService'];
+	Opportunity.$inject = ['$state', 'opportunityModel', 'opportunitySharedData', 'sharedService'];
 
 	function Opportunity($state, opportunityModel, opportunitySharedData, sharedService) {
 
@@ -36,37 +36,26 @@
 
 			createOpportunity: function(opportunityData) {
 
+				//showing progress bar while the opportunity is saved
+				sharedService.showProgressBar();
+
 				if (opportunityData == null) {
 					console.log("opportunityData is null.");
 					alert('Please fill in the required details.');
 				} else {
-					// opportunityData.opportunityId = "L" + Date.now();
-					//
-					// /* Creating formatted date */
-					// var today = new Date();
-					// var dd = today.getDate();
-					// var mm = today.getMonth() + 1; //January is 0!
-					//
-					// var yyyy = today.getFullYear();
-					// if (dd < 10) {
-					// 	dd = '0' + dd
-					// }
-					// if (mm < 10) {
-					// 	mm = '0' + mm
-					// }
-					// var today = yyyy + "-" + mm + "-" + dd;
-					// /* Date formation ends here */
-					//
-					// opportunityData.opportunityCreationDate = today;
 
 					var opportunity = new opportunityModel(opportunityData);
 					opportunity.save().then(
 						function(response) {
 							alert('Opportunity ' + opportunity.opportunityId + ' created successfully.');
 							if ($state.current.name === 'home.opportunity.QuickCreate') {
-								$state.go('home.recommendation.QuickCreate');
+								$state.go('home.recommendation.QuickCreate').then(function() {
+									sharedService.hideProgressBar();
+								});
 							} else if ($state.current.name === 'home.opportunity.create') {
-								$state.go('home.opportunity.viewAll');
+								$state.go('home.opportunity.viewAll').then(function() {
+									sharedService.hideProgressBar();
+								});
 							}
 
 						},
@@ -80,11 +69,16 @@
 			},
 
 			updateOpportunity: function(opportunityData) {
+
+				sharedService.showProgressBar();
+
 				var opportunity = new opportunityModel(opportunityData);
 				opportunity.update().then(
 					function(response) {
 						alert('Opportunity ' + opportunityData.opportunityId + ' updated successfully.');
-						$state.go('home.opportunity.viewAll');
+						$state.go('home.opportunity.viewAll').then(function() {
+							sharedService.hideProgressBar();
+						});
 					},
 					function(error) {
 						alert('Error While deleting Opportunity: ' + error.message);
@@ -93,12 +87,17 @@
 			},
 
 			deleteOpportunity: function(opportunityId) {
+
+				sharedService.showProgressBar();
+
 				if (confirm('Are you sure you want to delete this opportunity?')) {
 					var opportunity = new opportunityModel();
 					opportunity.remove(opportunityId).then(
 						function(response) {
 							alert('Opportunity ' + opportunityId + ' deleted successfully.');
-							$state.go('home.opportunity.viewAll');
+							$state.go('home.opportunity.viewAll').then(function() {
+								sharedService.hideProgressBar();
+							});
 						},
 						function(error) {
 							alert('Error While deleting Opportunity: ' + error.message);
@@ -128,19 +127,27 @@
 			},
 
 			openViewOpportunity: function(opportunityId) {
+
+				sharedService.showProgressBar();
+
 				new opportunityModel().get(opportunityId).then(
 					function(response) {
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
-						var opportunity = {self:{}, leadDetails:{}};
+						var opportunity = {
+							self: {},
+							leadDetails: {}
+						};
 						opportunity.self = response.data;
 
 						sharedService.getLead(opportunity.self.leadId).then(
-							function(response){
+							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
 								opportunitySharedData.setOpportunity(opportunity);
-								$state.go('home.opportunity.view');
+								$state.go('home.opportunity.view').then(function() {
+									sharedService.hideProgressBar();
+								});
 							},
 							function(error) {
 								console.log("getOpportunity_Lead ERROR");
@@ -156,19 +163,27 @@
 			},
 
 			openEditOpportunity: function(opportunityId) {
+
+				sharedService.showProgressBar();
+
 				new opportunityModel().get(opportunityId).then(
 					function(response) {
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
-						var opportunity = {self:{}, leadDetails:{}};
+						var opportunity = {
+							self: {},
+							leadDetails: {}
+						};
 						opportunity.self = response.data;
 
 						sharedService.getLead(opportunity.self.leadId).then(
-							function(response){
+							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
 								opportunitySharedData.setOpportunity(opportunity);
-								$state.go('home.opportunity.edit');
+								$state.go('home.opportunity.edit').then(function() {
+									sharedService.hideProgressBar();
+								});
 							},
 							function(error) {
 								console.log("getOpportunity_Lead ERROR");
@@ -184,19 +199,27 @@
 			},
 
 			openDeleteOpportunity: function(opportunityId) {
+
+				sharedService.showProgressBar();
+
 				new opportunityModel().get(opportunityId).then(
 					function(response) {
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
-						var opportunity = {self:{}, leadDetails:{}};
+						var opportunity = {
+							self: {},
+							leadDetails: {}
+						};
 						opportunity.self = response.data;
 
 						sharedService.getLead(opportunity.self.leadId).then(
-							function(response){
+							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
 								opportunitySharedData.setOpportunity(opportunity);
-								$state.go('home.opportunity.view');
+								$state.go('home.opportunity.view').then(function() {
+									sharedService.hideProgressBar();
+								});
 							},
 							function(error) {
 								console.log("getOpportunity_Lead ERROR");
@@ -212,7 +235,12 @@
 			},
 
 			openCreateOpportunity: function() {
-				$state.go('home.opportunity.create');
+
+				sharedService.showProgressBar();
+
+				$state.go('home.opportunity.create').then(function() {
+					sharedService.hideProgressBar();
+				});
 			}
 		};
 		return opportunityManager;

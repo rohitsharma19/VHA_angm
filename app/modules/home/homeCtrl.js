@@ -13,7 +13,7 @@
 		.module('vha')
 		.controller('HomeCtrl', Home);
 
-	Home.$inject = ['homeService'];
+	Home.$inject = ['homeService','sharedService'];
 
 	/*
 	 * recommend
@@ -21,12 +21,15 @@
 	 * and bindable members up top.
 	 */
 
-	function Home(homeService) {
+	function Home(homeService, sharedService) {
 		/*jshint validthis: true */
 		var vm = this;
 		vm.title = "Hello, vha!";
 		vm.version = "1.0.0";
 		vm.listFeatures = homeService.getFeaturesList();
+
+		//hiding progress bar intially
+		sharedService.hideProgressBar();
 
 		vm.line = {
 			labels: ['Aug 15', 'Sep 15', 'Oct 15', 'Nov 15', 'Dec 15', 'Jan 16'],

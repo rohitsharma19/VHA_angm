@@ -83,6 +83,7 @@
 				// console.log("sharedService.getLead($stateParams.leadId)");
 				// console.log(sharedService.getLead($stateParams.leadId));
 				console.log(vm.opportunity);
+
 			} else if ($state.current.name === 'home.opportunity.create') {
 				console.log("CREATE OPPORTUNITY");
 
