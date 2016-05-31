@@ -39,17 +39,20 @@
 				//showing progress bar while the opportunity is saved
 				sharedService.showProgressBar();
 
-				if (opportunityData == null) {
+				if (opportunityData.self == null) {
 					console.log("opportunityData is null.");
 					alert('Please fill in the required details.');
 				} else {
 
-					var opportunity = new opportunityModel(opportunityData);
+					var opportunity = new opportunityModel(opportunityData.self);
 					opportunity.save().then(
 						function(response) {
-							alert('Opportunity ' + opportunity.opportunityId + ' created successfully.');
+							alert('Opportunity ' + response.data.opportunityId + ' created successfully.');
 							if ($state.current.name === 'home.opportunity.QuickCreate') {
-								$state.go('home.recommendation.QuickCreate').then(function() {
+								$state.go('home.recommendation.QuickCreate', {
+									opportunityDetails: opportunityData.self,
+									leadDetails: opportunityData.leadDetails
+								}).then(function() {
 									sharedService.hideProgressBar();
 								});
 							} else if ($state.current.name === 'home.opportunity.create') {
@@ -72,7 +75,7 @@
 
 				sharedService.showProgressBar();
 
-				var opportunity = new opportunityModel(opportunityData);
+				var opportunity = new opportunityModel(opportunityData.self);
 				opportunity.update().then(
 					function(response) {
 						alert('Opportunity ' + opportunityData.opportunityId + ' updated successfully.');
@@ -144,8 +147,8 @@
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
-								opportunitySharedData.setOpportunity(opportunity);
-								$state.go('home.opportunity.view').then(function() {
+
+								$state.go('home.opportunity.view',{'opportunity':opportunity}).then(function() {
 									sharedService.hideProgressBar();
 								});
 							},
@@ -180,8 +183,7 @@
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
-								opportunitySharedData.setOpportunity(opportunity);
-								$state.go('home.opportunity.edit').then(function() {
+								$state.go('home.opportunity.edit',{'opportunity':opportunity}).then(function() {
 									sharedService.hideProgressBar();
 								});
 							},
@@ -216,8 +218,7 @@
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
-								opportunitySharedData.setOpportunity(opportunity);
-								$state.go('home.opportunity.view').then(function() {
+								$state.go('home.opportunity.view', {'opportunity':opportunity}).then(function() {
 									sharedService.hideProgressBar();
 								});
 							},

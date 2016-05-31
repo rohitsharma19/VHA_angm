@@ -42,15 +42,19 @@
 					console.log("quoteData is null.");
 					alert('Please fill in the required details.');
 				} else {
-					quoteData.quoteId = "L" + Date.now();
 
-					var quote = new quoteModel(quoteData);
+					var quote = new quoteModel(quoteData.self);
 					quote.save().then(
 						function(response) {
-							alert('Quote ' + quote.quoteId + ' created successfully.');
+							alert('Quote ' + response.data.quoteId + ' created successfully.');
 
 							if ($state.current.name === 'home.quote.QuickCreate') {
-								$state.go('home.agreement.QuickCreate').then(function() {
+								$state.go('home.agreement.QuickCreate', {
+									leadDetails: quoteData.leadDetails,
+									opportunityDetails: quoteData.opportunityDetails,
+									quoteDetails: quoteData.self,
+									finalSelection: quoteData.finalSelection
+								}).then(function() {
 									sharedService.hideProgressBar();
 								});
 							} else if ($state.current.name === 'home.quote.create') {
@@ -70,10 +74,10 @@
 
 				sharedService.showProgressBar();
 
-				var quote = new quoteModel(quoteData);
+				var quote = new quoteModel(quoteData.self);
 				quote.update().then(
 					function(response) {
-						alert('Quote ' + quoteData.quoteId + ' updated successfully.');
+						alert('Quote ' + response.data.quoteId + ' updated successfully.');
 						$state.go('home.quote.viewAll').then(function() {
 							sharedService.hideProgressBar();
 						});
@@ -128,16 +132,47 @@
 
 				sharedService.showProgressBar();
 
+				var quote = {
+					self: {},
+					leadDetails: {},
+					opportunityDetails: {}
+				};
+
 				new quoteModel().get(quoteId).then(
 					function(response) {
 						console.log("getQuote SUCCESS");
 						console.log(response.data);
+						quote.self = response.data;
 
-						quoteSharedData.setQuote(response.data);
+						sharedService.getOpportunity(quote.self.opportunityId).then(
+							function(response) {
+								quote.opportunityDetails = response.data;
+								console.log("quote.opportunityDetails");
+								console.log(quote.opportunityDetails);
 
-						$state.go('home.quote.view').then(function() {
-							sharedService.hideProgressBar();
-						});
+								sharedService.getLead(quote.opportunityDetails.leadId).then(
+									function(response) {
+										quote.leadDetails = response.data;
+										console.log("quote.leadDetails");
+										console.log(quote.leadDetails);
+
+										$state.go('home.quote.view', {
+											'quote': quote
+										}).then(function() {
+											sharedService.hideProgressBar();
+										});
+									},
+									function(error) {
+										console.log("getQuote_Lead ERROR");
+										console.log(error);
+									}
+								);
+							},
+							function(error) {
+								console.log("getQuote_Opportunity ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getQuote ERROR");
@@ -150,16 +185,47 @@
 
 				sharedService.showProgressBar();
 
+				var quote = {
+					self: {},
+					leadDetails: {},
+					opportunityDetails: {}
+				};
+
 				new quoteModel().get(quoteId).then(
 					function(response) {
 						console.log("getQuote SUCCESS");
 						console.log(response.data);
+						quote.self = response.data;
 
-						quoteSharedData.setQuote(response.data);
+						sharedService.getOpportunity(quote.self.opportunityId).then(
+							function(response) {
+								quote.opportunityDetails = response.data;
+								console.log("quote.opportunityDetails");
+								console.log(quote.opportunityDetails);
 
-						$state.go('home.quote.edit').then(function() {
-							sharedService.hideProgressBar();
-						});
+								sharedService.getLead(quote.opportunityDetails.leadId).then(
+									function(response) {
+										quote.leadDetails = response.data;
+										console.log("quote.leadDetails");
+										console.log(quote.leadDetails);
+
+										$state.go('home.quote.edit', {
+											'quote': quote
+										}).then(function() {
+											sharedService.hideProgressBar();
+										});
+									},
+									function(error) {
+										console.log("getQuote_Lead ERROR");
+										console.log(error);
+									}
+								);
+							},
+							function(error) {
+								console.log("getQuote_Opportunity ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getQuote ERROR");
@@ -168,20 +234,52 @@
 				);
 			},
 
+
 			openDeleteQuote: function(quoteId) {
 
 				sharedService.showProgressBar();
+
+				var quote = {
+					self: {},
+					leadDetails: {},
+					opportunityDetails: {}
+				};
 
 				new quoteModel().get(quoteId).then(
 					function(response) {
 						console.log("getQuote SUCCESS");
 						console.log(response.data);
+						quote.self = response.data;
 
-						quoteSharedData.setQuote(response.data);
+						sharedService.getOpportunity(quote.self.opportunityId).then(
+							function(response) {
+								quote.opportunityDetails = response.data;
+								console.log("quote.opportunityDetails");
+								console.log(quote.opportunityDetails);
 
-						$state.go('home.quote.delete').then(function() {
-							sharedService.hideProgressBar();
-						});
+								sharedService.getLead(quote.opportunityDetails.leadId).then(
+									function(response) {
+										quote.leadDetails = response.data;
+										console.log("quote.leadDetails");
+										console.log(quote.leadDetails);
+
+										$state.go('home.quote.delete', {
+											'quote': quote
+										}).then(function() {
+											sharedService.hideProgressBar();
+										});
+									},
+									function(error) {
+										console.log("getQuote_Lead ERROR");
+										console.log(error);
+									}
+								);
+							},
+							function(error) {
+								console.log("getQuote_Opportunity ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getQuote ERROR");

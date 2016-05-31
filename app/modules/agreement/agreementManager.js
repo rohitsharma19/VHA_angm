@@ -41,7 +41,7 @@
 					console.log("agreementData is null.");
 					alert('Please fill in the required details.');
 				} else {
-					agreementData.agreementId = "A" + Date.now();
+					agreementData.self.agreementId = "A" + Date.now();
 
 					/* Creating formatted date */
 					var today = new Date();
@@ -80,16 +80,16 @@
 					console.log(endDay);
 					/*agreement end date ends here*/
 
-					agreementData.agremntStartDate = today;
-					agreementData.agremntEffecDate = nextday;
-					agreementData.agremntEndDate = endDay;
-					agreementData.creationDate = today;
-					agreementData.listPrice = 5000;
+					agreementData.self.agremntStartDate = today;
+					agreementData.self.agremntEffecDate = nextday;
+					agreementData.self.agremntEndDate = endDay;
+					agreementData.self.creationDate = today;
+					agreementData.self.listPrice = 5000;
 
-					var agreement = new agreementModel(agreementData);
+					var agreement = new agreementModel(agreementData.self);
 					agreement.save().then(
 						function(response) {
-							alert('Agreement ' + agreement.agreementId + ' created successfully.');
+							alert('Agreement ' + response.self.agreementId + ' created successfully.');
 
 							if ($state.current.name === 'home.agreement.QuickCreate') {
 								$state.go('home.dashboard').then(function() {
@@ -113,10 +113,10 @@
 
 				sharedService.showProgressBar();
 
-				var agreement = new agreementModel(agreementData);
+				var agreement = new agreementModel(agreementData.self);
 				agreement.update().then(
 					function(response) {
-						alert('Agreement ' + agreementData.agreementId + ' updated successfully.');
+						alert('Agreement ' + response.data.agreementId + ' updated successfully.');
 						$state.go('home.agreement.viewAll').then(function() {
 							sharedService.hideProgressBar();
 						});

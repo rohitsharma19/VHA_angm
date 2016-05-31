@@ -98,222 +98,198 @@
 			}
 		}]
 
-		var agreement_CRUD = [
-  {
-    "type": "progressTracker",
-    "wrapper": "card_noHeaderNoActions",
-    "templateOptions": {
-      "totalSteps": 5,
-      "steps": [
-        {
-          "status": "done",
-          "label": "Capture Initial Details"
-        },
-        {
-          "status": "done",
-          "label": "Know your customer"
-        },
-        {
-          "status": "done",
-          "label": "Recommendations"
-        },
-        {
-          "status": "done",
-          "label": "Generate quote"
-        },
-        {
-          "status": "current",
-          "label": "Generate agreement"
-        }
-      ],
-      "card": {
-        "imagePath": "",
-        "headline": "",
-        "actions": ""
-      },
-      "style": ""
-    }
-  },
-  {
-    "fieldGroup": [
-      {
-        "type": "topHeaderDetails",
-        "templateOptions": {
-          "objectType": "leadDetails",
-          "style": "color:white; background-color: rgb(33, 150, 243);",
-          "class": "flex-33",
-          "fields": [
-            {
-              "title": "Company Name",
-              "key": "compName"
-            },
-            {
-              "title": "Created By User",
-              "key": "createdByUser"
-            },
-            {
-              "title": "Agreement status",
-              "key": "status"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "elementAttributes": {
-      "layout": "row"
-    },
-    "fieldGroup": [
-      {
-        "className": "flex-60",
-        "wrapper": "card_noHeaderNoActions",
-        "fieldGroup": [
-          {
-            "type": "list",
-            "templateOptions": {
-              "brief": "This page contains the terms and conditions concerning your use of the Vodafone services. By accessing this site, you agree to be bound by the following terms and conditions.",
-              "list": [
-                "Vodafone India Limited, Vodafone Mobile Services Limited, Vodafone South Limited, Vodafone East Limited, Vodafone West Limited, Vodafone Digilink Limited, Vodafone Cellular Limited, Vodafone Spacetel Limited (jointly hereinafter to as \"Vodafone\") shall use reasonable endeavours to check the accuracy of the information published on its site.",
-                "Content (information, communications, images and sounds contained on or available through vodafone.in) is provided by Vodafone, its affiliates, independent content providers and third parties.",
-                "Vodafone will use its reasonable endeavours to maintain vodafone.in in a fully operating condition. It is not responsible for the results of any defects that exist in vodafone.in.",
-                "It is a condition of us allowing you access to the information on vodafone.in that you accept we will not be liable for any action you take relying on the information on vodafone.in.",
-                "If your PC does not support relevant technology including but not limited to encryption you may not be able to use certain services or access certain information on vodafone.in.",
-                "You may not mirror any material contained on vodafone.in on any other server without the prior written consent of Vodafone India Limited.",
-                "You acknowledge that Vodafone has no control over and excludes all liability for any material on the Internet which can be accessed by using vodafone.in. Neither can we be deemed to have endorsed the content."
-              ],
-              "headline": "Terms and Conditions",
-              "card": {
-                "imagePath": "",
-                "headlineBackgroundColor": "#e4e4e4",
-                "actions": []
-              }
-            }
-          },
-          {
-            "type": "checkBox",
-            "templateOptions": {
-              "label": "I agree to the above terms and Conditions.",
-              "class": "md-primary"
-            },
-            "hideExpression": "model.agreementMode!='Create' && model.agreementMode!='QuickCreate'"
-          }
-        ]
-      },
-      {
-        "elementAttributes": {
-          "layout-wrap": "row",
-          "className": "flex-40 "
-        },
-        "fieldGroup": [
-          {
-            "className": "flex-100 ",
-            "type": "product_details",
-            "templateOptions": {
-              "height": "224px",
-              "productSummary": productSummary,
-              "card": {
-                "imagePath": "",
-                "headline": "Product Summary",
-                "headlineBackgroundColor": "#e4e4e4",
-                "actions": []
-              }
-            }
-          },
-          {
-            "className": "flex-100",
-            "wrapper": "card_noHeaderNoActions",
-            "fieldGroup": [
-              {
-                "type": "signature",
-                "key": "signature",
-                "templateOptions": {
-                  "card": {
-                    "imagePath": "",
-                    "headline": "Signature",
-                    "headlineBackgroundColor": "#e4e4e4",
-                    "actions": []
-                  }
-                }
-              },
-              {
-                "type": "button",
-                "templateOptions": {
-                  "label": "Reset",
-                  "class": "md-raised md-primary",
-                  "method": "resetSign"
-                },
-                "hideExpression": "model.agreementMode!='Create' && model.agreementMode!='QuickCreate' && model.agreementMode!='Update'"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "button",
-    "templateOptions": {
-      "label": "Create Agreement",
-      "class": "md-raised md-primary",
-      "method": "createAgreement"
-    },
-    "hideExpression": "model.agreementMode!='QuickCreate' && model.agreementMode!='Create'"
-  },
-  {
-    "type": "button",
-    "templateOptions": {
-      "label": "Update Agreement",
-      "class": "md-raised md-primary",
-      "method": "updateAgreement"
-    },
-    "hideExpression": "model.agreementMode!='Update'"
-  },
-  {
-    "type": "button",
-    "templateOptions": {
-      "label": "Delete Agreement",
-      "class": "md-raised md-primary",
-      "method": "deleteAgreement"
-    },
-    "hideExpression": "model.agreementMode!='Delete'"
-  }
-];
+		var agreement_CRUD = [{
+			"type": "progressTracker",
+			"wrapper": "card_noHeaderNoActions",
+			"templateOptions": {
+				"totalSteps": 5,
+				"steps": [{
+					"status": "done",
+					"label": "Capture Initial Details"
+				}, {
+					"status": "done",
+					"label": "Know your customer"
+				}, {
+					"status": "done",
+					"label": "Recommendations"
+				}, {
+					"status": "done",
+					"label": "Generate quote"
+				}, {
+					"status": "current",
+					"label": "Generate agreement"
+				}],
+				"card": {
+					"imagePath": "",
+					"headline": "",
+					"actions": ""
+				},
+				"style": ""
+			}
+		},
+		{
+			"type": "topHeaderDetails",
+			"templateOptions": {
+				"style": "color:white; background-color: rgb(33,150,243);",
+				"class": "flex-33",
+				"fields": [
+					{
+						"title": "Company Name",
+						"type":"leadDetails",
+						"key": "compName"
+					},
+					{
+						"title": "Created By User",
+						"type":"leadDetails",
+						"key": "createdByUser"
+					},
+					{
+						"title": "Lead status",
+						"type":"leadDetails",
+						"key": "status"
+					}
+				]
+			}
+		},
+		{
+			"elementAttributes": {
+				"layout": "row"
+			},
+			"fieldGroup": [{
+				"className": "flex-60",
+				"wrapper": "card_noHeaderNoActions",
+				"fieldGroup": [{
+					"type": "list",
+					"templateOptions": {
+						"brief": "This page contains the terms and conditions concerning your use of the Vodafone services. By accessing this site, you agree to be bound by the following terms and conditions.",
+						"list": [
+							"Vodafone India Limited, Vodafone Mobile Services Limited, Vodafone South Limited, Vodafone East Limited, Vodafone West Limited, Vodafone Digilink Limited, Vodafone Cellular Limited, Vodafone Spacetel Limited (jointly hereinafter to as \"Vodafone\") shall use reasonable endeavours to check the accuracy of the information published on its site.",
+							"Content (information, communications, images and sounds contained on or available through vodafone.in) is provided by Vodafone, its affiliates, independent content providers and third parties.",
+							"Vodafone will use its reasonable endeavours to maintain vodafone.in in a fully operating condition. It is not responsible for the results of any defects that exist in vodafone.in.",
+							"It is a condition of us allowing you access to the information on vodafone.in that you accept we will not be liable for any action you take relying on the information on vodafone.in.",
+							"If your PC does not support relevant technology including but not limited to encryption you may not be able to use certain services or access certain information on vodafone.in.",
+							"You may not mirror any material contained on vodafone.in on any other server without the prior written consent of Vodafone India Limited.",
+							"You acknowledge that Vodafone has no control over and excludes all liability for any material on the Internet which can be accessed by using vodafone.in. Neither can we be deemed to have endorsed the content."
+						],
+						"headline": "Terms and Conditions",
+						"card": {
+							"imagePath": "",
+							"headlineBackgroundColor": "#e4e4e4",
+							"actions": []
+						}
+					}
+				}, {
+					"type": "checkBox",
+					"templateOptions": {
+						"label": "I agree to the above terms and Conditions.",
+						"class": "md-primary"
+					},
+					"hideExpression": "model.agreementMode!='Create' && model.agreementMode!='QuickCreate'"
+				}]
+			}, {
+				"elementAttributes": {
+					"layout-wrap": "row",
+					"className": "flex-40 "
+				},
+				"fieldGroup": [{
+					"className": "flex-100 ",
+					"type": "product_details",
+					"templateOptions": {
+						"height": "224px",
+						"productSummary": productSummary,
+						"card": {
+							"imagePath": "",
+							"headline": "Product Summary",
+							"headlineBackgroundColor": "#e4e4e4",
+							"actions": []
+						}
+					}
+				}, {
+					"className": "flex-100",
+					"wrapper": "card_noHeaderNoActions",
+					"fieldGroup": [{
+						"type": "signature",
+						"key": "signature",
+						"templateOptions": {
+							"card": {
+								"imagePath": "",
+								"headline": "Signature",
+								"headlineBackgroundColor": "#e4e4e4",
+								"actions": []
+							}
+						}
+					}, {
+						"type": "button",
+						"templateOptions": {
+							"label": "Reset",
+							"class": "md-raised md-primary",
+							"method": "resetSign"
+						},
+						"hideExpression": "model.agreementMode!='Create' && model.agreementMode!='QuickCreate' && model.agreementMode!='Update'"
+					}]
+				}]
+			}]
+		}, {
+			"type": "button",
+			"templateOptions": {
+				"label": "Create Agreement",
+				"class": "md-raised md-primary",
+				"method": "createAgreement"
+			},
+			"hideExpression": "model.agreementMode!='QuickCreate' && model.agreementMode!='Create'"
+		}, {
+			"type": "button",
+			"templateOptions": {
+				"label": "Update Agreement",
+				"class": "md-raised md-primary",
+				"method": "updateAgreement"
+			},
+			"hideExpression": "model.agreementMode!='Update'"
+		}, {
+			"type": "button",
+			"templateOptions": {
+				"label": "Delete Agreement",
+				"class": "md-raised md-primary",
+				"method": "deleteAgreement"
+			},
+			"hideExpression": "model.agreementMode!='Delete'"
+		}];
 
 		var agreement_viewAll = [{
 			key: "list",
 			type: "ui-grid",
-			"wrapper":["gridWrapper","card_noHeaderNoActions"],
+			"wrapper": ["gridWrapper", "card_noHeaderNoActions"],
 			templateOptions: {
 				"label": "Agreement",
 				"cardLabel": "View All Agreements",
 				"cardHeaderBackground": "rgb(33,150,243)",
 				"cardLabelColor": "white",
 				columnDefs: [{
-					field: "agreementId"
-				}, {
-					field: "agremntStartDate"
-				}, {
-					field: "agremntEndDate"
-				}, {
-					field: "agremntEffecDate"
-				}, {
-					field: "listPrice"
-				},
-				//  {
-				// 	field: "agremntDocVer"
-				// },
-				//  {
-				// 	field: "agremntDocType"
-				// },
-				//  {
-				// 	field: "serviceReqDate"
-				// },
-				{
-					name: "Actions",
-					cellTemplate: "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('openViewAgreement',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>remove_red_eye</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openEditAgreement',row) style='min-width: 0px;'><md-icon style='color:green; vertical-align: baseline;'>edit</md-icon></md-button><md-button class='md-icon-button md-accent' ng-click=grid.appScope.clicked('openDeleteAgreement',row) style='min-width: 0px;'><md-icon style='vertical-align: baseline;'>delete</md-icon></md-button>",
-					enableFiltering: false
-				}],
+						field: "agreementId"
+					}, {
+						field: "agremntStartDate"
+					}, {
+						field: "agremntEndDate"
+					}, {
+						field: "agremntEffecDate"
+					}, {
+						field: "listPrice"
+					},
+					//  {
+					// 	field: "agremntDocVer"
+					// },
+					//  {
+					// 	field: "agremntDocType"
+					// },
+					//  {
+					// 	field: "serviceReqDate"
+					// },
+					{
+						name: "Actions",
+						cellTemplate: "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('openViewAgreement',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>remove_red_eye</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openEditAgreement',row) style='min-width: 0px;'><md-icon style='color:green; vertical-align: baseline;'>edit</md-icon></md-button><md-button class='md-icon-button md-accent' ng-click=grid.appScope.clicked('openDeleteAgreement',row) style='min-width: 0px;'><md-icon style='vertical-align: baseline;'>delete</md-icon></md-button>",
+						enableFiltering: false
+					}
+				],
 
 				onRegisterApi: ""
 			}

@@ -68,8 +68,8 @@
           "title": "Company Name",
 					"type":"leadDetails",
           "key": "compName"
-        {
 				},
+				{
           "title": "Opportunity created By User",
 					"type":"opportunityDetails",
           "key": "createdByUser"

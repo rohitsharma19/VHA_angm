@@ -20,7 +20,7 @@ angular.module('opportunity')
 			})
 			.state('home.opportunity.QuickCreate', {
 				url:'/QuickCreate',
-				params: {leadDetails: 'null'},
+				params: {leadDetails: null},
 				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'
@@ -39,18 +39,21 @@ angular.module('opportunity')
 			})
 			.state('home.opportunity.edit', {
 				url:'/edit',
+				params: {opportunity: null},
 				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.opportunity.view', {
 				url:'/view',
+				params: {opportunity: null},
 				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.opportunity.delete', {
 				url:'/delete',
+				params: {opportunity: null},
 				templateUrl: 'app/modules/opportunity/opportunity_CRUD.html',
 				controller: 'OpportunityCtrl',
 				controllerAs: 'vm'

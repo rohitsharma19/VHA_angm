@@ -20,6 +20,7 @@ angular.module('agreement')
 			})
 			.state('home.agreement.QuickCreate', {
 				url:'/QuickCreate',
+				params:{finalSelection:null, leadDetails:null, opportunityDetails:null, quoteDetails: null},
 				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
 				controller: 'AgreementCtrl',
 				controllerAs: 'vm'

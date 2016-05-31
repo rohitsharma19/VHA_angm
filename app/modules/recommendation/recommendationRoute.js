@@ -20,6 +20,7 @@ angular.module('recommendation')
 			})
 			.state('home.recommendation.QuickCreate', {
 				url: '/QuickCreate',
+				params: {finalSelection: null, leadDetails: null, opportunityDetails: null},
 				templateUrl: 'app/modules/recommendation/recommendationCreation.html',
 				controller: 'RecommendationCtrl',
 				controllerAs: 'vm'

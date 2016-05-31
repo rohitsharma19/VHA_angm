@@ -20,7 +20,7 @@ angular.module('quote')
 			})
 			.state('home.quote.QuickCreate', {
 				url:'/QuickCreate',
-				params:{finalSelection:null},
+				params:{finalSelection:null, leadDetails:null, opportunityDetails:null},
 				templateUrl: 'app/modules/quote/quote_CRUD.html',
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'
@@ -39,18 +39,21 @@ angular.module('quote')
 			})
 			.state('home.quote.edit', {
 				url:'/edit',
+				params: {quote: null},
 				templateUrl: 'app/modules/quote/quote_CRUD.html',
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.quote.view', {
 				url:'/view',
+				params: {quote: null},
 				templateUrl: 'app/modules/quote/quote_CRUD.html',
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.quote.delete', {
 				url:'/delete',
+				params: {quote: null},
 				templateUrl: 'app/modules/quote/quote_CRUD.html',
 				controller: 'QuoteCtrl',
 				controllerAs: 'vm'

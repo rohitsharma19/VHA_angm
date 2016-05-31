@@ -71,18 +71,12 @@
 				};
 				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity.self.opportunityMode = "QuickCreate";
+
+				//setting leadId in Opportunity and setting assigning leadDetails object
+				if($stateParams.leadDetails != null) {
 				vm.opportunity.self.leadId = $stateParams.leadDetails.leadId;
-				console.log("opportunity.self");
-				// console.log(opportunity.self	);
 				vm.opportunity.leadDetails = $stateParams.leadDetails;
-				console.log("vm.opportunity.leadDetails");
-				console.log(vm.opportunity.leadDetails);
-				// console.log("$stateParams.leadId")
-				// console.log($stateParams.leadId);
-				// vm.opportunity.leadDetails=sharedService.getLead($stateParams.leadId);
-				// console.log("sharedService.getLead($stateParams.leadId)");
-				// console.log(sharedService.getLead($stateParams.leadId));
-				console.log(vm.opportunity);
+			}
 
 			} else if ($state.current.name === 'home.opportunity.create') {
 				console.log("CREATE OPPORTUNITY");
@@ -92,14 +86,12 @@
 				};
 				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity.self.opportunityMode = "Create";
-				// vm.opportunity.self.leadId=model.opportunity.leadId;
-				vm.opportunity.leadDetails = sharedService.getLead($stateParams.leadId);
 			}
 
 			vm.createOpportunity = function(opportunity) {
 				console.log("Inside createOpportunity().");
 				console.log(opportunity);
-				opportunityManager.createOpportunity(opportunity.self);
+				opportunityManager.createOpportunity(opportunity);
 			};
 		}
 
@@ -148,19 +140,19 @@
 
 		if ($state.current.name === 'home.opportunity.edit') {
 			console.log("EDIT OPPORTUNITY");
-			// vm.opportunityMode = "Update";
 
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 			vm.opportunity = {};
-			vm.opportunity = opportunitySharedData.getOpportunity();
-			vm.opportunity.self.opportunityMode = "Update";
-			// vm.opportunity.leadDetails = sharedService.getLead(vm.opportunity.self.leadId);
-			opportunitySharedData.resetOpportunity();
+
+			if($stateParams.opportunity != null) {
+				vm.opportunity = $stateParams.opportunity;
+				vm.opportunity.self.opportunityMode = "Update";
+			}
 
 			vm.updateOpportunity = function(opportunity) {
 				console.log("Inside updateOpportunity()");
 				console.log(opportunity);
-				opportunityManager.updateOpportunity(opportunity.self);
+				opportunityManager.updateOpportunity(opportunity);
 			};
 		}
 
@@ -168,22 +160,23 @@
 			console.log("VIEW OPPORTUNITY");
 			vm.opportunity = {};
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
-			vm.opportunity = opportunitySharedData.getOpportunity();
-			vm.opportunity.self.opportunityMode = "View";
-			// vm.opportunity.leadDetails = sharedService.getLead(vm.opportunity.self.leadId);
 
-			opportunitySharedData.resetOpportunity();
+			if($stateParams.opportunity != null) {
+				vm.opportunity = $stateParams.opportunity;
+				vm.opportunity.self.opportunityMode = "View";
+			}
+
 		}
 
 		if ($state.current.name === 'home.opportunity.delete') {
 			console.log("DELETE OPPORTUNITY");
 
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
-			vm.opportunity.self = opportunitySharedData.getOpportunity();
-			vm.opportunity.self.opportunityMode = "Delete";
-			// vm.opportunity.leadDetails = sharedService.getLead(vm.opportunity.self.leadId);
 
-			opportunitySharedData.resetOpportunity();
+			if($stateParams.opportunity != null) {
+				vm.opportunity = $stateParams.opportunity;
+				vm.opportunity.self.opportunityMode = "Delete";
+			}
 
 			vm.deleteOpportunity = function(opportunity) {
 				console.log("Inside deleteOpportunity()");

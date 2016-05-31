@@ -58,23 +58,25 @@
       "style": ""
     }
   },
-  {
+	{
     "type": "topHeaderDetails",
     "templateOptions": {
-      "objectType": "leadDetails",
-      "style": "color:white; background-color: rgb(33, 150, 243);",
+      "style": "color:white; background-color: rgb(33,150,243);",
       "class": "flex-33",
       "fields": [
         {
           "title": "Company Name",
+					"type":"leadDetails",
           "key": "compName"
         },
         {
           "title": "Created By User",
+					"type":"leadDetails",
           "key": "createdByUser"
         },
         {
           "title": "Lead status",
+					"type":"leadDetails",
           "key": "status"
         }
       ]

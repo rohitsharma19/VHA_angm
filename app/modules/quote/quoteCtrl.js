@@ -13,7 +13,7 @@
 		.module('quote')
 		.controller('QuoteCtrl', Quote);
 
-	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData','sharedService'];
+	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData', 'sharedService'];
 
 	/*
 	 * recommend
@@ -34,7 +34,7 @@
 			"finalSelection": {
 				Offer_Devices: []
 			},
-			"self":{}
+			"self": {}
 		};
 
 		if ($state.current.name === 'home.quote.viewAll') {
@@ -74,7 +74,7 @@
 
 			vm.calculateGrandTotal = function() {
 				vm.quote.self.discountedPrice = 0;
-				angular.forEach(vm.quote.finalSelection.Offer_Devices, function(object){
+				angular.forEach(vm.quote.finalSelection.Offer_Devices, function(object) {
 					vm.quote.self.discountedPrice = vm.quote.self.discountedPrice + object.total;
 				})
 			}
@@ -88,13 +88,23 @@
 			} else if ($state.current.name === 'home.quote.QuickCreate') {
 				console.log("CREATE QUICK QUOTE");
 
-				vm.temp = $stateParams.finalSelection;
-				vm.quote.finalSelection.Offer_Devices = vm.temp.Offers.concat(vm.temp.Devices);
+				if ($stateParams.finalSelection != null) {
+					vm.temp = $stateParams.finalSelection;
+					vm.quote.finalSelection.Offer_Devices = vm.temp.Offers.concat(vm.temp.Devices);
 
-				angular.forEach(vm.quote.finalSelection.Offer_Devices, function(object){
-					object.total = object.price * object.quantity;
-				});
-				vm.calculateGrandTotal();
+					angular.forEach(vm.quote.finalSelection.Offer_Devices, function(object) {
+						object.total = object.price * object.quantity;
+					});
+					vm.calculateGrandTotal();
+				}
+
+				if ($stateParams.leadDetails != null)
+					vm.quote.leadDetails = $stateParams.leadDetails;
+
+				if ($stateParams.opportunityDetails != null) {
+					vm.quote.opportunityDetails = $stateParams.opportunityDetails;
+					vm.quote.self.opportunityId = $stateParams.opportunityDetails.opportunityId;
+				}
 
 				vm.quote.self.quoteMode = "QuickCreate";
 				vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
@@ -128,54 +138,55 @@
 
 			vm.reCalculateTotal = function(object) {
 				console.log("Inside reCalculateTotal");
-				object.total = ((100 - object.discount)/100)*object.price*object.quantity;
+				object.total = ((100 - object.discount) / 100) * object.price * object.quantity;
 				vm.calculateGrandTotal();
 			}
 
 			vm.createQuote = function(quote) {
 				console.log("Inside createQuote().");
 				console.log(quote);
-				quoteManager.createQuote(quote.self);
+				quoteManager.createQuote(quote);
 			};
 
 		}
 
 		if ($state.current.name === 'home.quote.edit') {
 			console.log("EDIT QUOTE");
-			vm.quote.self = quoteSharedData.getQuote();
-			vm.quote.self.quoteMode = "Update";
+
+			if ($stateParams.quote != null) {
+				vm.quote = $stateParams.quote;
+				vm.quote.self.quoteMode = "Update";
+			}
 
 			vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
-
-			quoteSharedData.resetQuote();
 
 			vm.updateQuote = function(quote) {
 				console.log("Inside updateQuote()");
 				console.log(quote.self);
-				quoteManager.updateQuote(quote.self);
+				quoteManager.updateQuote(quote);
 			};
 		}
 
 		if ($state.current.name === 'home.quote.view') {
 			console.log("VIEW QUOTE");
 
-			vm.quote.self = quoteSharedData.getQuote();
-			vm.quote.self.quoteMode = "View";
+			if ($stateParams.quote != null) {
+				vm.quote = $stateParams.quote;
+				vm.quote.self.quoteMode = "View";
+			}
 
 			vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
-
-			quoteSharedData.resetQuote();
 		}
 
 		if ($state.current.name === 'home.quote.delete') {
 			console.log("DELETE QUOTE");
 
-			vm.quote.self = quoteSharedData.getQuote();
-			vm.quote.self.quoteMode = "Delete";
+			if ($stateParams.quote != null) {
+				vm.quote = $stateParams.quote;
+				vm.quote.self.quoteMode = "Delete";
+			}
 
 			vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
-
-			quoteSharedData.resetQuote();
 
 			vm.deleteQuote = function(quote) {
 				console.log("Inside deleteQuote()");
