@@ -725,7 +725,7 @@ var SummaryDialog=[
       "cardLabel": "View All Leads",
       "cardHeaderBackground": "rgb(33,150,243)",
       "cardLabelColor": "white",
-      "columnDefs": [
+			"columnDefs": [
         {
           "field": "leadId"
         },

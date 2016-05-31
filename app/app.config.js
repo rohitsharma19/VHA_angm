@@ -28,9 +28,19 @@
 		$urlRouterProvider
 			.otherwise('/dashboard');
 
-		$mdThemingProvider.theme('default')
-			.primaryPalette('blue')
-			.accentPalette('red');
+		$mdThemingProvider
+			.theme('default')
+			.primaryPalette('blue',{
+				'default': '800',
+	      'hue-1': '600',
+	      'hue-2': '400',
+	      'hue-3': 'A100'
+			})
+			.accentPalette('red', {
+	      'default': '200'
+	    })
+			//.backgroundPalette('grey')
+			.warnPalette('orange');
 
 		$mdThemingProvider.theme('input')
 			.primaryPalette('red')
@@ -132,7 +142,7 @@
 		formlyConfig.setWrapper({
 			name: 'gridWrapper',
 			template: [
-				'<div layout="row" style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}};">\
+				'<div layout="row" md-colors="{background: \'primary\'}" >\
 					<div flex="95">\
 						<div  style="font-size:30px; padding: 14px;">{{to.cardLabel}}</div>\
 					</div>\
@@ -166,7 +176,7 @@
 		formlyConfig.setWrapper({
 			name: 'wrapper_tabset',
 			template: [
-				'<md-tabs md-dynamic-height>\
+				'<md-tabs md-dynamic-height class="md-primary md-hue-1">\
 						<formly-transclude></formly-transclude>\
 					</md-tabs>\
 					'

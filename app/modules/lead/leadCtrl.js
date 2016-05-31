@@ -31,7 +31,7 @@
 
 			console.log("VIEW ALL LEADS");
 			vm.leadsList=[];
-
+			
 			vm.fields = JSON.parse(leadSharedData.getLayout('lead_viewAll'));
 			leadManager.inflateUiGrid(vm);
 

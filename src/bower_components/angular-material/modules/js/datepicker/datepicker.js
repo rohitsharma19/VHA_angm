@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.6
+ * v1.1.0-rc4-master-4aa7160
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -886,7 +886,8 @@
    *     };
    *
    *     $mdDateLocaleProvider.formatDate = function(date) {
-   *       return moment(date).format('L');
+   *       var m = moment(date);
+   *       return m.isValid() ? m.format('L') : '';
    *     };
    *
    *     $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
@@ -1638,6 +1639,10 @@
     this.calendarPane.classList.remove('md-pane-open');
     this.calendarPane.classList.remove('md-datepicker-pos-adjusted');
 
+    if (this.isCalendarOpen) {
+      this.$mdUtil.enableScrolling();
+    }
+
     if (this.calendarPane.parentNode) {
       // Use native DOM removal because we do not want any of the angular state of this element
       // to be disposed.
@@ -1681,11 +1686,10 @@
   /** Close the floating calendar pane. */
   DatePickerCtrl.prototype.closeCalendarPane = function() {
     if (this.isCalendarOpen) {
-      this.isCalendarOpen = false;
       this.detachCalendarPane();
+      this.isCalendarOpen = false;
       this.calendarPaneOpenedFrom.focus();
       this.calendarPaneOpenedFrom = null;
-      this.$mdUtil.enableScrolling();
 
       this.ngModelCtrl.$setTouched();
 
