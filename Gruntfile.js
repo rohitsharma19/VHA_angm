@@ -85,7 +85,7 @@ module.exports = function (grunt) {
 					keepalive: true,
 					port: 4000,
 					base: '.',
-					hostname: '192.168.100.14',
+					hostname: 'localhost',
 					debug: true,
 					livereload: true,
 					open: true
