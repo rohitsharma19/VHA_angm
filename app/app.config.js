@@ -30,13 +30,13 @@
 
 		$mdThemingProvider
 			.theme('default')
-			.primaryPalette('blue',{
+			.primaryPalette('red',{
 				'default': '800',
 	      'hue-1': '600',
 	      'hue-2': '400',
 	      'hue-3': 'A100'
 			})
-			.accentPalette('red', {
+			.accentPalette('blue', {
 	      'default': '200'
 	    })
 			//.backgroundPalette('grey')
@@ -142,7 +142,7 @@
 		formlyConfig.setWrapper({
 			name: 'gridWrapper',
 			template: [
-				'<div layout="row" md-colors="{background: \'primary\'}" >\
+				'<div layout="row" md-colors="{background: \'primary-600\'}" >\
 					<div flex="95">\
 						<div  style="font-size:30px; padding: 14px;">{{to.cardLabel}}</div>\
 					</div>\
@@ -416,8 +416,8 @@
 
 		formlyConfig.setType({
 			name: 'topHeaderDetails',
-			template: '<md-card class="md-padding" style="{{to.style}};">\
-									<md-content class="layout-row layout-wrap" style="{{to.style}};" >\
+			template: '<md-card class="md-padding" md-colors="{background: \'primary-400\'}">\
+									<md-content class="layout-row layout-wrap" md-colors="{background: \'primary-400\'}" >\
 								  <div ng-repeat="label in to.fields" class="{{to.class}}" >\
 								 		<div class="layout-row layout-wrap">\
 										<div flex-45>{{label.title}}</div> : <div flex-45>{{model[label.type][label.key]}} </div></div>\

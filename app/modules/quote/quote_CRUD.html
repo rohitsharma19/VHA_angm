@@ -239,7 +239,7 @@
 
 <script type="text/ng-template" id="itemsList.html">
 	<md-card flex=100 md-whiteframe="3" layout="column">
-		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
+		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; color:white;" md-colors="{background: 'primary-500'}">
 			<span style="font-weight: 600; letter-spacing: 2px;"> All {{options.templateOptions.itemType}}s </span>
 		</div>
 		<md-divider></md-divider>
@@ -252,7 +252,7 @@
 							<div flex=60 style="padding:5px;" class="md-list-item-text" layout="column">
 								<span layout="row" flex=50>{{item.name}}</span>
 								<div layout="row" layout-align="end center" flex=50>
-									<div flex=40 md-whiteframe="3" style="background:#2196F3; padding:5%; border-radius:2px; color:white; text-align:center;">${{ item.price }}</div>
+									<div flex=40 md-whiteframe="3" style="padding:5%; border-radius:2px; color:white; text-align:center;" md-colors="{background: 'primary-500'}">${{ item.price }}</div>
 								</div>
 							</div>
 							<md-divider></md-divider>
@@ -297,7 +297,7 @@
 </script> -->
 <script type="text/ng-template" id="itemDetail.html">
 	<md-card flex=100 md-whiteframe="3" layout="column">
-		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
+		<div flex="5" style="text-align:center; padding:7px; border-radius:2px; color:white;" md-colors="{background: 'primary-500'}">
 			<span style="font-weight: 600; letter-spacing: 2px;"> {{options.templateOptions.itemType}} Detail </span>
 		</div>
 		<md-divider></md-divider>
@@ -365,7 +365,7 @@
 
 <script type="text/ng-template" id="itemChips.html" md-whiteframe="3">
 	<md-card flex=100 layout="column">
-		<div flex="25" style="text-align:center; padding:7px; border-radius:2px; background:#2196F3; color:white;">
+		<div flex="25" style="text-align:center; padding:7px; border-radius:2px; color:white;" md-colors="{background: 'primary-500'}">
 			<span style="font-weight: 600; letter-spacing: 2px;"> Selected {{options.templateOptions.itemType}}s </span>
 		</div>
 		<md-divider></md-divider>

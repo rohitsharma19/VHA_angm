@@ -63,30 +63,30 @@
     ],
     "hideExpression": "model.leadMode!='QuickCreate'"
   },
-	{
-		"type": "topHeaderDetails",
-		"templateOptions": {
-			"style": "color:white; background-color: rgb(33,150,243);",
-			"class": "flex-33",
-			"fields": [
-				{
-					"title": "Company Name",
-					"type":"leadDetails",
-					"key": "compName"
-				},
-				{
-					"title": "Created By User",
-					"type":"leadDetails",
-					"key": "createdByUser"
-				},
-				{
-					"title": "Lead status",
-					"type":"leadDetails",
-					"key": "status"
-				}
-			]
-		}
-	},
+	// {
+	// 	"type": "topHeaderDetails",
+	// 	"templateOptions": {
+	// 		"style": "color:white; background-color: rgb(33,150,243);",
+	// 		"class": "flex-33",
+	// 		"fields": [
+	// 			{
+	// 				"title": "Company Name",
+	// 				"type":"leadDetails",
+	// 				"key": "compName"
+	// 			},
+	// 			{
+	// 				"title": "Created By User",
+	// 				"type":"leadDetails",
+	// 				"key": "createdByUser"
+	// 			},
+	// 			{
+	// 				"title": "Lead status",
+	// 				"type":"leadDetails",
+	// 				"key": "status"
+	// 			}
+	// 		]
+	// 	}
+	// },
   {
     "wrapper": "card_noHeaderNoActions",
     "fieldGroup": [
