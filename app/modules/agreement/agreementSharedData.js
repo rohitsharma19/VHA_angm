@@ -28,7 +28,7 @@
 				class: 'md-raised md-primary',
 				method: 'rersetSign'
 			},
-			hideExpression: 'model.agreementMode!="Create"&& model.agreementMode!="QuickCreate" && model.agreementMode!="Update"'
+			hideExpression: 'model.self.agreementMode!="Create" && model.self.agreementMode!="QuickCreate" && model.self.agreementMode!="Update"'
 
 		}]
 		var agreementDetails = [{
@@ -98,172 +98,228 @@
 			}
 		}]
 
-		var agreement_CRUD = [{
-			"type": "progressTracker",
-			"wrapper": "card_noHeaderNoActions",
-			"templateOptions": {
-				"totalSteps": 5,
-				"steps": [{
-					"status": "done",
-					"label": "Capture Initial Details"
-				}, {
-					"status": "done",
-					"label": "Know your customer"
-				}, {
-					"status": "done",
-					"label": "Recommendations"
-				}, {
-					"status": "done",
-					"label": "Generate quote"
-				}, {
-					"status": "current",
-					"label": "Generate agreement"
-				}],
-				"card": {
-					"imagePath": "",
-					"headline": "",
-					"actions": ""
-				},
-				"style": ""
-			}
-		},
-		{
-	    "type": "topHeaderDetails",
-	    "templateOptions": {
-	      "style": "color:white; background-color: rgb(33, 150, 243);",
-	      "class": "flex-33",
-	      "fields": [
-					{
-						"title": "Quote ID",
-						"type":"quoteDetails",
-						"key": "quoteId"
-					},
-	        {
-	          "title": "Company Name",
-						"type":"leadDetails",
-	          "key": "compName"
-					},
-					{
-						"title": "Opportunity status",
-						"type":"opportunityDetails",
-						"key": "status"
-					},
-					{
-						"title": "Assigned to User",
-						"type":"opportunityDetails",
-						"key": "assignedToUser"
-					},
-					{
-	          "title": "Created By User",
-						"type":"opportunityDetails",
-	          "key": "createdByUser"
-	        }
-	      ]
-	    }
-	  },
-		{
-			"elementAttributes": {
-				"layout": "row"
-			},
-			"fieldGroup": [{
-				"className": "flex-60",
-				"wrapper": "card_noHeaderNoActions",
-				"fieldGroup": [{
-					"type": "list",
-					"templateOptions": {
-						"brief": "This page contains the terms and conditions concerning your use of the Vodafone services. By accessing this site, you agree to be bound by the following terms and conditions.",
-						"list": [
-							"Vodafone India Limited, Vodafone Mobile Services Limited, Vodafone South Limited, Vodafone East Limited, Vodafone West Limited, Vodafone Digilink Limited, Vodafone Cellular Limited, Vodafone Spacetel Limited (jointly hereinafter to as \"Vodafone\") shall use reasonable endeavours to check the accuracy of the information published on its site.",
-							"Content (information, communications, images and sounds contained on or available through vodafone.in) is provided by Vodafone, its affiliates, independent content providers and third parties.",
-							"Vodafone will use its reasonable endeavours to maintain vodafone.in in a fully operating condition. It is not responsible for the results of any defects that exist in vodafone.in.",
-							"It is a condition of us allowing you access to the information on vodafone.in that you accept we will not be liable for any action you take relying on the information on vodafone.in.",
-							"If your PC does not support relevant technology including but not limited to encryption you may not be able to use certain services or access certain information on vodafone.in.",
-							"You may not mirror any material contained on vodafone.in on any other server without the prior written consent of Vodafone India Limited.",
-							"You acknowledge that Vodafone has no control over and excludes all liability for any material on the Internet which can be accessed by using vodafone.in. Neither can we be deemed to have endorsed the content."
-						],
-						"headline": "Terms and Conditions",
-						"card": {
-							"imagePath": "",
-							"headlineBackgroundColor": "#e4e4e4",
-							"actions": []
-						}
-					}
-				}, {
-					"type": "checkBox",
-					"templateOptions": {
-						"label": "I agree to the above terms and Conditions.",
-						"class": "md-primary"
-					},
-					"hideExpression": "model.agreementMode!='Create' && model.agreementMode!='QuickCreate'"
-				}]
-			}, {
-				"elementAttributes": {
-					"layout-wrap": "row",
-					"className": "flex-40 "
-				},
-				"fieldGroup": [{
-					"className": "flex-100 ",
-					"type": "product_details",
-					"templateOptions": {
-						"height": "224px",
-						"productSummary": productSummary,
-						"card": {
-							"imagePath": "",
-							"headline": "Product Summary",
-							"headlineBackgroundColor": "#e4e4e4",
-							"actions": []
-						}
-					}
-				}, {
-					"className": "flex-100",
-					"wrapper": "card_noHeaderNoActions",
-					"fieldGroup": [{
-						"type": "signature",
-						"key": "signature",
+		var agreement_CRUD = [
+  {
+    "type": "progressTracker",
+    "wrapper": "card_noHeaderNoActions",
+    "templateOptions": {
+      "totalSteps": 5,
+      "steps": [
+        {
+          "status": "done",
+          "label": "Capture Initial Details"
+        },
+        {
+          "status": "done",
+          "label": "Know your customer"
+        },
+        {
+          "status": "done",
+          "label": "Recommendations"
+        },
+        {
+          "status": "done",
+          "label": "Generate quote"
+        },
+        {
+          "status": "current",
+          "label": "Generate agreement"
+        }
+      ],
+      "card": {
+        "imagePath": "",
+        "headline": "",
+        "actions": ""
+      },
+      "style": ""
+    }
+  },
+  {
+    "type": "topHeaderDetails",
+    "templateOptions": {
+      "style": "color:white; background-color: rgb(33, 150, 243);",
+      "class": "flex-33",
+			"mdColorBackground":"primary-400",
+      "fields": [
+        {
+          "title": "Quote ID",
+          "type": "quoteDetails",
+          "key": "quoteId"
+        },
+        {
+          "title": "Company Name",
+          "type": "leadDetails",
+          "key": "compName"
+        },
+        {
+          "title": "Opportunity status",
+          "type": "opportunityDetails",
+          "key": "status"
+        },
+        {
+          "title": "Assigned to User",
+          "type": "opportunityDetails",
+          "key": "assignedToUser"
+        },
+        {
+          "title": "Created By User",
+          "type": "opportunityDetails",
+          "key": "createdByUser"
+        }
+      ]
+    }
+  },
+  {
+    "className":"layout-row",
+    "fieldGroup": [
+      {
+        "elementAttributes": {
+          "formlyFieldGroupClass":"flex-50"
+        },
+        "wrapper": "card_noHeaderNoActions",
+        "fieldGroup": [
+          {
+            "type": "list",
+            "templateOptions": {
+              "brief": "This page contains the terms and conditions concerning your use of the Vodafone services. By accessing this site, you agree to be bound by the following terms and conditions.",
+              "list": [
+                "Vodafone India Limited, Vodafone Mobile Services Limited, Vodafone South Limited, Vodafone East Limited, Vodafone West Limited, Vodafone Digilink Limited, Vodafone Cellular Limited, Vodafone Spacetel Limited (jointly hereinafter to as \"Vodafone\") shall use reasonable endeavours to check the accuracy of the information published on its site.",
+                "Content (information, communications, images and sounds contained on or available through vodafone.in) is provided by Vodafone, its affiliates, independent content providers and third parties.",
+                "Vodafone will use its reasonable endeavours to maintain vodafone.in in a fully operating condition. It is not responsible for the results of any defects that exist in vodafone.in.",
+                "It is a condition of us allowing you access to the information on vodafone.in that you accept we will not be liable for any action you take relying on the information on vodafone.in.",
+                "If your PC does not support relevant technology including but not limited to encryption you may not be able to use certain services or access certain information on vodafone.in.",
+                "You may not mirror any material contained on vodafone.in on any other server without the prior written consent of Vodafone India Limited.",
+                "You acknowledge that Vodafone has no control over and excludes all liability for any material on the Internet which can be accessed by using vodafone.in. Neither can we be deemed to have endorsed the content."
+              ],
+              "headline": "Terms and Conditions",
+              "card": {
+                "imagePath": "",
+                "headlineBackgroundColor": "#e4e4e4",
+                "actions": []
+              }
+            }
+          },
+          {
+            "type": "checkbox",
+            "templateOptions": {
+              "label": "I agree to the above terms and Conditions."
+            },
+            "hideExpression": "model.self.agreementMode!='Create' && model.self.agreementMode!='QuickCreate'"
+          }
+        ]
+      },
+      {
+        "elementAttributes": {
+          "formlyFieldGroupClass": "flex-50 layout-row"
+        },
+        "className":"layout-column layout-fill",
+        "fieldGroup": [
+          {
+            "className": "flex-60 layout-row",
+            // "wrapper": "card_noHeaderNoActions",
+            "type": "topHeaderDetails",
 						"templateOptions": {
-							"card": {
-								"imagePath": "",
-								"headline": "Signature",
-								"headlineBackgroundColor": "#e4e4e4",
-								"actions": []
-							}
+							"style": "color:white;",
+							"class": "flex-100",
+							"mdColorBackground":"white",
+							"fields": [
+								{
+									"title": "Quote ID",
+									"type": "quoteDetails",
+									"key": "quoteId"
+								},
+								{
+									"title": "Company Name",
+									"type": "leadDetails",
+									"key": "compName"
+								},
+								{
+									"title": "Opportunity status",
+									"type": "opportunityDetails",
+									"key": "status"
+								},
+								{
+									"title": "Assigned to User",
+									"type": "opportunityDetails",
+									"key": "assignedToUser"
+								},
+								{
+									"title": "Created By User",
+									"type": "opportunityDetails",
+									"key": "createdByUser"
+								},
+								{
+									"title": "Agreement Id",
+									"type": "self",
+									"key": "agreementId"
+								}
+							]
 						}
-					}, {
-						"type": "button",
-						"templateOptions": {
-							"label": "Reset",
-							"class": "md-raised md-primary",
-							"method": "resetSign"
-						},
-						"hideExpression": "model.agreementMode!='Create' && model.agreementMode!='QuickCreate' && model.agreementMode!='Update'"
-					}]
-				}]
-			}]
-		}, {
-			"type": "button",
-			"templateOptions": {
-				"label": "Create Agreement",
-				"class": "md-raised md-primary",
-				"method": "createAgreement"
-			},
-			"hideExpression": "model.agreementMode!='QuickCreate' && model.agreementMode!='Create'"
-		}, {
-			"type": "button",
-			"templateOptions": {
-				"label": "Update Agreement",
-				"class": "md-raised md-primary",
-				"method": "updateAgreement"
-			},
-			"hideExpression": "model.agreementMode!='Update'"
-		}, {
-			"type": "button",
-			"templateOptions": {
-				"label": "Delete Agreement",
-				"class": "md-raised md-primary",
-				"method": "deleteAgreement"
-			},
-			"hideExpression": "model.agreementMode!='Delete'"
-		}];
+          },
+          {
+            "elementAttributes": {
+              "formlyFieldGroupClass":"flex-40 layout-row"
+            },
+            "wrapper": "card_noHeaderNoActions",
+            "templateOptions": {
+              "class":"flex-100"
+            },
+            "fieldGroup": [
+              {
+                "type": "signature",
+                "key": "signature",
+                "templateOptions": {
+                  "card": {
+                    "imagePath": "",
+                    "headline": "Signature",
+                    "headlineBackgroundColor": "#e4e4e4",
+                    "actions": []
+                  }
+                }
+              },
+              {
+                "type": "button",
+                "templateOptions": {
+                  "label": "Reset",
+                  "class": "md-raised md-primary",
+                  "method": "resetSign"
+                },
+                "hideExpression": "model.self.agreementMode!='Create' && model.self.agreementMode!='QuickCreate' && model.self.agreementMode!='Update'"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "button",
+    "templateOptions": {
+      "label": "Create Agreement",
+      "class": "md-raised md-primary",
+      "method": "createAgreement"
+    },
+    "hideExpression": "model.self.agreementMode!='QuickCreate' && model.self.agreementMode!='Create'"
+  },
+  {
+    "type": "button",
+    "templateOptions": {
+      "label": "Update Agreement",
+      "class": "md-raised md-primary",
+      "method": "updateAgreement"
+    },
+    "hideExpression": "model.self.agreementMode!='Update'"
+  },
+  {
+    "type": "button",
+    "templateOptions": {
+      "label": "Delete Agreement",
+      "class": "md-raised md-primary",
+      "method": "deleteAgreement"
+    },
+    "hideExpression": "model.self.agreementMode!='Delete'"
+  }
+];
 
 		var agreement_viewAll = [{
 			key: "list",

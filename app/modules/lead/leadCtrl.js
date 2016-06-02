@@ -31,7 +31,7 @@
 
 			console.log("VIEW ALL LEADS");
 			vm.leadsList=[];
-			
+
 			vm.fields = JSON.parse(leadSharedData.getLayout('lead_viewAll'));
 			leadManager.inflateUiGrid(vm);
 
@@ -136,12 +136,14 @@
 
 		if ($state.current.name === 'home.lead.edit') {
 			console.log("EDIT LEAD");
-			//vm.lead = {};
-			//vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+
+			vm.lead = {};
 			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
-			vm.lead = leadSharedData.getLead();
-			vm.lead.leadMode = "Update";
-			leadSharedData.resetLead();
+
+			if ($stateParams.lead != null) {
+				vm.lead = $stateParams.lead;
+				vm.lead.leadMode = "Update";
+			}
 
 			vm.updateLead = function(lead) {
 				console.log("Inside updateLead()");
@@ -152,25 +154,26 @@
 
 		if ($state.current.name === 'home.lead.view') {
 			console.log("VIEW LEAD");
-			//vm.leadMode = "View";
-			//vm.lead = {};
-			//vm.leadFields = leadSharedData.getLayout('lead_CRUD');
-			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
-			vm.lead = leadSharedData.getLead();
-			vm.lead.leadMode = "View";
 
-			leadSharedData.resetLead();
+			vm.lead = {};
+			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
+
+			if ($stateParams.lead != null) {
+				vm.lead = $stateParams.lead;
+				vm.lead.leadMode = "Update";
+			}
 		}
 
 		if ($state.current.name === 'home.lead.delete') {
 			console.log("DELETE LEAD");
-			//vm.leadMode = "Delete";
-			//vm.lead = {};
-			//vm.leadFields = leadSharedData.getLayout('lead_CRUD');
+
+			vm.lead = {};
 			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
-			vm.lead = leadSharedData.getLead();
-			vm.lead.leadMode = "Delete";
-			leadSharedData.resetLead();
+
+			if ($stateParams.lead != null) {
+				vm.lead = $stateParams.lead;
+				vm.lead.leadMode = "Update";
+			}
 
 			vm.deleteLead = function(lead) {
 				console.log("Inside deleteLead()");

@@ -92,7 +92,7 @@
 		formlyConfig.setWrapper({
 			name: 'card',
 			template: [
-				'<md-card>\
+				'<md-card class="{{to.card.class}}">\
 					<img ng-src="{{to.card.imagePath}}" class="md-card-image">\
 					<md-card-title style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}}">\
 						<md-card-title-text>\
@@ -131,7 +131,7 @@
 		formlyConfig.setWrapper({
 			name: 'card_noHeaderNoActions',
 			template: [
-				'<md-card style="{{to.style}}">\
+				'<md-card style="{{to.style}}" class="{{to.class}}">\
 					<md-card-content>\
 						<formly-transclude></formly-transclude>\
 					</md-card-content>\
@@ -239,16 +239,7 @@
 
 		formlyConfig.setType({
 			name: 'product_details',
-			templateUrl: 'productSummary.html',
-			wrapper: ['card_noHeaderNoActions']
-		});
-
-		formlyConfig.setType({
-			name: 'checkBox',
-			template: '<md-checkbox id="check" class={{to.class}}>\
-			{{to.label}}\
-			</md-checkbox>\
-			'
+			templateUrl: 'productSummary.html'
 		});
 
 		formlyConfig.setType({
@@ -302,22 +293,6 @@
 				};
 			}
 		});
-
-		// formlyConfig.setType({
-		// 	name: 'ui-grid',
-		// 	templateUrl: 'uiGrid.html',
-		// 	wrapper: ['gridWrapperNoAction','card_noHeaderNoActions'],
-		// 	controller: function($scope) {
-		// 		$scope.clicked = function(functionName, functionParam) {
-		// 			console.log('functionName :' + functionName);
-		// 			var targetScope = $scope;
-		// 			while (!targetScope.vm) {
-		// 				targetScope = targetScope.$parent;
-		// 			}
-		// 			targetScope.vm[functionName](functionParam);
-		// 		};
-		// 	}
-		// });
 
 		formlyConfig.setType({
 			name: 'itemsList',
@@ -416,9 +391,9 @@
 
 		formlyConfig.setType({
 			name: 'topHeaderDetails',
-			template: '<md-card class="md-padding" md-colors="{background: \'primary-400\'}">\
-									<md-content class="layout-row layout-wrap" md-colors="{background: \'primary-400\'}" >\
-								  <div ng-repeat="label in to.fields" class="{{to.class}}" >\
+			template: '<md-card class="md-padding flex-100"  md-colors="{background: \'{{to.mdColorBackground}}\'}">\
+									<md-content class="layout-row layout-wrap" md-colors="{background: \'{{to.mdColorBackground}}\'}" >\
+								  <div ng-repeat="label in to.fields" class="{{to.class}}" style="padding:3px;" >\
 								 		<div class="layout-row layout-wrap">\
 										<div flex=45 style="font-weight:600;">{{label.title}}</div> : <div flex=45>&nbsp;{{model[label.type][label.key]}} </div></div>\
 									</div>\

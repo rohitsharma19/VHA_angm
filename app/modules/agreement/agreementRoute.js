@@ -39,18 +39,21 @@ angular.module('agreement')
 			})
 			.state('home.agreement.edit', {
 				url:'/edit',
+				params: {agreement: null},
 				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
 				controller: 'AgreementCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.agreement.view', {
 				url:'/view',
+				params: {agreement: null},
 				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
 				controller: 'AgreementCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.agreement.delete', {
 				url:'/delete',
+				params: {agreement: null},
 				templateUrl: 'app/modules/agreement/agreement_CRUD.html',
 				controller: 'AgreementCtrl',
 				controllerAs: 'vm'

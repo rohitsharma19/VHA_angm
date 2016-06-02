@@ -36,7 +36,7 @@
 				//showing progress bar while the lead is saved
 				progressBarFactory.showProgressBar();
 
-				if (leadData === null) {
+				if (leadData == null) {
 					console.log("leadData is null.");
 					alert('Please fill in the required details.');
 				} else {

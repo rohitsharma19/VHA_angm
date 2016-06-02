@@ -38,8 +38,6 @@
 
 		link: function(scope, element){
 			var ctx = element[0].getContext('2d');
-			console.log(element);
-			console.log(element);
 
 			// variable that decides if something should be drawn on mousemove
 			var drawing = false;
@@ -93,11 +91,6 @@
 				// stop drawing
 				drawing = false;
 			});
-
-			// canvas reset
-			function reset(){
-				element[0].width = element[0].width;
-			}
 
 			element[0].childNodes
 

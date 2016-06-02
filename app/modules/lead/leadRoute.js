@@ -38,18 +38,21 @@ angular.module('lead')
 			})
 			.state('home.lead.edit', {
 				url:'/edit',
+				params: {lead: null},
 				templateUrl: 'app/modules/lead/lead_CRUD.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.view', {
 				url:'/view',
+				params: {lead: null},
 				templateUrl: 'app/modules/lead/lead_CRUD.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'
 			})
 			.state('home.lead.delete', {
 				url:'/delete',
+				params: {lead: null},
 				templateUrl: 'app/modules/lead/lead_CRUD.html',
 				controller: 'LeadCtrl',
 				controllerAs: 'vm'

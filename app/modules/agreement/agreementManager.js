@@ -19,7 +19,6 @@
 
 	function Agreement($state, agreementModel, agreementSharedData, parentModel, progressBarFactory, toastFactory) {
 
-
 		var agreementManager = {
 
 			getAgreement: function(agreementId) {
@@ -37,11 +36,10 @@
 
 				progressBarFactory.showProgressBar();
 
-				if (agreementData == null) {
+				if (agreementData.self == null) {
 					console.log("agreementData is null.");
 					alert('Please fill in the required details.');
 				} else {
-					agreementData.self.agreementId = "A" + Date.now();
 
 					/* Creating formatted date */
 					var today = new Date();
@@ -58,22 +56,23 @@
 					var today = yyyy + "-" + mm + "-" + dd;
 					/* Date formation ends here */
 
-					/*creating agreement effec date*/
+					/*creating agreement effect date*/
 					var today1 = new Date();
-					var nextday = new Date(today1.getTime() + (24 * 60 * 60 * 1000))
+					var nextday = new Date(today1.getTime() + (24 * 60 * 60 * 1000));
 					console.log(nextday);
 					var dd1 = nextday.getDate();
 					var mm1 = nextday.getMonth() + 1;
 					var yyyy1 = nextday.getFullYear();
 					if (dd1 < 10) {
-						dd1 = '0' + dd1
+						dd1 = '0' + dd1;
 					}
 					if (mm1 < 10) {
-						mm1 = '0' + mm1
+						mm1 = '0' + mm1;
 					}
 					var nextday = yyyy1 + "-" + mm1 + "-" + dd1;
 					console.log(nextday);
-					/*Agreement effec date ends here*/
+					/*Agreement effect date ends here*/
+
 					/*creating agreement end date*/
 					yyyy1 = yyyy1 + 1;
 					var endDay = yyyy1 + "-" + mm1 + "-" + dd1;
@@ -90,7 +89,6 @@
 					agreement.save().then(
 						function(response) {
 							toastFactory.openSuccessToast('Agreement ' + response.data.agreementId + ' created successfully.');
-
 							if ($state.current.name === 'home.agreement.QuickCreate') {
 								$state.go('home.dashboard').then(function() {
 									progressBarFactory.hideProgressBar();
@@ -147,97 +145,6 @@
 					console.log("Agreement deletion cancelled by User");
 				}
 			},
-			// <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-			// 	updateAgreement: function(agreementData) {
-			// 		var agreement = new agreementModel(agreementData);
-			// 		agreement.update().then(
-			//       	function (response) {
-			//   				alert('Agreement '+ agreementData.agreementId + ' updated successfully.' );
-			//   				$state.go('home.agreement.viewAll');
-			//   			},
-			// 	    function (error) {
-			// 	    	alert('Error While deleting Agreement: '+ error.message );
-			// 	    }
-			//       );
-			// 	},
-			//
-			// 	deleteAgreement: function(agreementId) {
-			// 		if(confirm('Are you sure you want to delete this agreement?')){
-			// 			var agreement = new agreementModel();
-			// 			agreement.remove(agreementId).then(
-			//         	function (response) {
-			//     				alert('Agreement '+ agreementId + ' deleted successfully.' );
-			//     				$state.go('home.agreement.viewAll');
-			//     			},
-			// 		    function (error) {
-			// 		    	alert('Error While deleting Agreement: '+ error.message );
-			// 		    }
-			//         );
-			// 		}
-			// 		else{
-			//       	console.log("Agreement deletion cancelled by User");
-			//       }
-			// 	},
-			//
-			// 	setUpUiGrid: function(vm) {
-			//
-			// 	vm.gridOptions = {};
-			// 	vm.gridOptions.enableHorizontalScrollbar = 2;
-			// 	vm.gridOptions.enableVerticalScrollbar = 2;
-			// 	vm.gridOptions.enableFiltering=true;
-			//
-			// 	vm.gridOptions.columnDefs = [
-			// 			{ field: 'agreementId',
-			// 				cellTemplate:'<md-button class="md-primary" aria-label="agreementId" ng-click="grid.appScope.vm.openViewAgreement(row)" style="margin: 0px 0px; font-size: 12px;">{{row.entity.agreementId}}</md-button>'
-			// 			},
-			// 			{ field: 'agremntStartDate' },
-			// 			{ field: 'agremntEndDate' },
-			// 			{ field: 'agremntEffecDate' },
-			// 			/*{ field: 'currency' },
-			// 			{ field: 'agremntVersion' },
-			// 			{ field: 'contractTerm' },
-			// 			{ field: 'agremntStatus' },
-			// 			{ field: 'offerName' },*/
-			// 			{ field: 'listPrice' },
-			// 			/*{ field: 'salePrice' },
-			// 			{ field: 'quantity' },
-			// 			{ field: 'totalPrice' },
-			// 			{ field: 'agremntTmplateType' },
-			// 			{ field: 'renewalTerm' },
-			// 			{ field: 'origAgremntId' },
-			// 			{ field: 'expecRevenue' },
-			// 			{ field: 'internalContact' },
-			// 			{ field: 'internalContactRole' },
-			// 			{ field: 'custContact' },
-			// 			{ field: 'custContactRole' },
-			// 			{ field: 'autoRenewFlag' },
-			// 			{ field: 'agremntType' },
-			// 			{ field: 'agremntDocId' },
-			// 			{ field: 'agremntDocName' },*/
-			// 			{ field: 'agremntDocVer' },
-			// 			{ field: 'agremntDocType' },
-			// 			{ field: 'serviceReqDate' },
-			// 			{ name:  'Actions',
-			// 				cellTemplate: '<md-button class="md-icon-button" ng-click="grid.appScope.vm.openEditAgreement(row)" style="min-width: 0px;"><md-icon style="color:green; vertical-align: baseline;">edit</md-icon></md-button><md-button class="md-icon-button md-primary" ng-click="grid.appScope.vm.openDeleteAgreement(row)" style="min-width: 0px;"><md-icon style="vertical-align: baseline;">delete</md-icon></md-button>',
-			// 				enableFiltering:false
-			// 			}
-			//           ];
-			//
-			//           agreementManager.getAllAgreements().then(
-			// 		function (response) {
-			// 			console.log("getAllAgreements SUCCESS");
-			// 			console.log("data received");
-			// 			console.log(response.data);
-			//
-			// 			vm.gridOptions.data = response.data;
-			// 		},
-			// 	    function (error) {
-			// 	        console.log("getAllAgreements ERROR : " + error.message);
-			// 	});
-			//
-			// 	return vm;
-			// },
-			// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
 
 			inflateUiGrid: function(vm) {
 				agreementManager.getAllAgreement().then(
@@ -255,20 +162,62 @@
 
 				return vm;
 			},
+
 			openViewAgreement: function(agreementId) {
 
 				progressBarFactory.showProgressBar();
+
+				var agreement = {
+					self: {}
+				};
 
 				new agreementModel().get(agreementId).then(
 					function(response) {
 						console.log("getAgreement SUCCESS");
 						console.log(response.data);
+						agreement.self = response.data;
 
-						agreementSharedData.setAgreement(response.data);
+						parentModel.getQuote(agreement.self.quoteId).then(
+							function(response) {
+								agreement.quoteDetails = response.data;
+								console.log("agreement.quoteDetails");
+								console.log(agreement.quoteDetails);
 
-						$state.go('home.agreement.view').then(function() {
-							progressBarFactory.hideProgressBar();
-						});
+								parentModel.getOpportunity(agreement.quoteDetails.opportunityId).then(
+									function(response) {
+										agreement.opportunityDetails = response.data;
+										console.log("agreement.opportunityDetails");
+										console.log(agreement.opportunityDetails);
+
+										parentModel.getLead(agreement.opportunityDetails.leadId).then(
+											function(response) {
+												agreement.leadDetails = response.data;
+												console.log("agreement.leadDetails");
+												console.log(agreement.leadDetails);
+
+												$state.go('home.agreement.view', {
+													'agreement': agreement
+												}).then(function() {
+													progressBarFactory.hideProgressBar();
+												});
+											},
+											function(error) {
+												console.log("getAgreement_Lead ERROR");
+												console.log(error);
+											}
+										);
+									},
+									function(error) {
+										console.log("getAgreement_Opportunity ERROR");
+										console.log(error);
+									}
+								);
+							},
+							function(error) {
+								console.log("getAgreement_Quote ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getAgreement ERROR");
@@ -276,55 +225,62 @@
 					}
 				);
 			},
-			// <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-			// 					openEditAgreement: function(agreementId) {
-			// 						new agreementModel().get(agreementId).then(
-			// 				    		function (response) {
-			// 				    			console.log("getAgreement SUCCESS");
-			// 				    			console.log(response.data);
-			//
-			// 				    			agreementSharedData.setAgreement(response.data);
-			//
-			// 				    			$state.go('home.agreement.edit');
-			// 		        			},
-			// 						    function (error) {
-			// 						    	console.log("getAgreement ERROR");
-			// 						    	console.log(error);
-			// 						    }
-			// 				    	);
-			// 					},
-			//
-			// 					openDeleteAgreement: function(agreementId) {
-			// 						new agreementModel().get(agreementId).then(
-			// 				    		function (response) {
-			// 				    			console.log("getAgreement SUCCESS");
-			// 				    			console.log(response.data);
-			//
-			// 				    			agreementSharedData.setAgreement(response.data);
-			//
-			// 				    			$state.go('home.agreement.delete');
-			// 		        			},
-			// 						    function (error) {
-			// 						    	console.log("getAgreement ERROR");
-			// 						    	console.log(error);
-			// 						    }
-			// 				    	);
-			// 					},
-			// 					@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
 			openEditAgreement: function(agreementId) {
 
 				progressBarFactory.showProgressBar();
+
+				var agreement = {
+					self: {}
+				};
 
 				new agreementModel().get(agreementId).then(
 					function(response) {
 						console.log("getAgreement SUCCESS");
 						console.log(response.data);
+						agreement.self = response.data;
 
-						agreementSharedData.setAgreement(response.data);
+						parentModel.getQuote(agreement.self.quoteId).then(
+							function(response) {
+								agreement.quoteDetails = response.data;
+								console.log("agreement.quoteDetails");
+								console.log(agreement.quoteDetails);
 
-						$state.go('home.agreement.edit').then(function() {
-							progressBarFactory.hideProgressBar();
-						});
+								parentModel.getOpportunity(agreement.quoteDetails.opportunityId).then(
+									function(response) {
+										agreement.opportunityDetails = response.data;
+										console.log("agreement.opportunityDetails");
+										console.log(agreement.opportunityDetails);
+
+										parentModel.getLead(agreement.opportunityDetails.leadId).then(
+											function(response) {
+												agreement.leadDetails = response.data;
+												console.log("agreement.leadDetails");
+												console.log(agreement.leadDetails);
+
+												$state.go('home.agreement.edit', {
+													'agreement': agreement
+												}).then(function() {
+													progressBarFactory.hideProgressBar();
+												});
+											},
+											function(error) {
+												console.log("getAgreement_Lead ERROR");
+												console.log(error);
+											}
+										);
+									},
+									function(error) {
+										console.log("getAgreement_Opportunity ERROR");
+										console.log(error);
+									}
+								);
+							},
+							function(error) {
+								console.log("getAgreement_Quote ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getAgreement ERROR");
@@ -337,16 +293,57 @@
 
 				progressBarFactory.showProgressBar();
 
+				var agreement = {
+					self: {}
+				};
+
 				new agreementModel().get(agreementId).then(
 					function(response) {
 						console.log("getAgreement SUCCESS");
 						console.log(response.data);
+						agreement.self = response.data;
 
-						agreementSharedData.setAgreement(response.data);
+						parentModel.getQuote(agreement.self.quoteId).then(
+							function(response) {
+								agreement.quoteDetails = response.data;
+								console.log("agreement.quoteDetails");
+								console.log(agreement.quoteDetails);
 
-						$state.go('home.agreement.delete').then(function() {
-							progressBarFactory.hideProgressBar();
-						});
+								parentModel.getOpportunity(agreement.quoteDetails.opportunityId).then(
+									function(response) {
+										agreement.opportunityDetails = response.data;
+										console.log("agreement.opportunityDetails");
+										console.log(agreement.opportunityDetails);
+
+										parentModel.getLead(agreement.opportunityDetails.leadId).then(
+											function(response) {
+												agreement.leadDetails = response.data;
+												console.log("agreement.leadDetails");
+												console.log(agreement.leadDetails);
+
+												$state.go('home.agreement.delete', {
+													'agreement': agreement
+												}).then(function() {
+													progressBarFactory.hideProgressBar();
+												});
+											},
+											function(error) {
+												console.log("getAgreement_Lead ERROR");
+												console.log(error);
+											}
+										);
+									},
+									function(error) {
+										console.log("getAgreement_Opportunity ERROR");
+										console.log(error);
+									}
+								);
+							},
+							function(error) {
+								console.log("getAgreement_Quote ERROR");
+								console.log(error);
+							}
+						);
 					},
 					function(error) {
 						console.log("getAgreement ERROR");
@@ -361,7 +358,45 @@
 				$state.go('home.agreement.create').then(function() {
 					progressBarFactory.hideProgressBar();
 				});
+			},
+
+			captureSignature: function(agreement) {
+				var canvas = angular.element(document.getElementById('canvas'))[0];
+				console.log("Canvas Element");
+				console.log(canvas);
+				agreement.self.signature = canvas.toDataURL();
+				console.log("Signature Data");
+				console.log(agreement.self.signature);
+			},
+
+			resetSignature: function() {
+				var canvas = angular.element(document.getElementById('canvas'))[0];
+				var context = canvas.getContext('2d');
+				context.clearRect(0, 0, canvas.width, canvas.height);
+			},
+
+			displaySignatureForView: function(agreement) {
+				angular.element(document).ready(function() {
+					var canvas = angular.element(document.getElementById('canvas'))[0];
+					var context = canvas.getContext('2d');
+					var img = new Image();
+					img.src = agreement.self.signature;
+					context.drawImage(img, 0, 0);
+					var canvas = angular.element(document.getElementById('canvas'));
+					canvas.unbind();
+				});
+			},
+
+			displaySignatureForUpdate: function(agreement) {
+				angular.element(document).ready(function() {
+					var canvas = angular.element(document.getElementById('canvas'))[0];
+					var context = canvas.getContext('2d');
+					var img = new Image();
+					img.src = agreement.self.signature;
+					context.drawImage(img, 0, 0);
+				});
 			}
+
 		};
 		return agreementManager;
 	}

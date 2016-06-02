@@ -138,8 +138,7 @@
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
 						var opportunity = {
-							self: {},
-							leadDetails: {}
+							self: {}
 						};
 						opportunity.self = response.data;
 
@@ -174,8 +173,7 @@
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
 						var opportunity = {
-							self: {},
-							leadDetails: {}
+							self: {}
 						};
 						opportunity.self = response.data;
 
@@ -209,8 +207,7 @@
 						console.log("getOpportunity SUCCESS");
 						console.log(response.data);
 						var opportunity = {
-							self: {},
-							leadDetails: {}
+							self: {}
 						};
 						opportunity.self = response.data;
 

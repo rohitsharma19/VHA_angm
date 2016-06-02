@@ -38,7 +38,7 @@
 				//showing progress bar while the quote is saved
 				progressBarFactory.showProgressBar();
 
-				if (quoteData == null) {
+				if (quoteData.self == null) {
 					console.log("quoteData is null.");
 					alert('Please fill in the required details.');
 				} else {
@@ -133,9 +133,7 @@
 				progressBarFactory.showProgressBar();
 
 				var quote = {
-					self: {},
-					leadDetails: {},
-					opportunityDetails: {}
+					self: {}
 				};
 
 				new quoteModel().get(quoteId).then(
@@ -186,9 +184,7 @@
 				progressBarFactory.showProgressBar();
 
 				var quote = {
-					self: {},
-					leadDetails: {},
-					opportunityDetails: {}
+					self: {}
 				};
 
 				new quoteModel().get(quoteId).then(
@@ -240,9 +236,7 @@
 				progressBarFactory.showProgressBar();
 
 				var quote = {
-					self: {},
-					leadDetails: {},
-					opportunityDetails: {}
+					self: {}
 				};
 
 				new quoteModel().get(quoteId).then(
