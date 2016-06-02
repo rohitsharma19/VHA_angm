@@ -15,9 +15,9 @@
 	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 	// function Name ($http, someSevide) {...}
 
-	Opportunity.$inject = ['$state', 'opportunityModel', 'opportunitySharedData', 'sharedService'];
+	Opportunity.$inject = ['$state', 'opportunityModel', 'opportunitySharedData', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
-	function Opportunity($state, opportunityModel, opportunitySharedData, sharedService) {
+	function Opportunity($state, opportunityModel, opportunitySharedData, parentModel, progressBarFactory, toastFactory) {
 
 
 		var opportunityManager = {
@@ -37,7 +37,7 @@
 			createOpportunity: function(opportunityData) {
 
 				//showing progress bar while the opportunity is saved
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				if (opportunityData.self == null) {
 					console.log("opportunityData is null.");
@@ -47,17 +47,17 @@
 					var opportunity = new opportunityModel(opportunityData.self);
 					opportunity.save().then(
 						function(response) {
-							alert('Opportunity ' + response.data.opportunityId + ' created successfully.');
+							toastFactory.openSuccessToast('Opportunity ' + response.data.opportunityId + ' created successfully.');
 							if ($state.current.name === 'home.opportunity.QuickCreate') {
 								$state.go('home.recommendation.QuickCreate', {
-									opportunityDetails: opportunityData.self,
+									opportunityDetails: response.data,
 									leadDetails: opportunityData.leadDetails
 								}).then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							} else if ($state.current.name === 'home.opportunity.create') {
 								$state.go('home.opportunity.viewAll').then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							}
 
@@ -73,14 +73,14 @@
 
 			updateOpportunity: function(opportunityData) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				var opportunity = new opportunityModel(opportunityData.self);
 				opportunity.update().then(
 					function(response) {
-						alert('Opportunity ' + opportunityData.opportunityId + ' updated successfully.');
+						toastFactory.openSuccessToast('Opportunity ' + response.data.opportunityId + ' updated successfully.');
 						$state.go('home.opportunity.viewAll').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 					},
 					function(error) {
@@ -91,15 +91,15 @@
 
 			deleteOpportunity: function(opportunityId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				if (confirm('Are you sure you want to delete this opportunity?')) {
 					var opportunity = new opportunityModel();
 					opportunity.remove(opportunityId).then(
 						function(response) {
-							alert('Opportunity ' + opportunityId + ' deleted successfully.');
+							toastFactory.openSuccessToast('Opportunity ' + opportunityId + ' deleted successfully.');
 							$state.go('home.opportunity.viewAll').then(function() {
-								sharedService.hideProgressBar();
+								progressBarFactory.hideProgressBar();
 							});
 						},
 						function(error) {
@@ -131,7 +131,7 @@
 
 			openViewOpportunity: function(opportunityId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new opportunityModel().get(opportunityId).then(
 					function(response) {
@@ -143,13 +143,13 @@
 						};
 						opportunity.self = response.data;
 
-						sharedService.getLead(opportunity.self.leadId).then(
+						parentModel.getLead(opportunity.self.leadId).then(
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
 
 								$state.go('home.opportunity.view',{'opportunity':opportunity}).then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							},
 							function(error) {
@@ -167,7 +167,7 @@
 
 			openEditOpportunity: function(opportunityId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new opportunityModel().get(opportunityId).then(
 					function(response) {
@@ -179,12 +179,12 @@
 						};
 						opportunity.self = response.data;
 
-						sharedService.getLead(opportunity.self.leadId).then(
+						parentModel.getLead(opportunity.self.leadId).then(
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
 								$state.go('home.opportunity.edit',{'opportunity':opportunity}).then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							},
 							function(error) {
@@ -202,7 +202,7 @@
 
 			openDeleteOpportunity: function(opportunityId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new opportunityModel().get(opportunityId).then(
 					function(response) {
@@ -214,12 +214,12 @@
 						};
 						opportunity.self = response.data;
 
-						sharedService.getLead(opportunity.self.leadId).then(
+						parentModel.getLead(opportunity.self.leadId).then(
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
 								$state.go('home.opportunity.view', {'opportunity':opportunity}).then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							},
 							function(error) {
@@ -237,10 +237,10 @@
 
 			openCreateOpportunity: function() {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				$state.go('home.opportunity.create').then(function() {
-					sharedService.hideProgressBar();
+					progressBarFactory.hideProgressBar();
 				});
 			}
 		};

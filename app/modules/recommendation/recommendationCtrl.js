@@ -13,7 +13,7 @@
 		.module('recommendation')
 		.controller('RecommendationCtrl', Recommendation);
 
-	Recommendation.$inject = ['$state', '$stateParams', 'recommendationSharedData', 'sharedService'];
+	Recommendation.$inject = ['$state', '$stateParams', 'recommendationSharedData', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Recommendation($state, $stateParams, recommendationSharedData, sharedService) {
+	function Recommendation($state, $stateParams, recommendationSharedData, parentModel, progressBarFactory, toastFactory) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -80,13 +80,13 @@
 
 		vm.saveRecommendation = function(recommendation) {
 			console.log("inside save Recommendation method");
-			sharedService.showProgressBar();
+			progressBarFactory.showProgressBar();
 			$state.go("home.quote.QuickCreate", {
 				finalSelection: recommendation.finalSelection,
 				leadDetails: recommendation.leadDetails,
 				opportunityDetails: recommendation.opportunityDetails
 			}).then(function() {
-				sharedService.hideProgressBar();
+				progressBarFactory.hideProgressBar();
 			});
 		};
 

@@ -61,23 +61,33 @@
 	{
     "type": "topHeaderDetails",
     "templateOptions": {
-      "style": "color:white; background-color: rgb(33,150,243);",
+      "style": "color:white; background-color: rgb(33, 150, 243);",
       "class": "flex-33",
       "fields": [
+				{
+					"title": "Opportunity ID",
+					"type":"opportunityDetails",
+					"key": "opportunityId"
+				},
         {
           "title": "Company Name",
 					"type":"leadDetails",
           "key": "compName"
-        },
-        {
+				},
+				{
+					"title": "Opportunity status",
+					"type":"opportunityDetails",
+					"key": "status"
+				},
+				{
+					"title": "Assigned to User",
+					"type":"opportunityDetails",
+					"key": "assignedToUser"
+				},
+				{
           "title": "Created By User",
-					"type":"leadDetails",
+					"type":"opportunityDetails",
           "key": "createdByUser"
-        },
-        {
-          "title": "Lead status",
-					"type":"leadDetails",
-          "key": "status"
         }
       ]
     }

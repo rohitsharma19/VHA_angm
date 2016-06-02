@@ -13,7 +13,7 @@
 		.module('vha')
 		.controller('HomeCtrl', Home);
 
-	Home.$inject = ['homeService','sharedService'];
+	Home.$inject = ['homeService','parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Home(homeService, sharedService) {
+	function Home(homeService, parentModel, progressBarFactory, toastFactory) {
 		/*jshint validthis: true */
 		var vm = this;
 		vm.title = "Hello, vha!";
@@ -29,7 +29,7 @@
 		vm.listFeatures = homeService.getFeaturesList();
 
 		//hiding progress bar intially
-		sharedService.hideProgressBar();
+		progressBarFactory.hideProgressBar();
 
 		vm.line = {
 			labels: ['Aug 15', 'Sep 15', 'Oct 15', 'Nov 15', 'Dec 15', 'Jan 16'],

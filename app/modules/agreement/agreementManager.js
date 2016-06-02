@@ -15,9 +15,9 @@
 	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 	// function Name ($http, someSevide) {...}
 
-	Agreement.$inject = ['$state', 'agreementModel', 'agreementSharedData', 'sharedService'];
+	Agreement.$inject = ['$state', 'agreementModel', 'agreementSharedData', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
-	function Agreement($state, agreementModel, agreementSharedData, sharedService) {
+	function Agreement($state, agreementModel, agreementSharedData, parentModel, progressBarFactory, toastFactory) {
 
 
 		var agreementManager = {
@@ -35,7 +35,7 @@
 
 			createAgreement: function(agreementData) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				if (agreementData == null) {
 					console.log("agreementData is null.");
@@ -89,15 +89,15 @@
 					var agreement = new agreementModel(agreementData.self);
 					agreement.save().then(
 						function(response) {
-							alert('Agreement ' + response.self.agreementId + ' created successfully.');
+							toastFactory.openSuccessToast('Agreement ' + response.data.agreementId + ' created successfully.');
 
 							if ($state.current.name === 'home.agreement.QuickCreate') {
 								$state.go('home.dashboard').then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							} else if ($state.current.name === 'home.agreement.create') {
 								$state.go('home.agreement.viewAll').then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							}
 						},
@@ -111,14 +111,14 @@
 			},
 			updateAgreement: function(agreementData) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				var agreement = new agreementModel(agreementData.self);
 				agreement.update().then(
 					function(response) {
-						alert('Agreement ' + response.data.agreementId + ' updated successfully.');
+						toastFactory.openSuccessToast('Agreement ' + response.data.agreementId + ' updated successfully.');
 						$state.go('home.agreement.viewAll').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 					},
 					function(error) {
@@ -128,15 +128,15 @@
 			},
 			deleteAgreement: function(agreementId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				if (confirm('Are you sure you want to delete this agreement?')) {
 					var agreement = new agreementModel();
 					agreement.remove(agreementId).then(
 						function(response) {
-							alert('Agreement ' + agreementId + ' deleted successfully.');
+							toastFactory.openSuccessToast('Agreement ' + agreementId + ' deleted successfully.');
 							$state.go('home.agreement.viewAll').then(function() {
-								sharedService.hideProgressBar();
+								progressBarFactory.hideProgressBar();
 							});
 						},
 						function(error) {
@@ -257,7 +257,7 @@
 			},
 			openViewAgreement: function(agreementId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new agreementModel().get(agreementId).then(
 					function(response) {
@@ -267,7 +267,7 @@
 						agreementSharedData.setAgreement(response.data);
 
 						$state.go('home.agreement.view').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 					},
 					function(error) {
@@ -313,7 +313,7 @@
 			// 					@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
 			openEditAgreement: function(agreementId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new agreementModel().get(agreementId).then(
 					function(response) {
@@ -323,7 +323,7 @@
 						agreementSharedData.setAgreement(response.data);
 
 						$state.go('home.agreement.edit').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 					},
 					function(error) {
@@ -335,7 +335,7 @@
 
 			openDeleteAgreement: function(agreementId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new agreementModel().get(agreementId).then(
 					function(response) {
@@ -345,7 +345,7 @@
 						agreementSharedData.setAgreement(response.data);
 
 						$state.go('home.agreement.delete').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 					},
 					function(error) {
@@ -356,10 +356,10 @@
 			},
 			openCreateAgreement: function() {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				$state.go('home.agreement.create').then(function() {
-					sharedService.hideProgressBar();
+					progressBarFactory.hideProgressBar();
 				});
 			}
 		};

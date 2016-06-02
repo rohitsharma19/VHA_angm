@@ -65,14 +65,9 @@
       "class": "flex-33",
       "fields": [
         {
-          "title": "Company Name",
+          "title": "Lead ID",
 					"type":"leadDetails",
-          "key": "compName"
-        },
-        {
-          "title": "Created By User",
-					"type":"leadDetails",
-          "key": "createdByUser"
+          "key": "leadId"
         },
         {
           "title": "Lead status",

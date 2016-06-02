@@ -128,29 +128,39 @@
 			}
 		},
 		{
-			"type": "topHeaderDetails",
-			"templateOptions": {
-				"style": "color:white; background-color: rgb(33,150,243);",
-				"class": "flex-33",
-				"fields": [
+	    "type": "topHeaderDetails",
+	    "templateOptions": {
+	      "style": "color:white; background-color: rgb(33, 150, 243);",
+	      "class": "flex-33",
+	      "fields": [
 					{
-						"title": "Company Name",
+						"title": "Quote ID",
+						"type":"quoteDetails",
+						"key": "quoteId"
+					},
+	        {
+	          "title": "Company Name",
 						"type":"leadDetails",
-						"key": "compName"
+	          "key": "compName"
 					},
 					{
-						"title": "Created By User",
-						"type":"leadDetails",
-						"key": "createdByUser"
-					},
-					{
-						"title": "Lead status",
-						"type":"leadDetails",
+						"title": "Opportunity status",
+						"type":"opportunityDetails",
 						"key": "status"
-					}
-				]
-			}
-		},
+					},
+					{
+						"title": "Assigned to User",
+						"type":"opportunityDetails",
+						"key": "assignedToUser"
+					},
+					{
+	          "title": "Created By User",
+						"type":"opportunityDetails",
+	          "key": "createdByUser"
+	        }
+	      ]
+	    }
+	  },
 		{
 			"elementAttributes": {
 				"layout": "row"

@@ -15,9 +15,9 @@
 	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 	// function Name ($http, someSevide) {...}
 
-	Quote.$inject = ['$state', 'quoteModel', 'quoteSharedData', 'sharedService'];
+	Quote.$inject = ['$state', 'quoteModel', 'quoteSharedData', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
-	function Quote($state, quoteModel, quoteSharedData, sharedService) {
+	function Quote($state, quoteModel, quoteSharedData, parentModel, progressBarFactory, toastFactory) {
 
 
 		var quoteManager = {
@@ -36,7 +36,7 @@
 
 			createQuote: function(quoteData) {
 				//showing progress bar while the quote is saved
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				if (quoteData == null) {
 					console.log("quoteData is null.");
@@ -46,20 +46,20 @@
 					var quote = new quoteModel(quoteData.self);
 					quote.save().then(
 						function(response) {
-							alert('Quote ' + response.data.quoteId + ' created successfully.');
+							toastFactory.openSuccessToast('Quote ' + response.data.quoteId + ' created successfully.');
 
 							if ($state.current.name === 'home.quote.QuickCreate') {
 								$state.go('home.agreement.QuickCreate', {
-									leadDetails: quoteData.leadDetails,
+									finalSelection: quoteData.finalSelection,
+									quoteDetails: response.data,
 									opportunityDetails: quoteData.opportunityDetails,
-									quoteDetails: quoteData.self,
-									finalSelection: quoteData.finalSelection
+									leadDetails: quoteData.leadDetails
 								}).then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							} else if ($state.current.name === 'home.quote.create') {
 								$state.go('home.quote.viewAll').then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							}
 						},
@@ -72,14 +72,14 @@
 
 			updateQuote: function(quoteData) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				var quote = new quoteModel(quoteData.self);
 				quote.update().then(
 					function(response) {
-						alert('Quote ' + response.data.quoteId + ' updated successfully.');
+						toastFactory.openSuccessToast('Quote ' + response.data.quoteId + ' updated successfully.');
 						$state.go('home.quote.viewAll').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 					},
 					function(error) {
@@ -90,15 +90,15 @@
 
 			deleteQuote: function(quoteId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				if (confirm('Are you sure you want to delete this quote?')) {
 					var quote = new quoteModel();
 					quote.remove(quoteId).then(
 						function(response) {
-							alert('Quote ' + quoteId + ' deleted successfully.');
+							toastFactory.openSuccessToast('Quote ' + quoteId + ' deleted successfully.');
 							$state.go('home.quote.viewAll').then(function() {
-								sharedService.hideProgressBar();
+								progressBarFactory.hideProgressBar();
 							});
 						},
 						function(error) {
@@ -130,7 +130,7 @@
 
 			openViewQuote: function(quoteId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				var quote = {
 					self: {},
@@ -144,13 +144,13 @@
 						console.log(response.data);
 						quote.self = response.data;
 
-						sharedService.getOpportunity(quote.self.opportunityId).then(
+						parentModel.getOpportunity(quote.self.opportunityId).then(
 							function(response) {
 								quote.opportunityDetails = response.data;
 								console.log("quote.opportunityDetails");
 								console.log(quote.opportunityDetails);
 
-								sharedService.getLead(quote.opportunityDetails.leadId).then(
+								parentModel.getLead(quote.opportunityDetails.leadId).then(
 									function(response) {
 										quote.leadDetails = response.data;
 										console.log("quote.leadDetails");
@@ -159,7 +159,7 @@
 										$state.go('home.quote.view', {
 											'quote': quote
 										}).then(function() {
-											sharedService.hideProgressBar();
+											progressBarFactory.hideProgressBar();
 										});
 									},
 									function(error) {
@@ -183,7 +183,7 @@
 
 			openEditQuote: function(quoteId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				var quote = {
 					self: {},
@@ -197,13 +197,13 @@
 						console.log(response.data);
 						quote.self = response.data;
 
-						sharedService.getOpportunity(quote.self.opportunityId).then(
+						parentModel.getOpportunity(quote.self.opportunityId).then(
 							function(response) {
 								quote.opportunityDetails = response.data;
 								console.log("quote.opportunityDetails");
 								console.log(quote.opportunityDetails);
 
-								sharedService.getLead(quote.opportunityDetails.leadId).then(
+								parentModel.getLead(quote.opportunityDetails.leadId).then(
 									function(response) {
 										quote.leadDetails = response.data;
 										console.log("quote.leadDetails");
@@ -212,7 +212,7 @@
 										$state.go('home.quote.edit', {
 											'quote': quote
 										}).then(function() {
-											sharedService.hideProgressBar();
+											progressBarFactory.hideProgressBar();
 										});
 									},
 									function(error) {
@@ -237,7 +237,7 @@
 
 			openDeleteQuote: function(quoteId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				var quote = {
 					self: {},
@@ -251,13 +251,13 @@
 						console.log(response.data);
 						quote.self = response.data;
 
-						sharedService.getOpportunity(quote.self.opportunityId).then(
+						parentModel.getOpportunity(quote.self.opportunityId).then(
 							function(response) {
 								quote.opportunityDetails = response.data;
 								console.log("quote.opportunityDetails");
 								console.log(quote.opportunityDetails);
 
-								sharedService.getLead(quote.opportunityDetails.leadId).then(
+								parentModel.getLead(quote.opportunityDetails.leadId).then(
 									function(response) {
 										quote.leadDetails = response.data;
 										console.log("quote.leadDetails");
@@ -266,7 +266,7 @@
 										$state.go('home.quote.delete', {
 											'quote': quote
 										}).then(function() {
-											sharedService.hideProgressBar();
+											progressBarFactory.hideProgressBar();
 										});
 									},
 									function(error) {
@@ -290,10 +290,10 @@
 
 			openCreateQuote: function() {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				$state.go('home.quote.create').then(function() {
-					sharedService.hideProgressBar();
+					progressBarFactory.hideProgressBar();
 				});
 			}
 		};

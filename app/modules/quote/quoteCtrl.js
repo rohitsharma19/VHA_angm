@@ -13,7 +13,7 @@
 		.module('quote')
 		.controller('QuoteCtrl', Quote);
 
-	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData', 'sharedService'];
+	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Quote($state, $stateParams, quoteManager, quoteSharedData, sharedService) {
+	function Quote($state, $stateParams, quoteManager, quoteSharedData, parentModel, progressBarFactory, toastFactory) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -108,6 +108,8 @@
 
 				vm.quote.self.quoteMode = "QuickCreate";
 				vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
+				console.log("vm.quote");
+				console.log(vm.quote);
 			}
 
 			vm.selectOfferForDetail = function(object) {

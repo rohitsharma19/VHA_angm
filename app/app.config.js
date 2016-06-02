@@ -30,15 +30,15 @@
 
 		$mdThemingProvider
 			.theme('default')
-			.primaryPalette('red',{
+			.primaryPalette('red', {
 				'default': '800',
-	      'hue-1': '600',
-	      'hue-2': '400',
-	      'hue-3': 'A100'
+				'hue-1': '600',
+				'hue-2': '400',
+				'hue-3': 'A100'
 			})
 			.accentPalette('blue', {
-	      'default': '200'
-	    })
+				'default': '200'
+			})
 			//.backgroundPalette('grey')
 			.warnPalette('orange');
 
@@ -352,7 +352,7 @@
 				$scope.showBottomSheet = function(functionName, type, functionParam) {
 					$scope.alert = '';
 
-					var parentElement = document.querySelector('#'+type);
+					var parentElement = document.querySelector('#' + type);
 					console.log("parentElement");
 					console.log(parentElement);
 
@@ -420,7 +420,7 @@
 									<md-content class="layout-row layout-wrap" md-colors="{background: \'primary-400\'}" >\
 								  <div ng-repeat="label in to.fields" class="{{to.class}}" >\
 								 		<div class="layout-row layout-wrap">\
-										<div flex-45>{{label.title}}</div> : <div flex-45>{{model[label.type][label.key]}} </div></div>\
+										<div flex=45 style="font-weight:600;">{{label.title}}</div> : <div flex=45>&nbsp;{{model[label.type][label.key]}} </div></div>\
 									</div>\
 									<md-content>\
 								</md-card>'

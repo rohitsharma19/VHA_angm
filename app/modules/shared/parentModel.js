@@ -11,15 +11,15 @@
 
 	angular
 		.module('shared')
-		.factory('sharedService', Shared);
+		.factory('parentModel', ParentModel );
 	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 	// function Name ($http, someSevide) {...}
 
-	Shared.$inject = ['leadModel','opportunityModel','quoteModel', 'agreementModel', '$rootScope'];
+	ParentModel.$inject = ['leadModel','opportunityModel','quoteModel', 'agreementModel'];
 
-	function Shared(leadModel, opportunityModel, quoteModel, agreementModel, $rootScope) {
+	function ParentModel(leadModel, opportunityModel, quoteModel, agreementModel) {
 
-		var sharedService = {
+		var parentModel = {
 
 			getLead: function(leadId) {
 				return new leadModel().get(leadId);
@@ -35,18 +35,10 @@
 
 			getAgreement: function(agreementId) {
 				return new agreementModel().get(agreementId);
-			},
-
-			showProgressBar: function() {
-				$rootScope.showProgressBar = true;
-			},
-
-			hideProgressBar: function() {
-				$rootScope.showProgressBar = false;
 			}
 
 		}
-		return sharedService;
+		return parentModel;
 	}
 
 })();

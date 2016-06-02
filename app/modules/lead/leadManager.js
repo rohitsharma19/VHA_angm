@@ -15,9 +15,9 @@
 	// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 	// function Name ($http, someSevide) {...}
 
-	Lead.$inject = ['$state', 'leadModel', 'leadSharedData', 'sharedService'];
+	Lead.$inject = ['$state', 'leadModel', 'leadSharedData', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
-	function Lead($state, leadModel, leadSharedData, sharedService) {
+	function Lead($state, leadModel, leadSharedData, parentModel, progressBarFactory, toastFactory) {
 
 
 		var leadManager = {
@@ -34,7 +34,7 @@
 
 			createLead: function(leadData) {
 				//showing progress bar while the lead is saved
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				if (leadData === null) {
 					console.log("leadData is null.");
@@ -43,17 +43,17 @@
 					var lead = new leadModel(leadData);
 					lead.save().then(
 						function(response) {
-							// alert('Lead '+ response.data.leadId + ' created successfully.' );
+							toastFactory.openSuccessToast('Lead '+ response.data.leadId + ' created successfully.');
 							console.log(response.data);
 							if ($state.current.name === 'home.lead.QuickCreate') {
 								$state.go('home.opportunity.QuickCreate', {
 									leadDetails: response.data
 								}).then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							} else if ($state.current.name === 'home.lead.create') {
 								$state.go('home.lead.viewAll').then(function() {
-									sharedService.hideProgressBar();
+									progressBarFactory.hideProgressBar();
 								});
 							}
 						},
@@ -68,14 +68,14 @@
 
 			updateLead: function(leadData) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				var lead = new leadModel(leadData);
 				lead.update().then(
 					function(response) {
-						alert('Lead ' + leadData.leadId + ' updated successfully.');
+						toastFactory.openSuccessToast('Lead ' + leadData.leadId + ' updated successfully.');
 						$state.go('home.lead.viewAll').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 					},
 					function(error) {
@@ -86,15 +86,15 @@
 
 			deleteLead: function(leadId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				if (confirm('Are you sure you want to delete this lead?')) {
 					var lead = new leadModel();
 					lead.remove(leadId).then(
 						function(response) {
-							alert('Lead ' + leadId + ' deleted successfully.');
+							toastFactory.openSuccessToast('Lead ' + leadId + ' deleted successfully.');
 							$state.go('home.lead.viewAll').then(function() {
-								sharedService.hideProgressBar();
+								progressBarFactory.hideProgressBar();
 							});
 						},
 						function(error) {
@@ -125,7 +125,7 @@
 
 			openViewLead: function(leadId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new leadModel().get(leadId).then(
 					function(response) {
@@ -135,7 +135,7 @@
 						leadSharedData.setLead(response.data);
 
 						$state.go('home.lead.view').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 
 					},
@@ -148,7 +148,7 @@
 
 			openEditLead: function(leadId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new leadModel().get(leadId).then(
 					function(response) {
@@ -158,7 +158,7 @@
 						leadSharedData.setLead(response.data);
 
 						$state.go('home.lead.edit').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 					},
 					function(error) {
@@ -170,7 +170,7 @@
 
 			openDeleteLead: function(leadId) {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				new leadModel().get(leadId).then(
 					function(response) {
@@ -180,7 +180,7 @@
 						leadSharedData.setLead(response.data);
 
 						$state.go('home.lead.delete').then(function() {
-							sharedService.hideProgressBar();
+							progressBarFactory.hideProgressBar();
 						});
 
 					},
@@ -193,10 +193,10 @@
 
 			openCreateLead: function() {
 
-				sharedService.showProgressBar();
+				progressBarFactory.showProgressBar();
 
 				$state.go('home.lead.create').then(function() {
-					sharedService.hideProgressBar();
+					progressBarFactory.hideProgressBar();
 				});
 			}
 		};

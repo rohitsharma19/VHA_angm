@@ -13,7 +13,7 @@
 		.module('opportunity')
 		.controller('OpportunityCtrl', Opportunity);
 
-	Opportunity.$inject = ['$state', '$stateParams', 'opportunityManager', 'opportunitySharedData', 'sharedService', '$mdDialog', '$mdMedia', '$scope'];
+	Opportunity.$inject = ['$state', '$stateParams', 'opportunityManager', 'opportunitySharedData', '$mdDialog', '$mdMedia', '$scope', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Opportunity($state, $stateParams, opportunityManager, opportunitySharedData, sharedService, $mdDialog, $mdMedia, $scope) {
+	function Opportunity($state, $stateParams, opportunityManager, opportunitySharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory) {
 		/*jshint validthis: true */
 
 		var vm = this;
@@ -73,10 +73,10 @@
 				vm.opportunity.self.opportunityMode = "QuickCreate";
 
 				//setting leadId in Opportunity and setting assigning leadDetails object
-				if($stateParams.leadDetails != null) {
-				vm.opportunity.self.leadId = $stateParams.leadDetails.leadId;
-				vm.opportunity.leadDetails = $stateParams.leadDetails;
-			}
+				if ($stateParams.leadDetails != null) {
+					vm.opportunity.self.leadId = $stateParams.leadDetails.leadId;
+					vm.opportunity.leadDetails = $stateParams.leadDetails;
+				}
 
 			} else if ($state.current.name === 'home.opportunity.create') {
 				console.log("CREATE OPPORTUNITY");
@@ -144,7 +144,7 @@
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 			vm.opportunity = {};
 
-			if($stateParams.opportunity != null) {
+			if ($stateParams.opportunity != null) {
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "Update";
 			}
@@ -161,7 +161,7 @@
 			vm.opportunity = {};
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 
-			if($stateParams.opportunity != null) {
+			if ($stateParams.opportunity != null) {
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "View";
 			}
@@ -173,7 +173,7 @@
 
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 
-			if($stateParams.opportunity != null) {
+			if ($stateParams.opportunity != null) {
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "Delete";
 			}
