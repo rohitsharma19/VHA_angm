@@ -22,7 +22,7 @@
 				$mdToast.show(
 					$mdToast.simple()
 					.textContent(message)
-					.position('bottom right')
+					.position('top center')
 				);
 			}
 		}
