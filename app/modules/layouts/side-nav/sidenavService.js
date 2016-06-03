@@ -28,13 +28,13 @@
 					},
 					{
 						link: 'lead.viewAll',
-							name: 'Lead',
+							name: 'Leads',
 							icon: 'supervisor_account'
 					},
 
 					{
 						link: 'opportunity.viewAll',
-							name: 'Opportunity',
+							name: 'Opportunities',
 							icon: 'business'
 					},
 
@@ -45,13 +45,13 @@
 
 					{
 						link: 'quote.viewAll',
-							name: 'Quote',
+							name: 'Quotes',
 							icon: 'storage'
 					},
 
 					{
 						link: 'agreement.viewAll',
-							name: 'Agreement',
+							name: 'Agreements',
 							icon: 'work'
 					},
 

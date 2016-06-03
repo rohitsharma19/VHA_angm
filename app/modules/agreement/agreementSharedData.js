@@ -328,7 +328,7 @@
 			"wrapper": ["gridWrapper", "card_noHeaderNoActions"],
 			templateOptions: {
 				"label": "Agreement",
-				"cardLabel": "View All Agreements",
+				"cardLabel": "Agreements",
 				"cardHeaderBackground": "rgb(33,150,243)",
 				"cardLabelColor": "white",
 				columnDefs: [{
@@ -353,7 +353,7 @@
 					// },
 					{
 						name: "Actions",
-						cellTemplate: "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('openViewAgreement',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>remove_red_eye</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openEditAgreement',row) style='min-width: 0px;'><md-icon style='color:green; vertical-align: baseline;'>edit</md-icon></md-button><md-button class='md-icon-button md-accent' ng-click=grid.appScope.clicked('openDeleteAgreement',row) style='min-width: 0px;'><md-icon style='vertical-align: baseline;'>delete</md-icon></md-button>",
+						cellTemplate: "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('openViewAgreement',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>remove_red_eye</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openEditAgreement',row) style='min-width: 0px;'><md-icon style='color:green; vertical-align: baseline;'>edit</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openDeleteAgreement',row) style='min-width: 0px;'><md-icon style='vertical-align: baseline; color:red;'>delete</md-icon></md-button>",
 						enableFiltering: false
 					}
 				],

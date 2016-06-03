@@ -640,7 +640,7 @@
 			"wrapper":["gridWrapper","card_noHeaderNoActions"],
 			"templateOptions": {
 				"label": "Opportunity",
-				"cardLabel": "View All Opportunities",
+				"cardLabel": "Opportunities",
 				"cardHeaderBackground": "rgb(33,150,243)",
 				"cardLabelColor": "white",
 				"columnDefs": [{
@@ -662,7 +662,7 @@
 					},
 					{
 						"name": "Actions",
-						"cellTemplate": "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('openViewOpportunity',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>remove_red_eye</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openEditOpportunity',row) style='min-width: 0px;'><md-icon style='color:green; vertical-align: baseline;'>edit</md-icon></md-button><md-button class='md-icon-button md-accent' ng-click=grid.appScope.clicked('openDeleteOpportunity',row) style='min-width: 0px;'><md-icon style='vertical-align: baseline;'>delete</md-icon></md-button>",
+						"cellTemplate": "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('openViewOpportunity',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>remove_red_eye</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openEditOpportunity',row) style='min-width: 0px;'><md-icon style='color:green; vertical-align: baseline;'>edit</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openDeleteOpportunity',row) style='min-width: 0px;'><md-icon style='vertical-align: baseline; color:red;'>delete</md-icon></md-button>",
 						"enableFiltering": false
 					}
 				],

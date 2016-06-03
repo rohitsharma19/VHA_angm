@@ -30,13 +30,13 @@
 
 		$mdThemingProvider
 			.theme('default')
-			.primaryPalette('red', {
+			.primaryPalette('blue', {
 				'default': '800',
 				'hue-1': '600',
 				'hue-2': '400',
 				'hue-3': 'A100'
 			})
-			.accentPalette('blue', {
+			.accentPalette('red', {
 				'default': '200'
 			})
 			//.backgroundPalette('grey')
