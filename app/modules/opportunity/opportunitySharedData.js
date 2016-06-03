@@ -58,11 +58,10 @@
     }
   },
   {
-    "type": "topHeaderDetails",
+    "type": "SummaryBlock",
     "templateOptions": {
-      "objectType": "leadDetails",
-      "style": "color:white; background-color: rgb(33,150,243);",
-      "class": "flex-33",
+    "mdColorBackground":"primary-400",
+     "class": "flex-33",
       "fields": [
         {
           "title": "Lead ID",
@@ -90,7 +89,54 @@
               "active": true
             },
             "fieldGroup": [
-              {
+							{
+                "key": "self.leadId",
+                "type": "input",
+                "templateOptions": {
+                  "label": "Lead ID",
+                  "type": "text",
+                  "styleElements": "display:block;",
+                  "required": "true",
+									"disabled":true
+                },
+								"hideExpression":"model.self.opportunityMode!=\"QuickCreate\""
+              },
+							{
+								"fieldGroup": [
+		              {
+		                "elementAttributes": {
+		                  "layout": "row",
+		                  "layout-sm": "column"
+		                },
+								"fieldGroup":[
+									{
+									"key": "self.leadId",
+									"type": "input",
+									"className": "flex-95",
+									"templateOptions": {
+										"label": "Lead ID",
+										"type": "text",
+										"styleElements": "display:block;",
+										"required": "true"
+									},
+									"hideExpression":"model.self.opportunityMode!=\"Create\""
+								},
+									{
+									"type": "button",
+									"className": "flex-05",
+									"templateOptions": {
+										"label": "",
+										"class": "md-raised md-primary md-fab md-mini",
+										"method": "showAdvanced",
+										"icon":"search"
+									},
+									"hideExpression":"model.self.opportunityMode!=\"Create\""
+								}
+
+								]
+							}]
+							},
+							{
                 "key": "self.opportunityName",
                 "type": "input",
                 "templateOptions": {
@@ -624,6 +670,57 @@
 			}
 		}];
 
+		var lead_viewAll = [
+	{
+		"key": "list",
+		"type": "ui-grid",
+		"wrapper":["card_noHeaderNoActions"],
+		"templateOptions": {
+			"label": "Lead",
+			"cardLabel": "View All Leads",
+			"cardHeaderBackground": "rgb(33,150,243)",
+			"cardLabelColor": "white",
+			"columnDefs": [
+				{
+					"name":"Select",
+					"cellTemplate":"<md-button class='md-icon-button' ng-click=grid.appScope.clicked('selectLead',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>add</md-icon></md-button>",
+					width: "07%"
+				},
+				{
+					"field": "leadId",
+					width: "20%",
+					enableFiltering: true
+				},
+				{
+					"field": "compName",
+					width: "15%"
+				},
+				{
+					"field": "abn",
+					width: "10%"
+				},
+				{
+					"field": "firstName",
+					width: "14%"
+				},
+				{
+					"field": "lastName",
+					width: "14%"
+				},
+				{
+					"field": "eMail",
+					width: "10%"
+				},
+				{
+					"field": "contactNum",
+					width: "10%"
+				},
+			],
+			"onRegisterApi": ""
+		}
+	}
+];
+
 		var SummaryDialog=[
 			{
 				"type":"SummaryDialogBox",
@@ -709,6 +806,8 @@
 					return JSON.stringify(opportunity_CRUD);
 				} else if (view === 'opportunity_viewAll') {
 					return JSON.stringify(opportunity_viewAll);
+				}else if (view === 'lead_viewAll') {
+					return JSON.stringify(lead_viewAll);
 				} else if (view === 'SummaryDialog') {
 					return JSON.stringify(SummaryDialog);
 				}

@@ -22,6 +22,7 @@
 		//var leadMode = null;
 		var leadSharedData = null;
 
+
 		var lead_CRUD = [{
 			"fieldGroup": [{
 				"wrapper": "card_noHeaderNoActions",
@@ -578,6 +579,7 @@
 			}
 		}];
 
+
 		var lead_viewAll = [{
 			"key": "list",
 			"type": "ui-grid",
@@ -609,6 +611,7 @@
 				"onRegisterApi": ""
 			}
 		}];
+
 
 		// var lead_CRUD = [{
 		// 	"key": "eMail",

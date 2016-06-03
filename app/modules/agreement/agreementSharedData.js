@@ -98,6 +98,7 @@
 			}
 		}]
 
+
 		var agreement_CRUD = [
   {
     "type": "progressTracker",

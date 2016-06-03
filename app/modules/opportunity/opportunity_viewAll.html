@@ -5,3 +5,31 @@
 <script type="text/ng-template" id="uiGrid.html">
 	<div ui-grid="{ data: model, columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
 </script>
+
+<script type="text/ng-template" id="leadSelectDialogBox.html">
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak style="min-height:600px; min-width:600px">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Select the Lead</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <!--  <formly-form model="" field="fields"></formly-form>-->
+
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="select()">
+       Select
+      </md-button>
+      <md-button ng-click="cancel()" style="margin-right:20px;">
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+</script>

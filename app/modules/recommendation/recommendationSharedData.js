@@ -58,7 +58,7 @@
     }
   },
   {
-    "type": "topHeaderDetails",
+    "type": "SummaryBlock",
     "templateOptions": {
       "style": "color:white; background-color: rgb(33, 150, 243);",
       "class": "flex-33",

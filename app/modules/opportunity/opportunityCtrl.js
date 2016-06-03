@@ -21,7 +21,9 @@
 	 * and bindable members up top.
 	 */
 
+
 	function Opportunity($state, $stateParams, opportunityManager, opportunitySharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory) {
+
 		/*jshint validthis: true */
 
 		var vm = this;
@@ -55,10 +57,13 @@
 				opportunityManager.openDeleteOpportunity(row.entity.opportunityId);
 			};
 
+
 			vm.openCreateOpportunity = function() {
 				console.log("inside openCreateOpportunity");
 				opportunityManager.openCreateOpportunity();
 			};
+
+
 		}
 
 		if (($state.current.name === 'home.opportunity.create') || ($state.current.name === 'home.opportunity.QuickCreate')) {
@@ -86,103 +91,157 @@
 				};
 				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity.self.opportunityMode = "Create";
+
+				vm.selectLead = function(lead){
+					vm.opportunity.self.leadId=lead.leadId;
+					vm.opportunity.leadDetails=lead;
+				};
+
+				vm.showAdvanced = function(ev) {
+					var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+					$mdDialog.show({
+							controller: DialogController,
+							templateUrl: 'leadSelectDialogBox.html',
+							parent: angular.element(document.body),
+							targetEvent: ev,
+							clickOutsideToClose: true,
+							fullscreen: useFullScreen
+						})
+						// .then(function(answer) {
+						//   $scope.status = 'You said the information was "' + answer + '".';
+						// }, function() {
+						//   $scope.status = 'You cancelled the dialog.';
+						// });
+					vm.fields = JSON.parse(opportunitySharedData.getLayout('lead_viewAll'));
+					// $scope.$watch(function() {
+					//   return $mdMedia('xs') || $mdMedia('sm');
+					// }, function(wantsFullScreen) {
+					//   $scope.customFullscreen = (wantsFullScreen === true);
+					// });
+				};
+
+				function DialogController($scope, $mdDialog, parentModel, opportunityManager) {
+					$scope.fields = vm.fields;
+
+					$scope.checkVariable = "Here";
+					parentModel.inflateUiGrid($scope);
+					$scope.hide = function() {
+						$mdDialog.hide();
+					};
+					$scope.cancel = function() {
+						$mdDialog.cancel();
+					};
+					$scope.selectLead = function(row) {
+						vm.selectLead(row.entity);
+						$mdDialog.hide();
+					}
+					$scope.answer = function(answer) {
+						$mdDialog.hide(answer);
+					};
+					$scope.vm = $scope;
+				};
+				};
+
+								vm.createOpportunity = function(opportunity) {
+									console.log("Inside createOpportunity().");
+									console.log(opportunity);
+									opportunityManager.createOpportunity(opportunity);
 			}
 
-			vm.createOpportunity = function(opportunity) {
-				console.log("Inside createOpportunity().");
-				console.log(opportunity);
-				opportunityManager.createOpportunity(opportunity);
+			vm.confirmDetails = function(lead) {
+				// var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+				$mdDialog.show({
+						controller: DialogController,
+						templateUrl: 'confirmationDialogueBox.html',
+						targetEvent: '',
+						parent: angular.element(document.body),
+						clickOutsideToClose: true
+							// fullscreen: useFullScreen
+					})
+					.then(function(answer) {
+						// vm.status = 'You said the information was "' + answer + '".';
+					}, function() {
+						// vm.status = 'You cancelled the dialog.';
+					});
+				console.log(vm.status);
+				vm.fields = JSON.parse(opportunitySharedData.getLayout('SummaryDialog'));
+				// $scope.$watch(function() {
+				//   return $mdMedia('xs') || $mdMedia('sm');
+				// },
+				// function(wantsFullScreen) {
+				//   vm.customFullscreen = (wantsFullScreen === true);
+				// });
 			};
+
+			function DialogController($scope, $mdDialog) {
+				$scope.model = vm.opportunity.self;
+				$scope.fields = vm.fields;
+				$scope.hide = function() {
+					$mdDialog.hide();
+				};
+				$scope.cancel = function() {
+					$mdDialog.cancel();
+				};
+				$scope.save = function(answer) {
+					vm.createOpportunity(vm.opportunity);
+					$mdDialog.hide(answer);
+				};
+				$scope.answer = function(answer) {
+					$mdDialog.hide(answer);
+				};
+			}
 		}
 
-		vm.confirmDetails = function(lead) {
-			// var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-			$mdDialog.show({
-					controller: DialogController,
-					templateUrl: 'confirmationDialogueBox.html',
-					targetEvent: '',
-					parent: angular.element(document.body),
-					clickOutsideToClose: true
-						// fullscreen: useFullScreen
-				})
-				.then(function(answer) {
-					// vm.status = 'You said the information was "' + answer + '".';
-				}, function() {
-					// vm.status = 'You cancelled the dialog.';
-				});
-			console.log(vm.status);
-			vm.fields = JSON.parse(opportunitySharedData.getLayout('SummaryDialog'));
-			// $scope.$watch(function() {
-			//   return $mdMedia('xs') || $mdMedia('sm');
-			// },
-			// function(wantsFullScreen) {
-			//   vm.customFullscreen = (wantsFullScreen === true);
-			// });
-		};
+			if ($state.current.name === 'home.opportunity.edit') {
+				console.log("EDIT OPPORTUNITY");
 
-		function DialogController($scope, $mdDialog) {
-			$scope.model = vm.opportunity.self;
-			$scope.fields = vm.fields;
-			$scope.hide = function() {
-				$mdDialog.hide();
-			};
-			$scope.cancel = function() {
-				$mdDialog.cancel();
-			};
-			$scope.save = function(answer) {
-				vm.createOpportunity(vm.opportunity);
-				$mdDialog.hide(answer);
-			};
-			$scope.answer = function(answer) {
-				$mdDialog.hide(answer);
-			};
-		}
+				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
+				vm.opportunity = {};
 
-		if ($state.current.name === 'home.opportunity.edit') {
-			console.log("EDIT OPPORTUNITY");
-
-			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
-			vm.opportunity = {};
+				if ($stateParams.opportunity != null) {
+					vm.opportunity = $stateParams.opportunity;
+					vm.opportunity.self.opportunityMode = "Update";
+				}
 
 			if ($stateParams.opportunity != null) {
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "Update";
+
 			}
 
-			vm.updateOpportunity = function(opportunity) {
-				console.log("Inside updateOpportunity()");
-				console.log(opportunity);
-				opportunityManager.updateOpportunity(opportunity);
-			};
-		}
+			if ($state.current.name === 'home.opportunity.view') {
+				console.log("VIEW OPPORTUNITY");
+				vm.opportunity = {};
+				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 
-		if ($state.current.name === 'home.opportunity.view') {
-			console.log("VIEW OPPORTUNITY");
-			vm.opportunity = {};
-			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
+				if ($stateParams.opportunity != null) {
+					vm.opportunity = $stateParams.opportunity;
+					vm.opportunity.self.opportunityMode = "View";
+				}
+
 
 			if ($stateParams.opportunity != null) {
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "View";
-			}
 
+			}
 		}
 
-		if ($state.current.name === 'home.opportunity.delete') {
-			console.log("DELETE OPPORTUNITY");
+			if ($state.current.name === 'home.opportunity.delete') {
+				console.log("DELETE OPPORTUNITY");
 
-			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
+				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 
+				if ($stateParams.opportunity != null) {
+					vm.opportunity = $stateParams.opportunity;
+					vm.opportunity.self.opportunityMode = "Delete";
+				}
 			if ($stateParams.opportunity != null) {
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "Delete";
-			}
 
-			vm.deleteOpportunity = function(opportunity) {
-				console.log("Inside deleteOpportunity()");
-				console.log(opportunity);
-				opportunityManager.deleteOpportunity(opportunity.self.opportunityId);
-			};
+			}
 		}
 	}
+}
 })();

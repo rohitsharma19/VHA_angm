@@ -158,6 +158,21 @@
 		});
 
 		formlyConfig.setWrapper({
+			name: 'gridWrapperLeadSelect',
+			template: [
+				'<div layout="row">\
+					<div flex="95">\
+						<div  style="font-size:30px; padding: 14px;"></div>\
+					</div>\
+					<div flex="5">\
+					</div>\
+				</div>\
+				<formly-transclude></formly-transclude>\
+				'
+			].join(' ')
+		});
+
+		formlyConfig.setWrapper({
 			name: 'gridWrapperNoAction',
 			template: [
 				'<div layout="row" style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}};">\
@@ -285,6 +300,7 @@
 			controller: function($scope) {
 				$scope.clicked = function(functionName, functionParam) {
 					console.log('functionName :' + functionName);
+					console.log($scope);
 					var targetScope = $scope;
 					while (!targetScope.vm) {
 						targetScope = targetScope.$parent;
@@ -390,7 +406,7 @@
 		// });
 
 		formlyConfig.setType({
-			name: 'topHeaderDetails',
+			name: 'SummaryBlock',
 			template: '<md-card class="md-padding flex-100"  md-colors="{background: \'{{to.mdColorBackground}}\'}">\
 									<md-content class="layout-row layout-wrap" md-colors="{background: \'{{to.mdColorBackground}}\'}" >\
 								  <div ng-repeat="label in to.fields" class="{{to.class}}" style="padding:3px;" >\
@@ -400,9 +416,6 @@
 									<md-content>\
 								</md-card>'
 		});
-
-
-
 	}
 
 })();

@@ -17,6 +17,7 @@
 
 	ParentModel.$inject = ['leadModel','opportunityModel','quoteModel', 'agreementModel'];
 
+
 	function ParentModel(leadModel, opportunityModel, quoteModel, agreementModel) {
 
 		var parentModel = {
@@ -35,9 +36,23 @@
 
 			getAgreement: function(agreementId) {
 				return new agreementModel().get(agreementId);
-			}
+			},
 
+			inflateUiGrid: function(scopeVar) {
+				new leadModel().getAll().then(
+					function(response) {
+						console.log("getAllLeads SUCCESS");
+						console.log("data received");
+						console.log(response.data);
+
+						scopeVar.leadsList = response.data;
+					},
+					function(error) {
+						console.log("getAllLeads ERROR : " + error.message);
+					});
+					return scopeVar;
 		}
+	};
 		return parentModel;
 	}
 
