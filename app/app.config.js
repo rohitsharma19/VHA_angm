@@ -408,8 +408,8 @@
 		formlyConfig.setType({
 			name: 'SummaryBlock',
 			template: '<md-card class="md-padding flex-100"  md-colors="{background: \'{{to.mdColorBackground}}\'}">\
-									<md-content class="layout-row layout-wrap" md-colors="{background: \'{{to.mdColorBackground}}\'}" >\
-								  <div ng-repeat="label in to.fields" class="{{to.class}}" style="padding:3px;" >\
+									<md-content class="layout-row layout-wrap" md-colors="{background: \'{{to.mdColorBackground}}\'}">\
+								  <div ng-repeat="label in to.fields" class="{{to.class}}" style="padding:3px;">\
 								 		<div class="layout-row layout-wrap">\
 										<div flex=45 style="font-weight:600;">{{label.title}}</div> : <div flex=45>&nbsp;{{model[label.type][label.key]}} </div></div>\
 									</div>\

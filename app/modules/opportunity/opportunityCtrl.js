@@ -103,7 +103,6 @@
 							controller: DialogController,
 							templateUrl: 'leadSelectDialogBox.html',
 							parent: angular.element(document.body),
-							targetEvent: ev,
 							clickOutsideToClose: true,
 							fullscreen: useFullScreen
 						})
@@ -122,6 +121,7 @@
 
 				function DialogController($scope, $mdDialog, parentModel, opportunityManager) {
 					$scope.fields = vm.fields;
+					$scope.leadsList = [];
 
 					$scope.checkVariable = "Here";
 					parentModel.inflateUiGrid($scope);
