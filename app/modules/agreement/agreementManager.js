@@ -358,44 +358,44 @@
 				$state.go('home.agreement.create').then(function() {
 					progressBarFactory.hideProgressBar();
 				});
-			},
-
-			captureSignature: function(agreement) {
-				var canvas = angular.element(document.getElementById('canvas'))[0];
-				console.log("Canvas Element");
-				console.log(canvas);
-				agreement.self.signature = canvas.toDataURL();
-				console.log("Signature Data");
-				console.log(agreement.self.signature);
-			},
-
-			resetSignature: function() {
-				var canvas = angular.element(document.getElementById('canvas'))[0];
-				var context = canvas.getContext('2d');
-				context.clearRect(0, 0, canvas.width, canvas.height);
-			},
-
-			displaySignatureForView: function(agreement) {
-				angular.element(document).ready(function() {
-					var canvas = angular.element(document.getElementById('canvas'))[0];
-					var context = canvas.getContext('2d');
-					var img = new Image();
-					img.src = agreement.self.signature;
-					context.drawImage(img, 0, 0);
-					var canvas = angular.element(document.getElementById('canvas'));
-					canvas.unbind();
-				});
-			},
-
-			displaySignatureForUpdate: function(agreement) {
-				angular.element(document).ready(function() {
-					var canvas = angular.element(document.getElementById('canvas'))[0];
-					var context = canvas.getContext('2d');
-					var img = new Image();
-					img.src = agreement.self.signature;
-					context.drawImage(img, 0, 0);
-				});
 			}
+
+			// captureSignature: function(agreement) {
+			// 	var canvas = angular.element(document.getElementById('canvas'))[0];
+			// 	console.log("Canvas Element");
+			// 	console.log(canvas);
+			// 	agreement.self.signature = canvas.toDataURL();
+			// 	console.log("Signature Data");
+			// 	console.log(agreement.self.signature);
+			// },
+      //
+			// resetSignature: function() {
+			// 	var canvas = angular.element(document.getElementById('canvas'))[0];
+			// 	var context = canvas.getContext('2d');
+			// 	context.clearRect(0, 0, canvas.width, canvas.height);
+			// },
+      //
+			// displaySignatureForView: function(agreement) {
+			// 	angular.element(document).ready(function() {
+			// 		var canvas = angular.element(document.getElementById('canvas'))[0];
+			// 		var context = canvas.getContext('2d');
+			// 		var img = new Image();
+			// 		img.src = agreement.self.signature;
+			// 		context.drawImage(img, 0, 0);
+			// 		var canvas = angular.element(document.getElementById('canvas'));
+			// 		canvas.unbind();
+			// 	});
+			// },
+      //
+			// displaySignatureForUpdate: function(agreement) {
+			// 	angular.element(document).ready(function() {
+			// 		var canvas = angular.element(document.getElementById('canvas'))[0];
+			// 		var context = canvas.getContext('2d');
+			// 		var img = new Image();
+			// 		img.src = agreement.self.signature;
+			// 		context.drawImage(img, 0, 0);
+			// 	});
+			// }
 
 		};
 		return agreementManager;

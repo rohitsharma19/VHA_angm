@@ -140,7 +140,6 @@
     "templateOptions": {
       "style": "color:white; background-color: rgb(33, 150, 243);",
       "class": "flex-33",
-			"mdColorBackground":"primary-400",
       "fields": [
         {
           "title": "Quote ID",
@@ -265,10 +264,12 @@
             "templateOptions": {
               "class":"flex-100"
             },
+						"className":"layout-column flex-100",
             "fieldGroup": [
               {
                 "type": "signature",
                 "key": "signature",
+								"className":"flex-80",
                 "templateOptions": {
                   "card": {
                     "imagePath": "",
@@ -280,6 +281,7 @@
               },
               {
                 "type": "button",
+								"className":"flex-20",
                 "templateOptions": {
                   "label": "Capture Signature",
                   "class": "md-raised md-primary",

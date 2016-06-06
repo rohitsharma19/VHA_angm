@@ -40,13 +40,13 @@
 
 <script type="text/ng-template" id="confirmationDialogueBox.html">
 	<md-dialog style="min-width:500px; min-height:350px;" aria-label="" ng-cloak>
-    <md-toolbar>
+		<md-toolbar>
       <div class="md-toolbar-tools">
-    <span layout="row" layout-align="space-between center" flex="33">Opportuntiy Summary
+    <span layout="row" layout-align="space-between center" flex="100">Lead Summary
       <!-- {{to.heading}} -->
       <md-dialog-actions>
         <span flex-33>
-      <md-button style="background:#5FB4F7" ng-click="save()" md-autofocus>
+      <md-button md-colors={background:'primary-200'} ng-click="save()" md-autofocus>
         Save
       </md-button>
       </span>
@@ -102,8 +102,8 @@
 				<md-list>
 					<md-list-item style="background:ghostwhite;" ng-repeat="itr in to.setOfFields" >
             <div layout="row" flex="100">
-						<span flex=50>{{itr.label}} </span>
-						<span flex=50>: {{model[itr.key]}}</span>
+						<span  flex=50>{{itr.label}} </span>
+						<span flex=50> {{model[itr.key]}}</span>
           </div>
             <md-divider></md-divider>
 					</md-list-item>

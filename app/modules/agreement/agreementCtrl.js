@@ -25,7 +25,9 @@
 	function Agreement($state, $stateParams, $mdDialog, $mdMedia, agreementManager, agreementSharedData) {
 		/*jshint validthis: true */
 		var vm = this;
-		vm.agreement = {};
+		vm.agreement = {
+			self:{}
+		};
 
 		vm.openSignatureDialog = function(ev) {
 			$mdDialog.show({
@@ -38,13 +40,17 @@
 
 		function DialogController($scope, $mdDialog) {
 
+			$scope.cancel = function() {
+				$mdDialog.hide();
+			}
+
 			$scope.done = function() {
 				var signature = $scope.accept();
 
 				if (signature.isEmpty) {
 					alert("Please Sign");
 				} else {
-					vm.agreeement.self.signature = signature.dataUrl;
+					vm.agreement.self.signature = signature.dataUrl;
 					$mdDialog.hide();
 				}
 			};
@@ -115,7 +121,6 @@
 			vm.createAgreement = function(agreement) {
 				console.log("Inside createAgreement().");
 				console.log(agreement);
-				agreementManager.captureSignature(agreement);
 				agreementManager.createAgreement(agreement);
 			};
 
@@ -128,7 +133,6 @@
 			if ($stateParams.agreement != null) {
 				vm.agreement = $stateParams.agreement;
 				vm.agreement.self.agreementMode = "View";
-				agreementManager.displaySignatureForView(vm.agreement);
 			}
 		}
 
@@ -141,13 +145,11 @@
 			if ($stateParams.agreement != null) {
 				vm.agreement = $stateParams.agreement;
 				vm.agreement.self.agreementMode = "Update";
-				agreementManager.displaySignatureForUpdate(vm.agreement);
 			}
 
 			vm.updateAgreement = function(agreement) {
 				console.log("Inside updateAgreement()");
 				console.log(agreement);
-				agreementManager.captureSignature(agreement);
 				agreementManager.updateAgreement(agreement);
 			};
 		}
@@ -161,7 +163,6 @@
 			if ($stateParams.agreement != null) {
 				vm.agreement = $stateParams.agreement;
 				vm.agreement.self.agreementMode = "Delete";
-				agreementManager.displaySignatureForView(vm.agreement);
 			}
 
 			vm.deleteAgreement = function(agreement) {
@@ -169,10 +170,6 @@
 				console.log(agreement);
 				agreementManager.deleteAgreement(agreement.agreementId);
 			};
-		}
-
-		vm.resetSign = function() {
-			agreementManager.resetSignature();
 		}
 	}
 })();

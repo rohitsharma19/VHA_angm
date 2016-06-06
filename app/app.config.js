@@ -132,7 +132,7 @@
 			name: 'card_noHeaderNoActions',
 			template: [
 				'<md-card style="{{to.style}}" class="{{to.class}}">\
-					<md-card-content>\
+					<md-card-content layout="column" layout-fill>\
 						<formly-transclude></formly-transclude>\
 					</md-card-content>\
 				</md-card>'
@@ -237,7 +237,7 @@
 		formlyConfig.setType({
 			name: 'list',
 			template: '<div>\
-				 <span style="color:red;text-align:center;"class="md-display-1">{{to.headline}}</span>\
+				 <span style="text-align:center;"class="md-display-1">{{to.headline}}</span>\
 				 <p>{{to.brief}}</p>\
 		  <md-list>\
 		    <md-list-item class=\"md-2-line\" ng-repeat=\"item in to.list\">\
@@ -411,7 +411,7 @@
 									<md-content class="layout-row layout-wrap" md-colors="{background: \'{{to.mdColorBackground}}\'}">\
 								  <div ng-repeat="label in to.fields" class="{{to.class}}" style="padding:3px;">\
 								 		<div class="layout-row layout-wrap">\
-										<div flex=45 style="font-weight:600;">{{label.title}}</div>  <div flex=45>&nbsp;{{model[label.type][label.key]}} </div></div>\
+										<div flex=45 style="font-weight:600;" md-colors="{color: \'primary-400\'}" >{{label.title}}</div>  <div flex=45>&nbsp;{{model[label.type][label.key]}} </div></div>\
 									</div>\
 									<md-content>\
 								</md-card>'

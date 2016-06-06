@@ -30,7 +30,8 @@
 		'recommendation',
 		'quote',
 		'agreement',
-		'shared'
+		'shared',
+		'signature'
 	])
 // 	.directive("drawing", function(){
 // 	return {

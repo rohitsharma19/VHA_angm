@@ -30,9 +30,7 @@
 
 
 <script type="text/ng-template" id="signature.html">
-  <div id="signatureDiv" style="text-align: center;" >
-    <canvas id="canvas" width="450" height="220" style="border-width: 2px 2px 2px 2px; border-style: solid; background-color: #FFF;" drawing ></canvas>
-  </div>
+    <img ng-src="{{model.self.signature}}" style="width:100%; height:100%;" alt="Please click on CAPTURE SIGNATURE"/>
 </script>
 
 <script type="text/ng-template" id="signatureDialogBox.html">
@@ -47,7 +45,7 @@
     <md-dialog-content>
       <div class="md-dialog-content">
         <div id="signatureDiv" style="text-align: center;" >
-        <signature-pad accept="accept" clear="clear" height="220" width="568"></signature-pad>
+        <signature-pad accept="accept" clear="clear" height="427" width="1200" style="border: 1px solid;"></signature-pad>
         </div>
       </div>
     </md-dialog-content>
