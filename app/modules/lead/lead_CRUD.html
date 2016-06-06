@@ -97,7 +97,7 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 	<md-dialog style="min-width:500px; min-height:350px;" aria-label="" ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
-    <span layout="row" layout-align="space-between center" flex="33">Lead Summary
+    <span layout="row" layout-align="space-between center" flex="100">Lead Summary
       <!-- {{to.heading}} -->
       <md-dialog-actions>
         <span flex-33>
@@ -158,7 +158,7 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 					<md-list-item style="background:ghostwhite;" ng-repeat="itr in to.setOfFields" >
             <div layout="row" flex="100">
 						<span  flex=50>{{itr.label}} </span>
-						<span flex=50>: {{model[itr.key]}}</span>
+						<span flex=50> {{model[itr.key]}}</span>
           </div>
             <md-divider></md-divider>
 					</md-list-item>
