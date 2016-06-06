@@ -79,7 +79,7 @@
 					"templateOptions": {
 						"label": "",
 						"class": "md-raised md-primary layout-row",
-						"method": "showAdvanced",
+						"method": "confirmDetails",
 						"icon": "search"
 					},
 					"hideExpression": 'model.self.opportunityMode!="Create" || !model.leadDetails'
@@ -108,7 +108,7 @@
 							"templateOptions": {
 								"label": "",
 								"class": "md-raised md-primary md-fab md-mini",
-								"method": "showAdvanced",
+								"method": "confirmDetails",
 								"icon": "search"
 							},
 							"hideExpression": "model.self.opportunityMode!=\"Create\""
