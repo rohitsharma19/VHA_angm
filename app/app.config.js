@@ -37,7 +37,7 @@
 				'hue-3': 'A100'
 			})
 			.accentPalette('red', {
-				'default': '200'
+				// 'default': '200'
 			})
 			//.backgroundPalette('grey')
 			.warnPalette('orange');

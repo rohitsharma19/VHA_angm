@@ -79,7 +79,7 @@
 					"templateOptions": {
 						"label": "",
 						"class": "md-raised md-primary layout-row",
-						"method": "confirmDetails",
+						"method": "selectLeadDialog",
 						"icon": "search"
 					},
 					"hideExpression": 'model.self.opportunityMode!="Create" || !model.leadDetails'
@@ -108,7 +108,7 @@
 							"templateOptions": {
 								"label": "",
 								"class": "md-raised md-primary md-fab md-mini",
-								"method": "confirmDetails",
+								"method": "selectLeadDialog",
 								"icon": "search"
 							},
 							"hideExpression": "model.self.opportunityMode!=\"Create\""
@@ -116,7 +116,7 @@
 
 					],
 				}],
-				"hideExpression": 'model.leadDetails'
+				"hideExpression": 'model.self.opportunityMode!=\"Create\" || model.leadDetails'
 			}]
 		}, {
 			"wrapper": "card_noHeaderNoActions",
@@ -129,17 +129,6 @@
 						"active": true
 					},
 					"fieldGroup": [{
-						"key": "self.leadId",
-						"type": "input",
-						"templateOptions": {
-							"label": "Lead ID",
-							"type": "text",
-							"styleElements": "display:block;",
-							"required": "true",
-							"disabled": true
-						},
-						"hideExpression": "model.self.opportunityMode!=\"QuickCreate\""
-					},{
 						"key": "self.opportunityName",
 						"type": "input",
 						"templateOptions": {
@@ -400,7 +389,7 @@
 							}
 						}]
 					}, {
-						"key": "self.contactNum",
+						"key": "self.contactNumber",
 						"type": "input",
 						"templateOptions": {
 							"label": "Phone Number",
@@ -425,7 +414,7 @@
 							"patternMessage": "yyyy-mm-dd ."
 						}
 					}, {
-						"key": "self.eMail",
+						"key": "self.emailAddress",
 						"type": "input",
 						"templateOptions": {
 							"label": "E mail",
@@ -457,7 +446,7 @@
 						}
 					}, {
 						"type": "select",
-						"key": "self.prefModOfCom",
+						"key": "self.preferredModeOfCommmunication",
 						"templateOptions": {
 							"label": "Preferred Mode of Communication",
 							"theme": "",
@@ -549,7 +538,7 @@
 			"templateOptions": {
 				"label": "Create Opportunity",
 				"class": "md-raised md-primary",
-				"method": "confirmDetails"
+				"method": "confirmDetailsDialog"
 			},
 			"hideExpression": "model.self.opportunityMode!=\"QuickCreate\" && model.self.opportunityMode!=\"Create\""
 		}, {
@@ -632,10 +621,10 @@
 					"field": "lastName",
 					width: "14%"
 				}, {
-					"field": "eMail",
+					"field": "emailAddress",
 					width: "10%"
 				}, {
-					"field": "contactNum",
+					"field": "contactNumber",
 					width: "10%"
 				}, ],
 				"onRegisterApi": ""

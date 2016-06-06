@@ -14,7 +14,7 @@
 		.controller('AgreementCtrl', Agreement);
 
 
-	Agreement.$inject = ['$state', '$stateParams', 'agreementManager', 'agreementSharedData'];
+	Agreement.$inject = ['$state', '$stateParams', '$mdDialog', '$mdMedia', 'agreementManager', 'agreementSharedData'];
 
 	/*
 	 * recommend
@@ -22,11 +22,34 @@
 	 * and bindable members up top.
 	 */
 
-	function Agreement($state, $stateParams, agreementManager, agreementSharedData) {
+	function Agreement($state, $stateParams, $mdDialog, $mdMedia, agreementManager, agreementSharedData) {
 		/*jshint validthis: true */
 		var vm = this;
 		vm.agreement = {};
 
+		vm.openSignatureDialog = function(ev) {
+			$mdDialog.show({
+				controller: DialogController,
+				templateUrl: 'signatureDialogBox.html',
+				parent: angular.element(document.body),
+				clickOutsideToClose: false
+			});
+		};
+
+		function DialogController($scope, $mdDialog) {
+
+			$scope.done = function() {
+				var signature = $scope.accept();
+
+				if (signature.isEmpty) {
+					alert("Please Sign");
+				} else {
+					vm.agreeement.self.signature = signature.dataUrl;
+					$mdDialog.hide();
+				}
+			};
+
+		};
 
 		if ($state.current.name === 'home.agreement.viewAll') {
 
@@ -83,7 +106,7 @@
 				console.log("CREATE AGREEMENT");
 
 				vm.agreement = {
-					self:{}
+					self: {}
 				};
 				vm.agreementFields = JSON.parse(agreementSharedData.getLayout('agreement_CRUD'));
 				vm.agreement.self.agreementMode = "Create";

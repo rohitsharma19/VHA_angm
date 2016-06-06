@@ -132,9 +132,9 @@
 						console.log("getLead SUCCESS");
 						console.log(response.data);
 
-						leadSharedData.setLead(response.data);
+						var lead = response.data;
 
-						$state.go('home.lead.view').then(function() {
+						$state.go('home.lead.view', {'lead':lead}).then(function() {
 							progressBarFactory.hideProgressBar();
 						});
 
@@ -155,9 +155,9 @@
 						console.log("getLead SUCCESS");
 						console.log(response.data);
 
-						leadSharedData.setLead(response.data);
+						var lead = response.data;
 
-						$state.go('home.lead.edit').then(function() {
+						$state.go('home.lead.edit', {'lead':lead}).then(function() {
 							progressBarFactory.hideProgressBar();
 						});
 					},
@@ -177,9 +177,9 @@
 						console.log("getLead SUCCESS");
 						console.log(response.data);
 
-						leadSharedData.setLead(response.data);
+						var lead = response.data;
 
-						$state.go('home.lead.delete').then(function() {
+						$state.go('home.lead.delete', {'lead':lead}).then(function() {
 							progressBarFactory.hideProgressBar();
 						});
 

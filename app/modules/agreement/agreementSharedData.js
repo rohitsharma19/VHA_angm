@@ -136,7 +136,7 @@
     }
   },
   {
-    "type": "topHeaderDetails",
+    "type": "SummaryBlock",
     "templateOptions": {
       "style": "color:white; background-color: rgb(33, 150, 243);",
       "class": "flex-33",
@@ -218,7 +218,7 @@
           {
             "className": "flex-60 layout-row",
             // "wrapper": "card_noHeaderNoActions",
-            "type": "topHeaderDetails",
+            "type": "SummaryBlock",
 						"templateOptions": {
 							"style": "color:white;",
 							"class": "flex-100",
@@ -281,9 +281,9 @@
               {
                 "type": "button",
                 "templateOptions": {
-                  "label": "Reset",
+                  "label": "Capture Signature",
                   "class": "md-raised md-primary",
-                  "method": "resetSign"
+                  "method": "openSignatureDialog"
                 },
                 "hideExpression": "model.self.agreementMode!='Create' && model.self.agreementMode!='QuickCreate' && model.self.agreementMode!='Update'"
               }

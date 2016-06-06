@@ -84,7 +84,7 @@
 						});
 					},
 					function(error) {
-						alert('Error While deleting Opportunity: ' + error.message);
+						alert('Error While updating Opportunity: ' + error.message);
 					}
 				);
 			},
@@ -215,7 +215,7 @@
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
-								$state.go('home.opportunity.view', {'opportunity':opportunity}).then(function() {
+								$state.go('home.opportunity.delete', {'opportunity':opportunity}).then(function() {
 									progressBarFactory.hideProgressBar();
 								});
 							},

@@ -35,6 +35,37 @@
   </div>
 </script>
 
+<script type="text/ng-template" id="signatureDialogBox.html">
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak style="min-height:600px; min-width:1200px;">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Please sign</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div id="signatureDiv" style="text-align: center;" >
+        <signature-pad accept="accept" clear="clear" height="220" width="568"></signature-pad>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-warn" ng-click="cancel()" flex-20>
+        Cancel
+      </md-button>
+      <md-button ng-click="clear()" flex-20>
+        Clear
+      </md-button>
+      <md-button class="md-primary" ng-click="done()" flex-20>
+        Sign
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+</script>
+
 
 
 

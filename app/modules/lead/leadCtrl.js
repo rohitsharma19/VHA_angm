@@ -13,7 +13,7 @@
 		.module('lead')
 		.controller('LeadCtrl', Lead);
 
-	Lead.$inject = ['$state', 'leadManager', 'leadSharedData','$mdDialog','$mdMedia','$scope','parentModel', 'progressBarFactory', 'toastFactory'];
+	Lead.$inject = ['$state', '$stateParams', 'leadManager', 'leadSharedData','$mdDialog','$mdMedia','$scope','parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Lead($state, leadManager, leadSharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory) {
+	function Lead($state, $stateParams, leadManager, leadSharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -160,7 +160,7 @@
 
 			if ($stateParams.lead != null) {
 				vm.lead = $stateParams.lead;
-				vm.lead.leadMode = "Update";
+				vm.lead.leadMode = "View";
 			}
 		}
 
@@ -172,7 +172,7 @@
 
 			if ($stateParams.lead != null) {
 				vm.lead = $stateParams.lead;
-				vm.lead.leadMode = "Update";
+				vm.lead.leadMode = "Delete";
 			}
 
 			vm.deleteLead = function(lead) {
