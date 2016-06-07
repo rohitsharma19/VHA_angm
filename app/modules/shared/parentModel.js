@@ -65,6 +65,20 @@
 					console.log("getAllLeads ERROR : " + error.message);
 				});
 				return scopeVar;
+	},
+		inflateQuoteUiGrid: function(scopeVar) {
+			new quoteModel().getAll().then(
+				function(response) {
+					console.log("getAllquote SUCCESS");
+					console.log("data received");
+					console.log(response.data);
+
+					scopeVar.quoteList = response.data;
+				},
+				function(error) {
+					console.log("getAllquotes ERROR : " + error.message);
+				});
+				return scopeVar;
 	}
 	};
 		return parentModel;

@@ -136,39 +136,128 @@
     }
   },
   {
-    "type": "SummaryBlock",
-    "templateOptions": {
-      "style": "color:white; background-color: rgb(33, 150, 243);",
-      "class": "flex-33",
-      "fields": [
-        {
-          "title": "Quote ID",
-          "type": "quoteDetails",
-          "key": "quoteId"
+    "fieldGroup": [{
+        "elementAttributes": {
+          "layout": "row",
+          "layout-sm": "column"
+        },
+        "fieldGroup": [
+          {
+          "className": "flex-100",
+          "type": "SummaryBlock",
+          "templateOptions": {
+            "style": "color:white; background-color: rgb(33, 150, 243);",
+            "class": "flex-33",
+            "fields": [{
+                    "title": "Quote ID",
+                    "type": "quoteDetails",
+                    "key": "quoteId"
+                  },
+                  {
+                    "title": "Company Name",
+                    "type": "leadDetails",
+                    "key": "compName"
+                  },
+                  {
+                    "title": "Opportunity status",
+                    "type": "opportunityDetails",
+                    "key": "status"
+                  },
+                  {
+                    "title": "Assigned to User",
+                    "type": "opportunityDetails",
+                    "key": "assignedToUser"
+                  },
+                  {
+                    "title": "Created By User",
+                    "type": "opportunityDetails",
+                    "key": "createdByUser"
+                  }]
+          },
+          "hideExpression": 'model.self.agreementMode!="QuickCreate" && !model.quoteDetails'
         },
         {
-          "title": "Company Name",
-          "type": "leadDetails",
-          "key": "compName"
-        },
+          // "wrapper":"card_noHeaderNoActions",
+          "type": "button",
+          "className": "flex-05 layout-row",
+          "templateOptions": {
+            "label": "",
+            "class": "md-raised md-primary md-fab layout-row",
+            "method": "selectQuoteDialog",
+            "icon": "search"
+          },
+          "hideExpression": 'model.self.agreementMode!="Create" || !model.quoteDetails'
+        }]
+      },
         {
-          "title": "Opportunity status",
-          "type": "opportunityDetails",
-          "key": "status"
-        },
-        {
-          "title": "Assigned to User",
-          "type": "opportunityDetails",
-          "key": "assignedToUser"
-        },
-        {
-          "title": "Created By User",
-          "type": "opportunityDetails",
-          "key": "createdByUser"
-        }
-      ]
-    }
-  },
+          "wrapper": "card_noHeaderNoActions",
+          "fieldGroup": [{
+            "elementAttributes": {
+              "layout": "row",
+              "layout-sm": "column"
+            },
+            "fieldGroup": [{
+                "key": "self.quoteId",
+                "type": "input",
+                "className": "flex-95",
+                "templateOptions": {
+                  "label": "Quote ID",
+                  "type": "text",
+                  "styleElements": "display:block;",
+                  "required": "true"
+                },
+                "hideExpression": "model.self.agreementMode!=\"Create\""
+              }, {
+                "type": "button",
+                "className": "flex-5",
+                "templateOptions": {
+                  "label": "",
+                  "class": "md-raised md-primary md-fab md-mini",
+                  "method": "selectQuoteDialog",
+                  "icon": "search"
+                },
+                "hideExpression": "model.self.agreementMode!=\"Create\""
+              }
+
+            ],
+          }],
+          "hideExpression": 'model.self.agreementMode!=\"Create\" || model.quoteDetails'
+        }]
+    },
+  // {
+  //   "type": "SummaryBlock",
+  //   "templateOptions": {
+  //     "style": "color:white; background-color: rgb(33, 150, 243);",
+  //     "class": "flex-33",
+  //     "fields": [
+  //       {
+  //         "title": "Quote ID",
+  //         "type": "quoteDetails",
+  //         "key": "quoteId"
+  //       },
+  //       {
+  //         "title": "Company Name",
+  //         "type": "leadDetails",
+  //         "key": "compName"
+  //       },
+  //       {
+  //         "title": "Opportunity status",
+  //         "type": "opportunityDetails",
+  //         "key": "status"
+  //       },
+  //       {
+  //         "title": "Assigned to User",
+  //         "type": "opportunityDetails",
+  //         "key": "assignedToUser"
+  //       },
+  //       {
+  //         "title": "Created By User",
+  //         "type": "opportunityDetails",
+  //         "key": "createdByUser"
+  //       }
+  //     ]
+  //   }
+  // },
   {
     "className":"layout-row",
     "fieldGroup": [
@@ -324,6 +413,35 @@
   }
 ];
 
+var quote_viewAll = [{
+	"key": "list",
+	"type": "ui-grid",
+	"wrapper": ["card_noHeaderNoActions"],
+	"templateOptions": {
+		"label": "Quote",
+		"cardLabel": "Quotes",
+		"cardHeaderBackground": "rgb(33,150,243)",
+		"cardLabelColor": "white",
+		"columnDefs": [{
+			"name": "Select",
+			"cellTemplate": "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('selectQuote',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>add</md-icon></md-button>",
+			width: "07%"
+		},{
+			"field": "quoteId"
+		}, {
+			"field": "discountedPrice"
+		}, {
+			"field": "assignedGroup"
+		}, {
+			"field": "assignedUser"
+		}, {
+			"field": "discountedPrice"
+		}],
+
+		"onRegisterApi": ""
+	}
+}];
+
 		var agreement_viewAll = [{
 			key: "list",
 			type: "ui-grid",
@@ -381,6 +499,8 @@
 					return JSON.stringify(agreement_CRUD);
 				} else if (view === 'agreement_viewAll') {
 					return JSON.stringify(agreement_viewAll);
+				}else if (view === 'quote_viewAll') {
+					return JSON.stringify(quote_viewAll);
 				}
 			}
 		}

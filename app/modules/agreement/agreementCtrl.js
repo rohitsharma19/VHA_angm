@@ -14,7 +14,7 @@
 		.controller('AgreementCtrl', Agreement);
 
 
-	Agreement.$inject = ['$state', '$stateParams', '$mdDialog', '$mdMedia', 'agreementManager', 'agreementSharedData'];
+	Agreement.$inject = ['$state', '$stateParams', '$mdDialog', '$mdMedia', 'agreementManager', 'agreementSharedData','$scope', 'parentModel'];
 
 	/*
 	 * recommend
@@ -22,11 +22,51 @@
 	 * and bindable members up top.
 	 */
 
-	function Agreement($state, $stateParams, $mdDialog, $mdMedia, agreementManager, agreementSharedData) {
+	function Agreement($state, $stateParams, $mdDialog, $mdMedia, agreementManager, agreementSharedData, $scope, parentModel) {
 		/*jshint validthis: true */
 		var vm = this;
 		vm.agreement = {
 			self:{}
+		};
+
+    function quoteSelectionDialogController($scope, $mdDialog, parentModel, agreementManager) {
+
+			$scope.fields = vm.fields;
+			$scope.quoteList = [];
+
+			$scope.checkVariable = "Here in Agreement";
+			parentModel.inflateQuoteUiGrid($scope);
+			$scope.hide = function() {
+				$mdDialog.hide();
+			};
+			$scope.cancel = function() {
+				$mdDialog.cancel();
+			};
+			$scope.selectQuote = function(row) {
+				var quote = row.entity;
+				parentModel.getOpportunity(quote.opportunityId).then(
+					function(response) {
+						quote.opportunityDetails = response.data;
+								// var opportunity = quote.opportunityDetails;
+								parentModel.getLead(quote.opportunityDetails.leadId).then(
+								function(response){
+								quote.leadDetails=response.data;
+								console.log(quote);
+								vm.selectQuote(quote);
+								$mdDialog.hide();
+							}
+						)
+					},
+					function(error) {
+						console.log("parentModel.getLead ERROR");
+						console.log(error.data);
+					}
+				);
+			}
+			$scope.answer = function(answer) {
+				$mdDialog.hide(answer);
+			};
+			$scope.vm = $scope;
 		};
 
 		vm.openSignatureDialog = function(ev) {
@@ -116,6 +156,23 @@
 				};
 				vm.agreementFields = JSON.parse(agreementSharedData.getLayout('agreement_CRUD'));
 				vm.agreement.self.agreementMode = "Create";
+
+        vm.selectQuote = function(quote) {
+          vm.agreement.self.quoteId = quote.quoteId;
+          vm.agreement.quoteDetails = quote;
+          vm.agreement.opportunityDetails = quote.opportunityDetails;
+					vm.agreement.leadDetails=quote.leadDetails;
+        }
+
+        vm.selectQuoteDialog = function(ev) {
+          $mdDialog.show({
+            controller: quoteSelectionDialogController,
+            templateUrl: 'quoteSelectDialogBox.html',
+            parent: angular.element(document.body),
+            clickOutsideToClose: true
+          })
+          vm.fields = JSON.parse(agreementSharedData.getLayout('quote_viewAll'));
+        };
 			}
 
 			vm.createAgreement = function(agreement) {
