@@ -13,19 +13,6 @@
 	</div>
 </script>
 
-<script type="text/ng-template" id="tabset.html">
-	<md-tabs md-dynamic-height>
-		<md-tab ng-repeat="tab in to.tabs">
-			<md-tab-label>
-				{{tab.title}}
-			</md-tab-label>
-			<md-tab-body>
-				<formly-form model="::$parent.model" fields="tab.form.fields"></formly-form>
-			</md-tab-body>
-		</md-tab>
-	</md-tabs>
-</script>
-
 <script type="text/ng-template" id="progressTracker.html">
 	<div style="border: #ffffff">
 		<ol class="progtrckr hidden-xs" data-progtrckr-steps={{to.totalSteps}}>
@@ -60,43 +47,10 @@
     </div>
     </md-toolbar>
 		<formly-form model=model fields=fields></formly-form>
-		<!-- <md-dialog-actions layout="row">
-			<span flex-33>
-    <md-button ng-click="save()" md-autofocus>
-      Save
-    </md-button>
-  </span>
-			<span flex-33>
-    <md-button ng-click="cancel()">
-    Cancel
-    </md-button>
-  </span>
-		</md-dialog-actions> -->
 	</md-dialog>
 </script>
 
 <script type="text/ng-template" id="confirmationDialogueBox1.html">
-
-	<!-- <form> -->
-		<!-- <md-toolbar>
-			<div class="md-toolbar-tools"> -->
-
-				<!-- <span flex>{{to.heading}}
-          <md-dialog-actions layout="row">
-            <span flex-33>
-          <md-button ng-click="save()" md-autofocus>
-            Save
-          </md-button>
-          </span>
-            <span flex-33>
-          <md-button ng-click="cancel()">
-          Cancel
-          </md-button>
-          </span>
-          </md-dialog-actions>
-        </span> -->
-			<!-- </div>
-		</md-toolbar> -->
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<md-list>
@@ -110,7 +64,6 @@
 				</md-list>
 			</div>
 		</md-dialog-content>
-	<!-- </form> -->
 </script>
 
 <script type="text/ng-template" id="leadSelectDialogBox.html">
@@ -129,9 +82,6 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <!-- <md-button ng-click="select()">
-       Select
-      </md-button> -->
       <md-button ng-click="cancel()" style="margin-right:20px;">
         Cancel
       </md-button>

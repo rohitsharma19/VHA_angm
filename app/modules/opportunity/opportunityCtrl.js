@@ -13,7 +13,7 @@
 		.module('opportunity')
 		.controller('OpportunityCtrl', Opportunity);
 
-	Opportunity.$inject = ['$state', '$stateParams', 'opportunityManager', 'opportunitySharedData', '$mdDialog', '$mdMedia', '$scope', 'parentModel', 'progressBarFactory', 'toastFactory'];
+	Opportunity.$inject = ['$state', '$stateParams', 'opportunityManager', 'opportunitySharedData', '$mdDialog', '$mdMedia', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -22,7 +22,7 @@
 	 */
 
 
-	function Opportunity($state, $stateParams, opportunityManager, opportunitySharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory) {
+	function Opportunity($state, $stateParams, opportunityManager, opportunitySharedData, $mdDialog, $mdMedia, parentModel, progressBarFactory, toastFactory) {
 
 		/*jshint validthis: true */
 
@@ -31,7 +31,7 @@
 			self: {}
 		};
 
-		/*** Dialog box controller***/
+		/*** Dialog box controllers***/
 		function leadSelectionDialogController($scope, $mdDialog, parentModel, opportunityManager) {
 			$scope.fields = vm.fields;
 			$scope.leadsList = [];
@@ -82,26 +82,23 @@
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_viewAll'));
 			opportunityManager.inflateUiGrid(vm);
 
-			// vm = opportunityManager.setUpUiGrid(vm);
-
 			vm.openViewOpportunity = function(row) {
 				console.log("Inside openViewOpportunity");
 				opportunityManager.openViewOpportunity(row.entity.opportunityId);
 			};
 
 			vm.openEditOpportunity = function(row) {
-				console.log("inside openEditOpportunity");
+				console.log("Inside openEditOpportunity");
 				opportunityManager.openEditOpportunity(row.entity.opportunityId);
 			};
 
 			vm.openDeleteOpportunity = function(row) {
-				console.log("inside openDeleteOpportunity");
+				console.log("Inside openDeleteOpportunity");
 				opportunityManager.openDeleteOpportunity(row.entity.opportunityId);
 			};
 
-
 			vm.openCreateOpportunity = function() {
-				console.log("inside openCreateOpportunity");
+				console.log("Inside openCreateOpportunity");
 				opportunityManager.openCreateOpportunity();
 			};
 		}
@@ -117,8 +114,9 @@
 				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity.self.opportunityMode = "QuickCreate";
 
-				//setting leadId in Opportunity and setting assigning leadDetails object
 				if ($stateParams.leadDetails != null) {
+					console.log("$stateParams.leadDetails");
+					console.log($stateParams.leadDetails);
 					vm.opportunity.self.leadId = $stateParams.leadDetails.leadId;
 					vm.opportunity.leadDetails = $stateParams.leadDetails;
 				}
@@ -133,11 +131,13 @@
 				vm.opportunity.self.opportunityMode = "Create";
 
 				vm.selectLead = function(lead) {
+					console.log("Inside selectLead()");
 					vm.opportunity.self.leadId = lead.leadId;
 					vm.opportunity.leadDetails = lead;
 				}
 
 				vm.selectLeadDialog = function(ev) {
+					console.log("Inside selectLeadDialog()");
 					$mdDialog.show({
 						controller: leadSelectionDialogController,
 						templateUrl: 'leadSelectDialogBox.html',
@@ -146,15 +146,13 @@
 					})
 					vm.fields = JSON.parse(opportunitySharedData.getLayout('lead_viewAll'));
 				};
-
 			}
 
-
 			vm.confirmDetailsDialog = function(lead) {
+				console.log("Inside confirmDetailsDialog()");
 				$mdDialog.show({
 					controller: confirmationDialogController,
 					templateUrl: 'confirmationDialogueBox.html',
-					targetEvent: '',
 					parent: angular.element(document.body),
 					clickOutsideToClose: true
 				})
@@ -162,7 +160,7 @@
 			};
 
 			vm.createOpportunity = function(opportunity) {
-				console.log("Inside createOpportunity().");
+				console.log("Inside createOpportunity()");
 				console.log(opportunity);
 				opportunityManager.createOpportunity(opportunity);
 			}
@@ -175,6 +173,8 @@
 			vm.opportunity = {};
 
 			if ($stateParams.opportunity != null) {
+				console.log("$stateParams.opportunity");
+				console.log($stateParams.opportunity);
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "Update";
 			}
@@ -193,6 +193,8 @@
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 
 			if ($stateParams.opportunity != null) {
+				console.log("$stateParams.opportunity");
+				console.log($stateParams.opportunity);
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "View";
 			}
@@ -205,6 +207,8 @@
 			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 
 			if ($stateParams.opportunity != null) {
+				console.log("$stateParams.opportunity");
+				console.log($stateParams.opportunity);
 				vm.opportunity = $stateParams.opportunity;
 				vm.opportunity.self.opportunityMode = "Delete";
 			}

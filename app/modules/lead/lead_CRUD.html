@@ -23,13 +23,7 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 </style>
 
 <div flex layout-sm="column">
-	<!-- <form ng-submit="vm.onSubmit()" name="vm.form" novalidate> -->
-	<formly-form model="vm.lead" fields="vm.leadFields">
-		<!-- <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Submit</button>
-			<button type="button" class="btn btn-default" ng-click="vm.options.resetModel()">Reset</button> -->
-	</formly-form>
-	<!-- </form> -->
-	<!-- <md-button class="md-primary md-raised" ng-click='alert("Test")'>Test Button!</md-button> -->
+	<formly-form model="vm.lead" fields="vm.leadFields"></formly-form>
 </div>
 
 
@@ -41,19 +35,6 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 	<div>
 		<pre ng-repeat="(key,value) in this">vm.{{key}} = {{ value | json }}</pre>
 	</div>
-</script>
-
-<script type="text/ng-template" id="tabset.html">
-	<md-tabs md-dynamic-height>
-		<md-tab ng-repeat="tab in to.tabs">
-			<md-tab-label>
-				{{tab.title}}
-			</md-tab-label>
-			<md-tab-body>
-				<formly-form model="::$parent.model" fields="tab.form.fields"></formly-form>
-			</md-tab-body>
-		</md-tab>
-	</md-tabs>
 </script>
 
 <script type="text/ng-template" id="progressTracker.html">
@@ -93,12 +74,11 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 	</div>
 </script>
 
-<script type="text/ng-template" id="confirmationDialogueBox.html">
+<script type="text/ng-template" id="dialogueBox.html">
 	<md-dialog style="min-width:500px; min-height:350px;" aria-label="" ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
     <span layout="row" layout-align="space-between center" flex="100">Lead Summary
-      <!-- {{to.heading}} -->
       <md-dialog-actions>
         <span flex-33>
       <md-button style="background:#5FB4F7" ng-click="save()" md-autofocus>
@@ -115,43 +95,10 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
     </div>
     </md-toolbar>
 		<formly-form model=model fields=fields></formly-form>
-		<!-- <md-dialog-actions layout="row">
-			<span flex-33>
-    <md-button ng-click="save()" md-autofocus>
-      Save
-    </md-button>
-  </span>
-			<span flex-33>
-    <md-button ng-click="cancel()">
-    Cancel
-    </md-button>
-  </span>
-		</md-dialog-actions> -->
 	</md-dialog>
 </script>
 
 <script type="text/ng-template" id="confirmationDialogueBox1.html">
-
-	<!-- <form> -->
-		<!-- <md-toolbar>
-			<div class="md-toolbar-tools"> -->
-
-				<!-- <span flex>{{to.heading}}
-          <md-dialog-actions layout="row">
-            <span flex-33>
-          <md-button ng-click="save()" md-autofocus>
-            Save
-          </md-button>
-          </span>
-            <span flex-33>
-          <md-button ng-click="cancel()">
-          Cancel
-          </md-button>
-          </span>
-          </md-dialog-actions>
-        </span> -->
-			<!-- </div>
-		</md-toolbar> -->
 		<md-dialog-content>
 			<div class="md-dialog-content">
 				<md-list>
@@ -165,5 +112,4 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 				</md-list>
 			</div>
 		</md-dialog-content>
-	<!-- </form> -->
 </script>

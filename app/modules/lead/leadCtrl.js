@@ -13,7 +13,7 @@
 		.module('lead')
 		.controller('LeadCtrl', Lead);
 
-	Lead.$inject = ['$state', '$stateParams', 'leadManager', 'leadSharedData','$mdDialog','$mdMedia','$scope','parentModel', 'progressBarFactory', 'toastFactory'];
+	Lead.$inject = ['$state', '$stateParams', 'leadManager', 'leadSharedData', '$mdDialog', '$mdMedia', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -21,16 +21,34 @@
 	 * and bindable members up top.
 	 */
 
-	function Lead($state, $stateParams, leadManager, leadSharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory) {
-		/*jshint validthis: true */
+	function Lead($state, $stateParams, leadManager, leadSharedData, $mdDialog, $mdMedia, parentModel, progressBarFactory, toastFactory) {
+
 		var vm = this;
 
 		vm.lead = {};
 
+		function DialogController($scope, $mdDialog) {
+			$scope.model = vm.lead;
+			$scope.fields = vm.fields;
+			$scope.hide = function() {
+				$mdDialog.hide();
+			};
+			$scope.cancel = function() {
+				$mdDialog.cancel();
+			};
+			$scope.save = function(answer) {
+				vm.createLead(vm.lead);
+				$mdDialog.hide(answer);
+			};
+			$scope.answer = function(answer) {
+				$mdDialog.hide(answer);
+			};
+		};
+
 		if ($state.current.name === 'home.lead.viewAll') {
 
 			console.log("VIEW ALL LEADS");
-			vm.leadsList=[];
+			vm.leadsList = [];
 
 			vm.fields = JSON.parse(leadSharedData.getLayout('lead_viewAll'));
 			leadManager.inflateUiGrid(vm);
@@ -38,21 +56,20 @@
 			vm.openViewLead = function(row) {
 				console.log("Inside openViewLead");
 				leadManager.openViewLead(row.entity.leadId);
-
 			};
 
 			vm.openEditLead = function(row) {
-				console.log("inside openEditLead");
+				console.log("Inside openEditLead");
 				leadManager.openEditLead(row.entity.leadId);
 			};
 
 			vm.openDeleteLead = function(row) {
-				console.log("inside openDeleteLead");
+				console.log("Inside openDeleteLead");
 				leadManager.openDeleteLead(row.entity.leadId);
 			};
 
 			vm.openCreateLead = function() {
-				console.log("inside openCreateLead");
+				console.log("Inside openCreateLead");
 				leadManager.openCreateLead();
 			};
 		}
@@ -69,69 +86,33 @@
 				console.log("CREATE LEAD");
 
 				vm.lead = {};
-				//vm.leadFields = leadSharedData.getLayout('lead_CRUD');
 				vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 				vm.lead.leadMode = "Create";
 			}
 
 			vm.createLead = function(lead) {
-				console.log("Inside createLead().");
+				console.log("Inside createLead()");
 				console.log(lead);
 				leadManager.createLead(lead);
 			};
 
-			vm.addContact = function(lead){
+			vm.addContact = function(lead) {
 				console.log("Inside addContact().");
 				console.log(lead);
 				console.log(vm.leadFields);
 			};
+
+			vm.confirmDetails = function(lead) {
+				console.log("Inside confirmDetails()");
+				$mdDialog.show({
+					controller: DialogController,
+					templateUrl: 'dialogueBox.html',
+					parent: angular.element(document.body),
+					clickOutsideToClose: true
+				})
+				vm.fields = JSON.parse(leadSharedData.getLayout('SummaryDialog'));
+			};
 		}
-
-		vm.confirmDetails = function(lead) {
-    // var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-    $mdDialog.show({
-      controller: DialogController,
-      templateUrl: 'confirmationDialogueBox.html',
-			targetEvent: '',
-      parent: angular.element(document.body),
-      clickOutsideToClose:true
-      // fullscreen: useFullScreen
-    })
-    .then(function(answer)
-		{
-      // vm.status = 'You said the information was "' + answer + '".';
-    }, function() {
-      // vm.status = 'You cancelled the dialog.';
-    }
-	);
-		console.log(vm.status);
-		vm.fields = JSON.parse(leadSharedData.getLayout('SummaryDialog'));
-    // $scope.$watch(function() {
-    //   return $mdMedia('xs') || $mdMedia('sm');
-    // },
-		// function(wantsFullScreen) {
-    //   vm.customFullscreen = (wantsFullScreen === true);
-    // });
-  };
-
-	function DialogController($scope, $mdDialog) {
-		$scope.model =vm.lead;
-		$scope.fields=vm.fields;
-   $scope.hide = function() {
-     $mdDialog.hide();
-   };
-   $scope.cancel = function() {
-     $mdDialog.cancel();
-   };
-	 $scope.save = function(answer) {
-		 vm.createLead(vm.lead);
-		 $mdDialog.hide(answer);
-	 };
-   $scope.answer = function(answer) {
-     $mdDialog.hide(answer);
-   };
-}
-
 
 
 		if ($state.current.name === 'home.lead.edit') {
@@ -141,6 +122,8 @@
 			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 
 			if ($stateParams.lead != null) {
+				console.log("$stateParams.lead");
+				console.log($stateParams.lead);
 				vm.lead = $stateParams.lead;
 				vm.lead.leadMode = "Update";
 			}
@@ -159,6 +142,8 @@
 			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 
 			if ($stateParams.lead != null) {
+				console.log("$stateParams.lead");
+				console.log($stateParams.lead);
 				vm.lead = $stateParams.lead;
 				vm.lead.leadMode = "View";
 			}
@@ -171,6 +156,8 @@
 			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
 
 			if ($stateParams.lead != null) {
+				console.log("$stateParams.lead");
+				console.log($stateParams.lead);
 				vm.lead = $stateParams.lead;
 				vm.lead.leadMode = "Delete";
 			}

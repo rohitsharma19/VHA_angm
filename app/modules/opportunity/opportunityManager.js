@@ -23,27 +23,26 @@
 		var opportunityManager = {
 
 			getOpportunity: function(opportunityId) {
-				//return new opportunityModel().get(opportunityId);
+				console.log("Inside opportunityManager.getOpportunity()");
 				var opportunity = new opportunityModel();
 				return opportunity.get(opportunityId);
 			},
 
 			getAllOpportunitys: function() {
-				//return $http.get("http://203.200.67.15/VHAMW/webapi/Opportunity");
+				console.log("Inside opportunityManager.getAllOpportunitys()");
 				var opportunity = new opportunityModel();
 				return opportunity.getAll();
 			},
 
 			createOpportunity: function(opportunityData) {
-
-				//showing progress bar while the opportunity is saved
+				console.log("Inside opportunityManager.createOpportunity()");
 				progressBarFactory.showProgressBar();
 
 				if (opportunityData.self == null) {
 					console.log("opportunityData is null.");
+					progressBarFactory.hideProgressBar();
 					alert('Please fill in the required details.');
 				} else {
-
 					var opportunity = new opportunityModel(opportunityData.self);
 					opportunity.save().then(
 						function(response) {
@@ -60,7 +59,6 @@
 									progressBarFactory.hideProgressBar();
 								});
 							}
-
 						},
 						function(error) {
 							alert('Error While creating Opportunity:');
@@ -72,7 +70,7 @@
 			},
 
 			updateOpportunity: function(opportunityData) {
-
+				console.log("Inside opportunityManager.updateOpportunity()");
 				progressBarFactory.showProgressBar();
 
 				var opportunity = new opportunityModel(opportunityData.self);
@@ -85,12 +83,14 @@
 					},
 					function(error) {
 						alert('Error While updating Opportunity: ' + error.message);
+						console.log("ERROR opportunity.update()");
+						console.log(error.data);
 					}
 				);
 			},
 
 			deleteOpportunity: function(opportunityId) {
-
+				console.log("Inside opportunityManager.deleteOpportunity()");
 				progressBarFactory.showProgressBar();
 
 				if (confirm('Are you sure you want to delete this opportunity?')) {
@@ -104,6 +104,8 @@
 						},
 						function(error) {
 							alert('Error While deleting Opportunity: ' + error.message);
+							console.log("ERROR opportunity.delete()");
+							console.log(error.data);
 						}
 					);
 				} else {
@@ -112,25 +114,25 @@
 			},
 
 			inflateUiGrid: function(vm) {
-
+				console.log("Inside opportunityManager.inflateUiGrid()");
 				opportunityManager.getAllOpportunitys().then(
 					function(response) {
 						console.log("getAllOpportunitys SUCCESS");
 						console.log("data received");
 						console.log(response.data);
 
-						// vm.gridOptions.data = response.data;
 						vm.opportunitiesList = response.data;
 					},
 					function(error) {
-						console.log("getAllOpportunitys ERROR : " + error.message);
+						alert('Error While getting All Opportunitys: ' + error.message);
+						console.log("ERROR opportunityManager.getAllOpportunitys()");
+						console.log(error.data);
 					});
-
 				return vm;
 			},
 
 			openViewOpportunity: function(opportunityId) {
-
+				console.log("Inside opportunityManager.openViewOpportunity()");
 				progressBarFactory.showProgressBar();
 
 				new opportunityModel().get(opportunityId).then(
@@ -147,7 +149,9 @@
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
 
-								$state.go('home.opportunity.view',{'opportunity':opportunity}).then(function() {
+								$state.go('home.opportunity.view', {
+									'opportunity': opportunity
+								}).then(function() {
 									progressBarFactory.hideProgressBar();
 								});
 							},
@@ -165,7 +169,7 @@
 			},
 
 			openEditOpportunity: function(opportunityId) {
-
+				console.log("Inside opportunityManager.openEditOpportunity()");
 				progressBarFactory.showProgressBar();
 
 				new opportunityModel().get(opportunityId).then(
@@ -181,7 +185,9 @@
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
-								$state.go('home.opportunity.edit',{'opportunity':opportunity}).then(function() {
+								$state.go('home.opportunity.edit', {
+									'opportunity': opportunity
+								}).then(function() {
 									progressBarFactory.hideProgressBar();
 								});
 							},
@@ -199,7 +205,7 @@
 			},
 
 			openDeleteOpportunity: function(opportunityId) {
-
+				console.log("Inside opportunityManager.openDeleteOpportunity()");
 				progressBarFactory.showProgressBar();
 
 				new opportunityModel().get(opportunityId).then(
@@ -215,7 +221,9 @@
 							function(response) {
 								opportunity.leadDetails = response.data;
 								console.log(opportunity.leadDetails);
-								$state.go('home.opportunity.delete', {'opportunity':opportunity}).then(function() {
+								$state.go('home.opportunity.delete', {
+									'opportunity': opportunity
+								}).then(function() {
 									progressBarFactory.hideProgressBar();
 								});
 							},
@@ -233,7 +241,7 @@
 			},
 
 			openCreateOpportunity: function() {
-
+				console.log("Inside opportunityManager.openCreateOpportunity()");
 				progressBarFactory.showProgressBar();
 
 				$state.go('home.opportunity.create').then(function() {
