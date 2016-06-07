@@ -13,7 +13,7 @@
 		.module('quote')
 		.controller('QuoteCtrl', Quote);
 
-	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData', 'parentModel', 'progressBarFactory', 'toastFactory'];
+	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData', '$mdDialog', '$mdMedia', '$scope', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -21,9 +21,10 @@
 	 * and bindable members up top.
 	 */
 
-	function Quote($state, $stateParams, quoteManager, quoteSharedData, parentModel, progressBarFactory, toastFactory) {
+	function Quote($state, $stateParams, quoteManager, quoteSharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory) {
 		/*jshint validthis: true */
 		var vm = this;
+
 
 		vm.quote = {
 			"Offer": JSON.parse(quoteSharedData.getLayout('Offers')),
@@ -36,6 +37,41 @@
 			},
 			"self": {}
 		};
+		// Controller for the Dialog Box
+		function opportunitySelectionDialogController($scope, $mdDialog, parentModel, quoteManager) {
+
+			$scope.fields = vm.fields;
+			$scope.opportunityList = [];
+
+			$scope.checkVariable = "Here in Quote";
+			parentModel.inflateOpportunityUiGrid($scope);
+			$scope.hide = function() {
+				$mdDialog.hide();
+			};
+			$scope.cancel = function() {
+				$mdDialog.cancel();
+			};
+			$scope.selectOpportunity = function(row) {
+				var opportunity = row.entity;
+				parentModel.getLead(opportunity.leadId).then(
+					function(response) {
+						opportunity.leadDetails = response.data;
+						vm.selectOpportunity(opportunity);
+						$mdDialog.hide();
+					},
+					function(error) {
+						console.log("parentModel.getLead ERROR");
+						console.log(error.data);
+					}
+				);
+			}
+			$scope.answer = function(answer) {
+				$mdDialog.hide(answer);
+			};
+			$scope.vm = $scope;
+		};
+
+
 
 		if ($state.current.name === 'home.quote.viewAll') {
 
@@ -82,8 +118,26 @@
 			if ($state.current.name === 'home.quote.create') {
 				console.log("CREATE QUOTE");
 
-				vm.quote.self.quoteMode = "QuickCreate";
+				vm.quote.self.quoteMode = "Create";
 				vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
+
+
+				vm.selectOpportunity = function(opportunity) {
+					vm.quote.self.opportunityId = opportunity.opportunityId;
+					vm.quote.opportunityDetails = opportunity;
+					vm.quote.leadDetails = opportunity.leadDetails;
+				}
+
+				vm.selectOpportunityDialog = function(ev) {
+					$mdDialog.show({
+						controller: opportunitySelectionDialogController,
+						templateUrl: 'opportunitySelectDialogBox.html',
+						parent: angular.element(document.body),
+						clickOutsideToClose: true
+					})
+					vm.fields = JSON.parse(quoteSharedData.getLayout('opportunity_viewAll'));
+				};
+
 
 			} else if ($state.current.name === 'home.quote.QuickCreate') {
 				console.log("CREATE QUICK QUOTE");

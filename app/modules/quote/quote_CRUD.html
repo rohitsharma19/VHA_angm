@@ -392,7 +392,7 @@
 	<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method,model)'>{{to.label}}</md-button>
 </script>
 
-<script type="text/ng-template" id="uiGrid.html">
+<script type="text/ng-template" id="productUiGrid.html">
 	<div ui-grid="{enableCellEdit: true, enableFiltering: false, data: model['finalSelection']['Offer_Devices'], columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
 </script>
 
@@ -402,4 +402,40 @@
 			<li ng-repeat="step in to.steps" class=progtrckr-{{step.status}}>{{step.label}}</li>
 		</ol>
 	</div>
+</script>
+
+
+<script type="text/ng-template" id="button.html">
+	<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method,model)'>{{to.label}}  <md-icon ng-if="options.templateOptions.icon">{{to.icon}}</md-icon></md-button>
+</script>
+
+<script type="text/ng-template" id="opportunitySelectDialogBox.html">
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak style="min-height:600px; min-width:1200px;">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Select the Opportunity</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+         <formly-form model="vm.opportunityList" fields="vm.fields"></formly-form>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <!-- <md-button ng-click="select()">
+       Select
+      </md-button> -->
+      <md-button ng-click="cancel()" style="margin-right:20px;">
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+</script>
+
+<script type="text/ng-template" id="uiGrid.html">
+	<div ui-grid="{ data: model, columnDefs: to.columnDefs, onRegisterApi: to.onRegisterApi, enableFiltering:true}" ui-grid-auto-resize ui-grid-pagination ui-grid-selection ui-grid-edit ui-grid-row-edit></div>
 </script>

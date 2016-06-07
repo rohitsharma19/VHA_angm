@@ -311,6 +311,25 @@
 		});
 
 		formlyConfig.setType({
+			name: 'product-ui-grid',
+			templateUrl: 'productUiGrid.html',
+			// wrapper: ['gridWrapper','card_noHeaderNoActions'],
+			// wrapper: ['card_noHeaderNoActions'],
+			controller: function($scope) {
+				$scope.clicked = function(functionName, functionParam) {
+					console.log('functionName :' + functionName);
+					console.log($scope);
+					var targetScope = $scope;
+					while (!targetScope.vm) {
+						targetScope = targetScope.$parent;
+					}
+					targetScope.vm[functionName](functionParam);
+				};
+			}
+		});
+
+
+		formlyConfig.setType({
 			name: 'itemsList',
 			templateUrl: 'itemsList.html',
 			controller: function($scope) {

@@ -51,7 +51,21 @@
 						console.log("getAllLeads ERROR : " + error.message);
 					});
 					return scopeVar;
-		}
+		},
+		inflateOpportunityUiGrid: function(scopeVar) {
+			new opportunityModel().getAll().then(
+				function(response) {
+					console.log("getAllOpportunity SUCCESS");
+					console.log("data received");
+					console.log(response.data);
+
+					scopeVar.opportunityList = response.data;
+				},
+				function(error) {
+					console.log("getAllLeads ERROR : " + error.message);
+				});
+				return scopeVar;
+	}
 	};
 		return parentModel;
 	}
