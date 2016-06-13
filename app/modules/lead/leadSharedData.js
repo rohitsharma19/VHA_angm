@@ -161,33 +161,17 @@
 						"active": false
 					},
 					"fieldGroup": [{
-						"wrapper": "card_noHeaderNoActions",
+						// "wrapper": "card_noHeaderNoActions",
 						"elementAttributes": {
 							"formlyFieldGroupClass": "flex-30"
 						},
 						"fieldGroup": [{
-							"key": "pin",
-							"type": "input",
+							"elementAttributes": {
+								"class": "layout-row flex-100"
+							},
+							"type": "contactChips",
 							"templateOptions": {
-								"label": "PIN",
-								"type": "text",
-								"styleElements": "display:block;"
-							}
-						}, {
-							"key": "pin",
-							"type": "input",
-							"templateOptions": {
-								"label": "PIN",
-								"type": "text",
-								"styleElements": "display:block;"
-							}
-						}, {
-							"key": "pin",
-							"type": "input",
-							"templateOptions": {
-								"label": "PIN",
-								"type": "text",
-								"styleElements": "display:block;"
+								"itemType": "contact"
 							}
 						}]
 					}, {
@@ -202,7 +186,7 @@
 							},
 							"fieldGroup": [{
 								"type": "select",
-								"key": "title",
+								"key": "tempContact.title",
 								"className": "flex-20",
 								"templateOptions": {
 									"label": "Title",
@@ -224,7 +208,7 @@
 									}]
 								}
 							}, {
-								"key": "firstName",
+								"key": "tempContact.firstName",
 								"className": "flex-40",
 								"type": "input",
 								"templateOptions": {
@@ -235,7 +219,7 @@
 									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
 								}
 							}, {
-								"key": "lastName",
+								"key": "tempContact.lastName",
 								"className": "flex-40",
 								"type": "input",
 								"templateOptions": {
@@ -247,7 +231,7 @@
 								}
 							}]
 						}, {
-							"key": "contactNum",
+							"key": "tempContact.contactNum",
 							"type": "input",
 							"templateOptions": {
 								"label": "Phone Number",
@@ -259,7 +243,7 @@
 							}
 						}, {
 							"type": "datepicker",
-							"key": "dob",
+							"key": "tempContact.dob",
 							"templateOptions": {
 								"theme": "custom",
 								"placeholder": "Date of Birth",
@@ -272,7 +256,7 @@
 								"patternMessage": "yyyy-mm-dd ."
 							}
 						}, {
-							"key": "eMail",
+							"key": "tempContact.eMail",
 							"type": "input",
 							"templateOptions": {
 								"label": "E mail",
@@ -284,7 +268,7 @@
 							}
 						}, {
 							"type": "select",
-							"key": "contactRole",
+							"key": "tempContact.contactRole",
 							"templateOptions": {
 								"label": "Contact Mode",
 								"theme": "",
@@ -304,7 +288,7 @@
 							}
 						}, {
 							"type": "select",
-							"key": "prefModOfCom",
+							"key": "tempContact.prefModOfCom",
 							"templateOptions": {
 								"label": "Preferred Mode of Communication",
 								"theme": "",
@@ -322,6 +306,30 @@
 								}],
 								"flex": ""
 							}
+						}, {
+							"elementAttributes": {
+								"layout": "row",
+								"layout-sm": "column",
+								"layout-align": "end center"
+							},
+							"fieldGroup": [{
+								"type": "button",
+								"templateOptions": {
+									"label": "Add Contact",
+									"class": "md-raised md-primary",
+									"method": "addContact"
+								},
+								"hideExpression": "model.leadMode!=\"Create\" || model.contactMode!=\"Create\""
+							},
+							{
+								"type": "button",
+								"templateOptions": {
+									"label": "Save Contact",
+									"class": "md-raised md-primary",
+									"method": "updateContact"
+								},
+								"hideExpression": "model.leadMode!=\"Create\" || model.contactMode!=\"Update\""
+							}]
 						}]
 					}]
 				}, {
@@ -508,7 +516,11 @@
 				"method": "deleteLead"
 			},
 			"hideExpression": "model.leadMode!=\"Delete\""
-		}];
+		},
+	// {
+	// 	type:"test"
+	// }
+];
 
 		var SummaryDialog = [{
 			"type": "SummaryDialogBox",

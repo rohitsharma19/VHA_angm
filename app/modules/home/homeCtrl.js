@@ -13,7 +13,7 @@
 		.module('vha')
 		.controller('HomeCtrl', Home);
 
-	Home.$inject = ['homeService','parentModel', 'progressBarFactory', 'toastFactory'];
+	Home.$inject = ['homeService', 'parentModel', 'progressBarFactory', 'toastFactory'];
 
 	/*
 	 * recommend
@@ -27,9 +27,93 @@
 		vm.title = "Hello, vha!";
 		vm.version = "1.0.0";
 		vm.listFeatures = homeService.getFeaturesList();
+		console.log("In HOME");
 
 		//hiding progress bar intially
 		progressBarFactory.hideProgressBar();
+
+		var StageStatusTiles = [{
+			"type": "stageStatusTiles",
+			templateOptions: {
+				"setOfFields": [{
+					"class": "dashboard-stat blue-chambray",
+					"iClass": "fa fa-tasks",
+					"title": "Lead",
+					"link": "#!/lead/viewAll",
+					"mode":"leadCount"
+				}, {
+					"class": "dashboard-stat yellow-casablanca",
+					"iClass": "fa fa-check-square-o",
+					"title": "Opportunities",
+					"link": "#!/opportunity/viewAll",
+					"mode": "opportunityCount"
+				}, {
+					"class": "dashboard-stat blue-hoki",
+					"iClass": "fa fa-tasks",
+					"title": "Quotes",
+					"link": "#!/quote/viewAll",
+					"mode":"quoteCount"
+				}, {
+					"class": "dashboard-stat red-pink",
+					"iClass": "fa fa-check-square-o",
+					"title": "Agreement",
+					"link": "#!/agreement/viewAll",
+					"mode":"agreementCount"
+				}]
+			}
+		}]
+
+		vm.getLeadCount = function(){
+			parentModel.getLeadCount().then(
+				function(response){
+					console.log(response.data.length);
+					vm.model.leadCount = response.data.length;
+				}
+			);
+		};
+		vm.getOpportunityCount = function(){
+			parentModel.getOpportunityCount().then(
+				function(response){
+					console.log(response.data.length);
+					vm.model.opportunityCount = response.data.length;
+				}
+			);
+		},
+		vm.getQuoteCount = function(){
+			parentModel.getQuoteCount().then(
+				function(response){
+					console.log(response.data.length);
+					vm.model.quoteCount = response.data.length;
+				}
+			);
+		},
+		vm.getAgreementCount = function(){
+			parentModel.getAgreementCount().then(
+				function(response){
+					console.log(response.data.length);
+					vm.model.agreementCount = response.data.length;
+				}
+			);
+		},
+
+	vm.getLeadCount();
+	vm.getOpportunityCount();
+	vm.getQuoteCount();
+	vm.getAgreementCount();
+
+
+
+		vm.getLayout = function(view) {
+			if (view === 'StageStatusTiles') {
+				return JSON.stringify(StageStatusTiles);
+			}
+		}
+			console.log("vm.model");
+			console.log(vm.model);
+			vm.fields = JSON.parse(vm.getLayout('StageStatusTiles'));
+
+
+
 
 		vm.line = {
 			labels: ['Aug 15', 'Sep 15', 'Oct 15', 'Nov 15', 'Dec 15', 'Jan 16'],
@@ -103,13 +187,14 @@
 			colors: ["#ffe6e6", "#e6e6ff", "#f2f2f2", "#f2f5f2", "#f7f2f2", "#f2f2f5"]
 		};
 
+
 		vm.map = {
 			center: {
 				latitude: 40,
 				longitude: -99
 			},
 			zoom: 8,
-			marker : {
+			marker: {
 				id: 0,
 				coords: {
 					latitude: 40.1451,
@@ -122,7 +207,5 @@
 		};
 
 
-
-	}
-
-})();
+}
+	})();

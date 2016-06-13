@@ -38,19 +38,6 @@
 				return new agreementModel().get(agreementId);
 			},
 
-			getLeadCount:function(){
-				return new leadModel().getAll();
-			},
-			getOpportunityCount:function(){
-				return new opportunityModel().getAll();
-			},
-			getQuoteCount:function(){
-				return new quoteModel().getAll();
-			},
-			getAgreementCount:function(){
-				return new agreementModel().getAll();
-			},
-
 			inflateUiGrid: function(scopeVar) {
 				new leadModel().getAll().then(
 					function(response) {

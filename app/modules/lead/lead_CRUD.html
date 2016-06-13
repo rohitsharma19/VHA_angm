@@ -1,25 +1,25 @@
 <style>
-md-datepicker ~ [ng-messages],
-md-datepicker ~ [ng-messages] [ng-message-exp]:not(.md-char-counter){
-  padding-right: 5px;
-  padding-left: 0;
-}
+	md-datepicker ~ [ng-messages],
+	md-datepicker ~ [ng-messages] [ng-message-exp]:not(.md-char-counter) {
+		padding-right: 5px;
+		padding-left: 0;
+	}
 
-md-datepicker.ng-invalid ~ [ng-messages],
-md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
-  font-size: 12px;
-  line-height: 14px;
-  overflow: hidden;
-  transition: all .3s cubic-bezier(.55,0,.55,.2);
-  opacity: 1;
-  margin-top: 0;
-  padding-top: 5px;
-}
+	md-datepicker.ng-invalid ~ [ng-messages],
+	md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp] {
+		font-size: 12px;
+		line-height: 14px;
+		overflow: hidden;
+		transition: all .3s cubic-bezier(.55, 0, .55, .2);
+		opacity: 1;
+		margin-top: 0;
+		padding-top: 5px;
+	}
 
-md-datepicker.ng-invalid ~ [ng-messages],
-md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
-  color: rgb(221,44,0);
-}
+	md-datepicker.ng-invalid ~ [ng-messages],
+	md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp] {
+		color: rgb(221, 44, 0);
+	}
 </style>
 
 <div flex layout-sm="column">
@@ -35,6 +35,13 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 	<div>
 		<pre ng-repeat="(key,value) in this">vm.{{key}} = {{ value | json }}</pre>
 	</div>
+	<p>FORMS_MODELS</p>
+	<h2>Model</h2>
+	<pre>{{vm.model | json}}</pre>
+	<h2>Fields <small>(note, functions are not shown)</small></h2>
+	<pre>{{vm.originalFields | json}}</pre>
+	<h2>Form</h2>
+	<pre>{{vm.form | json}}</pre>
 </script>
 
 <script type="text/ng-template" id="progressTracker.html">
@@ -47,6 +54,28 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 
 <script type="text/ng-template" id="button.html">
 	<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method,model)'>{{to.label}}</md-button>
+</script>
+
+<script type="text/ng-template" id="contactChips.html" md-whiteframe="3">
+	<md-card flex=100>
+		<md-card-content flex="70">
+			<md-chips class="custom-chips" ng-model="model[options.templateOptions.itemType+'s']" md-on-select="clicked('setTempContact',$chip)" md-on-remove="clicked('resetTempContact')">
+				<md-chip-template>
+					<div layout="row">
+						<!-- <div flex=25 class="md-contact-avatar layout-column" style=" background-image: url({{$chip.imagePath}}); background-size: cover; border-radius:40%;">
+						</div> -->
+						<div flex=10></div>
+						<div flex=90>
+							<span>{{$chip.title}} {{$chip.firstName}} {{$chip.lastName}}</span>
+						</div>
+					</div>
+				</md-chip-template>
+				<button md-chip-remove class="md-primary vegetablechip">
+					<ng-md-icon icon="close" style="padding-bottom: 10px; color: white;"></ng-md-icon>
+				</button>
+			</md-chips>
+		</md-card-content>
+	</md-card>
 </script>
 
 <script type="text/ng-template" id="contact_Card.html">
@@ -76,40 +105,40 @@ md-datepicker.ng-invalid ~ [ng-messages] [ng-messages-exp]{
 
 <script type="text/ng-template" id="dialogueBox.html">
 	<md-dialog style="min-width:500px; min-height:350px;" aria-label="" ng-cloak>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-    <span layout="row" layout-align="space-between center" flex="100">Lead Summary
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<span layout="row" layout-align="space-between center" flex="100">Lead Summary
       <md-dialog-actions>
         <span flex-33>
       <md-button style="background:#5FB4F7" ng-click="save()" md-autofocus>
         Save
       </md-button>
       </span>
-        <span flex-33>
+				<span flex-33>
       <md-button ng-click="cancel()">
       Cancel
       </md-button>
       </span>
-      </md-dialog-actions>
-    </span>
-    </div>
-    </md-toolbar>
+				</md-dialog-actions>
+				</span>
+			</div>
+		</md-toolbar>
 		<formly-form model=model fields=fields></formly-form>
 	</md-dialog>
 </script>
 
 <script type="text/ng-template" id="confirmationDialogueBox1.html">
-		<md-dialog-content>
-			<div class="md-dialog-content">
-				<md-list>
-					<md-list-item style="background:ghostwhite;" ng-repeat="itr in to.setOfFields" >
-            <div layout="row" flex="100">
-						<span  flex=50>{{itr.label}} </span>
+	<md-dialog-content>
+		<div class="md-dialog-content">
+			<md-list>
+				<md-list-item style="background:ghostwhite;" ng-repeat="itr in to.setOfFields">
+					<div layout="row" flex="100">
+						<span flex=50>{{itr.label}} </span>
 						<span flex=50> {{model[itr.key]}}</span>
-          </div>
-            <md-divider></md-divider>
-					</md-list-item>
-				</md-list>
-			</div>
-		</md-dialog-content>
+					</div>
+					<md-divider></md-divider>
+				</md-list-item>
+			</md-list>
+		</div>
+	</md-dialog-content>
 </script>

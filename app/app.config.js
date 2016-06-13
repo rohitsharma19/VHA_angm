@@ -89,6 +89,11 @@
 			templateUrl: 'progressTracker.html'
 		});
 
+		formlyConfig.setType({
+			name: 'stageStatusTiles',
+			templateUrl: 'statusChips.html'
+		});
+
 		formlyConfig.setWrapper({
 			name: 'card',
 			template: [
@@ -402,6 +407,23 @@
 				};
 			}
 		});
+
+
+		formlyConfig.setType({
+			name: 'contactChips',
+			templateUrl: 'contactChips.html',
+			controller: function($scope) {
+				$scope.clicked = function(functionName, functionParam) {
+					console.log('functionName :' + functionName);
+					var targetScope = $scope;
+					while (!targetScope.vm) {
+						targetScope = targetScope.$parent;
+					}
+					targetScope.vm[functionName](functionParam);
+				};
+			}
+		});
+
 
 		formlyConfig.setType({
 			name: 'SummaryDialogBox',

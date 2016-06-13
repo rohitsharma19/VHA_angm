@@ -25,6 +25,28 @@
 	<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method,model)'>{{to.label}}  <md-icon ng-if="options.templateOptions.icon">{{to.icon}}</md-icon></md-button>
 </script>
 
+<script type="text/ng-template" id="contactChips.html" md-whiteframe="3">
+	<md-card flex=100>
+		<md-card-content flex="70">
+			<md-chips class="custom-chips" ng-model="model['self'][options.templateOptions.itemType+'s']" md-on-select="clicked('setTempContact',$chip)" md-on-remove="clicked('resetTempContact')">
+				<md-chip-template>
+					<div layout="row">
+						<!-- <div flex=25 class="md-contact-avatar layout-column" style=" background-image: url({{$chip.imagePath}}); background-size: cover; border-radius:40%;">
+						</div> -->
+						<div flex=10></div>
+						<div flex=90>
+							<span>{{$chip.title}} {{$chip.firstName}} {{$chip.lastName}}</span>
+						</div>
+					</div>
+				</md-chip-template>
+				<button md-chip-remove class="md-primary vegetablechip">
+					<ng-md-icon icon="close" style="padding-bottom: 10px; color: white;"></ng-md-icon>
+				</button>
+			</md-chips>
+		</md-card-content>
+	</md-card>
+</script>
+
 <script type="text/ng-template" id="confirmationDialogueBox.html">
 	<md-dialog style="min-width:500px; min-height:350px;" aria-label="" ng-cloak>
 		<md-toolbar>

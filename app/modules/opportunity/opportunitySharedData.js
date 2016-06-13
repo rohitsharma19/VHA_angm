@@ -333,137 +333,184 @@
 					}]
 				}, {
 					"wrapper": "wrapper_tab",
+					"elementAttributes": {
+						"layout": "row"
+					},
 					"templateOptions": {
-						"title": "Contact Details",
+						"title": "Contact",
 						"active": false
 					},
 					"fieldGroup": [{
+						// "wrapper": "card_noHeaderNoActions",
 						"elementAttributes": {
-							"layout": "row",
-							"layout-sm": "column"
+							"formlyFieldGroupClass": "flex-30"
 						},
 						"fieldGroup": [{
-							"type": "select",
-							"key": "self.title",
-							"className": "flex-20",
+							"elementAttributes": {
+								"class": "layout-row flex-100"
+							},
+							"type": "contactChips",
 							"templateOptions": {
-								"label": "Title",
-								"theme": "",
-								"multiple": false,
-								"styleElements": "display:block;",
-								"required": "true",
-								"labelProp": "label",
-								"valueProp": "value",
-								"options": [{
-									"label": "Mr.",
-									"value": "Mr."
-								}, {
-									"label": "Mrs.",
-									"value": "Mrs."
-								}, {
-									"label": "Ms.",
-									"value": "Ms."
-								}]
-							}
-						}, {
-							"key": "self.firstName",
-							"className": "flex-40",
-							"type": "input",
-							"templateOptions": {
-								"label": "First Name",
-								"styleElements": "display:block;",
-								"required": "true",
-								"pattern": "([a-zA-Z ]{3,30})",
-								"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
-							}
-						}, {
-							"key": "self.lastName",
-							"className": "flex-40",
-							"type": "input",
-							"templateOptions": {
-								"label": "Last Name",
-								"styleElements": "display:block;",
-								"required": "true",
-								"pattern": "([a-zA-Z ]{3,30})",
-								"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+								"itemType": "contact"
 							}
 						}]
 					}, {
-						"key": "self.contactNumber",
-						"type": "input",
-						"templateOptions": {
-							"label": "Phone Number",
-							"type": "number",
-							"styleElements": "display:block;",
-							"required": "true",
-							"pattern": "([0-9]{10})",
-							"patternMessage": "Only Numbers. 10 Digits"
-						}
-					}, {
-						"type": "datepicker",
-						"key": "self.dob",
-						"templateOptions": {
-							"theme": "custom",
-							"placeholder": "Date of Birth",
-							"styleElements": "display:block;",
-							"label": "Date of Birth",
-							"required": "true",
-							"md-min-date": "1/1/2015",
-							"md-max-date": "1/1/2016",
-							"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}",
-							"patternMessage": "yyyy-mm-dd ."
-						}
-					}, {
-						"key": "self.emailAddress",
-						"type": "input",
-						"templateOptions": {
-							"label": "E mail",
-							"type": "email",
-							"styleElements": "display:block;",
-							"required": "true",
-							"pattern": '([_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))',
-							"patternMessage": "For ex. example@domain.com ."
-						}
-					}, {
-						"type": "select",
-						"key": "self.contactRole",
-						"templateOptions": {
-							"label": "Contact Mode",
-							"theme": "",
-							"styleElements": "display:block;",
-							"required": "true",
-							"multiple": false,
-							"labelProp": "label",
-							"valueProp": "value",
-							"options": [{
-								"label": "Billing",
-								"value": "Billing"
+						"wrapper": "card_noHeaderNoActions",
+						"elementAttributes": {
+							"formlyFieldGroupClass": "flex-70"
+						},
+						"fieldGroup": [{
+							"elementAttributes": {
+								"layout": "row",
+								"layout-sm": "column"
+							},
+							"fieldGroup": [{
+								"type": "select",
+								"key": "self.tempContact.title",
+								"className": "flex-20",
+								"templateOptions": {
+									"label": "Title",
+									"theme": "",
+									"multiple": false,
+									"styleElements": "display:block;",
+									"required": "true",
+									"labelProp": "label",
+									"valueProp": "value",
+									"options": [{
+										"label": "Mr.",
+										"value": "Mr."
+									}, {
+										"label": "Mrs.",
+										"value": "Mrs."
+									}, {
+										"label": "Ms.",
+										"value": "Ms."
+									}]
+								}
 							}, {
-								"label": "Non-Billing",
-								"value": "Non-Billing"
-							}],
-							"flex": ""
-						}
-					}, {
-						"type": "select",
-						"key": "self.preferredModeOfCommmunication",
-						"templateOptions": {
-							"label": "Preferred Mode of Communication",
-							"theme": "",
-							"styleElements": "display:block;",
-							"required": "true",
-							"multiple": false,
-							"labelProp": "label",
-							"valueProp": "value",
-							"options": [{
-								"label": "Phone",
-								"value": "Phone"
+								"key": "self.tempContact.firstName",
+								"className": "flex-40",
+								"type": "input",
+								"templateOptions": {
+									"label": "First Name",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "([a-zA-Z ]{3,30})",
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+								}
 							}, {
-								"label": "Email",
-								"value": "Email"
-							}],
-							"flex": ""
-						}
+								"key": "self.tempContact.lastName",
+								"className": "flex-40",
+								"type": "input",
+								"templateOptions": {
+									"label": "Last Name",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "([a-zA-Z ]{3,30})",
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+								}
+							}]
+						}, {
+							"key": "self.tempContact.contactNum",
+							"type": "input",
+							"templateOptions": {
+								"label": "Phone Number",
+								"type": "number",
+								"styleElements": "display:block;",
+								"required": "true",
+								"pattern": "([0-9]{10})",
+								"patternMessage": "Only Numbers. 10 Digits"
+							}
+						}, {
+							"type": "datepicker",
+							"key": "self.tempContact.dob",
+							"templateOptions": {
+								"theme": "custom",
+								"placeholder": "Date of Birth",
+								"styleElements": "display:block;",
+								"label": "Date of Birth",
+								"required": "true",
+								"md-min-date": "1/1/2015",
+								"md-max-date": "1/1/2016",
+								"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}",
+								"patternMessage": "yyyy-mm-dd ."
+							}
+						}, {
+							"key": "self.tempContact.eMail",
+							"type": "input",
+							"templateOptions": {
+								"label": "E mail",
+								"type": "email",
+								"styleElements": "display:block;",
+								"required": "true",
+								"pattern": "([_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))",
+								"patternMessage": "For ex. example@domain.com ."
+							}
+						}, {
+							"type": "select",
+							"key": "self.tempContact.contactRole",
+							"templateOptions": {
+								"label": "Contact Mode",
+								"theme": "",
+								"styleElements": "display:block;",
+								"required": "true",
+								"multiple": false,
+								"labelProp": "label",
+								"valueProp": "value",
+								"options": [{
+									"label": "Billing",
+									"value": "Billing"
+								}, {
+									"label": "Non-Billing",
+									"value": "Non-Billing"
+								}],
+								"flex": ""
+							}
+						}, {
+							"type": "select",
+							"key": "self.tempContact.prefModOfCom",
+							"templateOptions": {
+								"label": "Preferred Mode of Communication",
+								"theme": "",
+								"styleElements": "display:block;",
+								"required": "true",
+								"multiple": false,
+								"labelProp": "label",
+								"valueProp": "value",
+								"options": [{
+									"label": "Phone",
+									"value": "Phone"
+								}, {
+									"label": "Email",
+									"value": "Email"
+								}],
+								"flex": ""
+							}
+						}, {
+							"elementAttributes": {
+								"layout": "row",
+								"layout-sm": "column",
+								"layout-align": "end center"
+							},
+							"fieldGroup": [{
+								"type": "button",
+								"templateOptions": {
+									"label": "Add Contact",
+									"class": "md-raised md-primary",
+									"method": "addContact"
+								},
+								// "hideExpression": "model.self.opportunityMode!=\"Create\" || model.self.contactMode!=\"Create\""
+							},
+							{
+								"type": "button",
+								"templateOptions": {
+									"label": "Save Contact",
+									"class": "md-raised md-primary",
+									"method": "updateContact"
+								},
+								// "hideExpression": "model.self.opportunityMode!=\"Create\" || model.self.contactMode!=\"Update\""
+							}]
+						}]
 					}]
 				}, {
 					"wrapper": "wrapper_tab",

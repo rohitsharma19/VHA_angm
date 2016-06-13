@@ -125,7 +125,8 @@ module.exports = function (grunt) {
 						'app/**/*Manager.js',
 						'app/**/*Model.js',
 						'app/**/*SharedData.js',
-						'app/**/*Ctrl.js'
+						'app/**/*Ctrl.js',
+						'app/assets/css/**/*.css'
 					]
 				}
 			},
