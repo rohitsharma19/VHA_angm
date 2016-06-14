@@ -162,8 +162,9 @@
 					},
 					"fieldGroup": [{
 						// "wrapper": "card_noHeaderNoActions",
+						"className":"layout-fill",
 						"elementAttributes": {
-							"formlyFieldGroupClass": "flex-30"
+							"formlyFieldGroupClass": "flex-20"
 						},
 						"fieldGroup": [{
 							"elementAttributes": {
@@ -177,7 +178,7 @@
 					}, {
 						"wrapper": "card_noHeaderNoActions",
 						"elementAttributes": {
-							"formlyFieldGroupClass": "flex-70"
+							"formlyFieldGroupClass": "flex-80"
 						},
 						"fieldGroup": [{
 							"elementAttributes": {
@@ -319,7 +320,7 @@
 									"class": "md-raised md-primary",
 									"method": "addContact"
 								},
-								"hideExpression": "model.leadMode!=\"Create\" || model.contactMode!=\"Create\""
+								"hideExpression": "model.leadMode!=\"Create\" && model.leadMode!=\"QuickCreate\" || model.contactMode!=\"Create\""
 							},
 							{
 								"type": "button",
@@ -328,7 +329,7 @@
 									"class": "md-raised md-primary",
 									"method": "updateContact"
 								},
-								"hideExpression": "model.leadMode!=\"Create\" || model.contactMode!=\"Update\""
+								"hideExpression": "model.leadMode!=\"Create\" && model.leadMode!=\"QuickCreate\" || model.contactMode!=\"Update\""
 							}]
 						}]
 					}]

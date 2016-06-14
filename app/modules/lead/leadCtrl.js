@@ -130,35 +130,21 @@
 		}
 
 		vm.resetTempContact = function() {
+			for (var key in vm.lead.tempContact) {
+				if (key != "$$hashKey") {
+					var fieldID = document.querySelector('[ng-model="model.tempContact.' + key + '"]').id;
+					vm.leadFields[1].form[fieldID].$setUntouched();
+					vm.leadFields[1].form[fieldID].$setPristine();
+				}
+			}
+			vm.lead.tempContact = {};
 
-			vm.leadFields[1].form['formly_1_input_tempContact.firstName_1'].$setUntouched();
-			vm.leadFields[1].form['formly_1_input_tempContact.firstName_1'].$setPristine();
-
-			vm.leadFields[1].form['formly_1_input_tempContact.lastName_2'].$setUntouched();
-			vm.leadFields[1].form['formly_1_input_tempContact.lastName_2'].$setPristine();
-
-			vm.leadFields[1].form['formly_1_select_tempContact.title_0'].$setUntouched();
-			vm.leadFields[1].form['formly_1_select_tempContact.title_0'].$setPristine();
-
-			vm.leadFields[1].form['formly_1_input_tempContact.contactNum_1'].$setUntouched();
-			vm.leadFields[1].form['formly_1_input_tempContact.contactNum_1'].$setPristine();
-
-			vm.leadFields[1].form['formly_1_input_tempContact.eMail_3'].$setUntouched();
-			vm.leadFields[1].form['formly_1_input_tempContact.eMail_3'].$setPristine();
-
-			vm.leadFields[1].form['formly_1_select_tempContact.contactRole_4'].$setUntouched();
-			vm.leadFields[1].form['formly_1_select_tempContact.contactRole_4'].$setPristine();
-
-			vm.leadFields[1].form['formly_1_select_tempContact.prefModOfCom_5'].$setUntouched();
-			vm.leadFields[1].form['formly_1_select_tempContact.prefModOfCom_5'].$setPristine();
-
-			vm.leadFields[1].form['formly_1_datepicker_tempContact.dob_2'].$setUntouched();
-			vm.leadFields[1].form['formly_1_datepicker_tempContact.dob_2'].$setPristine();
-
-			vm.lead.tempContact ={};
+			if (vm.lead.contactMode == "Update")
+				vm.lead.contactMode = "Create";
 
 		}
 
+		
 		if ($state.current.name === 'home.lead.edit') {
 			console.log("EDIT LEAD");
 

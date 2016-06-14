@@ -115,6 +115,7 @@
 				vm.opportunity.self.contacts = [];
 				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity.self.opportunityMode = "QuickCreate";
+				vm.opportunity.self.contactMode = "Create";
 
 				if ($stateParams.leadDetails != null) {
 					console.log("$stateParams.leadDetails");
@@ -132,6 +133,7 @@
 				vm.opportunity.self.contacts = [];
 				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 				vm.opportunity.self.opportunityMode = "Create";
+				vm.opportunity.self.contactMode = "Create";
 
 				vm.selectLead = function(lead) {
 					console.log("Inside selectLead()");
@@ -190,32 +192,18 @@
 		}
 
 		vm.resetTempContact = function() {
+			console.log(vm.opportunity.self);
+			for (var key in vm.opportunity.self.tempContact) {
+				if (key != "$$hashKey") {
+					var fieldID = document.querySelector('[ng-model="model.self.tempContact.' + key + '"]').id;
+					vm.opportunityFields[1].form[fieldID].$setUntouched();
+					vm.opportunityFields[1].form[fieldID].$setPristine();
+				}
+			}
+			vm.opportunity.self.tempContact = {};
 
-			vm.opportunityFields[1].form['formly_1_input_self.tempContact.firstName_1'].$setUntouched();
-			vm.opportunityFields[1].form['formly_1_input_self.tempContact.firstName_1'].$setPristine();
-
-			vm.opportunityFields[1].form['formly_1_input_self.tempContact.lastName_2'].$setUntouched();
-			vm.opportunityFields[1].form['formly_1_input_self.tempContact.lastName_2'].$setPristine();
-
-			vm.opportunityFields[1].form['formly_1_select_self.tempContact.title_0'].$setUntouched();
-			vm.opportunityFields[1].form['formly_1_select_self.tempContact.title_0'].$setPristine();
-
-			vm.opportunityFields[1].form['formly_1_input_self.tempContact.contactNum_1'].$setUntouched();
-			vm.opportunityFields[1].form['formly_1_input_self.tempContact.contactNum_1'].$setPristine();
-
-			vm.opportunityFields[1].form['formly_1_input_self.tempContact.eMail_3'].$setUntouched();
-			vm.opportunityFields[1].form['formly_1_input_self.tempContact.eMail_3'].$setPristine();
-
-			vm.opportunityFields[1].form['formly_1_select_self.tempContact.contactRole_4'].$setUntouched();
-			vm.opportunityFields[1].form['formly_1_select_self.tempContact.contactRole_4'].$setPristine();
-
-			vm.opportunityFields[1].form['formly_1_select_self.tempContact.prefModOfCom_5'].$setUntouched();
-			vm.opportunityFields[1].form['formly_1_select_self.tempContact.prefModOfCom_5'].$setPristine();
-
-			vm.opportunityFields[1].form['formly_1_datepicker_self.tempContact.dob_2'].$setUntouched();
-			vm.opportunityFields[1].form['formly_1_datepicker_self.tempContact.dob_2'].$setPristine();
-
-			vm.opportunity.self.tempContact ={};
+			if (vm.opportunity.self.contactMode == "Update")
+				vm.opportunity.self.contactMode = "Create";
 
 		}
 
