@@ -8,10 +8,11 @@ ol.progtrckr li {
 	display: inline-block;
 	text-align: center;
 	line-height: 3em;
+	margin: 1px;
 }
 
 ol.progtrckr[data-progtrckr-steps="2"] li {
-	width: 49%;
+	width: 50%;
 }
 
 ol.progtrckr[data-progtrckr-steps="3"] li {
@@ -19,11 +20,11 @@ ol.progtrckr[data-progtrckr-steps="3"] li {
 }
 
 ol.progtrckr[data-progtrckr-steps="4"] li {
-	width: 24%;
+	width: 25%;
 }
 
 ol.progtrckr[data-progtrckr-steps="5"] li {
-	width: 19%;
+	width: 19.7%;
 }
 
 ol.progtrckr[data-progtrckr-steps="6"] li {

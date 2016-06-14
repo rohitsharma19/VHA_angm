@@ -48,7 +48,8 @@
 						"headline": "",
 						"actions": ""
 					},
-					"style": ""
+					"style": "",
+					"cardContentStyle":"padding:0px 16px 0px 16px !important"
 				}
 			}, {
 				"fieldGroup": [{

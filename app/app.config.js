@@ -137,7 +137,7 @@
 			name: 'card_noHeaderNoActions',
 			template: [
 				'<md-card style="{{to.style}}" class="{{to.class}}">\
-					<md-card-content layout="column" layout-fill>\
+					<md-card-content layout="column" layout-fill style="{{to.cardContentStyle}}">\
 						<formly-transclude></formly-transclude>\
 					</md-card-content>\
 				</md-card>'

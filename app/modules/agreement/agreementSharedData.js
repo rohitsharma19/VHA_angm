@@ -108,31 +108,36 @@
       "steps": [
         {
           "status": "done",
-          "label": "Capture Initial Details"
+          // "label": "Capture Initial Details"
+					"label": "Lead"
         },
         {
           "status": "done",
-          "label": "Know your customer"
+          // "label": "Know your customer"
+					"label": "Opportunity"
         },
         {
           "status": "done",
           "label": "Recommendations"
+
         },
         {
           "status": "done",
-          "label": "Generate quote"
+          // "label": "Generate quote"
+					"label": "Quote"
         },
         {
           "status": "current",
           "label": "Generate agreement"
-        }
+				}
       ],
       "card": {
         "imagePath": "",
         "headline": "",
         "actions": ""
       },
-      "style": ""
+      "style": "",
+			"cardContentStyle":"padding:0px 16px 0px 16px !important"
     }
   },
   {
