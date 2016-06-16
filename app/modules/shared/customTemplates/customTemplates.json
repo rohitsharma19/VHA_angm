@@ -1,0 +1,13 @@
+[{
+	"category": "type",
+	"name": "progressTracker",
+	"hasController": false
+}, {
+	"category": "type",
+	"name": "button",
+	"hasController": true
+  }, {
+  	"category": "wrapper",
+  	"name": "gridWrapper"
+  }
+]

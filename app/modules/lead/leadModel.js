@@ -15,9 +15,9 @@
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		Lead.$inject = ['$http'];
+		Lead.$inject = ['$http', 'CONSTANTS'];
 
-		function Lead ($http) {
+		function Lead ($http, CONSTANTS) {
 
 			var leadModel = function(leadData){
 				if(leadData){
@@ -46,7 +46,8 @@
 				},
 				getAll: function(){
 					// return $http.get("http://125.20.35.91/VHAMW/webapi/Lead");
-					return $http.get("http://192.168.100.16:8080/VHAMW/webapi/Lead");
+					var FINAL_URL = CONSTANTS.BASE_URL + 'Lead';
+					return $http.get(FINAL_URL);
 				}
 			};
 			return leadModel;

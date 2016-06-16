@@ -1,0 +1,11 @@
+<div layout="row" md-colors="{background: 'primary-600'}">
+	<div flex="95">
+		<div style="font-size:30px; padding: 14px;">{{to.cardLabel}}</div>
+	</div>
+	<div flex="5">
+		<md-button class="md-fab" ng-click='clicked( "openCreate"+ options.templateOptions.label)'>
+			<md-icon>add</md-icon>
+		</md-button>
+	</div>
+</div>
+<formly-transclude></formly-transclude>
