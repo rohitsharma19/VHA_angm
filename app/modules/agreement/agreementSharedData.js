@@ -420,7 +420,7 @@
 
 var quote_viewAll = [{
 	"key": "list",
-	"type": "ui-grid",
+	"type": "uiGrid",
 	"wrapper": ["card_noHeaderNoActions"],
 	"templateOptions": {
 		"label": "Quote",
@@ -449,7 +449,7 @@ var quote_viewAll = [{
 
 		var agreement_viewAll = [{
 			key: "list",
-			type: "ui-grid",
+			type: "uiGrid",
 			"wrapper": ["gridWrapper", "card_noHeaderNoActions"],
 			templateOptions: {
 				"label": "Agreement",

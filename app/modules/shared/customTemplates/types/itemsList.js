@@ -1,11 +1,12 @@
 angular
 	.module('shared')
-	.controller('buttonCtrl', function($scope) {
+	.controller('itemsListCtrl', function($scope) {
 		$scope.clicked = function(functionName, functionParam) {
+			console.log('functionName :' + functionName);
 			var targetScope = $scope;
 			while (!targetScope.vm) {
 				targetScope = targetScope.$parent;
 			}
 			targetScope.vm[functionName](functionParam);
 		};
-	});
+	})

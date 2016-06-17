@@ -610,7 +610,7 @@
 
 		var opportunity_viewAll = [{
 			"key": "list",
-			"type": "ui-grid",
+			"type": "uiGrid",
 			"wrapper": ["gridWrapper", "card_noHeaderNoActions"],
 			"templateOptions": {
 				"label": "Opportunity",
@@ -642,7 +642,7 @@
 
 		var lead_viewAll = [{
 			"key": "list",
-			"type": "ui-grid",
+			"type": "uiGrid",
 			"wrapper": ["card_noHeaderNoActions"],
 			"templateOptions": {
 				"label": "Lead",

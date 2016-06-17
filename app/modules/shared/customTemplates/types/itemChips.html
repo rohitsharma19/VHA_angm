@@ -1,0 +1,22 @@
+<md-card flex=100 layout="column">
+	<div flex="5" style="text-align:center; padding:7px; border-radius:2px; color:white;" md-colors="{background: 'primary-500'}">
+		<span style="font-weight: 600; letter-spacing: 2px;"> Selected {{options.templateOptions.itemType}}s </span>
+	</div>
+	<md-divider></md-divider>
+	<md-card-content flex="95">
+		<md-chips class="custom-chips" ng-model="model['finalSelection'][options.templateOptions.itemType+'s']" md-on-remove="clicked('resetQuantity',$chip)">
+			<md-chip-template>
+				<div layout="row">
+					<div flex=25 class="md-contact-avatar layout-column" style=" background-image: url({{$chip.imagePath}}); background-size: cover; border-radius:40%;">
+					</div>
+					<div flex=75>
+						<span>{{$chip.name}}({{$chip.quantity}})</span>
+					</div>
+				</div>
+			</md-chip-template>
+			<button md-chip-remove class="md-primary vegetablechip">
+				<ng-md-icon icon="close" style="padding-bottom: 10px; color: white;"></ng-md-icon>
+			</button>
+		</md-chips>
+	</md-card-content>
+</md-card>

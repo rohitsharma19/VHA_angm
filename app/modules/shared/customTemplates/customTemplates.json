@@ -6,8 +6,77 @@
 	"category": "type",
 	"name": "button",
 	"hasController": true
-  }, {
-  	"category": "wrapper",
-  	"name": "gridWrapper"
-  }
-]
+}, {
+	"category": "type",
+	"name": "test",
+	"hasController": false
+}, {
+	"category": "type",
+	"name": "stageStatusTiles",
+	"hasController": false
+}, {
+	"category": "type",
+	"name": "list",
+	"hasController": false
+}, {
+	"category": "type",
+	"name": "signature",
+	"hasController": false
+},
+{
+	"category": "type",
+	"name": "productUiGrid",
+	"hasController": true
+}, {
+	"category": "type",
+	"name": "itemsList",
+	"hasController": true
+}, {
+	"category": "type",
+	"name": "itemDetail",
+	"hasController": true
+}, {
+	"category": "type",
+	"name": "itemChips",
+	"hasController": true
+}, {
+	"category": "type",
+	"name": "contactChips",
+	"hasController": true
+}, {
+	"category": "type",
+	"name": "SummaryDialogBox",
+	"hasController": false
+}, {
+	"category": "type",
+	"name": "SummaryBlock",
+	"hasController": false
+},  {
+	"category": "type",
+	"name": "uiGrid",
+	"hasController": true
+}, {
+	"category": "wrapper",
+	"name": "card"
+}, {
+	"category": "wrapper",
+	"name": "card_noHeaderNoActions"
+}, {
+	"category": "wrapper",
+	"name": "gridWrapper"
+}, {
+	"category": "wrapper",
+	"name": "gridWrapperLeadSelect"
+}, {
+	"category": "wrapper",
+	"name": "gridWrapperNoAction"
+}, {
+	"category": "wrapper",
+	"name": "wrapper_tabset"
+}, {
+	"category": "wrapper",
+	"name": "wrapper_tab"
+}, {
+	"category": "wrapper",
+	"name": "wrapper_div"
+}]

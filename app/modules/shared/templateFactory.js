@@ -3,6 +3,7 @@ angular
 	.run(runBlock);
 
 function runBlock($rootScope, $http, formlyConfig) {
+	console.log("In customTemplates Runblock");
 	'use strict';
 
 	$http.get('app/modules/shared/customTemplates/customTemplates.json')
@@ -20,7 +21,7 @@ function runBlock($rootScope, $http, formlyConfig) {
 						template.templateUrl = 'app/modules/shared/customTemplates/types/' + customTemplate.name + '.html';
 
 						if (customTemplate.hasController) {
-							template.controller = customTemplate.name + 'Controller';
+							template.controller = customTemplate.name + 'Ctrl';
 						}
 						formlyConfig.setType(template);
 					}

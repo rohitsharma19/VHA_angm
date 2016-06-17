@@ -126,6 +126,7 @@ module.exports = function (grunt) {
 						'app/**/*Model.js',
 						'app/**/*SharedData.js',
 						'app/**/*Ctrl.js',
+						'app/modules/shared/customTemplates/types/*.js',
 						'app/assets/css/**/*.css'
 					]
 				}

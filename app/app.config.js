@@ -74,75 +74,74 @@
 		};
 		/*** validations code end ***/
 
-		formlyConfig.setType({
-			name: 'test',
-			templateUrl: 'test.html'
-		});
-
-		formlyConfig.setType({
-			name: 'tabset',
-			templateUrl: 'tabset.html'
-		});
+		// formlyConfig.setType({
+		// 	name: 'test',
+		// 	templateUrl: 'test.html'
+		// });
 
 		// formlyConfig.setType({
 		// 	name: 'progressTracker',
 		// 	templateUrl: 'progressTracker.html'
 		// });
 
-		formlyConfig.setType({
-			name: 'stageStatusTiles',
-			templateUrl: 'statusChips.html'
-		});
+		// formlyConfig.setType({
+		// 	name: 'stageStatusTiles',
+		// 	templateUrl: 'statusChips.html'
+		// });
 
-		formlyConfig.setWrapper({
-			name: 'card',
-			template: [
-				'<md-card class="{{to.card.class}}">\
-					<img ng-src="{{to.card.imagePath}}" class="md-card-image">\
-					<md-card-title style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}}">\
-						<md-card-title-text>\
-							<span class="md-display-1">{{to.cardLabel}}</span>\
-						</md-card-title-text>\
-					</md-card-title>\
-					<md-card-content>\
-						<formly-transclude></formly-transclude>\
-					</md-card-content>\
-					<md-card-actions layout="row" layout-align="left">\
-					<md-button ng-repeat="action in to.cardActions" class={{action.class}} ng-click="">{{action.label}}</md-button>\
-					</md-card-actions>\
-				</md-card>'
-			].join(' ')
-		});
+		// formlyConfig.setWrapper({
+		// 	name: 'card',
+		// 	template: [
+		// 		'<md-card class="{{to.card.class}}">\
+		// 			<img ng-src="{{to.card.imagePath}}" class="md-card-image">\
+		// 			<md-card-title style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}}">\
+		// 				<md-card-title-text>\
+		// 					<span class="md-display-1">{{to.cardLabel}}</span>\
+		// 				</md-card-title-text>\
+		// 			</md-card-title>\
+		// 			<md-card-content>\
+		// 				<formly-transclude></formly-transclude>\
+		// 			</md-card-content>\
+		// 			<md-card-actions layout="row" layout-align="left">\
+		// 			<md-button ng-repeat="action in to.cardActions" class={{action.class}} ng-click="">{{action.label}}</md-button>\
+		// 			</md-card-actions>\
+		// 		</md-card>'
+		// 	].join(' ')
+		// });
 
 
-		formlyConfig.setWrapper({
-			name: 'card2',
-			template: [
-				'<div class="layout-row">\
-				<md-card class="">\
-					<md-card-content>\
-						<formly-transclude></formly-transclude>\
-					</md-card-content>\
-				</md-card>\
-				<md-card class="">\
-					<md-card-content>\
-						<formly-transclude></formly-transclude>\
-					</md-card-content>\
-				</md-card>\
-				</div>'
-			].join(' ')
-		});
+/* [NOT USED]--- */
 
-		formlyConfig.setWrapper({
-			name: 'card_noHeaderNoActions',
-			template: [
-				'<md-card style="{{to.style}}" class="{{to.class}}">\
-					<md-card-content layout="column" layout-fill style="{{to.cardContentStyle}}">\
-						<formly-transclude></formly-transclude>\
-					</md-card-content>\
-				</md-card>'
-			].join(' ')
-		});
+		// formlyConfig.setWrapper({
+		// 	name: 'card2',
+		// 	template: [
+		// 		'<div class="layout-row">\
+		// 		<md-card class="">\
+		// 			<md-card-content>\
+		// 				<formly-transclude></formly-transclude>\
+		// 			</md-card-content>\
+		// 		</md-card>\
+		// 		<md-card class="">\
+		// 			<md-card-content>\
+		// 				<formly-transclude></formly-transclude>\
+		// 			</md-card-content>\
+		// 		</md-card>\
+		// 		</div>'
+		// 	].join(' ')
+		// });
+
+/* ---[NOT USED] */
+
+		// formlyConfig.setWrapper({
+		// 	name: 'card_noHeaderNoActions',
+		// 	template: [
+		// 		'<md-card style="{{to.style}}" class="{{to.class}}">\
+		// 			<md-card-content layout="column" layout-fill style="{{to.cardContentStyle}}">\
+		// 				<formly-transclude></formly-transclude>\
+		// 			</md-card-content>\
+		// 		</md-card>'
+		// 	].join(' ')
+		// });
 
 		// formlyConfig.setWrapper({
 		// 	name: 'gridWrapper',
@@ -162,70 +161,70 @@
 		// 	].join(' ')
 		// });
 
-		formlyConfig.setWrapper({
-			name: 'gridWrapperLeadSelect',
-			template: [
-				'<div layout="row">\
-					<div flex="95">\
-						<div  style="font-size:30px; padding: 14px;"></div>\
-					</div>\
-					<div flex="5">\
-					</div>\
-				</div>\
-				<formly-transclude></formly-transclude>\
-				'
-			].join(' ')
-		});
+		// formlyConfig.setWrapper({
+		// 	name: 'gridWrapperLeadSelect',
+		// 	template: [
+		// 		'<div layout="row">\
+		// 			<div flex="95">\
+		// 				<div  style="font-size:30px; padding: 14px;"></div>\
+		// 			</div>\
+		// 			<div flex="5">\
+		// 			</div>\
+		// 		</div>\
+		// 		<formly-transclude></formly-transclude>\
+		// 		'
+		// 	].join(' ')
+		// });
 
-		formlyConfig.setWrapper({
-			name: 'gridWrapperNoAction',
-			template: [
-				'<div layout="row" style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}};">\
-					<div flex="75">\
-						<div class="md-display-1" style="padding: 14px;">{{to.cardLabel}}</div>\
-					</div>\
-					<div flex="25">\
-					<h2>Total : {{model.self.discountedPrice}}</h2>\
-					</div>\
-				</div>\
-				<formly-transclude></formly-transclude>\
-				'
-			].join(' ')
-		});
+		// formlyConfig.setWrapper({
+		// 	name: 'gridWrapperNoAction',
+		// 	template: [
+		// 		'<div layout="row" style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}};">\
+		// 			<div flex="75">\
+		// 				<div class="md-display-1" style="padding: 14px;">{{to.cardLabel}}</div>\
+		// 			</div>\
+		// 			<div flex="25">\
+		// 			<h2>Total : {{model.self.discountedPrice}}</h2>\
+		// 			</div>\
+		// 		</div>\
+		// 		<formly-transclude></formly-transclude>\
+		// 		'
+		// 	].join(' ')
+		// });
 
-		formlyConfig.setWrapper({
-			name: 'wrapper_tabset',
-			template: [
-				'<md-tabs md-dynamic-height class="md-primary md-hue-1">\
-						<formly-transclude></formly-transclude>\
-					</md-tabs>\
-					'
-			].join(' ')
-		});
+		// formlyConfig.setWrapper({
+		// 	name: 'wrapper_tabset',
+		// 	template: [
+		// 		'<md-tabs md-dynamic-height class="md-primary md-hue-1">\
+		// 				<formly-transclude></formly-transclude>\
+		// 			</md-tabs>\
+		// 			'
+		// 	].join(' ')
+		// });
 
-		formlyConfig.setWrapper({
-			name: 'wrapper_tab',
-			template: [
-				'<md-tab active="{{to.active}}">\
-							<md-tab-label>\
-								{{to.title}}\
-							</md-tab-label>\
-							<md-tab-body>\
-								<formly-transclude></formly-transclude>\
-							</md-tab-body>\
-						</md-tab>\
-						'
-			].join(' ')
-		});
+		// formlyConfig.setWrapper({
+		// 	name: 'wrapper_tab',
+		// 	template: [
+		// 		'<md-tab active="{{to.active}}">\
+		// 					<md-tab-label>\
+		// 						{{to.title}}\
+		// 					</md-tab-label>\
+		// 					<md-tab-body>\
+		// 						<formly-transclude></formly-transclude>\
+		// 					</md-tab-body>\
+		// 				</md-tab>\
+		// 				'
+		// 	].join(' ')
+		// });
 
-		formlyConfig.setWrapper({
-			name: 'wrapper_div',
-			template: [
-				'<div style="{{to.div_style}}">\
-						<formly-transclude></formly-transclude>\
-				</div>'
-			].join(' ')
-		});
+		// formlyConfig.setWrapper({
+		// 	name: 'wrapper_div',
+		// 	template: [
+		// 		'<div style="{{to.div_style}}">\
+		// 				<formly-transclude></formly-transclude>\
+		// 		</div>'
+		// 	].join(' ')
+		// });
 
 		// formlyConfig.setType({
 		// 	name: 'card_tabset',
@@ -239,48 +238,42 @@
 		// 	wrapper: ['card_noHeaderNoActions']
 		// });
 
-		formlyConfig.setType({
-			name: 'list',
-			template: '<div>\
-				 <span style="text-align:center;"class="md-display-1">{{to.headline}}</span>\
-				 <p>{{to.brief}}</p>\
-		  <md-list>\
-		    <md-list-item class=\"md-2-line\" ng-repeat=\"item in to.list\">\
-		      <div class=\"md-list-item-text\">\
-					<li>\
-		      <p style="color:black;">{{item}}</p>\
-					<br>\
-		      </div>\
-			  </md-list-item>\
-			</md-list>\
-		</div>\
-		'
-		});
+		// formlyConfig.setType({
+		// 	name: 'list',
+		// 	template: '<div>\
+		// 		 <span style="text-align:center;"class="md-display-1">{{to.headline}}</span>\
+		// 		 <p>{{to.brief}}</p>\
+		//   <md-list>\
+		//     <md-list-item class=\"md-2-line\" ng-repeat=\"item in to.list\">\
+		//       <div class=\"md-list-item-text\">\
+		// 			<li>\
+		//       <p style="color:black;">{{item}}</p>\
+		// 			<br>\
+		//       </div>\
+		// 	  </md-list-item>\
+		// 	</md-list>\
+		// </div>\
+		// '
+		// });
 
-		formlyConfig.setType({
-			name: 'product_details',
-			templateUrl: 'productSummary.html'
-		});
+		/*  [NOT USED]---  */
 
-		formlyConfig.setType({
-			name: 'agreement_Details',
-			templateUrl: 'agreementDetails.html'
-		});
+		// formlyConfig.setType({
+		// 	name: 'product_details',
+		// 	templateUrl: 'productSummary.html'
+		// });
 
-		formlyConfig.setType({
-			name: 'signature',
-			templateUrl: 'signature.html',
-			controller: function($scope) {
-				$scope.clicked = function(functionName, functionParam) {
+		// formlyConfig.setType({
+		// 	name: 'agreement_Details',
+		// 	templateUrl: 'agreementDetails.html'
+		// });
 
-					var targetScope = $scope;
-					while (!targetScope.vm) {
-						targetScope = targetScope.$parent;
-					}
-					targetScope.vm[functionName](functionParam);
-				};
-			}
-		});
+		/* ---[NOT USED] */
+
+		// formlyConfig.setType({
+		// 	name: 'signature',
+		// 	templateUrl: 'signature.html'
+		// });
 
 
 		// formlyConfig.setType({
@@ -298,57 +291,57 @@
 		// 	}
 		// });
 
-		formlyConfig.setType({
-			name: 'ui-grid',
-			templateUrl: 'uiGrid.html',
-			// wrapper: ['gridWrapper','card_noHeaderNoActions'],
-			// wrapper: ['card_noHeaderNoActions'],
-			controller: function($scope) {
-				$scope.clicked = function(functionName, functionParam) {
-					console.log('functionName :' + functionName);
-					console.log($scope);
-					var targetScope = $scope;
-					while (!targetScope.vm) {
-						targetScope = targetScope.$parent;
-					}
-					targetScope.vm[functionName](functionParam);
-				};
-			}
-		});
+		// formlyConfig.setType({
+		// 	name: 'uiGrid',
+		// 	templateUrl: 'uiGrid.html',
+		// 	// wrapper: ['gridWrapper','card_noHeaderNoActions'],
+		// 	// wrapper: ['card_noHeaderNoActions'],
+		// 	// controller: function($scope) {
+		// 	// 	$scope.clicked = function(functionName, functionParam) {
+		// 	// 		console.log('functionName :' + functionName);
+		// 	// 		console.log($scope);
+		// 	// 		var targetScope = $scope;
+		// 	// 		while (!targetScope.vm) {
+		// 	// 			targetScope = targetScope.$parent;
+		// 	// 		}
+		// 	// 		targetScope.vm[functionName](functionParam);
+		// 	// 	};
+		// 	// }
+		// });
 
-		formlyConfig.setType({
-			name: 'product-ui-grid',
-			templateUrl: 'productUiGrid.html',
-			// wrapper: ['gridWrapper','card_noHeaderNoActions'],
-			// wrapper: ['card_noHeaderNoActions'],
-			controller: function($scope) {
-				$scope.clicked = function(functionName, functionParam) {
-					console.log('functionName :' + functionName);
-					console.log($scope);
-					var targetScope = $scope;
-					while (!targetScope.vm) {
-						targetScope = targetScope.$parent;
-					}
-					targetScope.vm[functionName](functionParam);
-				};
-			}
-		});
+		// formlyConfig.setType({
+		// 	name: 'product-ui-grid',
+		// 	templateUrl: 'productUiGrid.html',
+		// 	// wrapper: ['gridWrapper','card_noHeaderNoActions'],
+		// 	// wrapper: ['card_noHeaderNoActions'],
+		// 	controller: function($scope) {
+		// 		$scope.clicked = function(functionName, functionParam) {
+		// 			console.log('functionName :' + functionName);
+		// 			console.log($scope);
+		// 			var targetScope = $scope;
+		// 			while (!targetScope.vm) {
+		// 				targetScope = targetScope.$parent;
+		// 			}
+		// 			targetScope.vm[functionName](functionParam);
+		// 		};
+		// 	}
+		// });
 
 
-		formlyConfig.setType({
-			name: 'itemsList',
-			templateUrl: 'itemsList.html',
-			controller: function($scope) {
-				$scope.clicked = function(functionName, functionParam) {
-					console.log('functionName :' + functionName);
-					var targetScope = $scope;
-					while (!targetScope.vm) {
-						targetScope = targetScope.$parent;
-					}
-					targetScope.vm[functionName](functionParam);
-				};
-			}
-		});
+		// formlyConfig.setType({
+		// 	name: 'itemsList',
+		// 	templateUrl: 'itemsList.html',
+		// 	controller: function($scope) {
+		// 		$scope.clicked = function(functionName, functionParam) {
+		// 			console.log('functionName :' + functionName);
+		// 			var targetScope = $scope;
+		// 			while (!targetScope.vm) {
+		// 				targetScope = targetScope.$parent;
+		// 			}
+		// 			targetScope.vm[functionName](functionParam);
+		// 		};
+		// 	}
+		// });
 
 		// formlyConfig.setType({
 		// 	name: 'itemDetail',
@@ -394,42 +387,42 @@
 		// 	}
 		// });
 
-		formlyConfig.setType({
-			name: 'itemChips',
-			templateUrl: 'itemChips.html',
-			controller: function($scope) {
-				$scope.clicked = function(functionName, functionParam) {
-					console.log('functionName :' + functionName);
-					var targetScope = $scope;
-					while (!targetScope.vm) {
-						targetScope = targetScope.$parent;
-					}
-					targetScope.vm[functionName](functionParam);
-				};
-			}
-		});
+		// formlyConfig.setType({
+		// 	name: 'itemChips',
+		// 	templateUrl: 'itemChips.html',
+		// 	controller: function($scope) {
+		// 		$scope.clicked = function(functionName, functionParam) {
+		// 			console.log('functionName :' + functionName);
+		// 			var targetScope = $scope;
+		// 			while (!targetScope.vm) {
+		// 				targetScope = targetScope.$parent;
+		// 			}
+		// 			targetScope.vm[functionName](functionParam);
+		// 		};
+		// 	}
+		// });
 
 
-		formlyConfig.setType({
-			name: 'contactChips',
-			templateUrl: 'contactChips.html',
-			controller: function($scope) {
-				$scope.clicked = function(functionName, functionParam) {
-					console.log('functionName :' + functionName);
-					var targetScope = $scope;
-					while (!targetScope.vm) {
-						targetScope = targetScope.$parent;
-					}
-					targetScope.vm[functionName](functionParam);
-				};
-			}
-		});
+		// formlyConfig.setType({
+		// 	name: 'contactChips',
+		// 	templateUrl: 'contactChips.html',
+		// 	controller: function($scope) {
+		// 		$scope.clicked = function(functionName, functionParam) {
+		// 			console.log('functionName :' + functionName);
+		// 			var targetScope = $scope;
+		// 			while (!targetScope.vm) {
+		// 				targetScope = targetScope.$parent;
+		// 			}
+		// 			targetScope.vm[functionName](functionParam);
+		// 		};
+		// 	}
+		// });
 
 
-		formlyConfig.setType({
-			name: 'SummaryDialogBox',
-			templateUrl: 'confirmationDialogueBox1.html'
-		});
+		// formlyConfig.setType({
+		// 	name: 'SummaryDialogBox',
+		// 	templateUrl: 'confirmationDialogueBox1.html'
+		// });
 
 
 		// formlyConfig.setType({
@@ -447,17 +440,17 @@
 		// 	templateUrl: 'contact_Card.html'
 		// });
 
-		formlyConfig.setType({
-			name: 'SummaryBlock',
-			template: '<md-card class="md-padding flex-100"  md-colors="{background: \'{{to.mdColorBackground}}\'}">\
-									<md-content class="layout-row layout-wrap" md-colors="{background: \'{{to.mdColorBackground}}\'}">\
-								  <div ng-repeat="label in to.fields" class="{{to.class}}" style="padding:3px;">\
-								 		<div class="layout-row layout-wrap">\
-										<div flex=45 style="font-weight:600;" md-colors="{color: \'primary-400\'}" >{{label.title}}</div>  <div flex=45>&nbsp;{{model[label.type][label.key]}} </div></div>\
-									</div>\
-									<md-content>\
-								</md-card>'
-		});
+		// formlyConfig.setType({
+		// 	name: 'SummaryBlock',
+		// 	template: '<md-card class="md-padding flex-100"  md-colors="{background: \'{{to.mdColorBackground}}\'}">\
+		// 							<md-content class="layout-row layout-wrap" md-colors="{background: \'{{to.mdColorBackground}}\'}">\
+		// 						  <div ng-repeat="label in to.fields" class="{{to.class}}" style="padding:3px;">\
+		// 						 		<div class="layout-row layout-wrap">\
+		// 								<div flex=45 style="font-weight:600;" md-colors="{color: \'primary-400\'}" >{{label.title}}</div>  <div flex=45>&nbsp;{{model[label.type][label.key]}} </div></div>\
+		// 							</div>\
+		// 							<md-content>\
+		// 						</md-card>'
+		// });
 	}
 
 })();

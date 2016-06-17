@@ -1,0 +1,40 @@
+<md-card flex=100 md-whiteframe="3" layout="column">
+	<div flex="5" style="text-align:center; padding:7px; border-radius:2px; color:white;" md-colors="{background: 'primary-500'}">
+		<span style="font-weight: 600; letter-spacing: 2px;"> {{options.templateOptions.itemType}} Detail </span>
+	</div>
+	<md-divider></md-divider>
+	<md-content id="{{options.templateOptions.itemType}}" flex=95 style="overflow:hidden;">
+		<div flex=100 style="overflow:hidden;" layout="column" layout-fill ng-repeat="item in model['selectedItem'][options.templateOptions.itemType]">
+			<div flex=40 style="overflow:hidden;">
+				<img ng-src="{{item.imagePath}}" class="md-card-image" alt="Washed Out">
+			</div>
+			<md-card-title style="padding:8px;" flex=10>
+				<md-text-float class="md-headline" style="font-size:25px; font-weight:900;">Red Business Grow Plan</md-text-float>
+			</md-card-title>
+			<md-divider></md-divider>
+			<md-card-content flex=40 style="background:#f1f1f3; overflow:auto;">
+				<md-list style="padding:0;">
+					<md-list-item> Infinite standard text messages
+						<md-divider></md-divider>
+					</md-list-item>
+					<md-list-item> Infinite standard national calls
+						<md-divider></md-divider>
+					</md-list-item>
+					<md-list-item> 300 international minutes to 20 selected countries
+						<md-divider></md-divider>
+					</md-list-item>
+					<md-list-item> 5$ Roaming
+						<md-divider></md-divider>
+					</md-list-item>
+				</md-list>
+			</md-card-content>
+			<md-card-actions layout="row" layout-align="end center">
+				<div>
+					<md-button ng-click="showBottomSheet('add'+options.templateOptions.itemType+'ToFinal', options.templateOptions.itemType, item)" class="md-fab md-raised md-primary" aria-label="ADD">
+						<md-icon>add</md-icon>
+					</md-button>
+				</div>
+			</md-card-actions>
+	</md-content>
+	</div>
+</md-card>

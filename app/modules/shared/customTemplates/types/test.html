@@ -1,0 +1,14 @@
+<div>
+  <pre ng-repeat="(key,value) in this">$scope.{{key}} = {{ value | json }}</pre>
+</div>
+<p>HEMAN</p>
+<div>
+  <pre ng-repeat="(key,value) in this">vm.{{key}} = {{ value | json }}</pre>
+</div>
+<p>FORMS_MODELS</p>
+<h2>Model</h2>
+<pre>{{vm.model | json}}</pre>
+<h2>Fields <small>(note, functions are not shown)</small></h2>
+<pre>{{vm.originalFields | json}}</pre>
+<h2>Form</h2>
+<pre>{{vm.form | json}}</pre>

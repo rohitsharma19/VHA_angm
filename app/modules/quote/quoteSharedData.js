@@ -209,7 +209,7 @@
 										"key": "list",
 										// "model":"model.finalSelection",
 										"wrapper": "gridWrapperNoAction",
-										"type": "product-ui-grid",
+										"type": "productUiGrid",
 										"templateOptions": {
 											"label": "Quote",
 											"cardLabel": "",
@@ -247,7 +247,7 @@
 										"key": "list",
 										// "model":"model.finalSelection",
 										"wrapper": "gridWrapperNoAction",
-										"type": "product-ui-grid",
+										"type": "productUiGrid",
 										"templateOptions": {
 											"label": "",
 											"cardHeaderBackground": 'rgb(33, 150, 243)',
@@ -488,7 +488,7 @@
 
 					var opportunity_viewAll = [{
 						"key": "list",
-						"type": "ui-grid",
+						"type": "uiGrid",
 						"wrapper": ["card_noHeaderNoActions"],
 						"templateOptions": {
 							"label": "Opportunity",
@@ -521,7 +521,7 @@
 
 					var quote_viewAll = [{
 						"key": "list",
-						"type": "ui-grid",
+						"type": "uiGrid",
 						"wrapper": ["gridWrapper", "card_noHeaderNoActions"],
 						"templateOptions": {
 							"label": "Quote",

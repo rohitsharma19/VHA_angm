@@ -1,1 +1,4 @@
-<md-button class={{to.class}} ng-click="clicked(options.templateOptions.method,model)">{{to.label}}</md-button>
+<md-button class={{to.class}} ng-click='clicked(options.templateOptions.method,model)'>
+  {{to.label}}
+	<md-icon ng-if="options.templateOptions.icon">{{to.icon}}</md-icon>
+</md-button>

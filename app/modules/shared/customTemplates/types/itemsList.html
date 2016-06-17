@@ -1,0 +1,24 @@
+<md-card flex=100 md-whiteframe="3" layout="column">
+  <div flex="5" style="text-align:center; padding:7px; border-radius:2px; color:white;" md-colors="{background: 'primary-500'}">
+    <span style="font-weight: 600; letter-spacing: 2px;"> All {{options.templateOptions.itemType}}s </span>
+  </div>
+  <md-divider></md-divider>
+  <div style="overflow:hidden;" flex="95" layout=row>
+    <div flex=100 id="offerList" style="margin-right: -20px; max-width:none !important; overflow-y:scroll; overflow-x:hidden;">
+      <md-list style="padding:0;">
+        <md-list-item style="padding:0px;" ng-repeat="item in model[options.templateOptions.itemType]" ng-click="clicked('select'+options.templateOptions.itemType+'ForDetail', item)">
+          <md-card style="height:88px; margin:4px;" layout="row" flex=100 class="md-3-line">
+            <img flex=40 ng-src="{{item.imagePath}}" style="padding:5px; border-radius:8px;" alt="{{offer}}" />
+            <div flex=60 style="padding:5px;" class="md-list-item-text" layout="column">
+              <span layout="row" flex=50>{{item.name}}</span>
+              <div layout="row" layout-align="end center" flex=50>
+                <div flex=40 md-whiteframe="3" style="padding:5%; border-radius:2px; color:white; text-align:center;" md-colors="{background: 'primary-500'}">${{ item.price }}</div>
+              </div>
+            </div>
+            <md-divider></md-divider>
+          </md-card>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+</md-card>

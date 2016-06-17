@@ -81,7 +81,7 @@
 				console.log("CREATE QUICK LEAD");
 
 				// vm.lead = {};
-				vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
+				leadSharedData.getLayout('lead_CRUD',vm);
 				vm.lead.leadMode = "QuickCreate";
 				vm.lead.contactMode = "Create";
 			} else if ($state.current.name === 'home.lead.create') {
@@ -144,7 +144,7 @@
 
 		}
 
-		
+
 		if ($state.current.name === 'home.lead.edit') {
 			console.log("EDIT LEAD");
 

@@ -1,0 +1,14 @@
+<md-card class="{{to.card.class}}">
+	<img ng-src="{{to.card.imagePath}}" class="md-card-image">
+	<md-card-title style="background:{{to.cardHeaderBackground}}; color:{{to.cardLabelColor}}">
+		<md-card-title-text>
+			<span class="md-display-1">{{to.cardLabel}}</span>
+		</md-card-title-text>
+	</md-card-title>
+	<md-card-content>
+		<formly-transclude></formly-transclude>
+	</md-card-content>
+	<md-card-actions layout="row" layout-align="left">
+		<md-button ng-repeat="action in to.cardActions" class={{action.class}} ng-click="">{{action.label}}</md-button>
+	</md-card-actions>
+</md-card>
