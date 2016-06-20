@@ -13,7 +13,7 @@
 		.module('recommendation')
 		.controller('RecommendationCtrl', Recommendation);
 
-	Recommendation.$inject = ['$state', '$stateParams', 'recommendationSharedData', 'parentModel', 'progressBarFactory', 'toastFactory'];
+	Recommendation.$inject = ['$state', '$stateParams', 'recommendationSharedData', 'parentModel', 'progressBarFactory', 'toastFactory', 'pageStructureFactory'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Recommendation($state, $stateParams, recommendationSharedData, parentModel, progressBarFactory, toastFactory) {
+	function Recommendation($state, $stateParams, recommendationSharedData, parentModel, progressBarFactory, toastFactory, pageStructureFactory) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -43,15 +43,22 @@
 			}
 		};
 
-		if($stateParams.opportunityDetails != null) {
+		if ($stateParams.opportunityDetails != null) {
 			vm.recommendation.opportunityDetails = $stateParams.opportunityDetails;
 		}
 
-		if($stateParams.leadDetails != null) {
+		if ($stateParams.leadDetails != null) {
 			vm.recommendation.leadDetails = $stateParams.leadDetails;
 		}
 
-		vm.recommendationFields = JSON.parse(recommendationSharedData.getLayout('recommendation_CRUD'));
+		pageStructureFactory.getLayout('recommendation_CRUD')
+			.then(
+				function(response) {
+					vm.recommendationFields = response.data;
+				},
+				function(error) {
+					alert("Oops! Something went wrong.\n Try reloading the page");
+				});
 
 		vm.addOfferToFinal = function(object) {
 			console.log("Inside addOfferToFinal");

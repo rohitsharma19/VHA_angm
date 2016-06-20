@@ -13,7 +13,7 @@
 		.module('lead')
 		.controller('LeadCtrl', Lead);
 
-	Lead.$inject = ['$state', '$stateParams', 'leadManager', 'leadSharedData', '$mdDialog', '$mdMedia', 'parentModel', 'progressBarFactory', 'toastFactory'];
+	Lead.$inject = ['$state', '$stateParams', 'leadManager', 'leadSharedData', '$mdDialog', '$mdMedia', 'parentModel', 'progressBarFactory', 'toastFactory', 'pageStructureFactory'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Lead($state, $stateParams, leadManager, leadSharedData, $mdDialog, $mdMedia, parentModel, progressBarFactory, toastFactory) {
+	function Lead($state, $stateParams, leadManager, leadSharedData, $mdDialog, $mdMedia, parentModel, progressBarFactory, toastFactory, pageStructureFactory) {
 
 		var vm = this;
 
@@ -51,7 +51,15 @@
 			console.log("VIEW ALL LEADS");
 			vm.leadsList = [];
 
-			vm.fields = JSON.parse(leadSharedData.getLayout('lead_viewAll'));
+			pageStructureFactory.getLayout('lead_viewAll')
+				.then(
+					function(response) {
+						vm.fields = response.data;
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
+
 			leadManager.inflateUiGrid(vm);
 
 			vm.openViewLead = function(row) {
@@ -79,18 +87,32 @@
 
 			if ($state.current.name === 'home.lead.QuickCreate') {
 				console.log("CREATE QUICK LEAD");
-
 				// vm.lead = {};
-				leadSharedData.getLayout('lead_CRUD',vm);
-				vm.lead.leadMode = "QuickCreate";
-				vm.lead.contactMode = "Create";
+				pageStructureFactory.getLayout('lead_CRUD')
+					.then(
+						function(response) {
+							vm.leadFields = response.data;
+							vm.lead.leadMode = "QuickCreate";
+							vm.lead.contactMode = "Create";
+						},
+						function(error) {
+							alert("Oops! Something went wrong.\n Try reloading the page");
+						});
+
 			} else if ($state.current.name === 'home.lead.create') {
 				console.log("CREATE LEAD");
 
 				// vm.lead = {};
-				vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
-				vm.lead.leadMode = "Create";
-				vm.lead.contactMode = "Create";
+				pageStructureFactory.getLayout('lead_CRUD')
+					.then(
+						function(response) {
+							vm.leadFields = response.data;
+							vm.lead.leadMode = "Create";
+							vm.lead.contactMode = "Create";
+						},
+						function(error) {
+							alert("Oops! Something went wrong.\n Try reloading the page");
+						});
 			}
 
 			vm.createLead = function(lead) {
@@ -149,14 +171,24 @@
 			console.log("EDIT LEAD");
 
 			vm.lead = {};
-			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
+			pageStructureFactory.getLayout('lead_CRUD')
+				.then(
+					function(response) {
+						vm.leadFields = response.data;
+						vm.lead.leadMode = "QuickCreate";
+						vm.lead.contactMode = "Create";
 
-			if ($stateParams.lead != null) {
-				console.log("$stateParams.lead");
-				console.log($stateParams.lead);
-				vm.lead = $stateParams.lead;
-				vm.lead.leadMode = "Update";
-			}
+						if ($stateParams.lead != null) {
+							console.log("$stateParams.lead");
+							console.log($stateParams.lead);
+							vm.lead = $stateParams.lead;
+							vm.lead.leadMode = "Update";
+						}
+
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
 
 			vm.updateLead = function(lead) {
 				console.log("Inside updateLead()");
@@ -169,28 +201,48 @@
 			console.log("VIEW LEAD");
 
 			vm.lead = {};
-			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
+			pageStructureFactory.getLayout('lead_CRUD')
+				.then(
+					function(response) {
+						vm.leadFields = response.data;
+						vm.lead.leadMode = "QuickCreate";
+						vm.lead.contactMode = "Create";
 
-			if ($stateParams.lead != null) {
-				console.log("$stateParams.lead");
-				console.log($stateParams.lead);
-				vm.lead = $stateParams.lead;
-				vm.lead.leadMode = "View";
-			}
+						if ($stateParams.lead != null) {
+							console.log("$stateParams.lead");
+							console.log($stateParams.lead);
+							vm.lead = $stateParams.lead;
+							vm.lead.leadMode = "View";
+						}
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
+
 		}
 
 		if ($state.current.name === 'home.lead.delete') {
 			console.log("DELETE LEAD");
 
 			vm.lead = {};
-			vm.leadFields = JSON.parse(leadSharedData.getLayout('lead_CRUD'));
+			pageStructureFactory.getLayout('lead_CRUD')
+				.then(
+					function(response) {
+						vm.leadFields = response.data;
+						vm.lead.leadMode = "QuickCreate";
+						vm.lead.contactMode = "Create";
 
-			if ($stateParams.lead != null) {
-				console.log("$stateParams.lead");
-				console.log($stateParams.lead);
-				vm.lead = $stateParams.lead;
-				vm.lead.leadMode = "Delete";
-			}
+						if ($stateParams.lead != null) {
+							console.log("$stateParams.lead");
+							console.log($stateParams.lead);
+							vm.lead = $stateParams.lead;
+							vm.lead.leadMode = "Delete";
+						}
+
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
 
 			vm.deleteLead = function(lead) {
 				console.log("Inside deleteLead()");

@@ -21,220 +21,220 @@
 
 		var recommendationSharedData = null;
 
-		var recommendation_CRUD = [
-  {
-    "type": "progressTracker",
-    "wrapper": "card_noHeaderNoActions",
-    "templateOptions": {
-      "totalSteps": 5,
-      "steps": [
-        {
-          "status": "done",
-          "label": "Capture Initial Details"
-        },
-        {
-          "status": "done",
-          "label": "Know your customer"
-        },
-        {
-          "status": "current",
-          "label": "Recommendations"
-        },
-        {
-          "status": "todo",
-          "label": "Generate quote"
-        },
-        {
-          "status": "todo",
-          "label": "Generate agreement"
-        }
-      ],
-      "card": {
-        "imagePath": "",
-        "headline": "",
-        "actions": ""
-      },
-      "style": "",
-			"cardContentStyle":"padding:0px 16px 0px 16px !important"
-    }
-  },
-  {
-    "type": "SummaryBlock",
-    "templateOptions": {
-      "style": "color:white; background-color: rgb(33, 150, 243);",
-      "class": "flex-33",
-      "fields": [
-				{
-					"title": "Opportunity ID",
-					"type":"opportunityDetails",
-					"key": "opportunityId"
-				},
-        {
-          "title": "Company Name",
-					"type":"leadDetails",
-          "key": "compName"
-				},
-				{
-					"title": "Opportunity status",
-					"type":"opportunityDetails",
-					"key": "status"
-				},
-				{
-					"title": "Assigned to User",
-					"type":"opportunityDetails",
-					"key": "assignedToUser"
-				},
-				{
-          "title": "Created By User",
-					"type":"opportunityDetails",
-          "key": "createdByUser"
-        }
-      ]
-    }
-  },
-  {
-    "wrapper": "card_noHeaderNoActions",
-    "fieldGroup": [
-      {
-        "wrapper": "wrapper_tabset",
-        "fieldGroup": [
-          {
-            "wrapper": "wrapper_tab",
-            "elementAttributes": {
-              "layout": "row",
-              "style": "height:700px;"
-            },
-            "templateOptions": {
-              "title": "Offers",
-              "active": true
-            },
-            "fieldGroup": [
-              {
-                "elementAttributes": {
-                  "formlyFieldGroupClass": "flex-30 layout-fill layout-column"
-                },
-                "fieldGroup": [
-                  {
-                    "type": "itemsList",
-                    "elementAttributes": {
-                      "class": "layout-row flex-100"
-                    },
-                    "templateOptions": {
-                      "itemType": "Offer",
-                      "items": "model"
-                    }
-                  }
-                ]
-              },
-              {
-                "elementAttributes": {
-                  "formlyFieldGroupClass": "flex-50 layout-fill layout-column"
-                },
-                "fieldGroup": [
-                  {
-                    "elementAttributes": {
-                      "class": "layout-row flex-100"
-                    },
-                    "type": "itemDetail",
-                    "templateOptions": {
-                      "itemType": "Offer"
-                    }
-                  }
-                ]
-              },
-              {
-                "elementAttributes": {
-                  "formlyFieldGroupClass": "flex-20 layout-fill layout-column"
-                },
-                "fieldGroup": [
-                  {
-                    "elementAttributes": {
-                      "class": "layout-row flex-100"
-                    },
-                    "type": "itemChips",
-                    "templateOptions": {
-                      "itemType": "Offer"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "wrapper": "wrapper_tab",
-            "elementAttributes": {
-              "layout": "row",
-              "style": "height:700px;"
-            },
-            "templateOptions": {
-              "title": "Devices",
-              "active": true
-            },
-            "fieldGroup": [
-              {
-                "elementAttributes": {
-                  "formlyFieldGroupClass": "flex-30 layout-fill layout-column"
-                },
-                "fieldGroup": [
-                  {
-                    "type": "itemsList",
-                    "elementAttributes": {
-                      "class": "layout-row flex-100"
-                    },
-                    "templateOptions": {
-                      "itemType": "Device",
-                      "items": []
-                    }
-                  }
-                ]
-              },
-              {
-                "elementAttributes": {
-                  "formlyFieldGroupClass": "flex-50 layout-fill layout-column"
-                },
-                "fieldGroup": [
-                  {
-                    "elementAttributes": {
-                      "class": "layout-row flex-100"
-                    },
-                    "type": "itemDetail",
-                    "templateOptions": {
-                      "itemType": "Device"
-                    }
-                  }
-                ]
-              },
-              {
-                "elementAttributes": {
-                  "formlyFieldGroupClass": "flex-20 layout-fill layout-column"
-                },
-                "fieldGroup": [
-                  {
-                    "elementAttributes": {
-                      "class": "layout-row flex-100"
-                    },
-                    "type": "itemChips",
-                    "templateOptions": {
-                      "itemType": "Device"
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "button",
-        "templateOptions": {
-          "label": "Save Recommendation",
-          "class": "md-raised md-primary",
-          "method": "saveRecommendation"
-        }
-      }
-    ]
-  }
-];
+// 		var recommendation_CRUD = [
+//   {
+//     "type": "progressTracker",
+//     "wrapper": "card_noHeaderNoActions",
+//     "templateOptions": {
+//       "totalSteps": 5,
+//       "steps": [
+//         {
+//           "status": "done",
+//           "label": "Capture Initial Details"
+//         },
+//         {
+//           "status": "done",
+//           "label": "Know your customer"
+//         },
+//         {
+//           "status": "current",
+//           "label": "Recommendations"
+//         },
+//         {
+//           "status": "todo",
+//           "label": "Generate quote"
+//         },
+//         {
+//           "status": "todo",
+//           "label": "Generate agreement"
+//         }
+//       ],
+//       "card": {
+//         "imagePath": "",
+//         "headline": "",
+//         "actions": ""
+//       },
+//       "style": "",
+// 			"cardContentStyle":"padding:0px 16px 0px 16px !important"
+//     }
+//   },
+//   {
+//     "type": "SummaryBlock",
+//     "templateOptions": {
+//       "style": "color:white; background-color: rgb(33, 150, 243);",
+//       "class": "flex-33",
+//       "fields": [
+// 				{
+// 					"title": "Opportunity ID",
+// 					"type":"opportunityDetails",
+// 					"key": "opportunityId"
+// 				},
+//         {
+//           "title": "Company Name",
+// 					"type":"leadDetails",
+//           "key": "compName"
+// 				},
+// 				{
+// 					"title": "Opportunity status",
+// 					"type":"opportunityDetails",
+// 					"key": "status"
+// 				},
+// 				{
+// 					"title": "Assigned to User",
+// 					"type":"opportunityDetails",
+// 					"key": "assignedToUser"
+// 				},
+// 				{
+//           "title": "Created By User",
+// 					"type":"opportunityDetails",
+//           "key": "createdByUser"
+//         }
+//       ]
+//     }
+//   },
+//   {
+//     "wrapper": "card_noHeaderNoActions",
+//     "fieldGroup": [
+//       {
+//         "wrapper": "wrapper_tabset",
+//         "fieldGroup": [
+//           {
+//             "wrapper": "wrapper_tab",
+//             "elementAttributes": {
+//               "layout": "row",
+//               "style": "height:700px;"
+//             },
+//             "templateOptions": {
+//               "title": "Offers",
+//               "active": true
+//             },
+//             "fieldGroup": [
+//               {
+//                 "elementAttributes": {
+//                   "formlyFieldGroupClass": "flex-30 layout-fill layout-column"
+//                 },
+//                 "fieldGroup": [
+//                   {
+//                     "type": "itemsList",
+//                     "elementAttributes": {
+//                       "class": "layout-row flex-100"
+//                     },
+//                     "templateOptions": {
+//                       "itemType": "Offer",
+//                       "items": "model"
+//                     }
+//                   }
+//                 ]
+//               },
+//               {
+//                 "elementAttributes": {
+//                   "formlyFieldGroupClass": "flex-50 layout-fill layout-column"
+//                 },
+//                 "fieldGroup": [
+//                   {
+//                     "elementAttributes": {
+//                       "class": "layout-row flex-100"
+//                     },
+//                     "type": "itemDetail",
+//                     "templateOptions": {
+//                       "itemType": "Offer"
+//                     }
+//                   }
+//                 ]
+//               },
+//               {
+//                 "elementAttributes": {
+//                   "formlyFieldGroupClass": "flex-20 layout-fill layout-column"
+//                 },
+//                 "fieldGroup": [
+//                   {
+//                     "elementAttributes": {
+//                       "class": "layout-row flex-100"
+//                     },
+//                     "type": "itemChips",
+//                     "templateOptions": {
+//                       "itemType": "Offer"
+//                     }
+//                   }
+//                 ]
+//               }
+//             ]
+//           },
+//           {
+//             "wrapper": "wrapper_tab",
+//             "elementAttributes": {
+//               "layout": "row",
+//               "style": "height:700px;"
+//             },
+//             "templateOptions": {
+//               "title": "Devices",
+//               "active": true
+//             },
+//             "fieldGroup": [
+//               {
+//                 "elementAttributes": {
+//                   "formlyFieldGroupClass": "flex-30 layout-fill layout-column"
+//                 },
+//                 "fieldGroup": [
+//                   {
+//                     "type": "itemsList",
+//                     "elementAttributes": {
+//                       "class": "layout-row flex-100"
+//                     },
+//                     "templateOptions": {
+//                       "itemType": "Device",
+//                       "items": []
+//                     }
+//                   }
+//                 ]
+//               },
+//               {
+//                 "elementAttributes": {
+//                   "formlyFieldGroupClass": "flex-50 layout-fill layout-column"
+//                 },
+//                 "fieldGroup": [
+//                   {
+//                     "elementAttributes": {
+//                       "class": "layout-row flex-100"
+//                     },
+//                     "type": "itemDetail",
+//                     "templateOptions": {
+//                       "itemType": "Device"
+//                     }
+//                   }
+//                 ]
+//               },
+//               {
+//                 "elementAttributes": {
+//                   "formlyFieldGroupClass": "flex-20 layout-fill layout-column"
+//                 },
+//                 "fieldGroup": [
+//                   {
+//                     "elementAttributes": {
+//                       "class": "layout-row flex-100"
+//                     },
+//                     "type": "itemChips",
+//                     "templateOptions": {
+//                       "itemType": "Device"
+//                     }
+//                   }
+//                 ]
+//               }
+//             ]
+//           }
+//         ]
+//       },
+//       {
+//         "type": "button",
+//         "templateOptions": {
+//           "label": "Save Recommendation",
+//           "class": "md-raised md-primary",
+//           "method": "saveRecommendation"
+//         }
+//       }
+//     ]
+//   }
+// ];
 
 		var Offers = [{
 			"name": "Red Business Grow Plan",
@@ -368,7 +368,7 @@
 			},
 			getLayout: function(view) {
 				if (view === 'recommendation_CRUD') {
-					return JSON.stringify(recommendation_CRUD);
+					return $http.get('app/modules/shared/pageStructureJSON/recommendation.json');
 				} else if (view === 'Offers') {
 					return JSON.stringify(Offers);
 				} else if (view === 'Devices') {

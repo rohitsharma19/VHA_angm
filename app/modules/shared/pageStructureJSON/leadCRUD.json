@@ -228,7 +228,7 @@
 						"required": "true",
 						"md-min-date": "1/1/2015",
 						"md-max-date": "1/1/2016",
-						"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1%5Cd|2%5Cd|3[01])\/(19|20)%5C{2}",
+						"pattern": "(0[1-9]|1[0-2])\/(0[1-9]|1\\d|2\\d|3[01])\/(19|20)\\d2}",
 						"patternMessage": "yyyy-mm-dd ."
 					}
 				}, {
@@ -239,7 +239,7 @@
 						"type": "email",
 						"styleElements": "display:block;",
 						"required": "true",
-						"pattern": "([_a-z0-9]+(%5C.[_a-z0-9]+)*@[a-z0-9-]+(%5C.[a-z0-9-]+)*(%5C.[a-z]{2,4}))",
+						"pattern": "([_a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4}))",
 						"patternMessage": "For ex. example@domain.com ."
 					}
 				}, {

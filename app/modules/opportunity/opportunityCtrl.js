@@ -13,7 +13,7 @@
 		.module('opportunity')
 		.controller('OpportunityCtrl', Opportunity);
 
-	Opportunity.$inject = ['$state', '$stateParams', 'opportunityManager', 'opportunitySharedData', '$mdDialog', '$mdMedia', 'parentModel', 'progressBarFactory', 'toastFactory'];
+	Opportunity.$inject = ['$state', '$stateParams', 'opportunityManager', 'opportunitySharedData', '$mdDialog', '$mdMedia', 'parentModel', 'progressBarFactory', 'toastFactory', 'pageStructureFactory'];
 
 	/*
 	 * recommend
@@ -22,7 +22,7 @@
 	 */
 
 
-	function Opportunity($state, $stateParams, opportunityManager, opportunitySharedData, $mdDialog, $mdMedia, parentModel, progressBarFactory, toastFactory) {
+	function Opportunity($state, $stateParams, opportunityManager, opportunitySharedData, $mdDialog, $mdMedia, parentModel, progressBarFactory, toastFactory, pageStructureFactory) {
 
 		/*jshint validthis: true */
 
@@ -80,7 +80,15 @@
 
 			vm.opportunitiesList = [];
 
-			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_viewAll'));
+			pageStructureFactory.getLayout('opportunity_viewAll')
+				.then(
+					function(response) {
+						vm.opportunityFields = response.data;
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
+
 			opportunityManager.inflateUiGrid(vm);
 
 			vm.openViewOpportunity = function(row) {
@@ -113,9 +121,17 @@
 					self: {}
 				};
 				vm.opportunity.self.contacts = [];
-				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
-				vm.opportunity.self.opportunityMode = "QuickCreate";
-				vm.opportunity.self.contactMode = "Create";
+
+				pageStructureFactory.getLayout('opportunity_CRUD')
+					.then(
+						function(response) {
+							vm.opportunityFields = response.data;
+							vm.opportunity.self.opportunityMode = "QuickCreate";
+							vm.opportunity.self.contactMode = "Create";
+						},
+						function(error) {
+							alert("Oops! Something went wrong.\n Try reloading the page");
+						});
 
 				if ($stateParams.leadDetails != null) {
 					console.log("$stateParams.leadDetails");
@@ -131,9 +147,17 @@
 					self: {}
 				};
 				vm.opportunity.self.contacts = [];
-				vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
-				vm.opportunity.self.opportunityMode = "Create";
-				vm.opportunity.self.contactMode = "Create";
+
+				pageStructureFactory.getLayout('opportunity_CRUD')
+					.then(
+						function(response) {
+							vm.opportunityFields = response.data;
+							vm.opportunity.self.opportunityMode = "Create";
+							vm.opportunity.self.contactMode = "Create";
+						},
+						function(error) {
+							alert("Oops! Something went wrong.\n Try reloading the page");
+						});
 
 				vm.selectLead = function(lead) {
 					console.log("Inside selectLead()");
@@ -209,16 +233,24 @@
 
 		if ($state.current.name === 'home.opportunity.edit') {
 			console.log("EDIT OPPORTUNITY");
-
-			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 			vm.opportunity = {};
 
-			if ($stateParams.opportunity != null) {
-				console.log("$stateParams.opportunity");
-				console.log($stateParams.opportunity);
-				vm.opportunity = $stateParams.opportunity;
-				vm.opportunity.self.opportunityMode = "Update";
-			}
+			pageStructureFactory.getLayout('opportunity_CRUD')
+				.then(
+					function(response) {
+						vm.opportunityFields = response.data;
+
+						if ($stateParams.opportunity != null) {
+							console.log("$stateParams.opportunity");
+							console.log($stateParams.opportunity);
+							vm.opportunity = $stateParams.opportunity;
+							vm.opportunity.self.opportunityMode = "Update";
+						}
+
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
 
 			vm.updateOpportunity = function(opportunity) {
 				console.log("Inside updateOpportunity()");
@@ -231,28 +263,43 @@
 		if ($state.current.name === 'home.opportunity.view') {
 			console.log("VIEW OPPORTUNITY");
 			vm.opportunity = {};
-			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
 
-			if ($stateParams.opportunity != null) {
-				console.log("$stateParams.opportunity");
-				console.log($stateParams.opportunity);
-				vm.opportunity = $stateParams.opportunity;
-				vm.opportunity.self.opportunityMode = "View";
-			}
+			pageStructureFactory.getLayout('opportunity_CRUD')
+				.then(
+					function(response) {
+						vm.opportunityFields = response.data;
+
+						if ($stateParams.opportunity != null) {
+							console.log("$stateParams.opportunity");
+							console.log($stateParams.opportunity);
+							vm.opportunity = $stateParams.opportunity;
+							vm.opportunity.self.opportunityMode = "View";
+						}
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
 
 		}
 
 		if ($state.current.name === 'home.opportunity.delete') {
 			console.log("DELETE OPPORTUNITY");
 
-			vm.opportunityFields = JSON.parse(opportunitySharedData.getLayout('opportunity_CRUD'));
+			pageStructureFactory.getLayout('opportunity_CRUD')
+				.then(
+					function(response) {
+						vm.opportunityFields = response.data;
 
-			if ($stateParams.opportunity != null) {
-				console.log("$stateParams.opportunity");
-				console.log($stateParams.opportunity);
-				vm.opportunity = $stateParams.opportunity;
-				vm.opportunity.self.opportunityMode = "Delete";
-			}
+						if ($stateParams.opportunity != null) {
+							console.log("$stateParams.opportunity");
+							console.log($stateParams.opportunity);
+							vm.opportunity = $stateParams.opportunity;
+							vm.opportunity.self.opportunityMode = "Delete";
+						}
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
 
 			vm.deleteOpportunity = function(opportunity) {
 				console.log("Inside deleteOpportunity()");

@@ -92,72 +92,38 @@
 		}];
 
 
-		var lead_viewAll = [{
-			"key": "list",
-			"type": "uiGrid",
-			"wrapper": ["gridWrapper", "card_noHeaderNoActions"],
-			"templateOptions": {
-				"label": "Lead",
-				"cardLabel": "Leads",
-				"cardHeaderBackground": "rgb(33,150,243)",
-				"cardLabelColor": "white",
-				"columnDefs": [{
-					"field": "leadId"
-				}, {
-					"field": "compName"
-				}, {
-					"field": "abn"
-				}, {
-					"field": "firstName"
-				}, {
-					"field": "lastName"
-				}, {
-					"field": "eMail"
-				}, {
-					"field": "contactNum"
-				}, {
-					"name": "Actions",
-					"cellTemplate": "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('openViewLead',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>remove_red_eye</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openEditLead',row) style='min-width: 0px;'><md-icon style='color:green; vertical-align: baseline;'>edit</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openDeleteLead',row) style='min-width: 0px;'><md-icon style='vertical-align: baseline; color:red;'>delete</md-icon></md-button>",
-					"enableFiltering": false
-				}],
-				"onRegisterApi": ""
-			}
-		}];
-
-
-		// var lead_CRUD = [{
-		// 	"key": "eMail",
-		// 	"type": "input",
-		// 	"id": "eMail",
+		// var lead_viewAll = [{
+		// 	"key": "list",
+		// 	"type": "uiGrid",
+		// 	"wrapper": ["gridWrapper", "card_noHeaderNoActions"],
 		// 	"templateOptions": {
-		// 		"label": "E mail",
-		// 		"type": "email",
-		// 		"styleElements": "display:block;",
-		//
-		// 	}
-		// }, {
-		// 	"type": "select",
-		// 	"key": "createdByGroup",
-		// 	"id": "createdByGroup",
-		// 	"templateOptions": {
-		// 		"label": "Created By Organization",
-		// 		"theme": "",
-		// 		"styleElements": "display:block;",
-		// 		"multiple": false,
-		// 		"labelProp": "label",
-		// 		"valueProp": "value",
-		// 		"options": [{
-		// 			"label": "Third Party",
-		// 			"value": "Third Party"
+		// 		"label": "Lead",
+		// 		"cardLabel": "Leads",
+		// 		"cardHeaderBackground": "rgb(33,150,243)",
+		// 		"cardLabelColor": "white",
+		// 		"columnDefs": [{
+		// 			"field": "leadId"
 		// 		}, {
-		// 			"label": "XXX",
-		// 			"value": "XXX"
+		// 			"field": "compName"
+		// 		}, {
+		// 			"field": "abn"
+		// 		}, {
+		// 			"field": "firstName"
+		// 		}, {
+		// 			"field": "lastName"
+		// 		}, {
+		// 			"field": "eMail"
+		// 		}, {
+		// 			"field": "contactNum"
+		// 		}, {
+		// 			"name": "Actions",
+		// 			"cellTemplate": "<md-button class='md-icon-button' ng-click=grid.appScope.clicked('openViewLead',row) style='min-width: 0px;'><md-icon style='color:rgb(68,138,255); vertical-align: baseline;'>remove_red_eye</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openEditLead',row) style='min-width: 0px;'><md-icon style='color:green; vertical-align: baseline;'>edit</md-icon></md-button><md-button class='md-icon-button' ng-click=grid.appScope.clicked('openDeleteLead',row) style='min-width: 0px;'><md-icon style='vertical-align: baseline; color:red;'>delete</md-icon></md-button>",
+		// 			"enableFiltering": false
 		// 		}],
-		// 		"flex": ""
+		// 		"onRegisterApi": ""
 		// 	}
-		// }, {
-		// 	"type": "test"
 		// }];
+
 
 		return {
 
@@ -170,23 +136,11 @@
 			resetLead: function() {
 				leadSharedData = null;
 			},
-			getLayout: function(view, scopeVar) {
+			getLayout: function(view) {
 				if (view === 'lead_CRUD') {
-					console.log(scopeVar);
-					$http.get('app/modules/shared/layoutJSONs/leadCRUD.json')
-						.then(
-							function(response) {
-								console.log("getting Lead_CRUD response.data");
-								console.log(response.data);
-								scopeVar.leadFields = response.data;
-							},
-							function(error) {
-								console.log("Get Lead_CRUD Error");
-								console.log(error);
-							}
-						);
+					return $http.get('app/modules/shared/pageStructureJSON/leadCRUD.json');
 				} else if (view === 'lead_viewAll') {
-					return JSON.stringify(lead_viewAll);
+					return $http.get('app/modules/shared/pageStructureJSON/leadViewAll.json');
 				} else if (view === 'SummaryDialog') {
 					return JSON.stringify(SummaryDialog);
 				}

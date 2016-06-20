@@ -13,7 +13,7 @@
 		.module('quote')
 		.controller('QuoteCtrl', Quote);
 
-	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData', '$mdDialog', '$mdMedia', '$scope', 'parentModel', 'progressBarFactory', 'toastFactory'];
+	Quote.$inject = ['$state', '$stateParams', 'quoteManager', 'quoteSharedData', '$mdDialog', '$mdMedia', '$scope', 'parentModel', 'progressBarFactory', 'toastFactory', 'pageStructureFactory'];
 
 	/*
 	 * recommend
@@ -21,7 +21,7 @@
 	 * and bindable members up top.
 	 */
 
-	function Quote($state, $stateParams, quoteManager, quoteSharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory) {
+	function Quote($state, $stateParams, quoteManager, quoteSharedData, $mdDialog, $mdMedia, $scope, parentModel, progressBarFactory, toastFactory, pageStructureFactory) {
 		/*jshint validthis: true */
 		var vm = this;
 
@@ -45,12 +45,15 @@
 
 			$scope.checkVariable = "Here in Quote";
 			parentModel.inflateOpportunityUiGrid($scope);
+
 			$scope.hide = function() {
 				$mdDialog.hide();
 			};
+
 			$scope.cancel = function() {
 				$mdDialog.cancel();
 			};
+
 			$scope.selectOpportunity = function(row) {
 				var opportunity = row.entity;
 				parentModel.getLead(opportunity.leadId).then(
@@ -65,10 +68,13 @@
 					}
 				);
 			}
+
 			$scope.answer = function(answer) {
 				$mdDialog.hide(answer);
 			};
+
 			$scope.vm = $scope;
+
 		};
 
 
@@ -80,9 +86,16 @@
 			// vm = quoteManager.setUpUiGrid(vm);
 			vm.quotesList = [];
 
-			vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_viewAll'));
-			quoteManager.inflateUiGrid(vm);
+			pageStructureFactory.getLayout('quote_viewAll')
+				.then(
+					function(response) {
+						vm.quoteFields = response.data;
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
 
+			quoteManager.inflateUiGrid(vm);
 
 			vm.openViewQuote = function(row) {
 				console.log("Inside openViewQuote");
@@ -118,9 +131,15 @@
 			if ($state.current.name === 'home.quote.create') {
 				console.log("CREATE QUOTE");
 
-				vm.quote.self.quoteMode = "Create";
-				vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
-
+				pageStructureFactory.getLayout('quote_CRUD')
+					.then(
+						function(response) {
+							vm.quoteFields = response.data;
+							vm.quote.self.quoteMode = "Create";
+						},
+						function(error) {
+							alert("Oops! Something went wrong.\n Try reloading the page");
+						});
 
 				vm.selectOpportunity = function(opportunity) {
 					vm.quote.self.opportunityId = opportunity.opportunityId;
@@ -160,8 +179,17 @@
 					vm.quote.self.opportunityId = $stateParams.opportunityDetails.opportunityId;
 				}
 
-				vm.quote.self.quoteMode = "QuickCreate";
-				vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
+				pageStructureFactory.getLayout('quote_CRUD')
+					.then(
+						function(response) {
+							vm.quoteFields = response.data;
+							vm.quote.self.quoteMode = "QuickCreate";
+						},
+						function(error) {
+							alert("Oops! Something went wrong.\n Try reloading the page");
+						});
+
+
 				console.log("vm.quote");
 				console.log(vm.quote);
 			}
@@ -209,12 +237,20 @@
 		if ($state.current.name === 'home.quote.edit') {
 			console.log("EDIT QUOTE");
 
-			if ($stateParams.quote != null) {
-				vm.quote = $stateParams.quote;
-				vm.quote.self.quoteMode = "Update";
-			}
+			pageStructureFactory.getLayout('quote_CRUD')
+				.then(
+					function(response) {
+						vm.quoteFields = response.data;
 
-			vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
+						if ($stateParams.quote != null) {
+							vm.quote = $stateParams.quote;
+							vm.quote.self.quoteMode = "Update";
+						}
+
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
 
 			vm.updateQuote = function(quote) {
 				console.log("Inside updateQuote()");
@@ -226,23 +262,38 @@
 		if ($state.current.name === 'home.quote.view') {
 			console.log("VIEW QUOTE");
 
-			if ($stateParams.quote != null) {
-				vm.quote = $stateParams.quote;
-				vm.quote.self.quoteMode = "View";
-			}
+			pageStructureFactory.getLayout('quote_CRUD')
+				.then(
+					function(response) {
+						vm.quoteFields = response.data;
 
-			vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
+						if ($stateParams.quote != null) {
+							vm.quote = $stateParams.quote;
+							vm.quote.self.quoteMode = "View";
+						}
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
+
 		}
 
 		if ($state.current.name === 'home.quote.delete') {
 			console.log("DELETE QUOTE");
 
-			if ($stateParams.quote != null) {
-				vm.quote = $stateParams.quote;
-				vm.quote.self.quoteMode = "Delete";
-			}
+			pageStructureFactory.getLayout('quote_CRUD')
+				.then(
+					function(response) {
+						vm.quoteFields = response.data;
 
-			vm.quoteFields = JSON.parse(quoteSharedData.getLayout('quote_CRUD'));
+						if ($stateParams.quote != null) {
+							vm.quote = $stateParams.quote;
+							vm.quote.self.quoteMode = "Delete";
+						}
+					},
+					function(error) {
+						alert("Oops! Something went wrong.\n Try reloading the page");
+					});
 
 			vm.deleteQuote = function(quote) {
 				console.log("Inside deleteQuote()");
