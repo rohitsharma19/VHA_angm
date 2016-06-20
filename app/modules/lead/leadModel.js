@@ -27,26 +27,23 @@
 
 			leadModel.prototype = {
 				save: function(){
-					// return $http.post("http://125.20.35.91/VHAMW/webapi/Lead",this);
-					return $http.post("http://192.168.100.16:8080/VHAMW/webapi/Lead",this);
-
+					var FINAL_URL = CONSTANTS.REST_URL + 'Lead';
+					return $http.post(FINAL_URL,this);
 				},
 				get: function(leadId){
-					// return $http.get("http://125.20.35.91/VHAMW/webapi/Lead/"+leadId);
-					return $http.get("http://192.168.100.16:8080/VHAMW/webapi/Lead/"+leadId);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Lead/' + leadId;
+					return $http.get(FINAL_URL);
 				},
 				remove: function(leadId){
-					// return $http.delete("http://125.20.35.91/VHAMW/webapi/Lead/"+leadId);
-					return $http.delete("http://192.168.100.16:8080/VHAMW/webapi/Lead/"+leadId);
-
+					var FINAL_URL = CONSTANTS.REST_URL + 'Lead/' + leadId;
+					return $http.delete(FINAL_URL);
 				},
 				update: function(){
-					// return $http.put("http://125.20.35.91/VHAMW/webapi/Lead/",this);
-					return $http.put("http://192.168.100.16:8080/VHAMW/webapi/Lead/",this);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Lead/';
+					return $http.put(FINAL_URL,this);
 				},
 				getAll: function(){
-					// return $http.get("http://125.20.35.91/VHAMW/webapi/Lead");
-					var FINAL_URL = CONSTANTS.BASE_URL + 'Lead';
+					var FINAL_URL = CONSTANTS.REST_URL + 'Lead';
 					return $http.get(FINAL_URL);
 				}
 			};

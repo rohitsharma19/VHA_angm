@@ -15,9 +15,9 @@
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		Quote.$inject = ['$http'];
+		Quote.$inject = ['$http', 'CONSTANTS'];
 
-		function Quote ($http) {
+		function Quote ($http, CONSTANTS) {
 
 			var quoteModel = function(quoteData){
 				if(quoteData){
@@ -27,24 +27,24 @@
 
 			quoteModel.prototype = {
 				save: function(){
-					// return $http.post("http://125.20.35.91/VHAMW/webapi/Quote",this);
-					return $http.post("http://192.168.100.16:8080/VHAMW/webapi/Quote",this);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Quote';
+					return $http.post(FINAL_URL,this);
 				},
 				get: function(quoteId){
-					// return $http.get("http://125.20.35.91/VHAMW/webapi/Quote/"+quoteId);
-					return $http.get("http://192.168.100.16:8080/VHAMW/webapi/Quote/"+quoteId);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Quote/' + quoteId;
+					return $http.delete(FINAL_URL);
 				},
 				remove: function(quoteId){
-					// return $http.delete("http://125.20.35.91/VHAMW/webapi/Quote/"+quoteId);
-					return $http.delete("http://192.168.100.16:8080/VHAMW/webapi/Quote/"+quoteId);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Quote/' + quoteId;
+					return $http.delete(FINAL_URL);
 				},
 				update: function(){
-					// return $http.put("http://125.20.35.91/VHAMW/webapi/Quote/",this);
-					return $http.put("http://192.168.100.16:8080/VHAMW/webapi/Quote/",this);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Quote/';
+					return $http.put(FINAL_URL,this);
 				},
 				getAll: function(){
-					// return $http.get("http://125.20.35.91/VHAMW/webapi/Quote");
-					return $http.get("http://192.168.100.16:8080/VHAMW/webapi/Quote");
+					var FINAL_URL = CONSTANTS.REST_URL + 'Quote';
+					return $http.get(FINAL_URL);
 				}
 			};
 			return quoteModel;

@@ -15,9 +15,9 @@
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		Agreement.$inject = ['$http'];
+		Agreement.$inject = ['$http', 'CONSTANTS'];
 
-		function Agreement ($http) {
+		function Agreement ($http, CONSTANTS) {
 
 			var agreementModel = function(agreementData){
 				if(agreementData){
@@ -27,24 +27,24 @@
 
 			agreementModel.prototype = {
 				save: function(){
-					// return $http.post("http://125.20.35.91/VHAMW/webapi/Agreement",this);
-					return $http.post("http://192.168.100.16:8080/VHAMW/webapi/Agreement",this);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Agreement';
+					return $http.post(FINAL_URL,this);
 				},
 				get: function(agreementId){
-					// return $http.get("http://125.20.35.91/VHAMW/webapi/Agreement/"+agreementId);
-					return $http.get("http://192.168.100.16:8080/VHAMW/webapi/Agreement/"+agreementId);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Agreement/' + agreementId;
+					return $http.delete(FINAL_URL);
 				},
 				remove: function(agreementId){
-					// return $http.delete("http://125.20.35.91/VHAMW/webapi/Agreement/"+agreementId);
-					return $http.delete("http://192.168.100.16:8080/VHAMW/webapi/Agreement/"+agreementId);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Agreement/' + agreementId;
+					return $http.delete(FINAL_URL);
 				},
 				update: function(){
-					// return $http.put("http://125.20.35.91/VHAMW/webapi/Agreement/",this);
-					return $http.put("http://192.168.100.16:8080/VHAMW/webapi/Agreement/",this);
+					var FINAL_URL = CONSTANTS.REST_URL + 'Agreement/';
+					return $http.put(FINAL_URL,this);
 				},
 				getAll: function(){
-					// return $http.get("http://125.20.35.91/VHAMW/webapi/Agreement");
-					return $http.get("http://192.168.100.16:8080/VHAMW/webapi/Agreement");
+					var FINAL_URL = CONSTANTS.REST_URL + 'Agreement';
+					return $http.get(FINAL_URL);
 				}
 			};
 			return agreementModel;
