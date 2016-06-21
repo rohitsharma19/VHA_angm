@@ -45,6 +45,10 @@
 	"hasController": true
 }, {
 	"category": "type",
+	"name": "addressChips",
+	"hasController": true
+}, {
+	"category": "type",
 	"name": "SummaryDialogBox",
 	"hasController": false
 }, {

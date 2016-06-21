@@ -27,6 +27,8 @@
 
 		vm.lead = {};
 		vm.lead.contacts = [];
+		vm.lead.tempContact = {};
+		vm.lead.tempContact.addressList =[];
 
 		function DialogController($scope, $mdDialog) {
 			$scope.model = vm.lead;
@@ -94,6 +96,7 @@
 							vm.leadFields = response.data;
 							vm.lead.leadMode = "QuickCreate";
 							vm.lead.contactMode = "Create";
+							vm.lead.addressMode = "Create";
 						},
 						function(error) {
 							alert("Oops! Something went wrong.\n Try reloading the page");
@@ -109,6 +112,7 @@
 							vm.leadFields = response.data;
 							vm.lead.leadMode = "Create";
 							vm.lead.contactMode = "Create";
+							vm.lead.addressMode = "Create";
 						},
 						function(error) {
 							alert("Oops! Something went wrong.\n Try reloading the page");
@@ -132,6 +136,21 @@
 			vm.updateContact = function(lead) {
 				vm.resetTempContact();
 				vm.lead.contactMode = "Create";
+				vm.lead.addressMode = "Create";
+			};
+
+			vm.addAddress = function(lead) {
+				console.log("Inside addAddress()");
+				if (vm.lead.tempContact.addressList.indexOf(lead.tempContact.tempAddress) == -1) {
+					vm.lead.tempContact.addressList.push(lead.tempContact.tempAddress);
+					vm.resetTempAddress();
+				}
+			};
+
+			vm.updateAddress = function(lead) {
+				vm.resetTempAddress();
+				vm.lead.contactMode = "Create";
+				vm.lead.addressMode = "Create";
 			}
 
 			vm.confirmDetails = function(lead) {
@@ -152,8 +171,9 @@
 		}
 
 		vm.resetTempContact = function() {
+			vm.resetTempAddress();
 			for (var key in vm.lead.tempContact) {
-				if (key != "$$hashKey") {
+				if (key != "$$hashKey" && key!="tempAddress" && key!="addressList") {
 					var fieldID = document.querySelector('[ng-model="model.tempContact.' + key + '"]').id;
 					vm.leadFields[1].form[fieldID].$setUntouched();
 					vm.leadFields[1].form[fieldID].$setPristine();
@@ -163,7 +183,25 @@
 
 			if (vm.lead.contactMode == "Update")
 				vm.lead.contactMode = "Create";
+		}
 
+		vm.setTempAddress = function(address) {
+			vm.lead.tempContact.tempAddress = address;
+			vm.lead.addressMode = "Update";
+		}
+
+		vm.resetTempAddress = function() {
+			for (var key in vm.lead.tempContact.tempAddress) {
+				if (key != "$$hashKey") {
+					var fieldID = document.querySelector('[ng-model="model.tempContact.tempAddress.' + key + '"]').id;
+					vm.leadFields[1].form[fieldID].$setUntouched();
+					vm.leadFields[1].form[fieldID].$setPristine();
+				}
+			}
+			vm.lead.tempContact.tempAddress = {};
+
+			if (vm.lead.addressMode == "Update")
+				vm.lead.addressMode = "Create";
 		}
 
 
@@ -177,6 +215,7 @@
 						vm.leadFields = response.data;
 						vm.lead.leadMode = "QuickCreate";
 						vm.lead.contactMode = "Create";
+						vm.lead.addressMode = "Create";
 
 						if ($stateParams.lead != null) {
 							console.log("$stateParams.lead");
@@ -207,6 +246,7 @@
 						vm.leadFields = response.data;
 						vm.lead.leadMode = "QuickCreate";
 						vm.lead.contactMode = "Create";
+						vm.lead.addressMode = "Create";
 
 						if ($stateParams.lead != null) {
 							console.log("$stateParams.lead");
@@ -231,6 +271,7 @@
 						vm.leadFields = response.data;
 						vm.lead.leadMode = "QuickCreate";
 						vm.lead.contactMode = "Create";
+						vm.lead.addressMode = "Create";
 
 						if ($stateParams.lead != null) {
 							console.log("$stateParams.lead");

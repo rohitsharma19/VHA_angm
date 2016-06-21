@@ -321,7 +321,37 @@
 				"elementAttributes": {
 					"formlyFieldGroupClass": "flex-80"
 				},
-				"fieldGroup": [{
+				"fieldGroup": [
+					{
+						"type": "select",
+						"key": "tempContact.contactRole",
+						"templateOptions": {
+							"label": "Contact Role",
+							"theme": "",
+							"styleElements": "display:block;",
+							"required": "true",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Billing",
+								"value": "Billing"
+							}, {
+								"label": "Legal",
+								"value": "Legal"
+							}, {
+								"label": "Admin",
+								"value": "Admin"
+							}, {
+								"label": "Technical",
+								"value": "Technical"
+							}, {
+								"label": "Sales",
+								"value": "Sales"
+							}],
+							"flex": ""
+						}
+					}, {
 					"elementAttributes": {
 						"layout": "row",
 						"layout-sm": "column"
@@ -444,144 +474,140 @@
 						"flex": ""
 					}
 				}, {
-					"key": "tempContact.addressLine1",
-					"type": "input",
-					"templateOptions": {
-						"label": "Address Line 1",
-						"type": "text",
-						"styleElements": "display:block;",
-						"required": "true",
-						"pattern": "",
-						"patternMessage": "Exceeded the max length"
-					}
-				}, {
-					"key": "tempContact.addressLine2",
-					"type": "input",
-					"templateOptions": {
-						"label": "Address Line 2",
-						"type": "text",
-						"styleElements": "display:block;",
-						"required": "true",
-						"pattern": "",
-						"patternMessage": "Exceeded the max length"
-					}
-				}, {
 					"elementAttributes": {
 						"layout": "row",
+						"layout-align":"space-between",
 						"layout-sm": "column"
 					},
 					"fieldGroup": [{
-						"key": "tempContact.town",
-						"className": "flex-50",
-						"type": "input",
-						"templateOptions": {
-							"label": "Town Name",
-							"styleElements": "display:block;",
-							"required": "true",
-							"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
-							"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
-						}
+						"className": "layout-fill",
+						"elementAttributes": {
+							"formlyFieldGroupClass": "flex-20"
+						},
+						"fieldGroup": [{
+							"elementAttributes": {
+								"class": "layout-row flex-100"
+							},
+							"type": "addressChips"
+						}]
 					}, {
-						"key": "tempContact.postCode",
-						"className": "flex-50",
-						"type": "input",
-						"templateOptions": {
-							"label": "PIN",
-							"styleElements": "display:block;",
-							"required": "true",
-							"pattern": "([0-9]{6})",
-							"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
-						}
+						"wrapper": "card_noHeaderNoActions",
+						"elementAttributes": {
+							"formlyFieldGroupClass": "flex-75"
+						},
+						"fieldGroup": [{
+							"key": "tempContact.tempAddress.addressLine1",
+							"type": "input",
+							"templateOptions": {
+								"label": "Address Line 1",
+								"type": "text",
+								"styleElements": "display:block;",
+								"required": "true",
+								"pattern": "",
+								"patternMessage": "Exceeded the max length"
+							}
+						}, {
+							"key": "tempContact.tempAddress.addressLine2",
+							"type": "input",
+							"templateOptions": {
+								"label": "Address Line 2",
+								"type": "text",
+								"styleElements": "display:block;",
+								"required": "true",
+								"pattern": "",
+								"patternMessage": "Exceeded the max length"
+							}
+						}, {
+							"elementAttributes": {
+								"layout": "row",
+								"layout-sm": "column"
+							},
+							"fieldGroup": [{
+								"key": "tempContact.tempAddress.town",
+								"className": "flex-50",
+								"type": "input",
+								"templateOptions": {
+									"label": "Town Name",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+								}
+							}, {
+								"key": "tempContact.tempAddress.postCode",
+								"className": "flex-50",
+								"type": "input",
+								"templateOptions": {
+									"label": "PIN",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "([0-9]{6})",
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+								}
+							}]
+						}, {
+							"elementAttributes": {
+								"layout": "row",
+								"layout-sm": "column"
+							},
+							"fieldGroup": [{
+								"key": "tempContact.tempAddress.city",
+								"className": "flex-50",
+								"type": "input",
+								"templateOptions": {
+									"label": "City",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+								}
+							}, {
+								"key": "tempContact.tempAddress.state",
+								"className": "flex-50",
+								"type": "input",
+								"templateOptions": {
+									"label": "State",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+								}
+							}]
+						}, {
+							"key": "tempContact.tempAddress.country",
+							"type": "input",
+							"templateOptions": {
+								"label": "Country",
+								"styleElements": "display:block;",
+								"required": "true",
+								"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
+								"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+							}
+						}, {
+							"elementAttributes": {
+								"layout": "row",
+								"layout-sm": "column",
+								"layout-align": "end center"
+							},
+							"fieldGroup": [{
+								"type": "button",
+								"templateOptions": {
+									"label": "Add Address",
+									"class": "md-raised md-primary",
+									"method": "addAddress"
+								},
+								"hideExpression": "model.leadMode!=\"Create\" && model.leadMode!=\"QuickCreate\" || model.addressMode!=\"Create\""
+							}, {
+								"type": "button",
+								"templateOptions": {
+									"label": "Save Address",
+									"class": "md-raised md-primary",
+									"method": "updateAddress"
+								},
+								"hideExpression": "model.leadMode!=\"Create\" && model.leadMode!=\"QuickCreate\" || model.addressMode!=\"Update\""
+							}]
+						}]
 					}]
-				}, {
-					"elementAttributes": {
-						"layout": "row",
-						"layout-sm": "column"
-					},
-					"fieldGroup": [{
-						"key": "tempContact.city",
-						"className": "flex-50",
-						"type": "input",
-						"templateOptions": {
-							"label": "City",
-							"styleElements": "display:block;",
-							"required": "true",
-							"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
-							"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
-						}
-					}, {
-						"key": "tempContact.state",
-						"className": "flex-50",
-						"type": "input",
-						"templateOptions": {
-							"label": "State",
-							"styleElements": "display:block;",
-							"required": "true",
-							"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
-							"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
-						}
-					}]
-				}, {
-					"key": "tempContact.country",
-					"type": "input",
-					"templateOptions": {
-						"label": "Country",
-						"styleElements": "display:block;",
-						"required": "true",
-						"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
-						"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
-					}
-				}, {
-					"elementAttributes": {
-						"layout": "row",
-						"layout-sm": "column"
-					},
-					"fieldGroup": [{
-						"type": "button",
-						"className": "flex-2",
-						"templateOptions": {
-							"label": "Add Address",
-							"class": "md-raised md-primary",
-							"method": "addAddress"
-						}
-					}, {
-						"type": "button",
-						"className": "flex-2",
-						"templateOptions": {
-							"label": "Find Address",
-							"class": "md-raised md-primary",
-							"method": "findAddress"
-						}
-					}]
-				}, {
-					"type": "select",
-					"key": "tempContact.contactRole",
-					"templateOptions": {
-						"label": "Contact Role",
-						"theme": "",
-						"styleElements": "display:block;",
-						"required": "true",
-						"multiple": false,
-						"labelProp": "label",
-						"valueProp": "value",
-						"options": [{
-							"label": "Billing",
-							"value": "Billing"
-						}, {
-							"label": "Legal",
-							"value": "Legal"
-						}, {
-							"label": "Admin",
-							"value": "Admin"
-						}, {
-							"label": "Technical",
-							"value": "Technical"
-						}, {
-							"label": "Sales",
-							"value": "Sales"
-						}],
-						"flex": ""
-					}
 				}, {
 					"elementAttributes": {
 						"layout": "row",
