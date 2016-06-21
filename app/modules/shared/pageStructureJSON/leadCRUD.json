@@ -200,7 +200,7 @@
 					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
 				}
 			}, {
-				"key": "eMail",
+				"key": "emailAddress",
 				"type": "input",
 				"templateOptions": {
 					"label": "E mail",
@@ -273,7 +273,7 @@
 				},
 				"hideExpression": "model.leadMode!=\"Update\""
 			}, {
-				"key": "contactNum",
+				"key": "contactNumber",
 				"type": "input",
 				"templateOptions": {
 					"label": "Phone Number",
@@ -388,7 +388,7 @@
 					},
 					"hideExpression": "model.leadMode!=\"Update\" && model.leadMode!=\"View\""
 				}, {
-					"key": "tempContact.contactNum",
+					"key": "tempContact.contactNumber",
 					"type": "input",
 					"templateOptions": {
 						"label": "Phone Number",
@@ -399,7 +399,7 @@
 						"patternMessage": "Only Numbers. 10 Digits"
 					}
 				}, {
-					"key": "tempContact.dob",
+					"key": "tempContact.dateOfBirth",
 					"type": "datepicker",
 					"templateOptions": {
 						"theme": "custom",
@@ -413,7 +413,7 @@
 						"patternMessage": "yyyy-mm-dd ."
 					}
 				}, {
-					"key": "tempContact.eMail",
+					"key": "tempContact.emailAddress",
 					"type": "input",
 					"templateOptions": {
 						"label": "E mail",
@@ -482,7 +482,7 @@
 							"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
 						}
 					}, {
-						"key": "tempContact.pin",
+						"key": "tempContact.postCode",
 						"className": "flex-50",
 						"type": "input",
 						"templateOptions": {
