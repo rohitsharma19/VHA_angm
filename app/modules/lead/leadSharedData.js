@@ -28,44 +28,124 @@
 				"heading": "Lead Summary",
 				"style": "min-width:680px; min-height:310px;",
 				"setOfFields": [{
-					"label": "ABN Number",
-					"key": "abn"
+					"label": "Lead Source",
+					"key": "leadSource"
+				},{
+					"label": "Lead Type",
+					"key": "leadType"
 				}, {
-					"label": "Account Name",
-					"key": "accName"
+					"label": "Organisation TIN",
+					"key": "organizationTIN"
+				},{
+					"label": "Organisation Name",
+					"key": "organizationName"
 				}, {
-					"label": "ACN Number",
-					"key": "acn"
+					"label": "Organisation Group",
+					"key": "organizationGroup"
 				}, {
-					"label": "Company Name",
-					"key": "compName"
-				}, {
-					"label": "Customer Type",
-					"key": "custType"
-				}, {
-					"label": "PIN",
-					"key": "pin"
+					"label": "Organisation Short Code",
+					"key": "organisationShortCode"
 				}, {
 					"label": "Trading As",
 					"key": "tradingAs"
-				}, {
-					"label": "Title",
-					"key": "title"
-				}, {
-					"label": "First Name",
-					"key": "firstName"
-				}, {
-					"label": "Last Name",
-					"key": "lastName"
-				}, {
-					"label": "Phone Number",
-					"key": "contactNum"
-				}, {
-					"label": "Date Of Birth",
-					"key": "dateOfBirth"
-				}, {
+				},{
 					"label": "Email",
 					"key": "eMail"
+				},{
+					"label": "Contact Number",
+					"key": "contactNum"
+				},{
+					"label": "Territory Code",
+					"key": "territoryCode"
+				},
+				// {
+				// 	"label": "Expected Closure Date",
+				// 	"key": "expectedClosureDate"
+				// }, {
+				// 	"label": "Title",
+				// 	"key": "tempContact.title"
+				// },{
+				// 	"label": "First Name",
+				// 	"key": "tempContact.firstName"
+				// },{
+				// 	"label": "Last Name",
+				// 	"key": "tempContact.lastName"
+				// },{
+				// 	"label": "Trading As",
+				// 	"key": "tradingAs"
+				// },{
+				// 	"label": "Date of Birth",
+				// 	"key": "tempContact.dob"
+				// },{
+				// 	"label": "Email",
+				// 	"key": "tempContact.eMail"
+				// },{
+				// 	"label": "Phone Number",
+				// 	"key": "tempContact.contactNum"
+				// },{
+				// 	"label": "Gender",
+				// 	"key": "tempContact.gender"
+				// },{
+				// 	"label": "Preferred Mode Of Communication",
+				// 	"key": "tempContact.preferredModeOfCommunication"
+				// }, {
+				// 	"label": "Contact Role",
+				// 	"key": "tempContact.contactRole"
+				// },{
+				// 	"label": "Address Line 1",
+				// 	"key": "tempContact.addressLine1"
+				// },{
+				// 	"label": "Address Line 2",
+				// 	"key": "tempContact.addressLine2"
+				// },{
+				// 	"label": "Town",
+				// 	"key": "tempContact.town"
+				// },{
+				// 	"label": "PIN",
+				// 	"key": "tempContact.pin"
+				// },{
+				// 	"label": "City",
+				// 	"key": "tempContact.city"
+				// },{
+				// 	"label": "State",
+				// 	"key": "tempContact.state"
+				// },{
+				// 	"label": "Country",
+				// 	"key": "tempContact.country"
+				// },
+				{
+					"label": "Number Of Employees",
+					"key": "numberOfEmployees"
+				},{
+					"label": "Industry Type",
+					"key": "industryType"
+				},{
+					"label": "Customer Segment",
+					"key": "customerSegment"
+				},{
+					"label": "Customer Category",
+					"key": "customerCategory"
+				}, {
+					"label": "Business Stage",
+					"key": "businessStage"
+				}, {
+					"label": "Annual TurnOver",
+					"key": "annualTurnOver"
+				}, {
+					"label": "Status",
+					"key": "status"
+				}, {
+					"label": "Assign To Group",
+					"key": "assignToGrp"
+				}, {
+					"label": "Assign To User",
+					"key": "assignToUser"
+				}, {
+					"label": "Created By User",
+					"key": "createdByUser"
+				}, {
+					"label": "Created By Group",
+					"key": "createdByGroup"
 				}, {
 					"label": "Contact Mode",
 					"key": "contactRole"

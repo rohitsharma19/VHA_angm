@@ -42,62 +42,70 @@
 				"active": true
 			},
 			"fieldGroup": [{
-				"type": "select",
-				"key": "leadSource",
-				"templateOptions": {
-					"label": "Lead Source",
-					"theme": "",
-					"multiple": false,
-					"styleElements": "display:block;",
-					"required": "true",
-					"labelProp": "label",
-					"valueProp": "value",
-					"pattern": "([a-zA-Z ]{3,30})",
-					"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters",
-					"options": [{
-						"label": "Purchased List",
-						"value": "Purchased List"
-					}, {
-						"label": "Referral",
-						"value": "Referral"
-					}, {
-						"label": "Existing Customer",
-						"value": "Existing Customer"
-					}]
+				"elementAttributes": {
+					"layout": "row",
+					"layout-sm": "column"
 				},
-				"expressionProperties": {
-					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
-				}
-			}, {
-				"type": "select",
-				"key": "leadType",
-				"templateOptions": {
-					"label": "Lead Type",
-					"theme": "",
-					"multiple": false,
-					"styleElements": "display:block;",
-					"required": "true",
-					"labelProp": "label",
-					"valueProp": "value",
-					"pattern": "([a-zA-Z ]{3,30})",
-					"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters",
-					"options": [{
-						"label": "New Business",
-						"value": "New Business"
-					}, {
-						"label": "Regular",
-						"value": "Regular"
-					}, {
-						"label": "Extended",
-						"value": "Extended"
-					}, {
-						"label": "Others",
-						"value": "Others"
-					}]
-				},
-				"expressionProperties": {
-					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
-				}
+				"fieldGroup": [{
+					"type": "select",
+					"key": "leadSource",
+					"className": "flex-50",
+					"templateOptions": {
+						"label": "Lead Source",
+						"theme": "",
+						"multiple": false,
+						"styleElements": "display:block;",
+						"required": "true",
+						"labelProp": "label",
+						"valueProp": "value",
+						"pattern": "([a-zA-Z ]{3,30})",
+						"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters",
+						"options": [{
+							"label": "Purchased List",
+							"value": "Purchased List"
+						}, {
+							"label": "Referral",
+							"value": "Referral"
+						}, {
+							"label": "Existing Customer",
+							"value": "Existing Customer"
+						}]
+					},
+					"expressionProperties": {
+						"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
+					}
+				}, {
+					"type": "select",
+					"key": "leadType",
+					"className": "flex-50",
+					"templateOptions": {
+						"label": "Lead Type",
+						"theme": "",
+						"multiple": false,
+						"styleElements": "display:block;",
+						"required": "true",
+						"labelProp": "label",
+						"valueProp": "value",
+						"pattern": "([a-zA-Z ]{3,30})",
+						"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters",
+						"options": [{
+							"label": "New Business",
+							"value": "New Business"
+						}, {
+							"label": "Regular",
+							"value": "Regular"
+						}, {
+							"label": "Extended",
+							"value": "Extended"
+						}, {
+							"label": "Others",
+							"value": "Others"
+						}]
+					},
+					"expressionProperties": {
+						"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
+					}
+				}]
 			}, {
 				"elementAttributes": {
 					"layout": "row",
@@ -106,7 +114,7 @@
 				"fieldGroup": [{
 					"key": "organizationTIN",
 					"type": "input",
-					"className": "flex-45",
+					"className": "flex-50",
 					"templateOptions": {
 						"label": "Organisation TIN",
 						"type": "text",
@@ -121,13 +129,48 @@
 				}, {
 					"key": "organizationName",
 					"type": "input",
-					"className": "flex-45",
+					"className": "flex-50",
 					"templateOptions": {
 						"label": "Organisation Name",
 						"type": "text",
 						"styleElements": "display:block;",
 						"required": "true",
 						"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]{2,50}",
+						"patternMessage": "Alphabets Only. No Special Character and Numbers. 2-50 Characters"
+					},
+					"expressionProperties": {
+						"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
+					}
+				}]
+			}, {
+				"elementAttributes": {
+					"layout": "row",
+					"layout-sm": "column"
+				},
+				"fieldGroup": [{
+					"key": "organizationGroup",
+					"type": "input",
+					"className": "flex-50",
+					"templateOptions": {
+						"label": "Organisation Group",
+						"type": "text",
+						"styleElements": "display:block;",
+						"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]{2,50}",
+						"patternMessage": "Alphabets Only. No Special Character and Numbers. 2-50 Characters"
+					},
+					"expressionProperties": {
+						"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
+					}
+				}, {
+					"key": "organisationShortCode",
+					"type": "input",
+					"className": "flex-45",
+					"templateOptions": {
+						"label": "Organisation Short Code",
+						"type": "text",
+						"styleElements": "display:block;",
+						"required": "true",
+						"pattern": "([a-zA-Z ]{3,60})",
 						"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters"
 					},
 					"expressionProperties": {
@@ -144,33 +187,6 @@
 					"hideExpression": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
 				}]
 			}, {
-				"key": "organizationGroup",
-				"type": "input",
-				"templateOptions": {
-					"label": "Organisation Group",
-					"type": "text",
-					"styleElements": "display:block;",
-					"pattern": "([a-zA-Z ]{0,20})",
-					"patternMessage": "Alphabets Only. No Special Character and Numbers. 20 Characters"
-				},
-				"expressionProperties": {
-					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
-				}
-			}, {
-				"key": "organisationShortCode",
-				"type": "input",
-				"templateOptions": {
-					"label": "Organisation Short Code",
-					"type": "text",
-					"styleElements": "display:block;",
-					"required": "true",
-					"pattern": "([a-zA-Z ]{3,60})",
-					"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters"
-				},
-				"expressionProperties": {
-					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
-				}
-			}, {
 				"key": "tradingAs",
 				"type": "input",
 				"templateOptions": {
@@ -184,31 +200,33 @@
 					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
 				}
 			}, {
-				"type": "datepicker",
-				"key": "expectedClosureDate",
-				"templateOptions": {
-					"theme": "custom",
-					"placeholder": "Expected Closure Date",
-					"styleElements": "display:block;",
-					"label": "Expected Closure Date",
-					"md-min-date": "1/1/1915",
-					"md-max-date": "1/1/2016",
-					"pattern": "(0[1-9]|1[0-2])/(0[1-9]|1\\d|2\\d|3[01])/(19|20)\\d{2}",
-					"patternMessage": "yyyy-mm-dd ."
+				"elementAttributes": {
+					"layout": "row",
+					"layout-sm": "column"
 				},
-				"expressionProperties": {
-					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
-				}
-			}, {
-				"key": "emailAddress",
-				"type": "input",
-				"templateOptions": {
-					"label": "E mail",
-					"type": "email",
-					"styleElements": "display:block;",
-					"pattern": "([_a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4}))",
-					"patternMessage": "For ex. example@domain.com ."
-				}
+				"fieldGroup": [{
+					"key": "eMail",
+					"type": "input",
+					"className": "flex-50",
+					"templateOptions": {
+						"label": "E mail",
+						"type": "email",
+						"styleElements": "display:block;",
+						"pattern": "([_a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4}))",
+						"patternMessage": "For ex. example@domain.com ."
+					}
+				}, {
+					"key": "contactNum",
+					"type": "input",
+					"className": "flex-50",
+					"templateOptions": {
+						"label": "Phone Number",
+						"type": "number",
+						"styleElements": "display:block;",
+						"pattern": "([0-9]{10})",
+						"patternMessage": "Only Numbers. 10 Digits"
+					}
+				}]
 			}, {
 				"type": "select",
 				"key": "territoryCode",
@@ -273,16 +291,6 @@
 				},
 				"hideExpression": "model.leadMode!=\"Update\""
 			}, {
-				"key": "contactNumber",
-				"type": "input",
-				"templateOptions": {
-					"label": "Phone Number",
-					"type": "number",
-					"styleElements": "display:block;",
-					"pattern": "([0-9]{10})",
-					"patternMessage": "Only Numbers. 10 Digits"
-				}
-			}, {
 				"key": "pin",
 				"type": "input",
 				"templateOptions": {
@@ -291,6 +299,21 @@
 					"styleElements": "display:block;",
 					"pattern": "([0-9]{6})",
 					"patternMessage": "6 Digit Number"
+				}
+			}, {
+				"type": "datepicker",
+				"key": "expectedClosureDate",
+				"templateOptions": {
+					"theme": "custom",
+					"styleElements": "display:block;",
+					"label": "Expected Closure Date",
+					"md-min-date": "1/1/1915",
+					"md-max-date": "1/1/2016",
+					"pattern": "(0[1-9]|1[0-2])/(0[1-9]|1\\d|2\\d|3[01])/(19|20)\\d{2}",
+					"patternMessage": "yyyy-mm-dd ."
+				},
+				"expressionProperties": {
+					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
 				}
 			}]
 		}, {
@@ -321,37 +344,7 @@
 				"elementAttributes": {
 					"formlyFieldGroupClass": "flex-80"
 				},
-				"fieldGroup": [
-					{
-						"type": "select",
-						"key": "tempContact.contactRole",
-						"templateOptions": {
-							"label": "Contact Role",
-							"theme": "",
-							"styleElements": "display:block;",
-							"required": "true",
-							"multiple": false,
-							"labelProp": "label",
-							"valueProp": "value",
-							"options": [{
-								"label": "Billing",
-								"value": "Billing"
-							}, {
-								"label": "Legal",
-								"value": "Legal"
-							}, {
-								"label": "Admin",
-								"value": "Admin"
-							}, {
-								"label": "Technical",
-								"value": "Technical"
-							}, {
-								"label": "Sales",
-								"value": "Sales"
-							}],
-							"flex": ""
-						}
-					}, {
+				"fieldGroup": [{
 					"elementAttributes": {
 						"layout": "row",
 						"layout-sm": "column"
@@ -418,18 +411,7 @@
 					},
 					"hideExpression": "model.leadMode!=\"Update\" && model.leadMode!=\"View\""
 				}, {
-					"key": "tempContact.contactNumber",
-					"type": "input",
-					"templateOptions": {
-						"label": "Phone Number",
-						"type": "number",
-						"styleElements": "display:block;",
-						"required": "true",
-						"pattern": "([0-9]{10})",
-						"patternMessage": "Only Numbers. 10 Digits"
-					}
-				}, {
-					"key": "tempContact.dateOfBirth",
+					"key": "tempContact.dob",
 					"type": "datepicker",
 					"templateOptions": {
 						"theme": "custom",
@@ -443,16 +425,35 @@
 						"patternMessage": "yyyy-mm-dd ."
 					}
 				}, {
-					"key": "tempContact.emailAddress",
-					"type": "input",
-					"templateOptions": {
-						"label": "E mail",
-						"type": "email",
-						"styleElements": "display:block;",
-						"required": "true",
-						"pattern": "([_a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4}))",
-						"patternMessage": "For ex. example@domain.com ."
-					}
+					"elementAttributes": {
+						"layout": "row",
+						"layout-sm": "column"
+					},
+					"fieldGroup": [{
+						"key": "tempContact.eMail",
+						"type": "input",
+						"className": "flex-50",
+						"templateOptions": {
+							"label": "E mail",
+							"type": "email",
+							"styleElements": "display:block;",
+							"required": "true",
+							"pattern": "([_a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4}))",
+							"patternMessage": "For ex. example@domain.com ."
+						}
+					}, {
+						"key": "tempContact.contactNum",
+						"type": "input",
+						"className": "flex-50",
+						"templateOptions": {
+							"label": "Phone Number",
+							"type": "number",
+							"styleElements": "display:block;",
+							"required": "true",
+							"pattern": "([0-9]{10})",
+							"patternMessage": "Only Numbers. 10 Digits"
+						}
+					}]
 				}, {
 					"key": "tempContact.gender",
 					"type": "select",
@@ -476,7 +477,63 @@
 				}, {
 					"elementAttributes": {
 						"layout": "row",
-						"layout-align":"space-between",
+						"layout-sm": "column"
+					},
+					"fieldGroup": [{
+						"type": "select",
+						"key": "tempContact.preferredModeOfCommunication",
+						"className": "flex-50",
+						"templateOptions": {
+							"label": "Preferred Mode of Communication",
+							"theme": "",
+							"multiple": false,
+							"styleElements": "display:block;",
+							"required": "true",
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Email",
+								"value": "Email"
+							}, {
+								"label": "Telephone",
+								"value": "Telephone"
+							}]
+						}
+					}, {
+						"type": "select",
+						"key": "tempContact.contactRole",
+						"className": "flex-50",
+						"templateOptions": {
+							"label": "Contact Role",
+							"theme": "",
+							"styleElements": "display:block;",
+							"required": "true",
+							"multiple": false,
+							"labelProp": "label",
+							"valueProp": "value",
+							"options": [{
+								"label": "Billing",
+								"value": "Billing"
+							}, {
+								"label": "Legal",
+								"value": "Legal"
+							}, {
+								"label": "Admin",
+								"value": "Admin"
+							}, {
+								"label": "Technical",
+								"value": "Technical"
+							}, {
+								"label": "Sales",
+								"value": "Sales"
+							}],
+							"flex": ""
+						}
+					}]
+				}, {
+					"elementAttributes": {
+						"layout": "row",
+						"layout-align": "space-between",
 						"layout-sm": "column"
 					},
 					"fieldGroup": [{
@@ -496,27 +553,35 @@
 							"formlyFieldGroupClass": "flex-75"
 						},
 						"fieldGroup": [{
-							"key": "tempContact.tempAddress.addressLine1",
-							"type": "input",
-							"templateOptions": {
-								"label": "Address Line 1",
-								"type": "text",
-								"styleElements": "display:block;",
-								"required": "true",
-								"pattern": "",
-								"patternMessage": "Exceeded the max length"
-							}
-						}, {
-							"key": "tempContact.tempAddress.addressLine2",
-							"type": "input",
-							"templateOptions": {
-								"label": "Address Line 2",
-								"type": "text",
-								"styleElements": "display:block;",
-								"required": "true",
-								"pattern": "",
-								"patternMessage": "Exceeded the max length"
-							}
+							"elementAttributes": {
+								"layout": "row",
+								"layout-sm": "column"
+							},
+							"fieldGroup": [{
+								"key": "tempContact.tempAddress.addressLine1",
+								"type": "input",
+								"className": "flex-50",
+								"templateOptions": {
+									"label": "Address Line 1",
+									"type": "text",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "",
+									"patternMessage": "Exceeded the max length"
+								}
+							}, {
+								"key": "tempContact.tempAddress.addressLine2",
+								"type": "input",
+								"className": "flex-50",
+								"templateOptions": {
+									"label": "Address Line 2",
+									"type": "text",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "",
+									"patternMessage": "Exceeded the max length"
+								}
+							}]
 						}, {
 							"elementAttributes": {
 								"layout": "row",
@@ -534,7 +599,7 @@
 									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
 								}
 							}, {
-								"key": "tempContact.tempAddress.postCode",
+								"key": "tempContact.tempAddress.pin",
 								"className": "flex-50",
 								"type": "input",
 								"templateOptions": {
@@ -572,18 +637,18 @@
 									"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
 									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
 								}
+							}, {
+								"key": "tempContact.tempAddress.country",
+								"type": "input",
+								"templateOptions": {
+									"label": "Country",
+									"styleElements": "display:block;",
+									"required": "true",
+									"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
+									"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
+								}
 							}]
-						}, {
-							"key": "tempContact.tempAddress.country",
-							"type": "input",
-							"templateOptions": {
-								"label": "Country",
-								"styleElements": "display:block;",
-								"required": "true",
-								"pattern": "([a-zA-Z-ɏ]+(?:. |-| |'))*[a-zA-Z-ɏ]*",
-								"patternMessage": "Alphabets Only. No Special Character and Numbers. 3-30 Characters."
-							}
-						}, {
+						},{
 							"elementAttributes": {
 								"layout": "row",
 								"layout-sm": "column",
@@ -741,16 +806,6 @@
 					"flex": ""
 				}
 			}, {
-				"key": "annualTurnOver",
-				"type": "input",
-				"templateOptions": {
-					"label": "Annual Turn Over",
-					"styleElements": "display:block;",
-					"required": "true",
-					"pattern": "([0-9]{5,12})",
-					"patternMessage": "1000000000"
-				}
-			}, {
 				"type": "select",
 				"key": "businessStage",
 				"templateOptions": {
@@ -775,6 +830,16 @@
 					}],
 					"flex": ""
 				}
+			}, {
+				"key": "annualTurnOver",
+				"type": "input",
+				"templateOptions": {
+					"label": "Annual Turn Over",
+					"styleElements": "display:block;",
+					"required": "true",
+					"pattern": "([0-9]{5,12})",
+					"patternMessage": "1000000000"
+				}
 			}]
 		}, {
 			"wrapper": "wrapper_tab",
@@ -783,6 +848,29 @@
 				"active": false
 			},
 			"fieldGroup": [{
+				"type": "select",
+				"key": "status",
+				"templateOptions": {
+					"label": "Status",
+					"theme": "",
+					"styleElements": "display:block;",
+					"required": "true",
+					"multiple": false,
+					"labelProp": "label",
+					"valueProp": "value",
+					"options": [{
+						"label": "Qualified",
+						"value": "Qualified"
+					}, {
+						"label": "New",
+						"value": "New"
+					}, {
+						"label": "Old",
+						"value": "Old"
+					}],
+					"flex": ""
+				}
+			}, {
 				"type": "select",
 				"key": "assignToGrp",
 				"templateOptions": {
@@ -876,29 +964,6 @@
 				"hideExpression": "model.leadMode==\"QuickCreate\" || model.leadMode==\"Create\"",
 				"expressionProperties": {
 					"templateOptions.disabled": "model.leadMode!=\"QuickCreate\" && model.leadMode!=\"Create\""
-				}
-			}, {
-				"type": "select",
-				"key": "status",
-				"templateOptions": {
-					"label": "Status",
-					"theme": "",
-					"styleElements": "display:block;",
-					"required": "true",
-					"multiple": false,
-					"labelProp": "label",
-					"valueProp": "value",
-					"options": [{
-						"label": "Qualified",
-						"value": "Qualified"
-					}, {
-						"label": "New",
-						"value": "New"
-					}, {
-						"label": "Old",
-						"value": "Old"
-					}],
-					"flex": ""
 				}
 			}]
 		}]
